@@ -1,0 +1,9 @@
+[BWT Emulator] Timesheet
+
+Week 1 Jan 14 - Jan 20
+Tue. Jan 15 Class    18:30 - 21:30   3hrs
+Thr. Jan 17 Meeting  10:00 - 12:00   2hrs
+Sun. Jan 20 Meeting  12:00 - 14:00   2hrs
+
+
+
