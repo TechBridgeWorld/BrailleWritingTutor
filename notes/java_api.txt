@@ -1,0 +1,47 @@
+# Current spec for our emulator (java).
+# @author Lucas Ray (ltray)
+
+Adhere to the following API. We will need to deliver both a linux and windows
+interface, the following adheres to linux standards. For windows, we'll likely
+use the RandomAccessFile class to communicate with the BWT firmware via a
+named pipe.
+
+  /** @brief Interface our emulator will adhere to.
+   */
+  public interface Emulator {
+    /** @brief Sends the byte b to the file descriptor fd.
+     *
+     *  Sends a single byte to the specified file descriptor. Will be used to
+     *  send user input to the BWT firmware.
+     *
+     *  @param b  The byte we are writing.
+     *  @param fd The file descriptor we are writing to.
+     *
+     *  @return Void.
+     */
+    void sendByte(byte b, FileDescriptor fd);
+
+    /** @brief Sends the bytes contained in b to the file descriptor fd.
+     *
+     *  @param b  The byte array we are writing.
+     *  @param fd The file descriptor we are writing to.
+     *
+     *  @return Void.
+     */
+    void sendBytes(byte[] b, FileDescriptor fd);
+
+    /** @brief Listens to the specified file descriptor.
+     *
+     *  Listens to the file descriptor fd. Will be used only to receive buzzer
+     *  data from the BWT firmware and reflect a buzzer on the GUI.
+     *
+     *  @param fd The file descriptor we are listening on.
+     *
+     *  @return Void.
+     */
+    void listen(FileDescriptor fd);
+  }
+
+Most of the work on the Emulator class will be private, as users of the Emulator
+will be fairly simplistic (BWT firmware only needs basic I/O). More in depth
+design of inner workings will be coming soon.
