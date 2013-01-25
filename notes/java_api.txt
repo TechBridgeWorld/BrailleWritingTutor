@@ -1,6 +1,9 @@
 # Current spec for our emulator (java).
 # @author Lucas Ray (ltray)
 
+################################################################################
+# CLIENT (public) API
+################################################################################
 Adhere to the following API. We will need to deliver both a linux and windows
 interface, the following adheres to linux standards. For windows, we'll likely
 use the RandomAccessFile class to communicate with the BWT firmware via a
@@ -45,3 +48,8 @@ named pipe.
 Most of the work on the Emulator class will be private, as users of the Emulator
 will be fairly simplistic (BWT firmware only needs basic I/O). More in depth
 design of inner workings will be coming soon.
+
+################################################################################
+# INTERNAL (private) API
+################################################################################
+This is variable, but likely functions we'll need.
