@@ -2,6 +2,14 @@
  *  @brief Class that represents an AJAX request to our local server. To be used
  *         to communicate between the JAVA servlet server and the front end.
  *
+ *  Usage: new Request({
+ *           'url': 'http://www.example.com/',
+ *           'data': JSON.stringify({'answer': 42}),
+ *           'type': 'GET',
+ *           'success': function(data) { console.log(data); },
+ *           'failure': function(data) { console.log(data); }
+ *         });
+ *
  *  @author Lucas Ray (ltray@cmu.edu)
  */
 
@@ -24,6 +32,8 @@ $(document).ready(function() {
     this.type = options.type;
     this.success = options.success;
     this.failure = options.failure;
+
+    this.__make_request();
   };
 
   /** @brief Makes the request.
