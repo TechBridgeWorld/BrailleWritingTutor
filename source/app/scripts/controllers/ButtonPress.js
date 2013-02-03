@@ -1,9 +1,10 @@
-/** @file Request.js
- *  @brief Class that represents an AJAX request to our local server. To be used
- *         to communicate between the JAVA servlet server and the front end.
+/** @file ButtonPress.js
+ *  @brief Class that represents a button press and sends an AJAX request to
+ *         our local server. To be used to communicate between the JAVA
+ *         servlet server and the front end.
  *
  *  Usage: new Request({
- *           'url': 'http://www.example.com/',
+ *           'button': 's5-2-3',
  *           'data': JSON.stringify({'answer': 42}),
  *           'type': 'GET',
  *           'success': function(data) { console.log(data); },
@@ -17,7 +18,7 @@ $(document).ready(function() {
   /** @brief Constructor for a request.
    *
    *  @param options Options for the request. These include:
-   *           -url: URL of the request (e.g. "/login" or "/sendData")
+   *           -button: Button ID for the request (e.g. "s5-2-3")
    *           -data: JSON object representing data we want sent. If request is
    *                  a POST, this will be in the body. If a GET, it will be in
    *                  the URL.
@@ -26,8 +27,8 @@ $(document).ready(function() {
   *            -failure: Callback to be used on failure.
    *           -TODO: more?
    */
-  var Request = function(options) {
-    this.url = options.url;
+  window.ButtonPress = function(options) {
+    this.button = options.button;
     this.data = options.data;
     this.type = options.type;
     this.success = options.success;
@@ -38,9 +39,14 @@ $(document).ready(function() {
 
   /** @brief Makes the request.
    */
-  var __make_request = function() {
-//    $.ajax({
-//    });
-  // TODO
+  window.ButtonPress.prototype.__make_request = function() {
+    // __TEMP__ is bad
+    var __TEMP__ = "foobar";
+    $.ajax({
+      url: '/' + __TEMP__ + '/sendBytes.do?button=' + this.button,
+      type: this.type,
+      success: this.success,
+      error: this.failure
+    });
   };
 });
