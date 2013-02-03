@@ -1,3 +1,4 @@
+@import url(buttons.css);
 /** @file main.scss
  *  @brief Main scss file for our app.
  *
@@ -7,4 +8,3 @@
  *
  *  @author Lucas Ray (ltray@cmu.edu)
  */
-@import "buttons.css";

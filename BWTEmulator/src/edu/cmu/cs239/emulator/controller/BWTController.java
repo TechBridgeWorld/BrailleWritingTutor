@@ -18,8 +18,6 @@ public class BWTController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ActionHandler ah;
     
-	
-	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -33,7 +31,7 @@ public class BWTController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		printRequestInfo(request);
+		printRequestInfo1(request);
 		String url = request.getRequestURI();
 		if(Util.isButtonAction(url)){
 			ah.handleRequest(request, response);
@@ -58,7 +56,7 @@ public class BWTController extends HttpServlet {
 	 * Print out the incoming http request
 	 * @param request
 	 */
-	private void printRequestInfo(HttpServletRequest request){
+	private void printRequestInfo1(HttpServletRequest request){
 		if(request == null){
 			System.out.println("Request is null.");
 			return;
@@ -79,23 +77,37 @@ public class BWTController extends HttpServlet {
 		
 	}
 	
-	/**
-	 * 
-	 * @param request
-	 * @param response
-	 */
-	private void sendJSON(HttpServletResponse response){
-		if(response == null) return;
-		String text = "{ message: Java servlet says hello world}";
-	    response.setContentType("text/plain");  
-	    response.setCharacterEncoding("UTF-8"); 
-	    try {
-			response.getWriter().write(text);
-		} catch (IOException e) {
-			System.out.println("Exception in response.write");
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-		}     
-	}
-	
+
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public BWTController() {
+
+        super();
+    }
+
+
+
+
+
+  /**
+   *
+   * @param request
+   * @param response
+   */
+  private void sendJSON(HttpServletResponse response){
+    if(response == null) return;
+    String text = "{ message: Java servlet says hello world}";
+      response.setContentType("text/plain");
+      response.setCharacterEncoding("UTF-8");
+      try {
+      response.getWriter().write(text);
+    } catch (IOException e) {
+      System.out.println("Exception in response.write");
+      System.out.println(e.getMessage());
+      e.printStackTrace();
+    }
+  }
+
+
 }
