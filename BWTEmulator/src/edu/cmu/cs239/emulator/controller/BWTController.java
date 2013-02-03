@@ -7,29 +7,40 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import edu.cmu.cs239.emulator.model.ActionHandler;
+import edu.cmu.cs239.emulator.util.Util;
+
 /**
  * Servlet implementation class BWTController
  */
 @WebServlet("/BWTController")
 public class BWTController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private ActionHandler ah;
+    
+	
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BWTController() {
-    	
-        super();
-    }
+	@Override
+    public void init() {
+		ah = new ActionHandler();
+	}
 
 	/**
 	 * 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		printRequestInfo(request);
-		sendJSON(response);
+		String url = request.getRequestURI();
+		if(Util.isButtonAction(url)){
+			ah.handleRequest(request, response);
+			return;
+		}
+		
+
 	}
 
 	/**
@@ -39,7 +50,8 @@ public class BWTController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Handling POST request as GET");
-		doGet(request,response);
+//		doGet(request,response);
+		
 	}
 	
 	/**
