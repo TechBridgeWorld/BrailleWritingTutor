@@ -1,4 +1,6 @@
 @import url(buttons.css);
+@import url(board.css);
+@import url(general.css);
 /** @file main.scss
  *  @brief Main scss file for our app.
  *

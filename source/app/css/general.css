@@ -1,0 +1,15 @@
+.shadow {
+  -moz-box-shadow: 0px 0px 3px 1px #222;
+  -webkit-box-shadow: 0px 0px 3px 1px #222;
+  box-shadow: 0px 0px 3px 1px #222; }
+
+.greyshadow {
+  -moz-box-shadow: 0px 0px 6px 2px #777;
+  -webkit-box-shadow: 0px 0px 6px 2px #777;
+  box-shadow: 0px 0px 6px 2px #777; }
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }

@@ -53,14 +53,11 @@ $(document).ready(function() {
   /** @brief Attaches event handlers necessary for our app.
    */
   var attach_handlers = function() {
-    addButton($("#button1"), "l"); // a n
-    addButton($("#button2"), "j1"); // b n
-    addButton($("#button3"), "j2"); // c n
-    addButton($("#button4"), "j3"); // d n
-    addButton($("#button5"), "j4"); // e n
-    addButton($("#button6"), "j5"); // f n
-    addButton($("#button7"), "j6"); // g n
-    addButton($("#button8"), "r"); // a n
+    // add buttons
+    $(".button").each(function(ind, el) {
+      var $el = $(el);
+      addButton($el, $el.attr('id'));
+    });
   };
 
   /** @brief Patches functions for our app (e.g. bind if running on iOS)
