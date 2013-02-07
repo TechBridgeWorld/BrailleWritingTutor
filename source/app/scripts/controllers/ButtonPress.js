@@ -42,6 +42,7 @@ $(document).ready(function() {
   window.ButtonPress.prototype.__make_request = function() {
     // __TEMP__ is bad
     var __TEMP__ = "foobar";
+    console.log("bytecode: \"" + this.button + "\"");
     $.ajax({
       url: '/' + __TEMP__ + '/sendBytes.do?button=' + this.button,
       type: this.type,
