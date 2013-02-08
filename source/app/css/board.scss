@@ -1,11 +1,20 @@
 // css for the board
+$CIRCUITURL : "../assets/circuit.jpg";
+$GREEN : rgba(64, 127, 80, 0.7);
+
 #board {
   position: absolute;
   top: 20px;
   left: 15px;
   right: 15px;
   bottom: 20px;
-//  background-image: url("../assets/texture_back.jpg");
-  background-color: #549D6E;
+  background: rgba(84, 157, 110, 1);
+  background-image: url($CIRCUITURL);
+  background-image: -webkit-gradient(linear, left top, left bottom, from($GREEN), to($GREEN)), url($CIRCUITURL);
+  background-image: -webkit-linear-gradient(top, $GREEN, $GREEN), url($CIRCUITURL); /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, $GREEN, $GREEN), url($CIRCUITURL); /* FF3.6+ */;
+  background-image: -ms-linear-gradient(top, $GREEN, $GREEN), url($CIRCUITURL); /* IE10 */;
+  background-image: -o-linear-gradient(top, $GREEN, $GREEN), url($CIRCUITURL); /* Opera 11.10+ */;
+  background-image: linear-gradient(top, $GREEN, $GREEN), url($CIRCUITURL); /* W3C */;
   border: solid thin rgba(0, 0, 0, .5);
 }

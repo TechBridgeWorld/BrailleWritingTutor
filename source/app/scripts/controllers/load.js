@@ -11,7 +11,15 @@ $(document).ready(function() {
    */
   var main = function() {
     patch();
+    populate_dom();
     get_mapping();
+  };
+
+  /** @brief Populates the DOM with objects we don't want to hardcode into
+   *         index.html.
+   */
+  var populate_dom = function() {
+    // Add
   };
 
   /** @brief Gets the mapping from the mapping.json file.
