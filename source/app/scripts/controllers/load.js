@@ -5,8 +5,8 @@
  */
 
 $(document).ready(function() {
-  var mapping;
-  var __NUM_SLATEGROUPS = 16;
+  var mapping;  // holds the mapping from id to bytecode
+  var __NUM_SLATEGROUPS = 16; // number of slate groups per row
 
   /** @brief Main method for load.
    */
@@ -43,8 +43,7 @@ $(document).ready(function() {
         var $slatecell = $('<div>', {
           'class': 'slatebutton button',
           'id': '_s' + (i + 1) + '_' + (j + 1)
-        }).css('position', 'relative')
-          .css('float', 'left');
+        }).css('position', 'relative');
 
         if (j < 3) {
           $leftgroup.append($slatecell);
@@ -77,7 +76,7 @@ $(document).ready(function() {
         attach_handlers();
       },
       error: function(data) {
-        console.log("error");
+        console.log("Error loading input_mapping.json");
       }
     });
   };
@@ -93,9 +92,10 @@ $(document).ready(function() {
     $selector.on('click', (function(e) {
       e.preventDefault();
       e.stopPropagation();
+      // On click, create a new button press
       new ButtonPress({
         'type': 'GET',
-        'button': this,
+        'code': this,
         'success': function(e){console.log(e);},
         'failure': function(e){console.log(e);}
       });
