@@ -11,4 +11,19 @@ Developed for and with help by [TechBridgeWorld](http://www.techbridgeworld.org/
 
 Overview
 ==============================================
-We should eventually add some things here, and overall code structure.
+assets/
+  * Assets (images, mappings, etc.).
+css/
+  * All css and scss used for the app.
+scripts/
+  * All scripts we use in our app.
+  libs/
+    * Library scripts (jquery, etc.)
+  models/
+    * Standard models folder for MVC structure.
+  views/
+    * Standard views folder for MVC structure.
+  controllers/
+    * Standard controllers folder for MVC structure.
+index.html
+  * Main page of our app.
