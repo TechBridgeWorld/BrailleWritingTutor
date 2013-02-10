@@ -6,6 +6,7 @@
 
 $(document).ready(function() {
   var mapping;
+  var __NUM_SLATEGROUPS = 16;
 
   /** @brief Main method for load.
    */
@@ -19,7 +20,50 @@ $(document).ready(function() {
    *         index.html.
    */
   var populate_dom = function() {
-    // Add
+    // Add slates to the DOM
+    var $row1 = $("#slaterow1");
+    var $row2 = $("#slaterow2");
+
+    // Add all the slate groups to the rows
+    var i;
+    for (i = 0; i < 2 * __NUM_SLATEGROUPS; i++) {
+      var $slategroup = $('<div>', {
+        'class': 'slategroup shadow'
+      });
+
+      // Add the buttons to each slate group
+      var j;
+      var $leftgroup = $('<div>', {
+        'class': 'left subslate'
+      });
+      var $rightgroup = $('<div>', {
+        'class': 'right subslate'
+      });
+      for (j = 0; j < 6; j++) {
+        var $slatecell = $('<div>', {
+          'class': 'slatebutton button',
+          'id': '_s' + (i + 1) + '_' + (j + 1)
+        }).css('position', 'relative')
+          .css('float', 'left');
+
+        if (j < 3) {
+          $leftgroup.append($slatecell);
+        } else {
+          $rightgroup.append($slatecell);
+        };
+      };
+      $slategroup.append($leftgroup);
+      $slategroup.append($rightgroup);
+
+      // add to row 1 if first 16, row 2 otherwise
+      var $row;
+      if (i < __NUM_SLATEGROUPS) {
+        $row = $row1;
+      } else {
+        $row = $row2;
+      };
+      $row.append($slategroup);
+    };
   };
 
   /** @brief Gets the mapping from the mapping.json file.
