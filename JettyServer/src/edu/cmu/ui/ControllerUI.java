@@ -101,12 +101,12 @@ public class ControllerUI extends JFrame {
 //		statusArea.setText(status);
 	}
 
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				ControllerUI sg = new ControllerUI();
-				sg.setVisible(true);
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		SwingUtilities.invokeLater(new Runnable() {
+//			public void run() {
+//				ControllerUI sg = new ControllerUI();
+//				sg.setVisible(true);
+//			}
+//		});
+//	}
 }

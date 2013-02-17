@@ -86,5 +86,10 @@ public class JettyServer {
         server.setHandler(handlers);
 	}
 
+	
+	public static void main(String[] args){
+		JettyServer js = new JettyServer();
+		js.startServer();
+	}
 
 }
