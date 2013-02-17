@@ -7,6 +7,7 @@
 $(document).ready(function() {
   var mapping;  // holds the mapping from id to bytecode
   var __NUM_SLATEGROUPS = 16; // number of slate groups per row
+  var __BUTTON_MAP = {}; // object holding our buttons
 
   /** @brief Main method for load.
    */
@@ -83,23 +84,45 @@ $(document).ready(function() {
 
   /** @brief Attaches a button TODO: RENAME
    */
-  var addButton = function($selector, button_id) {
+  var addButton = function($selector, button_id, onclick) {
     var code = mapping[button_id];
     if (code === undefined) {
       console.log("Error loading button " + button_id);
     };
 
-    $selector.on('click', (function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      // On click, create a new button press
-      new ButtonPress({
-        'type': 'GET',
-        'code': this,
-        'success': function(e){console.log(e);},
-        'failure': function(e){console.log(e);}
-      });
-    }).bind(code));
+    // Generally shouldn't be adding same button twice, but it's okay to do so.
+    // Just overwrites previous button with new one.
+    if (__BUTTON_MAP[button_id] !== undefined) {
+      console.log("Warning: adding button \"" + button_id + "\" twice");
+    };
+
+    // Add this button to our button map
+    __BUTTON_MAP[button_id] = new Button({
+      'code': code,
+      'success': function(e){console.log(e);},
+      'failure': function(e){console.log(e);} // TODO: fix success/failure
+    });
+
+    // Add the DOM event listener
+    if (onclick !== undefined) {
+      // If user selected own onclick, user theirs
+
+      // Package up all the information we need so we can bind
+      var pass_to_handler = {
+        'onclick': onclick,
+        'button': __BUTTON_MAP[button_id]
+      };
+      $selector.on('click', (function(e) {
+        (this['onclick'])(e, this['button']);
+      }).bind(pass_to_handler));
+    } else {
+      // Otherwise, use default click handler
+      $selector.on('click', (function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        this.press();
+      }).bind(__BUTTON_MAP[button_id]));
+    };
   };
 
   /** @brief Attaches event handlers necessary for our app.
@@ -108,8 +131,25 @@ $(document).ready(function() {
     // add buttons
     $(".button").each(function(ind, el) {
       var $el = $(el);
-      addButton($el, $el.attr('id'));
+      addButton($el, $el.attr('id'), undefined);
     });
+
+    // add _l and _r buttons differently, as they require different click handlers
+    var $_l = $("#_l");
+    var $_r = $("#_r");
+
+    /** @brief Small helper function used to add _l and _r buttons.
+     */
+    var addMenuButton = function($selector) {
+      addButton($selector, $selector.attr('id'), function(e, button) {
+        e.preventDefault();
+        e.stopPropagation();
+        button.toggle_hold();
+      });
+    };
+
+    addMenuButton($_l);
+    addMenuButton($_r);
   };
 
   /** @brief Patches functions for our app (e.g. bind if running on iOS)
