@@ -34,12 +34,9 @@ $(document).ready(function() {
   /** @brief Represents a button press. Makes the request to our server.
    */
   window.Button.prototype.press = function() {
-
-    // __TEMP__ is bad
-    var __TEMP__ = "foobar";
     console.log("bytecode: \"" + this.code + "\"");
     $.ajax({
-      url: '/' + __TEMP__ + '/sendBytes.do?code=' + this.code,
+      url: '/sendBytes.do?code=' + this.code,
       type: 'GET',
       success: this.success,
       error: this.failure
