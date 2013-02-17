@@ -23,9 +23,12 @@ public class UIActionHandler {
 		js.restartServer();
 	}
 	
-	
-	public String getServerStatus(){
-		return "Running";
+	public int getServerStatus(){
+		return js.getServerStatus();
 	}
-	
+
+	public int getPort() {
+		return js.getPort();
+	}
+
 }
