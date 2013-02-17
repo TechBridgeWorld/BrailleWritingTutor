@@ -10,8 +10,6 @@ public class ActionHandler {
 	private final int timeOut = 10000;
 	private HashMap<Button, Boolean> down;
 	
-	
-	
 	public ActionHandler(){
 		down = new HashMap<Button, Boolean>();
 	}
@@ -24,11 +22,7 @@ public class ActionHandler {
 		String buttonName = request.getParameter("button");
 		
 		//do something with the buttonName
-		
+		System.out.println(buttonName);
 	}
-	
-	
-	
-	
 
 }

@@ -1,4 +1,6 @@
 package edu.cmu.server;
+import java.net.URL;
+
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerList;
@@ -12,7 +14,7 @@ public class JettyServer {
 	
 	private Server server;
 	private static final int DEFAULT_PORT = 8887;
-	private int status;
+//	private int status;
 	private int port;
 	
 	public static final int READY = 0;
@@ -28,7 +30,7 @@ public class JettyServer {
 		this.port =port>0? port : DEFAULT_PORT;
 		server = new Server(this.port);
 		initServerHandler();
-		status = READY;
+//		status = READY;
 	}
 	
 	public void startServer(){
@@ -54,16 +56,20 @@ public class JettyServer {
 		}
 	}
 	
-	public boolean isStarted(){
+	private boolean isStarted(){
 		return server.isStarted();
 	}
 	
-	public boolean isStopped(){
+	private boolean isStopped(){
 		return server.isStopped();
 	}
 	
 	public int getServerStatus(){
-		return this.status;
+		if(isStarted())
+			return RUNNING;
+		if(isStopped())
+			return OFFLINE;
+		return ERROR;
 	}
 	
 	public int getPort(){
@@ -74,8 +80,11 @@ public class JettyServer {
 		HandlerList handlers = new HandlerList();
 		ResourceHandler resource_handler = new ResourceHandler();
         resource_handler.setDirectoriesListed(false);
-	    resource_handler.setWelcomeFiles(new String[]{ "index.html" });
-        resource_handler.setResourceBase(".");
+        URL htmlPath = JettyServer.class.getClassLoader().getResource("html");
+        if(htmlPath == null){
+        	//TODO html folder not found...
+        }
+        resource_handler.setResourceBase(htmlPath.toExternalForm());
         
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
@@ -84,12 +93,6 @@ public class JettyServer {
         handlers.setHandlers(new Handler[] { resource_handler, context});
         
         server.setHandler(handlers);
-	}
-
-	
-	public static void main(String[] args){
-		JettyServer js = new JettyServer();
-		js.startServer();
 	}
 
 }

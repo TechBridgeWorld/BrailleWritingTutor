@@ -37,8 +37,6 @@ public class BWTController extends HttpServlet {
 			ah.handleRequest(request, response);
 			return;
 		}
-		
-
 	}
 
 	/**
@@ -48,7 +46,7 @@ public class BWTController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Handling POST request as GET");
-//		doGet(request,response);
+		doGet(request,response);
 		
 	}
 	
