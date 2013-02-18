@@ -10,11 +10,15 @@ import org.eclipse.jetty.servlet.ServletHolder;
 
 import edu.cmu.controller.GenericServlet;
 
+/**
+ * A wrapper of an embedded Jetty 9.0 server.
+ * @author ziw
+ *
+ */
 public class JettyServer {
 	
 	private Server server;
 	private static final int DEFAULT_PORT = 8887;
-//	private int status;
 	private int port;
 	
 	public static final int READY = 0;
@@ -43,6 +47,7 @@ public class JettyServer {
 		
 	}
 	
+		
 	public void restartServer(){
 		
 	}

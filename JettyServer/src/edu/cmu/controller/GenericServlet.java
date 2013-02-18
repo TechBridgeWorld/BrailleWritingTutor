@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * A generic servlet that handles all HTTP requests except for static files.
- * 
+ * It invokes {@link ActionHandler} to talk to the serial COM port.  
  * @author ziw
+ * @see ActionHandler
  *
  */
 public class GenericServlet extends HttpServlet{

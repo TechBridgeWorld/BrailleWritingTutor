@@ -2,6 +2,14 @@ package edu.cmu.ui;
 
 import edu.cmu.server.JettyServer;
 
+/**
+ * This action handler handles actions invoked from 
+ * the ControllerUI and talks to the JettyServer to perform
+ * various actions. <br>
+ * It also exposes server status and ports to the UI.
+ * @author ziw
+ *
+ */
 public class UIActionHandler {
 
 	private JettyServer js;
@@ -12,7 +20,6 @@ public class UIActionHandler {
 	
 	public void startServer(){
 		js.startServer();
-		System.out.println("Starting server..");
 	}
 	
 	public void stopServer(){
@@ -27,6 +34,10 @@ public class UIActionHandler {
 		return js.getServerStatus();
 	}
 
+	public boolean isServerRunning(){
+		return getServerStatus() == JettyServer.RUNNING;
+	}
+	
 	public int getPort() {
 		return js.getPort();
 	}
