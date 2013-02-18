@@ -143,11 +143,12 @@ $(document).ready(function() {
     /** @brief Small helper function used to add _l and _r buttons.
      */
     var addMenuButton = function($selector) {
-      addButton($selector, $selector.attr('id'), function(e, button) {
+      addButton($selector, $selector.attr('id'), (function(e, button) {
         e.preventDefault();
         e.stopPropagation();
         button.toggle_hold();
-      });
+        this.toggleClass("active");
+      }).bind($selector));
     };
 
     addMenuButton($_l);

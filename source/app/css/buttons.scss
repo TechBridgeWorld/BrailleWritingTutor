@@ -8,7 +8,17 @@
   border: solid thin rgba(0, 0, 0, .5);
   position: absolute;
 
-  background: url("../assets/simple_button.png") no-repeat;
+  background: url("../assets/jumbo_button_up.png") no-repeat;
+  background-size: contain;
+}
+
+.jumbobutton:active {
+  background: url("../assets/jumbo_button_down.png") no-repeat;
+  background-size: contain;
+}
+
+.jumbobutton.active {
+  background: url("../assets/jumbo_button_active.png") no-repeat;
   background-size: contain;
 }
 
