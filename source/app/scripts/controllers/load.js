@@ -14,7 +14,8 @@ $(document).ready(function() {
   var main = function() {
     patch();
     populate_dom();
-    get_mapping();
+    attach_handlers();
+//    get_mapping(); // XXX: deprecated. leaving for now in case we need to revert
   };
 
   /** @brief Populates the DOM with objects we don't want to hardcode into
@@ -69,23 +70,24 @@ $(document).ready(function() {
   /** @brief Gets the mapping from the mapping.json file.
    */
   var get_mapping = function() {
-    $.ajax({
-      type: 'GET',
-      url: './assets/input_mapping.json',
-      success: function(data) {
-        mapping = data;
-        attach_handlers();
-      },
-      error: function(data) {
-        console.log("Error loading input_mapping.json");
-      }
-    });
+    // DEPRECATED. replaced input_mapping.json.
+//    $.ajax({
+//      type: 'GET',
+//      url: './assets/input_mapping.json',
+//      success: function(data) {
+//        mapping = data;
+//        attach_handlers();
+//      },
+//      error: function(data) {
+//        console.log("Error loading input_mapping.json");
+//      }
+//    });
   };
 
   /** @brief Attaches a button TODO: RENAME
    */
   var addButton = function($selector, button_id, onclick) {
-    var code = mapping[button_id];
+    var code = window.input_mapping[button_id];
     if (code === undefined) {
       console.log("Error loading button " + button_id);
     };
