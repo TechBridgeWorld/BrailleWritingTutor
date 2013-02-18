@@ -1,0 +1,74 @@
+// css for buttons
+.jumbobutton {
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  cursor: pointer;
+  background-color: green;
+  border: solid thin rgba(0, 0, 0, .5);
+  position: absolute;
+
+  background: url("../assets/simple_button.png") no-repeat;
+  background-size: contain;
+}
+
+#_l {
+  left: 300px;
+  top: 30px;
+}
+
+#_r {
+  right: 300px;
+  top: 30px;
+}
+
+#jumboslate {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  width: 115px;
+  height: 170px;
+}
+
+*[id^="_j"] {
+  position: relative;
+}
+
+.slatebutton {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  position: absolute;
+
+  background: url("../assets/slatecell.png") no-repeat;
+  background-size: contain;
+}
+
+.slatebutton:hover {
+  background: url("../assets/slatecell_hover.png") no-repeat;
+  background-size: contain;
+}
+
+.slatebutton:active {
+  background: url("../assets/slatecell_press.png") no-repeat;
+  background-size: contain;
+}
+
+.slategroup {
+  width: 25px;
+  height: 45px;
+  margin: 5px;
+  float: left;
+}
+
+.subslate {
+  width: 10px;
+  height: 100%;
+}
+
+.slaterow {
+  width: 570px;
+  height: 35px;
+  margin-left: auto;
+  margin-right: auto;
+}

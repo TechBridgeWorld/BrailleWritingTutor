@@ -1,0 +1,12 @@
+/** @file main.scss
+ *  @brief Main scss file for our app.
+ *
+ *  All css/scss files should be written in separate files and aggregated here.
+ *  e.g. After writing "splashscreen.scss", include it here via:
+ *  @import "splashscreen.css";
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+@import "buttons.css";
+@import "board.css";
+@import "general.css";
