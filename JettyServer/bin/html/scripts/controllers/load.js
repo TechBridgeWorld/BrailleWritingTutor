@@ -12,10 +12,34 @@ $(document).ready(function() {
   /** @brief Main method for load.
    */
   var main = function() {
+    $("#main").hide();
+    $("#loading").show();
     patch();
     populate_dom();
     attach_handlers();
+
+    load();
 //    get_mapping(); // XXX: deprecated. leaving for now in case we need to revert
+  };
+
+  /** @brief Used to load the emulator. The server needs to spawn a TwoWaySerialComm
+   *         object, which takes some time, so wait until it has done so to show the
+   *         UI.
+   */
+  var load = function() {
+    $.ajax({
+      url: '/loading.do',
+      type: 'GET',
+      success: function(data) {
+        $("#loading").hide();
+        $("#main").show();
+      },
+      error: function(data) {
+        console.log("Error loading. TODO: fix");
+        $("#loading").hide();
+        $("#main").show();
+      }
+    });
   };
 
   /** @brief Populates the DOM with objects we don't want to hardcode into
@@ -143,11 +167,12 @@ $(document).ready(function() {
     /** @brief Small helper function used to add _l and _r buttons.
      */
     var addMenuButton = function($selector) {
-      addButton($selector, $selector.attr('id'), function(e, button) {
+      addButton($selector, $selector.attr('id'), (function(e, button) {
         e.preventDefault();
         e.stopPropagation();
         button.toggle_hold();
-      });
+        this.toggleClass("active");
+      }).bind($selector));
     };
 
     addMenuButton($_l);

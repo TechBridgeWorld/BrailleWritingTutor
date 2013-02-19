@@ -22,5 +22,6 @@
 	<classpathentry kind="lib" path="/Users/ziw/Downloads/jetty-distribution-9.0.0.RC0/lib/jetty-webapp-9.0.0.RC0.jar"/>
 	<classpathentry kind="lib" path="/Users/ziw/Downloads/jetty-distribution-9.0.0.RC0/lib/jetty-xml-9.0.0.RC0.jar"/>
 	<classpathentry kind="lib" path="/Users/ziw/Downloads/jetty-distribution-9.0.0.RC0/lib/servlet-api-3.0.jar"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/nrjavaserial-3.8.8.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

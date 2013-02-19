@@ -6,6 +6,8 @@
 
 window.input_mapping =
 {
+  "initialize" : "init",
+
   "_l"  : "a n",
 
   "_j1" : "b n",

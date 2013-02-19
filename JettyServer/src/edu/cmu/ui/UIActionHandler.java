@@ -1,4 +1,4 @@
-package edu.cmu.ui;
+	package edu.cmu.ui;
 
 import edu.cmu.server.JettyServer;
 
@@ -16,6 +16,10 @@ public class UIActionHandler {
 	
 	public UIActionHandler(){
 		js = new JettyServer();
+	}
+	
+	public UIActionHandler(int port){
+		js = new JettyServer(port);
 	}
 	
 	public void startServer(){

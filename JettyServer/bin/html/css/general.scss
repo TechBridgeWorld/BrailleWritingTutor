@@ -22,3 +22,8 @@
 .bordered {
   border: solid thin rgba(0, 0, 0, .5);
 }
+
+.rounded {
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+}

@@ -34,7 +34,6 @@ public class JettyServer {
 		this.port =port>0? port : DEFAULT_PORT;
 		server = new Server(this.port);
 		initServerHandler();
-//		status = READY;
 	}
 	
 	public void startServer(){
@@ -42,14 +41,13 @@ public class JettyServer {
 			server.start();
 		} catch (Exception e) {
 			System.out.println("Exception caught when starting server");
-		
 		}
 		
 	}
 	
 		
 	public void restartServer(){
-		
+		//TODO
 	}
 	
 	public void stopServer(){
@@ -77,12 +75,17 @@ public class JettyServer {
 		return ERROR;
 	}
 	
+	/**
+	 * Get the port on which the server is running.
+	 * @return the port number if the server is running. -1 otherwise.
+	 */
 	public int getPort(){
-		return port;
+		return getServerStatus()==RUNNING? port : -1;
 	}
 	
 	private void initServerHandler(){
 		HandlerList handlers = new HandlerList();
+		//handler for static files
 		ResourceHandler resource_handler = new ResourceHandler();
         resource_handler.setDirectoriesListed(false);
         URL htmlPath = JettyServer.class.getClassLoader().getResource("html");
@@ -91,10 +94,12 @@ public class JettyServer {
         }
         resource_handler.setResourceBase(htmlPath.toExternalForm());
         
+        //handler for ajax request
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
         context.addServlet(new ServletHolder(new GenericServlet()),"/");
         
+        //add both handlers
         handlers.setHandlers(new Handler[] { resource_handler, context});
         
         server.setHandler(handlers);

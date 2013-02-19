@@ -43,14 +43,25 @@ public class ControllerUI extends JFrame {
 	// other components
 	private JTextArea statusArea;
 	private JTextArea msgArea;
-
+	
+	//tooltips
+	private static final String START_SERVER_TOOLTIP = "Start the server.";
+	private static final String STOP_SERVER_TOOLTIP = "Stop the server.";
+	private static final String QUIT_TOOLTIP = "Qui the program.";
+	private static final String LAUNCH_TOOLTIP_ON = "Launch the emulator.";
+	private static final String LAUNCH_TOOLTIP_OFF = "Can't launch the emulator. Server is offline.";
+		
 	public ControllerUI() {
 		initUI();
-		handler = new UIActionHandler();
+		initHandler();
 		updateStatusArea(getServerStatus());
 	}
+	
+	private void initHandler(){
+		handler = new UIActionHandler();
+	}
 
-	public void initUI() {
+	private void initUI() {
 		JPanel panel = new JPanel();
 		getContentPane().add(panel);
 		panel.setLayout(null);
@@ -61,13 +72,14 @@ public class ControllerUI extends JFrame {
 		
 		panel.add(statusArea);
 		panel.add(quitButton);
-		panel.add(startButton);
-		panel.add(stopButton);
+//		panel.add(startButton);
+//		panel.add(stopButton);
 		panel.add(launchButton);
-		panel.add(msgArea);
+//		panel.add(msgArea);
+//		panel.add(port);
 
 		setTitle(WINDOW_LABEL);
-		setSize(600, 400);
+		setSize(400, 200);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
@@ -86,20 +98,26 @@ public class ControllerUI extends JFrame {
 		stopButton = new JButton(STOP_BUTTON);
 		launchButton = new JButton(LAUNCH);
 
-		launchButton.setBounds(100, 200, 120, 50);
-		quitButton.setBounds(100, 270, 120, 50);
+		launchButton.setBounds(20, 30, 120, 50);
+		quitButton.setBounds(20, 100, 120, 50);
 		startButton.setBounds(100, 60, 120, 50);
 		stopButton.setBounds(100, 130, 120, 50);
 
 		statusArea = new JTextArea("this is a jtext area\nport: 8888");
 		statusArea.setEditable(false);
-		statusArea.setBounds(300, 60, 200, 100);
+		statusArea.setBounds(220, 30, 150, 50);
 
-		msgArea = new JTextArea("No error message.");
+		msgArea = new JTextArea("No message.");
 		msgArea.setEditable(false);
 		msgArea.setBounds(300, 180, 200, 100);
 		
-		launchButton.setEnabled(false);
+		launchButton.setEnabled(true);
+		
+		startButton.setToolTipText(START_SERVER_TOOLTIP);
+		stopButton.setToolTipText(STOP_SERVER_TOOLTIP);
+		quitButton.setToolTipText(QUIT_TOOLTIP);
+		launchButton.setToolTipText(LAUNCH_TOOLTIP_OFF);
+		
 		
 	}
 
@@ -123,7 +141,9 @@ public class ControllerUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				handler.startServer();
-				launchButton.setEnabled(handler.isServerRunning());
+				boolean on = handler.isServerRunning();
+				launchButton.setEnabled(on);
+				launchButton.setToolTipText(on?LAUNCH_TOOLTIP_ON:LAUNCH_TOOLTIP_OFF);
 				updateStatusArea(getServerStatus());
 			}
 
@@ -134,7 +154,9 @@ public class ControllerUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				handler.stopServer();
-				launchButton.setEnabled(handler.isServerRunning());
+				boolean on = handler.isServerRunning();
+				launchButton.setEnabled(on);
+				launchButton.setToolTipText(on?LAUNCH_TOOLTIP_ON:LAUNCH_TOOLTIP_OFF);
 				updateStatusArea(getServerStatus());
 			}
 		});
@@ -143,16 +165,21 @@ public class ControllerUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				String url = "http://localhost:" + handler.getPort()
-						+ "/index.html";
-				try {
-					java.awt.Desktop.getDesktop().browse(
-							java.net.URI.create(url));
-				} catch (IOException e1) {
-					updateMsgArea("Error launching the emulator.");
-					e1.printStackTrace();
+				handler.startServer();
+				boolean on = handler.isServerRunning();
+				if(on){
+					String url = "http://localhost:" + handler.getPort()
+							+ "/index.html";
+					try {
+						java.awt.Desktop.getDesktop().browse(
+								java.net.URI.create(url));
+					} catch (IOException e1) {
+						updateMsgArea("Error launching the emulator.");
+						e1.printStackTrace();
+					}
 				}
+				updateStatusArea(getServerStatus());
+
 			}
 		});
 	}
