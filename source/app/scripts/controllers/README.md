@@ -2,8 +2,6 @@ Overview
 -----------------------------------------------------
 controllers/: Standard controllers folder for MVC structure.
 
-<hr />
-
 Files
 -----------------------------------------------------
 ### load.js

@@ -2,8 +2,6 @@ Overview
 -----------------------------------------------------
 assets/: All assets go here. Backgrounds, images, etc.
 
-<hr />
-
 Files
 -----------------------------------------------------
 ### input\_mapping.js:

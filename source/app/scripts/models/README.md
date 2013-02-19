@@ -2,8 +2,6 @@ Overview
 -----------------------------------------------------
 models/: Standard models folder for MVC structure.
 
-<hr />
-
 Files
 -----------------------------------------------------
 ### Button.js

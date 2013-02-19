@@ -11,8 +11,6 @@ Authors:
 
 Developed for and with help by [TechBridgeWorld](http://www.techbridgeworld.org/).
 
-<hr />
-
 Overview
 ----------------------------------------------
 See specific folders for more detail.
