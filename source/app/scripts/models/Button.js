@@ -35,37 +35,35 @@ $(document).ready(function() {
   /** @brief Represents a button press. Makes the request to our server.
    */
   window.Button.prototype.press = function() {
-    // if a button is currently being held, stop their hold timer.
     if ((this !== holding) && (holding !== undefined)) {
+      // if a button is currently being held, stop their hold timer and
+      // interleave this code call with the holding call
       holding.hold_off(false);
-    };
 
-    // send the bytecode 3 times
-    var i;
-    for (i = 0; i < 3; i++) {
-      console.log("bytecode: \"" + this.code + "\"");
+      var to_send = this.code + holding.code +
+                    this.code + holding.code +
+                    this.code + holding.code;
+
+      console.log("bytecode: \"" + to_send + "\"");
       $.ajax({
-        url: '/sendBytes.do?code=' + this.code,
+        url: '/sendBytes.do?code=' + to_send,
         type: 'GET',
         success: this.success,
         error: this.failure
       });
 
-      // if holding, interlace this press with holding's code
-      if ((this !== holding) && (holding !== undefined)) {
-        console.log("bytecode: \"" + holding.code + "\"");
-        $.ajax({
-          url: '/sendBytes.do?code=' + holding.code,
-          type: 'GET',
-          success: holding.success,
-          error: holding.failure
-        });
-      };
-    };
-
-    // if holding, restart the holding timer
-    if ((this !== holding) && (holding !== undefined)) {
       holding.hold_on();
+    } else {
+      // if not holding, just send the bytecode 3 times as 1 request.
+      var to_send = this.code + this.code + this.code;
+
+      console.log("bytecode: \"" + to_send + "\"");
+      $.ajax({
+        url: '/sendBytes.do?code=' + to_send,
+        type: 'GET',
+        success: this.success,
+        error: this.failure
+      });
     };
   };
 
