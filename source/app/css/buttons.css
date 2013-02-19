@@ -2,10 +2,14 @@
   position: fixed;
   left: 50px;
   top: 50px;
-  width: 50px;
-  height: 50px;
-  background-color: red;
+  padding: 5px;
+  background: url("../assets/buttonbox_mid.png");
+  background-size: contain;
   cursor: pointer; }
+
+.initbutton:active {
+  background: url("../assets/buttonbox_mid_down.png");
+  background-size: contain; }
 
 .jumbobutton {
   width: 40px;
