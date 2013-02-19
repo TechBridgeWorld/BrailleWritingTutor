@@ -13,6 +13,7 @@
  */
 
 $(document).ready(function() {
+  var holding = undefined;
   /** @brief Constructor for a request.
    *
    *  @param options Options for the request. These include:
@@ -24,7 +25,7 @@ $(document).ready(function() {
   window.Button = function(options) {
     // the software expects 3 button presses when you click on slate cells, so
     // triple the bytecode
-    this.code = options.code + options.code + options.code;
+    this.code = options.code;
 
     this.success = options.success;
     this.failure = options.failure;
@@ -34,18 +35,44 @@ $(document).ready(function() {
   /** @brief Represents a button press. Makes the request to our server.
    */
   window.Button.prototype.press = function() {
-    console.log("bytecode: \"" + this.code + "\"");
-    $.ajax({
-      url: '/sendBytes.do?code=' + this.code,
-      type: 'GET',
-      success: this.success,
-      error: this.failure
-    });
+    // if a button is currently being held, stop their hold timer.
+    if ((this !== holding) && (holding !== undefined)) {
+      holding.hold_off(false);
+    };
+
+    // send the bytecode 3 times
+    var i;
+    for (i = 0; i < 3; i++) {
+      console.log("bytecode: \"" + this.code + "\"");
+      $.ajax({
+        url: '/sendBytes.do?code=' + this.code,
+        type: 'GET',
+        success: this.success,
+        error: this.failure
+      });
+
+      // if holding, interlace this press with holding's code
+      if ((this !== holding) && (holding !== undefined)) {
+        console.log("bytecode: \"" + holding.code + "\"");
+        $.ajax({
+          url: '/sendBytes.do?code=' + holding.code,
+          type: 'GET',
+          success: holding.success,
+          error: holding.failure
+        });
+      };
+    };
+
+    // if holding, restart the holding timer
+    if ((this !== holding) && (holding !== undefined)) {
+      holding.hold_on();
+    };
   };
 
   /** @brief Some buttons require toggling. hold_on() toggles the button on.
    */
   window.Button.prototype.hold_on = function() {
+    holding = this;
     this.press();
 
     // make a request every 100 milliseconds
@@ -55,11 +82,17 @@ $(document).ready(function() {
   };
 
   /** @brief Toggles off the hold_on function above.
+   *
+   *  @param clear True if you want holding cleared, false otherwise.
    */
-  window.Button.prototype.hold_off = function() {
+  window.Button.prototype.hold_off = function(clear) {
     if (this.hold_timeout !== undefined) {
       window.clearTimeout(this.hold_timeout);
       this.hold_timeout = undefined;
+    };
+
+    if (clear === true) {
+      holding = undefined;
     };
   };
 
@@ -69,7 +102,7 @@ $(document).ready(function() {
     if (this.hold_timeout === undefined) {
       this.hold_on();
     } else {
-      this.hold_off();
+      this.hold_off(true);
     };
   };
 });

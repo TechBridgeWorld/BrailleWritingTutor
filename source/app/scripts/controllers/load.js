@@ -36,6 +36,8 @@ $(document).ready(function() {
       },
       error: function(data) {
         console.log("Error loading. TODO: fix");
+        $("#loading").hide();
+        $("#main").show();
       }
     });
   };
