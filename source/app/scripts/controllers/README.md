@@ -2,9 +2,10 @@ Overview
 -----------------------------------------------------
 controllers/: Standard controllers folder for MVC structure.
 
+<hr />
 
 Files
-=====================================================
+-----------------------------------------------------
 ### load.js
   * Loads key parts of our emulator.
     * Adds all slate cells to the DOM.

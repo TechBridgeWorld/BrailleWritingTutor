@@ -1,7 +1,7 @@
 ![TechBridgeWorld Logo](/assets/tbw_logo.png)
 
 BWT Emulator
-----------------------------------------------
+==============================================
 
 Authors:
 * Dylan Swen (dswen@andrew.cmu.edu)
@@ -11,8 +11,10 @@ Authors:
 
 Developed for and with help by [TechBridgeWorld](http://www.techbridgeworld.org/).
 
+<hr />
+
 Overview
-==============================================
+----------------------------------------------
 See specific folders for more detail.
 
 assets/

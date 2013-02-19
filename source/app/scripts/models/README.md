@@ -2,9 +2,10 @@ Overview
 -----------------------------------------------------
 models/: Standard models folder for MVC structure.
 
+<hr />
 
 Files
-=====================================================
+-----------------------------------------------------
 ### Button.js
   * Represents a button of the emulator.
   * Each button keeps track of it's code, it's on success and on failure methods,

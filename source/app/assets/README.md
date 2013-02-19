@@ -5,7 +5,7 @@ assets/: All assets go here. Backgrounds, images, etc.
 <hr />
 
 Files
-=====================================================
+-----------------------------------------------------
 ### input\_mapping.js:
   * Contains the mapping from user input to bytecode produced
 
