@@ -1,3 +1,12 @@
+.initbutton {
+  position: fixed;
+  left: 50px;
+  top: 50px;
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  cursor: pointer; }
+
 .jumbobutton {
   width: 40px;
   height: 40px;
@@ -17,18 +26,28 @@
   background: url("../assets/jumbo_button_active.png") no-repeat;
   background-size: contain; }
 
-#_l {
-  left: 300px;
-  top: 30px; }
-
-#_r {
-  right: 300px;
-  top: 30px; }
-
-#jumboslate {
+#top_buttons {
+  position: relative;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 30px;
+  width: 570px;
+  height: 170px; }
+
+#_l {
+  left: 50px; }
+
+#_r {
+  right: 50px; }
+
+#jumboslate {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
   width: 115px;
   height: 170px; }
 
