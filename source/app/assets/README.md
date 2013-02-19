@@ -16,6 +16,6 @@ input\_mapping.js:
   -Corresponds to the ids of the DOM elements representing the buttons, so
    one can get the code for button "\_l", for example, via:
 
-    ```javascript
-    var code = window.input_mapping[$("_l").attr('id')];
-    ```
+```js
+var code = window.input_mapping[$("_l").attr('id')];
+```
