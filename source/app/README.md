@@ -13,6 +13,8 @@ Developed for and with help by [TechBridgeWorld](http://www.techbridgeworld.org/
 
 Overview
 ==============================================
+See specific folders for more detail.
+
 assets/
   * Assets (images, mappings, etc.).
 
