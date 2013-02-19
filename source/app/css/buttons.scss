@@ -9,6 +9,11 @@
   cursor: pointer;
 }
 
+.initbutton:active {
+  background: url("../assets/buttonbox_mid_down.png");
+  background-size: contain;
+}
+
 .jumbobutton {
   width: 40px;
   height: 40px;
