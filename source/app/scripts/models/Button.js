@@ -55,7 +55,10 @@ $(document).ready(function() {
       holding.hold_on();
     } else {
       // if not holding, just send the bytecode 3 times as 1 request.
-      var to_send = this.code + this.code + this.code;
+      var to_send = this.code;
+      if (this !== holding) {
+        to_send += this.code + this.code;
+      };
 
       console.log("bytecode: \"" + to_send + "\"");
       $.ajax({
