@@ -9,7 +9,7 @@
   cursor: pointer;
 }
 
-.initbutton:active {
+.initbutton.active {
   background: url("../assets/buttonbox_mid_down.png");
   background-size: contain;
 }
@@ -50,11 +50,11 @@
   height: 170px;
 }
 
-#_l {
+#_left {
   left: 50px;
 }
 
-#_r {
+#_right {
   right: 50px;
 }
 
@@ -66,7 +66,7 @@
   height: 170px;
 }
 
-*[id^="_j"] {
+*[id^="_jumbo"] {
   position: relative;
 }
 
@@ -87,6 +87,11 @@
 
 .slatebutton:active {
   background: url("../assets/slatecell_press.png") no-repeat;
+  background-size: contain;
+}
+
+.slatebutton.active {
+  background: url("../assets/slatecell_held.png") no-repeat;
   background-size: contain;
 }
 

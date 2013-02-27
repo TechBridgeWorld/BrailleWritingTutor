@@ -2,108 +2,71 @@
  *  @brief Class that represents a button. Used to send an AJAX request to
  *         our local server.
  *
+ *  Buttons attempt to emulate the hardware as much as possible. On button
+ *  press down, the button's code is sent to the server, and this button
+ *  is added to the __BUTTONS_HELD queue. A setInterval loop iterates over
+ *  all buttons currently being held and sends their codes every
+ *  QUEUE_TIMER_RATE ms. On button up, another code is sent to the server. This
+ *  allows certain edge cases to arise that currently exist in the hardware. For
+ *  example, pressing the slate very quickly on the physical hardware doesn't
+ *  register on the existing software if the slate press is so short that only 2
+ *  bytecodes are sent. This is emulated in the emulator by clicking such that
+ *  the setInterval loop fails to send the bytecode before the button up event.
+ *
  *  Usage: var btn = new Button({
  *           'code': 'a n',
  *           'success': function(data) { console.log(data); },
  *           'failure': function(data) { console.log(data); }
  *         });
- *         btn.press();
  *
  *  @author Lucas Ray (ltray@cmu.edu)
  */
 
 $(document).ready(function() {
-  var holding = undefined;
+  "use strict";
+
   /** @brief Constructor for a request.
    *
    *  @param options Options for the request. These include:
    *           -code: Byte code for the request (e.g. "b n")
-   *           -success: Callback to be used on success.
-   *           -failure: Callback to be used on failure.
-   *           -TODO: more?
    */
-  window.Button = function(options) {
+  window.Button = function Button(options) {
     // the software expects 3 button presses when you click on slate cells, so
     // triple the bytecode
     this.code = options.code;
-
-    this.success = options.success;
-    this.failure = options.failure;
-    this.hold_timeout = undefined;
+    this.$dom_el = options.dom_el;
+    this.__holding = false;
   };
 
-  /** @brief Represents a button press. Makes the request to our server.
+  /** @brief Represents a button press down. On press down, send the byte code
+   *         3 times.
    */
-  window.Button.prototype.press = function() {
-    if ((this !== holding) && (holding !== undefined)) {
-      // if a button is currently being held, stop their hold timer and
-      // interleave this code call with the holding call
-      holding.hold_off(false);
+  window.Button.prototype.press_down = function press_down() {
+    var prev_status = this.__holding;
+    if (this.__holding === false) {
+      this.$dom_el.addClass('active');
+      window._Processor.add_code(this.code, window.Constants.PRESSDOWN_NUM_TO_SEND);
+      window._Processor.add_hold(this);
+    }
+    this.__holding = false;
+    return prev_status;
+  };
 
-      var to_send = this.code + holding.code +
-                    this.code + holding.code +
-                    this.code + holding.code;
-
-      console.log("bytecode: \"" + to_send + "\"");
-      $.ajax({
-        url: '/sendBytes.do?code=' + to_send,
-        type: 'GET',
-        success: this.success,
-        error: this.failure
-      });
-
-      holding.hold_on();
-    } else {
-      // if not holding, just send the bytecode 3 times as 1 request.
-      var to_send = this.code;
-      if (this !== holding) {
-        to_send += this.code + this.code;
-      };
-
-      console.log("bytecode: \"" + to_send + "\"");
-      $.ajax({
-        url: '/sendBytes.do?code=' + to_send,
-        type: 'GET',
-        success: this.success,
-        error: this.failure
-      });
+  /** @brief Represents a button press up. Removes the button from the holdings
+   *         queue.
+   */
+  window.Button.prototype.press_up = function press_up() {
+    if (this.__holding === false) {
+      window._Processor.remove_hold(this);
+      this.$dom_el.removeClass('active');
     };
   };
 
-  /** @brief Some buttons require toggling. hold_on() toggles the button on.
+  /** @brief Represents a button hold. Same as button press but press_up has
+   *         no effect.
    */
-  window.Button.prototype.hold_on = function() {
-    holding = this;
-    this.press();
-
-    // make a request every 100 milliseconds
-    this.hold_timeout = setTimeout((function() {
-      this.hold_on();
-    }).bind(this), 100);
-  };
-
-  /** @brief Toggles off the hold_on function above.
-   *
-   *  @param clear True if you want holding cleared, false otherwise.
-   */
-  window.Button.prototype.hold_off = function(clear) {
-    if (this.hold_timeout !== undefined) {
-      window.clearTimeout(this.hold_timeout);
-      this.hold_timeout = undefined;
-    };
-
-    if (clear === true) {
-      holding = undefined;
-    };
-  };
-
-  /** @brief Toggles this button's holding.
-   */
-  window.Button.prototype.toggle_hold = function() {
-    if (this.hold_timeout === undefined) {
-      this.hold_on();
-    } else {
-      this.hold_off(true);
-    };
+  window.Button.prototype.hold_down = function hold_down() {
+    var prev_status = this.press_down();
+    this.__holding = !prev_status;
   };
 });
