@@ -1,12 +1,16 @@
 package edu.cmu.server;
 import java.net.URL;
 
+import javax.servlet.http.HttpServlet;
+
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import edu.cmu.controller.GenericServlet;
 
@@ -18,6 +22,7 @@ import edu.cmu.controller.GenericServlet;
 public class JettyServer {
 	
 	private Server server;
+	private HttpServlet ajaxServlet;
 	private static final int DEFAULT_PORT = 8887;
 	private int port;
 	
@@ -26,23 +31,20 @@ public class JettyServer {
 	public static final int OFFLINE = 2;
 	public static final int ERROR = -1;
 	
-	public JettyServer(){
-		this(DEFAULT_PORT);
+		
+	public JettyServer(HttpServlet servlet){
+		this(DEFAULT_PORT, servlet);
 	}
 	
-	public JettyServer(int port){
+	public JettyServer(int port, HttpServlet servlet){
+		this.ajaxServlet = servlet;
 		this.port =port>0? port : DEFAULT_PORT;
 		server = new Server(this.port);
 		initServerHandler();
 	}
 	
-	public void startServer(){
-		try {
-			server.start();
-		} catch (Exception e) {
-			System.out.println("Exception caught when starting server");
-		}
-		
+	public void startServer() throws Exception{
+		server.start();
 	}
 	
 		
@@ -50,13 +52,8 @@ public class JettyServer {
 		//TODO
 	}
 	
-	public void stopServer(){
-		try {
-			server.stop();
-		} catch (Exception e) {
-			System.out.println("Exception when stopping server");
-			e.printStackTrace();
-		}
+	public void stopServer() throws Exception{
+		server.stop();
 	}
 	
 	private boolean isStarted(){
@@ -97,7 +94,7 @@ public class JettyServer {
         //handler for ajax request
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
-        context.addServlet(new ServletHolder(new GenericServlet()),"/");
+        context.addServlet(new ServletHolder(this.ajaxServlet),"/");
         
         //add both handlers
         handlers.setHandlers(new Handler[] { resource_handler, context});
