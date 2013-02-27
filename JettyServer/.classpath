@@ -23,5 +23,23 @@
 	<classpathentry kind="lib" path="/Users/ziw/Downloads/jetty-distribution-9.0.0.RC0/lib/jetty-xml-9.0.0.RC0.jar"/>
 	<classpathentry kind="lib" path="/Users/ziw/Downloads/jetty-distribution-9.0.0.RC0/lib/servlet-api-3.0.jar"/>
 	<classpathentry kind="lib" path="/Users/ziw/Downloads/nrjavaserial-3.8.8.jar"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/logback-1.0.9/logback-access-1.0.9-sources.jar"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/logback-1.0.9/logback-access-1.0.9.jar"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/logback-1.0.9/logback-classic-1.0.9-sources.jar"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/logback-1.0.9/logback-classic-1.0.9.jar"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/logback-1.0.9/logback-core-1.0.9-sources.jar"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/logback-1.0.9/logback-core-1.0.9.jar"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/slf4j-1.7.2/jcl-over-slf4j-1.7.2-sources.jar"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/slf4j-1.7.2/jcl-over-slf4j-1.7.2.jar"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/slf4j-1.7.2/jul-to-slf4j-1.7.2-sources.jar"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/slf4j-1.7.2/jul-to-slf4j-1.7.2.jar"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/slf4j-1.7.2/log4j-over-slf4j-1.7.2-sources.jar"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/slf4j-1.7.2/log4j-over-slf4j-1.7.2.jar"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/slf4j-1.7.2/slf4j-api-1.7.2-sources.jar"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/slf4j-1.7.2/slf4j-ext-1.7.2-sources.jar"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/slf4j-1.7.2/slf4j-migrator-1.7.2.jar"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/slf4j-1.7.2/slf4j-api-1.7.2.jar"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/slf4j-1.7.2/slf4j-ext-1.7.2.jar"/>
+	<classpathentry kind="lib" path="resources"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -22,12 +22,14 @@ public class GenericServlet extends HttpServlet {
 	private ActionHandler handler;
 	private static final String BUTTON_CODE = "code";
 
-	public GenericServlet() {
+	public GenericServlet(ActionHandler handler) {
 		super();
 		System.out.println("Initializing Servlet...");
-		handler = new ActionHandler();
+		this.handler = handler;
 		System.out.println("Servlet intialized.");
 	}
+	
+	
 
 	@Override
 	protected void doGet(HttpServletRequest request,
@@ -54,10 +56,12 @@ public class GenericServlet extends HttpServlet {
 				handleError(request, response);
 				return;
 			} else {
-				if (query == null || query.trim().length() <= 0) {
-					handleError(request, response);
-					return;
-				}
+				// if (query == null || query.trim().length() <= 0) {
+				// 	handleError(request, response);
+				// 	return;
+				// }
+
+				//trim the query
 				String buttonCode = request.getParameter(BUTTON_CODE);
 //				sendJSON(buttonCode, response);
 				handler.handleButtonCode(buttonCode);
@@ -77,8 +81,10 @@ public class GenericServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	//send message
 	private void sendJSON(String text, HttpServletResponse response) {
 		if (response == null)
+			//TODO
 			return;
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");
@@ -91,7 +97,7 @@ public class GenericServlet extends HttpServlet {
 		}
 	}
 
-
+	//report the error
 	private void handleError(HttpServletRequest request,
 			HttpServletResponse response) {
 		// handle error. log invalid request / redirect to error page.

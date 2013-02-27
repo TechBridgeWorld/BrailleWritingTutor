@@ -23,6 +23,10 @@ import edu.cmu.server.JettyServer;
  */
 public class ControllerUI extends JFrame {
 
+	//TODO
+	//print out error msg.
+	//log bytes sent
+	
 	private static final long serialVersionUID = -583606563274987091L;
 	private UIActionHandler handler;
 
@@ -140,7 +144,11 @@ public class ControllerUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				handler.startServer();
+				try {
+					handler.startServer();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 				boolean on = handler.isServerRunning();
 				launchButton.setEnabled(on);
 				launchButton.setToolTipText(on?LAUNCH_TOOLTIP_ON:LAUNCH_TOOLTIP_OFF);
@@ -153,7 +161,11 @@ public class ControllerUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				handler.stopServer();
+				try {
+					handler.stopServer();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 				boolean on = handler.isServerRunning();
 				launchButton.setEnabled(on);
 				launchButton.setToolTipText(on?LAUNCH_TOOLTIP_ON:LAUNCH_TOOLTIP_OFF);
@@ -165,7 +177,12 @@ public class ControllerUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				handler.startServer();
+				try {
+					handler.startServer();
+				} catch (Exception e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
 				boolean on = handler.isServerRunning();
 				if(on){
 					String url = "http://localhost:" + handler.getPort()
