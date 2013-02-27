@@ -1,5 +1,10 @@
 	package edu.cmu.ui;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import edu.cmu.controller.ActionHandler;
+import edu.cmu.controller.GenericServlet;
 import edu.cmu.server.JettyServer;
 
 /**
@@ -13,20 +18,29 @@ import edu.cmu.server.JettyServer;
 public class UIActionHandler {
 
 	private JettyServer js;
+	private ActionHandler handler;
+	private GenericServlet servlet;
+	
+	private Logger logger = LoggerFactory.getLogger(UIActionHandler.class);
+
 	
 	public UIActionHandler(){
-		js = new JettyServer();
+		handler = new ActionHandler();
+		servlet = new GenericServlet(handler);
+		js = new JettyServer(servlet);
 	}
 	
 	public UIActionHandler(int port){
-		js = new JettyServer(port);
+		handler = new ActionHandler();
+		servlet = new GenericServlet(handler);
+		js = new JettyServer(port,servlet);
 	}
 	
-	public void startServer(){
+	public void startServer() throws Exception{
 		js.startServer();
 	}
 	
-	public void stopServer(){
+	public void stopServer() throws Exception{
 		js.stopServer();
 	}
 	
