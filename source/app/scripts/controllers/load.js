@@ -148,24 +148,6 @@ $(document).ready(function() {
     $(".button").each(function(ind, el) {
       add_button($(el));
     });
-
-//    // add _l and _r buttons differently, as they require different click handlers
-//    var $_left = $("#_left");
-//    var $_right = $("#_right");
-//
-//    /** @brief Small helper function used to add _left and _right buttons.
-//     */
-//    var add_menu_button = function($dom_el) {
-//      add_button($dom_el, function(e, button) {
-//        e.preventDefault();
-//        e.stopPropagation();
-//        button.toggle_hold();
-//        $dom_el.toggleClass("active");
-//      });
-//    };
-//
-//    add_menu_button($_left);
-//    add_menu_button($_right);
   };
 
   /** @brief Patches functions for our app (e.g. bind if running on iOS)
