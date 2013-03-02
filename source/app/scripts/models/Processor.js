@@ -14,10 +14,10 @@ $(document).ready(function() {
 
     // TODO: make less silent
     this.success = function(data) {
-      console.log(data);
+      window.LOG_INFO(data);
     };
     this.error = function(data) {
-      console.log(data);
+      window.LOG_WARNING(data);
     };
   };
 
@@ -103,6 +103,7 @@ $(document).ready(function() {
   /** @brief Sends the input bytecode to the server.
    */
   window.Processor.prototype.send = function send(code) {
+    window.LOG_INFO("Sending bytes: " + code);
     $.ajax({
       url: '/sendBytes.do?code=' + code,
       type: 'GET',

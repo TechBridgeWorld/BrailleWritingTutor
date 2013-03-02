@@ -7,7 +7,6 @@
 $(document).ready(function() {
   "use strict";
 
-  var mapping;  // holds the mapping from id to bytecode
   var __NUM_SLATEGROUPS = 16; // number of slate groups per row
   var __NUM_SLATEROWS = 2;  // number of slate rows
   var __NUM_SLATEDOTS = 6;  // number of dots per slate group
@@ -147,6 +146,26 @@ $(document).ready(function() {
     // add buttons
     $(".button").each(function(ind, el) {
       add_button($(el));
+    });
+
+    // handle the init button separately since it doesn't need to
+    // adhere to strange emulator-specific timings
+    $("#_initialize").on('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      // send init code to the server
+      window.LOG_INFO("Sending initialize");
+      $.ajax({
+        url: '/sendBytes.do?code=' + window.input_mapping['_initialize'],
+        type: 'GET',
+        success: function(data) {
+          window.LOG_INFO("initialize succeeded");
+        },
+        error: function(data) {
+          window.LOG_WARNING("initialize failed");
+        },
+      });
     });
   };
 
