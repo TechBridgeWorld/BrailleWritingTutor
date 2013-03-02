@@ -1,6 +1,8 @@
 // css for the board
 $CIRCUITURL : "../assets/circuit.jpg";
-$GREEN : rgba(64, 127, 80, 0.7);
+$NOISE : "../assets/noise.png";
+$GREEN : rgba(64, 127, 80, 0.2);
+$DARK_GREEN: rgba(68, 124, 88, 0.8);
 
 #board {
   position: absolute;
@@ -9,5 +11,18 @@ $GREEN : rgba(64, 127, 80, 0.7);
   right: 15px;
   bottom: 20px;
   background: rgba(84, 157, 110, 1);
+  background-image: url($NOISE);
+  background-image: -webkit-gradient(linear, left top, left bottom, from($GREEN), to($GREEN)), url($NOISE);
+  background-image: -webkit-linear-gradient(top, $GREEN, $GREEN), url($NOISE); /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, $GREEN, $GREEN), url($NOISE); /* FF3.6+ */;
+  background-image: -ms-linear-gradient(top, $GREEN, $GREEN), url($NOISE); /* IE10 */;
+  background-image: -o-linear-gradient(top, $GREEN, $GREEN), url($NOISE); /* Opera 11.10+ */;
+  background-image: linear-gradient(top, $GREEN, $GREEN), url($NOISE); /* W3C */;
   border: solid thin rgba(0, 0, 0, .5);
+}
+
+#emulator {
+  border-style: dashed;
+  border-width: thick;
+  border-color: $DARK_GREEN;
 }

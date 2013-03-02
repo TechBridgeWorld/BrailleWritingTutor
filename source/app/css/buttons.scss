@@ -109,11 +109,16 @@
 
 .slaterow {
   width: 800px;
-  height: 60px;
+  height: 80px;
   margin-left: auto;
   margin-right: auto;
+  overflow: hidden;
 }
 
 #slaterow1 {
   padding-top: 50px;
+}
+
+#slaterow2 {
+  padding-top: -20px;
 }
