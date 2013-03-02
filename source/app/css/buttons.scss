@@ -32,6 +32,11 @@
   background-size: contain;
 }
 
+.jumbobutton:hover {
+  background: url("../assets/jumbo_button_hover.png") no-repeat;
+  background-size: contain;
+}
+
 .jumbobutton.active {
   background: url("../assets/jumbo_button_active.png") no-repeat;
   background-size: contain;
