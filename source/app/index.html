@@ -13,6 +13,7 @@
 
   <!-- google fonts -->
   <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:800' rel='stylesheet' type='text/css'>
 
   <!-- stylesheets -->
   <link type="text/css" href="./css/main.css" rel="stylesheet" />
@@ -47,7 +48,10 @@
     <p id="version">Version 1.0.0</p>
     <div id="board" class="greyshadow">
       <div id="_initialize" class="initbutton shadow rounded">initialize</div>
-      <div id="emulator">
+
+      <!-- main plugin: the emulator -->
+      <div id="emulator" class="plugin">
+        <div class="label">Emulator</div>
         <div id="top_buttons">
           <div class="jumbobutton shadow button" id="_left"></div>
           <div class="jumbobutton shadow button" id="_right"></div>
@@ -70,6 +74,9 @@
           <div class="slaterow" id="slaterow2"></div>
         </div>
       </div>
+
+      <!-- other plugins go here -->
+
     </div>
   </div>
 </body>

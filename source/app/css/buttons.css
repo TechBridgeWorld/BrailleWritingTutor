@@ -79,13 +79,13 @@
   background-size: contain; }
 
 .slategroup {
-  width: 30px;
+  width: 40px;
   height: 60px;
-  margin: 10px;
+  margin: 5px;
   float: left; }
 
 .subslate {
-  width: 10px;
+  width: 20px;
   height: 100%; }
 
 .slaterow {
@@ -99,4 +99,4 @@
   padding-top: 50px; }
 
 #slaterow2 {
-  padding-top: -20px; }
+  margin-top: -20px; }

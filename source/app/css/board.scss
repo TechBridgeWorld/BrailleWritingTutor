@@ -2,7 +2,8 @@
 $CIRCUITURL : "../assets/circuit.jpg";
 $NOISE : "../assets/noise.png";
 $GREEN : rgba(64, 127, 80, 0.2);
-$DARK_GREEN: rgba(68, 124, 88, 0.8);
+$DARK_GREEN : rgba(68, 124, 88, 0.8);
+$DARKER_GREEN : rgba(45, 84, 59, 0.4);
 
 #board {
   position: absolute;
@@ -25,4 +26,20 @@ $DARK_GREEN: rgba(68, 124, 88, 0.8);
   border-style: dashed;
   border-width: thick;
   border-color: $DARK_GREEN;
+
+  position: absolute;
+  top: 80px;
+  left: 10px;
+  right: 10px;
+  bottom: 30px;
+  overflow: scroll;
+
+  .label {
+    position: fixed;
+    margin-left: 10px;
+    margin-top: 5px;
+    font-family: 'Open Sans', sans-serif;
+    color: $DARKER_GREEN;
+    font-size: 50px;
+  }
 }

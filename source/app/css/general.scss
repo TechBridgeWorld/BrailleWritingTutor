@@ -1,8 +1,10 @@
 // general classes
+$SHADOW_COLOR : rgba(32, 32, 32, 0.8);
+
 .shadow {
-  -moz-box-shadow:    0px 0px 3px 1px #222;
-  -webkit-box-shadow: 0px 0px 3px 1px #222;
-  box-shadow:         0px 0px 3px 1px #222;
+  -moz-box-shadow:    0px 0px 2px 1px $SHADOW_COLOR;
+  -webkit-box-shadow: 0px 0px 2px 1px $SHADOW_COLOR;
+  box-shadow:         0px 0px 2px 1px $SHADOW_COLOR;
 }
 
 .greyshadow {
