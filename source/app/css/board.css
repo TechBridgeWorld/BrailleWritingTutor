@@ -1,5 +1,6 @@
 #board {
   position: absolute;
+  overflow: auto;
   top: 20px;
   left: 15px;
   right: 15px;
@@ -19,20 +20,7 @@
   /* W3C */
   border: solid thin rgba(0, 0, 0, 0.5); }
 
-#emulator {
-  border-style: dashed;
-  border-width: thick;
-  border-color: rgba(68, 124, 88, 0.8);
-  position: absolute;
-  top: 80px;
-  left: 10px;
-  right: 10px;
-  bottom: 30px;
-  overflow: scroll; }
-  #emulator .label {
-    position: fixed;
-    margin-left: 10px;
-    margin-top: 5px;
-    font-family: 'Open Sans', sans-serif;
-    color: rgba(45, 84, 59, 0.4);
-    font-size: 50px; }
+#top_bar {
+  position: relative;
+  height: 80px;
+  width: 100%; }

@@ -3,6 +3,7 @@
 @import url(general.css);
 @import url(loading.css);
 @import url(version.css);
+@import url(plugin.css);
 /** @file main.scss
  *  @brief Main scss file for our app.
  *

@@ -5,8 +5,7 @@
  */
 
 #version {
-  position: fixed;
-  right: 20px;
-  bottom: 10px;
-  z-index: 100;
+  position: relative;
+  text-align: right;
+  margin-right: 10px;
 }

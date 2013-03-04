@@ -17,9 +17,9 @@ $(document).ready(function() {
   var main = function main() {
     // show the loading screen while loading
     window.show_loading();
-
     patch();
     populate_dom();
+    configure_plugins();
     attach_handlers();
     init_processor();
     load_server();
@@ -98,6 +98,39 @@ $(document).ready(function() {
       };
       $row.append($slategroup);
     };
+  };
+
+  /** @brief Configures plugins. Adds minimize buttons, etc.
+   */
+  var configure_plugins = function configure_plugins() {
+    // adds a minimize button to the specified element
+    var add_minimize = function add_minimize($el) {
+      var $minimize = $('<div>', {
+        'class': 'minimizer'
+      });
+      $minimize.on('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        $el.find('.content').slideToggle();
+
+        if ($el.hasClass('minimized')) {
+          // if currently minimized, maximize it
+          $el.removeClass('minimized');
+        } else {
+          // otherwise, minimize it
+          $el.addClass('minimized');
+        };
+      });
+
+      // append the element
+      $el.append($minimize);
+    };
+
+    // add a minimize button to each element
+    $(".plugin").each(function(index, el) {
+      add_minimize($(el));
+    });
   };
 
   /** @brief Attaches event handlers to a specific button.
