@@ -21,3 +21,19 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
+
+html {
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/noise.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#dedede), to(#dedede)), url("../assets/noise.png");
+  background-image: -webkit-linear-gradient(top, #dedede, #dedede), url("../assets/noise.png");
+  /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, #dedede, #dedede), url("../assets/noise.png");
+  /* FF3.6+ */
+  background-image: -ms-linear-gradient(top, #dedede, #dedede), url("../assets/noise.png");
+  /* IE10 */
+  background-image: -o-linear-gradient(top, #dedede, #dedede), url("../assets/noise.png");
+  /* Opera 11.10+ */
+  background-image: linear-gradient(top, #dedede, #dedede), url("../assets/noise.png");
+  /* W3C */ }

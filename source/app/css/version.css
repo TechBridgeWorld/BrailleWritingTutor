@@ -4,6 +4,6 @@
  *  @author Lucas Ray (ltray@cmu.edu)
  */
 #version {
-  position: relative;
-  text-align: right;
-  margin-right: 10px; }
+  position: fixed;
+  right: 20px;
+  bottom: 0px; }

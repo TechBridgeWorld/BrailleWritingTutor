@@ -14,6 +14,18 @@
 @import "version.css";
 @import "plugin.css";
 
+// mixins
+@mixin noisey($color) {
+  $NOISE : "../assets/noise.png";
+  background-image: url($NOISE);
+  background-image: -webkit-gradient(linear, left top, left bottom, from($color), to($color)), url($NOISE);
+  background-image: -webkit-linear-gradient(top, $color, $color), url($NOISE); /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, $color, $color), url($NOISE); /* FF3.6+ */;
+  background-image: -ms-linear-gradient(top, $color, $color), url($NOISE); /* IE10 */;
+  background-image: -o-linear-gradient(top, $color, $color), url($NOISE); /* Opera 11.10+ */;
+  background-image: linear-gradient(top, $color, $color), url($NOISE); /* W3C */;
+}
+
 * {
   font-family: 'Varela Round', sans-serif;
   -webkit-touch-callout: none;
@@ -22,4 +34,11 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+
+  @include noisey(rgba(222, 222, 222, 1));
 }

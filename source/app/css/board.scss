@@ -3,6 +3,18 @@ $CIRCUITURL : "../assets/circuit.jpg";
 $NOISE : "../assets/noise.png";
 $GREEN : rgba(64, 127, 80, 0.2);
 
+// mixins
+@mixin noisey($color) {
+  $NOISE : "../assets/noise.png";
+  background-image: url($NOISE);
+  background-image: -webkit-gradient(linear, left top, left bottom, from($color), to($color)), url($NOISE);
+  background-image: -webkit-linear-gradient(top, $color, $color), url($NOISE); /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, $color, $color), url($NOISE); /* FF3.6+ */;
+  background-image: -ms-linear-gradient(top, $color, $color), url($NOISE); /* IE10 */;
+  background-image: -o-linear-gradient(top, $color, $color), url($NOISE); /* Opera 11.10+ */;
+  background-image: linear-gradient(top, $color, $color), url($NOISE); /* W3C */;
+}
+
 #board {
   position: absolute;
   overflow: auto;
@@ -10,14 +22,9 @@ $GREEN : rgba(64, 127, 80, 0.2);
   left: 15px;
   right: 15px;
   bottom: 20px;
+  margin-bottom: 20px;
   background: rgba(84, 157, 110, 1);
-  background-image: url($NOISE);
-  background-image: -webkit-gradient(linear, left top, left bottom, from($GREEN), to($GREEN)), url($NOISE);
-  background-image: -webkit-linear-gradient(top, $GREEN, $GREEN), url($NOISE); /* Chrome 10+, Saf5.1+ */
-  background-image: -moz-linear-gradient(top, $GREEN, $GREEN), url($NOISE); /* FF3.6+ */;
-  background-image: -ms-linear-gradient(top, $GREEN, $GREEN), url($NOISE); /* IE10 */;
-  background-image: -o-linear-gradient(top, $GREEN, $GREEN), url($NOISE); /* Opera 11.10+ */;
-  background-image: linear-gradient(top, $GREEN, $GREEN), url($NOISE); /* W3C */;
+  @include noisey($GREEN);
   border: solid thin rgba(0, 0, 0, .5);
 }
 
