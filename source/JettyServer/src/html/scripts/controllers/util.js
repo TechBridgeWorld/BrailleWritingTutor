@@ -7,6 +7,8 @@ $(document).ready(function() {
   "use strict";
 
   /** @brief Logs at the info level.
+   *
+   *  @param message The body of the message.
    */
   window.LOG_INFO = function LOG_INFO(message) {
     // only log info messages if __DEBUG is on
@@ -16,6 +18,8 @@ $(document).ready(function() {
   };
 
   /** @brief Logs at the warning level.
+   *
+   *  @param message The body of the message.
    */
   window.LOG_WARNING = function LOG_WARNING(message) {
     // by default, log all warnings
@@ -23,6 +27,8 @@ $(document).ready(function() {
   };
 
   /** @brief Logs at the error level.
+   *
+   *  @param message The body of the message.
    */
   window.LOG_ERROR = function LOG_ERROR(message) {
     // throw errors
@@ -30,10 +36,21 @@ $(document).ready(function() {
   };
 
   /** @brief Logs at the critical level.
+   *
+   *  @param message The body of the message.
    */
   window.LOG_CRITICAL = function LOG_CRITICAL(message) {
-    // for now, throw criticals. May want to also alert some kind of
-    // admin about this error
+    // throw criticals and alert user with an alert
+    window.app_alert("Critical Error", message);
     throw "Critical: " + message;
+  };
+
+  /** @brief Wrapper for javascript alert() since default alert() is obtrusive.
+   *
+   *  @param header The header for this alert.
+   *  @param message The body of the message.
+   */
+  window.app_alert = function app_alert(header, message) {
+    alert(header + ": " + message);
   };
 });

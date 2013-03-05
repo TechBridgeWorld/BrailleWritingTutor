@@ -10,6 +10,7 @@ $(document).ready(function() {
   var __NUM_SLATEGROUPS = 16; // number of slate groups per row
   var __NUM_SLATEROWS = 2;  // number of slate rows
   var __NUM_SLATEDOTS = 6;  // number of dots per slate group
+  var __NUM_SLATEDOTS_LEFT = 3; // number of dots in left group
   var __BUTTON_MAP = {}; // object holding our buttons
 
   /** @brief Main method for load.
@@ -30,6 +31,7 @@ $(document).ready(function() {
    *         UI.
    */
   var load_server = function load_server() {
+    // to load, send an ajax request to /loading.do
     $.ajax({
       url: '/loading.do',
       type: 'GET',
@@ -75,17 +77,22 @@ $(document).ready(function() {
         'class': 'right subslate'
       });
       for (j = 0; j < __NUM_SLATEDOTS; j++) {
+        // create the slate cell
         var $slatecell = $('<div>', {
           'class': 'slatebutton button',
           'id': '_slate' + (i + 1) + '_' + (j + 1)
         }).css('position', 'relative');
 
-        if (j < 3) {
+        if (j < __NUM_SLATEDOTS_LEFT) {
+          // if in first __NUM_SLATEDOTS_LEFT dots, append to left group
           $leftgroup.append($slatecell);
         } else {
+          // otherwise append the right group
           $rightgroup.append($slatecell);
         };
       };
+
+      // append the left and right subslates to the slate group
       $slategroup.append($leftgroup);
       $slategroup.append($rightgroup);
 
@@ -96,6 +103,8 @@ $(document).ready(function() {
       } else {
         $row = $row2;
       };
+
+      // append the slate group to the slate row
       $row.append($slategroup);
     };
   };
@@ -103,15 +112,18 @@ $(document).ready(function() {
   /** @brief Configures plugins. Adds minimize buttons, etc.
    */
   var configure_plugins = function configure_plugins() {
-    // adds a minimize button to the specified element
+    // helped function to add a minimize button to the specified element
     var add_minimize = function add_minimize($el) {
       var $minimize = $('<div>', {
         'class': 'minimizer'
       });
+
+      // click handler for the minimize button
       $minimize.on('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
 
+        // toggle the content from hidden to shown on click
         $el.find('.content').slideToggle();
 
         if ($el.hasClass('minimized')) {
@@ -136,9 +148,15 @@ $(document).ready(function() {
   };
 
   /** @brief Attaches event handlers to a specific button.
+   *
+   *  @param $dom_el jQuery object representing the DOM element we are attaching
+   *                 this button to.
    */
   var add_button = function add_button($dom_el) {
+    // the button id is always stored in the id field in the DOM
     var button_id = $dom_el.attr('id');
+
+    // find the code from our mapping
     var code = window.input_mapping[button_id];
     if (code === undefined) {
       window.LOG_ERROR("Cannot load button " + button_id);
@@ -162,12 +180,15 @@ $(document).ready(function() {
       e.stopPropagation();
 
       if (e.shiftKey === true) {
+        // if shift is being held, consider this click a hold
         __BUTTON_MAP[button_id].hold_down();
       } else {
+        // otherwise, consider it a press
         __BUTTON_MAP[button_id].press_down();
       };
     });
 
+    // on mouse up, trigger the press_up() method
     $dom_el.on('mouseup', function(e) {
       e.preventDefault();
       e.stopPropagation();
@@ -198,7 +219,8 @@ $(document).ready(function() {
           window.LOG_INFO("initialize succeeded");
         },
         error: function(data) {
-          window.LOG_WARNING("initialize failed");
+          // TODO: handle this better
+          window.LOG_ERROR("initialize failed");
         },
       });
     });
