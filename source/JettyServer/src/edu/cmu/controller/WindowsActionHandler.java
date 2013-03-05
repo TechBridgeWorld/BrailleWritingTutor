@@ -21,7 +21,7 @@ import edu.cmu.logger.EmulatorLogger;
  * @author ziw
  * 
  */
-public class ActionHandler {
+public class WindowsActionHandler extends AbstractActionHandler{
 	private TwoWaySerialComm com;
 	private static final String COM_PROT_NAME = "COM7";
 	private boolean handshaking;
@@ -29,7 +29,7 @@ public class ActionHandler {
 	private Logger debugLogger = EmulatorLogger.getEmulatorDebugLogger();
 	
 	
-	public ActionHandler() {
+	public WindowsActionHandler() {
 		// Do any initialization here.
 		// constructor is called as soon as the server starts
 		handshaking = false;
@@ -108,7 +108,7 @@ public class ActionHandler {
 		if (com != null)
 			return;
 		logger.info("Initializing TwoWaySerialComm");
-		com = new TwoWaySerialComm(COM_PROT_NAME);// this line takes a while
+		com = new TwoWaySerialComm(COM_PROT_NAME);// this line takes a while on some computers
 		logger.info("SerialComm initialized");
 	}
 

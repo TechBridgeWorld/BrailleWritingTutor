@@ -1,10 +1,9 @@
-	package edu.cmu.ui;
+package edu.cmu.ui;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import edu.cmu.controller.ActionHandler;
+import edu.cmu.controller.AbstractActionHandler;
 import edu.cmu.controller.GenericServlet;
+import edu.cmu.controller.WindowsActionHandler;
 import edu.cmu.server.JettyServer;
 
 /**
@@ -18,19 +17,19 @@ import edu.cmu.server.JettyServer;
 public class UIActionHandler {
 
 	private JettyServer js;
-	private ActionHandler handler;
+	private AbstractActionHandler handler;
 	private GenericServlet servlet;
 	
 
 	
 	public UIActionHandler() throws Exception{
-		handler = new ActionHandler();
+		handler = new WindowsActionHandler();
 		servlet = new GenericServlet(handler);
 		js = new JettyServer(servlet);
 	}
 	
 	public UIActionHandler(int port) throws Exception{
-		handler = new ActionHandler();
+		handler = new WindowsActionHandler();
 		servlet = new GenericServlet(handler);
 		js = new JettyServer(port,servlet);
 	}

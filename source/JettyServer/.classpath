@@ -41,5 +41,9 @@
 	<classpathentry kind="lib" path="/Users/ziw/Downloads/slf4j-1.7.2/slf4j-api-1.7.2.jar"/>
 	<classpathentry kind="lib" path="/Users/ziw/Downloads/slf4j-1.7.2/slf4j-ext-1.7.2.jar"/>
 	<classpathentry kind="lib" path="resources"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/commons-lang3-3.1/commons-lang3-3.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/commons-lang3-3.1/commons-lang3-3.1-sources.jar"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/commons-lang3-3.1/commons-lang3-3.1-tests.jar"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/commons-lang3-3.1/commons-lang3-3.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
