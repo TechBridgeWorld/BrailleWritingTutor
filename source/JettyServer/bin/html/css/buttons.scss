@@ -1,0 +1,119 @@
+// css for buttons
+.initbutton {
+  position: fixed;
+  left: 50px;
+  top: 50px;
+  padding: 5px;
+  background: url("../assets/buttonbox_mid.png");
+  background-size: contain;
+  cursor: pointer;
+}
+
+.initbutton.active {
+  background: url("../assets/buttonbox_mid_down.png");
+  background-size: contain;
+}
+
+.jumbobutton {
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  cursor: pointer;
+  background-color: green;
+  border: solid thin rgba(0, 0, 0, .5);
+  position: absolute;
+
+  background: url("../assets/jumbo_button_up.png") no-repeat;
+  background-size: contain;
+}
+
+.jumbobutton:active {
+  background: url("../assets/jumbo_button_down.png") no-repeat;
+  background-size: contain;
+}
+
+.jumbobutton.active {
+  background: url("../assets/jumbo_button_active.png") no-repeat;
+  background-size: contain;
+}
+
+#top_buttons {
+  position: relative;
+  left: 0px;
+  right: 0px;
+  top: 60px;
+  bottom: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  width: 570px;
+  height: 170px;
+}
+
+#_left {
+  left: 50px;
+}
+
+#_right {
+  right: 50px;
+}
+
+#jumboslate {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 115px;
+  height: 170px;
+}
+
+*[id^="_jumbo"] {
+  position: relative;
+}
+
+.slatebutton {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  position: absolute;
+
+  background: url("../assets/slatecell.png") no-repeat;
+  background-size: contain;
+}
+
+.slatebutton:hover {
+  background: url("../assets/slatecell_hover.png") no-repeat;
+  background-size: contain;
+}
+
+.slatebutton:active {
+  background: url("../assets/slatecell_press.png") no-repeat;
+  background-size: contain;
+}
+
+.slatebutton.active {
+  background: url("../assets/slatecell_held.png") no-repeat;
+  background-size: contain;
+}
+
+.slategroup {
+  width: 25px;
+  height: 45px;
+  margin: 5px;
+  float: left;
+}
+
+.subslate {
+  width: 10px;
+  height: 100%;
+}
+
+.slaterow {
+  width: 570px;
+  height: 35px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#slaterow1 {
+  padding-top: 50px;
+}

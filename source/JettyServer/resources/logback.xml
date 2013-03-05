@@ -1,0 +1,47 @@
+<configuration >
+
+	<appender name="SERVER_LOG" class="ch.qos.logback.core.FileAppender">
+		<file>server.log</file>
+		<encoder>
+			<pattern>%date{dd MMM yyyy ;HH:mm:ss.} %level [%file:%line] %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="EMULATOR_INFO_LOG" class="ch.qos.logback.core.FileAppender">
+		<file>emulator_info.log</file>
+		<encoder>
+			<pattern>%date{dd MMM yyyy ;HH:mm:ss.} %level [%file:%line] %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="EMULATOR_DEBUG_LOG" class="ch.qos.logback.core.FileAppender">
+		<file>emulator_debug.log</file>
+		<encoder>
+			<pattern>%date{dd MMM yyyy ;HH:mm:ss.} %level [%file:%line] %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%msg%n</pattern>
+		</encoder>
+	</appender>
+	<root level="debug"></root>
+
+	
+	
+	<logger name="edu.cmu.emulator.debug" level="debug">
+		<appender-ref ref="EMULATOR_DEBUG_LOG" />
+	</logger>
+	<logger name="edu.cmu.emulator.info" level="info">
+		<appender-ref ref="EMULATOR_INFO_LOG" />
+	</logger>
+	<logger name="edu.cmu.server" level="info">
+		<appender-ref ref="SERVER_LOG" />
+	</logger>
+
+	
+</configuration>
