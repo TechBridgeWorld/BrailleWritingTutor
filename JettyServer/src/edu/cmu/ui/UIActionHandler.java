@@ -21,16 +21,15 @@ public class UIActionHandler {
 	private ActionHandler handler;
 	private GenericServlet servlet;
 	
-	private Logger logger = LoggerFactory.getLogger(UIActionHandler.class);
 
 	
-	public UIActionHandler(){
+	public UIActionHandler() throws Exception{
 		handler = new ActionHandler();
 		servlet = new GenericServlet(handler);
 		js = new JettyServer(servlet);
 	}
 	
-	public UIActionHandler(int port){
+	public UIActionHandler(int port) throws Exception{
 		handler = new ActionHandler();
 		servlet = new GenericServlet(handler);
 		js = new JettyServer(port,servlet);
@@ -43,11 +42,7 @@ public class UIActionHandler {
 	public void stopServer() throws Exception{
 		js.stopServer();
 	}
-	
-	public void restartServer(){
-		js.restartServer();
-	}
-	
+
 	public int getServerStatus(){
 		return js.getServerStatus();
 	}

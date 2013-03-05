@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * A class that provides three different loggers for the server or the emulator.  
+ * A class that provides three different loggers for the server and the emulator.  
  * @author ziw
  *
  */
@@ -12,7 +12,7 @@ public class EmulatorLogger {
 
 	private static final String SERVER_LOGGER_NAME = "edu.cmu.server";
 	private static final String EMULATOR_DEBUG_LOGGER = "edu.cmu.emulator.debug";
-	private static final String EMULATOR_ERROR_LOGGER = "edu.cmu.emulator.error";
+	private static final String EMULATOR_INFO_LOGGER = "edu.cmu.emulator.info";
 	
 	
 	public static Logger getServerLogger(){
@@ -23,8 +23,8 @@ public class EmulatorLogger {
 		return LoggerFactory.getLogger(EMULATOR_DEBUG_LOGGER);
 	}
 	
-	public static Logger getEmulatorErrorLogger(){
-		return LoggerFactory.getLogger(EMULATOR_ERROR_LOGGER);
+	public static Logger getEmulatorInfoLogger(){
+		return LoggerFactory.getLogger(EMULATOR_INFO_LOGGER);
 	}
 	
 }

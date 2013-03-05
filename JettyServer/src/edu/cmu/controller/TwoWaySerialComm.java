@@ -16,9 +16,17 @@ import java.io.OutputStream;
  */
 public class TwoWaySerialComm {
 
-	public OutputStream out;
-	public InputStream in;
+	private OutputStream out;
+	private InputStream in;
 
+	public OutputStream getOutputStream(){
+		return out;
+	}
+	
+	public InputStream getInputStream(){
+		return in;
+	}
+	
 	public TwoWaySerialComm(String port) throws Exception {
 		super();
 		this.connect(port);

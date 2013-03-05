@@ -10,6 +10,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
+import org.slf4j.Logger;
+
+import edu.cmu.logger.EmulatorLogger;
 import edu.cmu.server.JettyServer;
 
 /**
@@ -22,12 +25,10 @@ import edu.cmu.server.JettyServer;
  * 
  */
 public class ControllerUI extends JFrame {
-
-	//TODO
-	//print out error msg.
-	//log bytes sent
 	
 	private static final long serialVersionUID = -583606563274987091L;
+	
+	private Logger logger = EmulatorLogger.getServerLogger();
 	private UIActionHandler handler;
 
 	private static final String WINDOW_LABEL = "BWT Emulator Control";
@@ -62,7 +63,12 @@ public class ControllerUI extends JFrame {
 	}
 	
 	private void initHandler(){
-		handler = new UIActionHandler();
+		try {
+			handler = new UIActionHandler();
+		} catch (Exception e) {
+			logger.error("Error occured when initializing the server.");
+			logger.error("Exception",e);
+		}
 	}
 
 	private void initUI() {
@@ -130,10 +136,12 @@ public class ControllerUI extends JFrame {
 		quitButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				//try to stop the server before quit the program.
 				try {
 					handler.stopServer();
-				} catch (Exception ex) {
-
+				} catch (Exception e1) {
+					logger.error("Error when stopping the server when quitButton is clicked");
+					logger.error("Exception", e1);
 				} finally {
 					System.exit(0);
 				}
@@ -147,7 +155,9 @@ public class ControllerUI extends JFrame {
 				try {
 					handler.startServer();
 				} catch (Exception e1) {
-					e1.printStackTrace();
+					logger.error("Error when starting the server.");
+					logger.error("Exception" , e1);
+				
 				}
 				boolean on = handler.isServerRunning();
 				launchButton.setEnabled(on);

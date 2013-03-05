@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+
+import edu.cmu.logger.EmulatorLogger;
+
 /**
  * A generic servlet that handles all HTTP requests except for static files. It
  * invokes {@link ActionHandler} to talk to the serial COM port.
@@ -18,15 +22,18 @@ import javax.servlet.http.HttpServletResponse;
 public class GenericServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 895965106069516878L;
-
+	private Logger logger = EmulatorLogger.getEmulatorInfoLogger();
 	private ActionHandler handler;
-	private static final String BUTTON_CODE = "code";
-
+	
+	
+	private static final String BUTTON_CODE_PARAM_NAME = "code";
+	private static final String LOADING_REQUEST = "loading.do";
+	
+	private static final String REQUEST_ERROR_MSG = "Invalid request. Request is null";
+	
 	public GenericServlet(ActionHandler handler) {
 		super();
-		System.out.println("Initializing Servlet...");
 		this.handler = handler;
-		System.out.println("Servlet intialized.");
 	}
 	
 	
@@ -36,12 +43,20 @@ public class GenericServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		
 		String requestURL = request.getRequestURL().toString();
+		logger.info("Handling request: " + requestURL);
+		
 		if (requestURL != null) {
-			if(requestURL.endsWith("loading.do")){
+			if(requestURL.endsWith(LOADING_REQUEST)){
+				logger.info("Loading request sent. Intializing TwoWaySerialCom");
 				try {					
 					handler.initSerialComm();	
-					sendJSON("TwoWaySerialComm initialized.", response);
+					sendText("TwoWaySerialComm initialized.", response);
 				} catch (Exception e) {
+					//TODO handle this either here or on the front end.
+					//Now this is not parsed as 'error' in $.ajax callback
+					logger.error("Exception when initializing TwoWaySerialCom");
+					logger.error("Exception", e);
+					
 					response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 				}
 				return;
@@ -56,18 +71,10 @@ public class GenericServlet extends HttpServlet {
 				handleError(request, response);
 				return;
 			} else {
-				// if (query == null || query.trim().length() <= 0) {
-				// 	handleError(request, response);
-				// 	return;
-				// }
-
 				//trim the query
-				String buttonCode = request.getParameter(BUTTON_CODE);
-//				sendJSON(buttonCode, response);
+				query = query.trim();
+				String buttonCode = request.getParameter(BUTTON_CODE_PARAM_NAME);
 				handler.handleButtonCode(buttonCode);
-				System.out.println("Handle query request with query: " + query);
-				System.out.println("Button code: "
-						+ request.getParameter("code"));
 				return;
 			}
 		}
@@ -82,32 +89,22 @@ public class GenericServlet extends HttpServlet {
 	}
 
 	//send message
-	private void sendJSON(String text, HttpServletResponse response) {
-		if (response == null)
-			//TODO
-			return;
+	private void sendText(String text, HttpServletResponse response) {
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");
 		try {
 			response.getWriter().write("message from server: " +text);
 		} catch (IOException e) {
-			System.out.println("Exception in response.write");
-			System.out.println(e.getMessage());
-			e.printStackTrace();
+			logger.error("Exception when sending message to the server.");
+			logger.error("Exception",e);
 		}
 	}
 
-	//report the error
 	private void handleError(HttpServletRequest request,
 			HttpServletResponse response) {
 		// handle error. log invalid request / redirect to error page.
-		// just redirect to welcome file.
-		try {
-			response.sendRedirect("/");
-		} catch (IOException e) {
-			System.out.println("Exception when redirecting to /");
-			e.printStackTrace();
-		}
+		logger.error("Invalid request. Request is null.");
+		sendText(REQUEST_ERROR_MSG,response);
 	}
 
 }

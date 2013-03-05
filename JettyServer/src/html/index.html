@@ -26,11 +26,15 @@
 
   <!-- models -->
   <script type="text/javascript" src="./scripts/models/Button.js"></script>
+  <script type="text/javascript" src="./scripts/models/Processor.js"></script>
+  <script type="text/javascript" src="./scripts/models/Constants.js"></script>
 
   <!-- views -->
+  <script type="text/javascript" src="./scripts/views/Viewer.js"></script>
 
   <!-- controllers -->
   <script type="text/javascript" src="./scripts/controllers/load.js"></script>
+  <script type="text/javascript" src="./scripts/controllers/util.js"></script>
 </head>
 <body>
   <div id="loading">
@@ -41,20 +45,20 @@
   </div>
   <div id="main">
     <div id="board" class="greyshadow">
-      <div id="initialize" class="initbutton button shadow rounded">initialize</div>
+      <div id="_initialize" class="initbutton button shadow rounded">initialize</div>
       <div id="top_buttons">
-        <div class="jumbobutton shadow" id="_l"></div>
-        <div class="jumbobutton shadow" id="_r"></div>
+        <div class="jumbobutton shadow button" id="_left"></div>
+        <div class="jumbobutton shadow button" id="_right"></div>
         <div id="jumboslate">
           <div class="left">
-            <div class="jumbobutton button shadow" id="_j1"></div>
-            <div class="jumbobutton button shadow" id="_j2"></div>
-            <div class="jumbobutton button shadow" id="_j3"></div>
+            <div class="jumbobutton button shadow" id="_jumbo1"></div>
+            <div class="jumbobutton button shadow" id="_jumbo2"></div>
+            <div class="jumbobutton button shadow" id="_jumbo3"></div>
           </div>
           <div class="right">
-            <div class="jumbobutton button shadow" id="_j4"></div>
-            <div class="jumbobutton button shadow" id="_j5"></div>
-            <div class="jumbobutton button shadow" id="_j6"></div>
+            <div class="jumbobutton button shadow" id="_jumbo4"></div>
+            <div class="jumbobutton button shadow" id="_jumbo5"></div>
+            <div class="jumbobutton button shadow" id="_jumbo6"></div>
           </div>
         </div>
       </div>
