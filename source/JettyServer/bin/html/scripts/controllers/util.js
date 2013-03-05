@@ -11,7 +11,7 @@ $(document).ready(function() {
   window.LOG_INFO = function LOG_INFO(message) {
     // only log info messages if __DEBUG is on
     if (window.__DEBUG === true) {
-      console.log(message);
+      console.log("Info: " + message);
     };
   };
 
@@ -25,17 +25,15 @@ $(document).ready(function() {
   /** @brief Logs at the error level.
    */
   window.LOG_ERROR = function LOG_ERROR(message) {
-    var to_send = "Error: " + message;
     // throw errors
-    throw to_send;
+    throw "Error: " + message;
   };
 
   /** @brief Logs at the critical level.
    */
   window.LOG_CRITICAL = function LOG_CRITICAL(message) {
-    var to_send = "Critical: " + message;
     // for now, throw criticals. May want to also alert some kind of
     // admin about this error
-    throw to_send;
+    throw "Critical: " + message;
   };
 });
