@@ -1,0 +1,5 @@
+02 Mar 2013 ;17:34:35. INFO [GenericServlet.java:44] Handling request: http://localhost:8887/loading.do
+02 Mar 2013 ;17:37:14. INFO [GenericServlet.java:44] Handling request: http://localhost:8887/a/loading.do
+02 Mar 2013 ;17:37:43. INFO [GenericServlet.java:44] Handling request: http://localhost:8887/loading.do
+02 Mar 2013 ;17:37:54. INFO [GenericServlet.java:44] Handling request: http://localhost:8887/favicon.ico
+02 Mar 2013 ;17:38:03. INFO [GenericServlet.java:44] Handling request: http://localhost:8887/favicon.ico
