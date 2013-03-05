@@ -21,7 +21,7 @@ import edu.cmu.logger.EmulatorLogger;
  * @author ziw
  * 
  */
-public class ActionHandler {
+public class WindowsActionHandler extends AbstractActionHandler{
 	private TwoWaySerialComm com;
 	private static final String COM_PROT_NAME = "COM7";
 	private boolean handshaking;
@@ -29,18 +29,13 @@ public class ActionHandler {
 	private Logger debugLogger = EmulatorLogger.getEmulatorDebugLogger();
 	
 	
-	public ActionHandler() {
+	public WindowsActionHandler() {
 		// Do any initialization here.
 		// constructor is called as soon as the server starts
 		handshaking = false;
 	}
 
-	/**
-	 * Do something with buttonCode sent from ajax request. Requires input
-	 * validation.
-	 * 
-	 * @param buttonCode
-	 */
+	@Override
 	public void handleButtonCode(String buttonName) {
 		if (buttonName == null || buttonName.trim().length() <= 0) {
 			logger.warn("Button code is empty.Illegal button code.");
@@ -99,16 +94,12 @@ public class ActionHandler {
 
 	}
 
-	/**
-	 * Initialize the TwoWaySerialComm, if it has not been intialized.
-	 * 
-	 * @throws Exception
-	 */
+	@Override
 	public void initSerialComm() throws Exception {
 		if (com != null)
 			return;
 		logger.info("Initializing TwoWaySerialComm");
-		com = new TwoWaySerialComm(COM_PROT_NAME);// this line takes a while
+		com = new TwoWaySerialComm(COM_PROT_NAME);// this line takes a while on some computers
 		logger.info("SerialComm initialized");
 	}
 

@@ -13,6 +13,7 @@
 
   <!-- google fonts -->
   <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:800' rel='stylesheet' type='text/css'>
 
   <!-- stylesheets -->
   <link type="text/css" href="./css/main.css" rel="stylesheet" />
@@ -45,29 +46,53 @@
   </div>
   <div id="main">
     <div id="board" class="greyshadow">
-      <div id="_initialize" class="initbutton button shadow rounded">initialize</div>
-      <div id="top_buttons">
-        <div class="jumbobutton shadow button" id="_left"></div>
-        <div class="jumbobutton shadow button" id="_right"></div>
-        <div id="jumboslate">
-          <div class="left">
-            <div class="jumbobutton button shadow" id="_jumbo1"></div>
-            <div class="jumbobutton button shadow" id="_jumbo2"></div>
-            <div class="jumbobutton button shadow" id="_jumbo3"></div>
+
+      <!-- fixed top navigation bar -->
+      <div id="top_bar">
+        <div id="_initialize" class="initbutton shadow rounded">initialize</div>
+      </div>
+
+      <!-- main plugin: the emulator -->
+      <div id="emulator" class="plugin active">
+        <div class="label">Emulator</div>
+        <div class="content">
+          <div id="top_buttons">
+            <div class="jumbobutton shadow button" id="_left"></div>
+            <div class="jumbobutton shadow button" id="_right"></div>
+            <div id="jumboslate">
+              <div class="left">
+                <div class="jumbobutton button shadow" id="_jumbo1"></div>
+                <div class="jumbobutton button shadow" id="_jumbo2"></div>
+                <div class="jumbobutton button shadow" id="_jumbo3"></div>
+              </div>
+              <div class="right">
+                <div class="jumbobutton button shadow" id="_jumbo4"></div>
+                <div class="jumbobutton button shadow" id="_jumbo5"></div>
+                <div class="jumbobutton button shadow" id="_jumbo6"></div>
+              </div>
+            </div>
           </div>
-          <div class="right">
-            <div class="jumbobutton button shadow" id="_jumbo4"></div>
-            <div class="jumbobutton button shadow" id="_jumbo5"></div>
-            <div class="jumbobutton button shadow" id="_jumbo6"></div>
+          <div id="slate">
+            <div class="slaterow" id="slaterow1"></div>
+            <br />
+            <div class="slaterow" id="slaterow2"></div>
           </div>
         </div>
       </div>
-      <div id="slate">
-        <div class="slaterow" id="slaterow1"></div>
-        <br />
-        <div class="slaterow" id="slaterow2"></div>
+
+      <!-- temp test plugin -->
+      <div id="plugin_test" class="plugin active">
+        <div class="label">Plugin #2</div>
+        <div class="content">
+          <div id="wat"></div>
+        </div>
       </div>
+
+      <!-- other plugins go here -->
+
+    <br />
     </div>
+    <p id="version">Version 1.0.4</p>
   </div>
 </body>
 </html>

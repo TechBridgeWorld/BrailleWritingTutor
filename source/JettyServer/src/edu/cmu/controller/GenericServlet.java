@@ -23,7 +23,7 @@ public class GenericServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 895965106069516878L;
 	private Logger logger = EmulatorLogger.getEmulatorInfoLogger();
-	private ActionHandler handler;
+	private AbstractActionHandler handler;
 	
 	
 	private static final String BUTTON_CODE_PARAM_NAME = "code";
@@ -31,7 +31,7 @@ public class GenericServlet extends HttpServlet {
 	
 	private static final String REQUEST_ERROR_MSG = "Invalid request. Request is null";
 	
-	public GenericServlet(ActionHandler handler) {
+	public GenericServlet(AbstractActionHandler handler) {
 		super();
 		this.handler = handler;
 	}

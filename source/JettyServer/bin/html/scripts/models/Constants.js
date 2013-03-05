@@ -6,7 +6,7 @@
 $(document).ready(function() {
   "use strict";
 
-  window.Constants = function() {};
+  window.Constants = function Constants() {};
 
   // Constants go here
   // Timer related constants

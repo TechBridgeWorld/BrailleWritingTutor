@@ -1,7 +1,7 @@
 .initbutton {
-  position: fixed;
-  left: 50px;
-  top: 50px;
+  position: absolute;
+  left: 20px;
+  top: 20px;
   padding: 5px;
   background: url("../assets/buttonbox_mid.png");
   background-size: contain;
@@ -26,6 +26,10 @@
   background: url("../assets/jumbo_button_down.png") no-repeat;
   background-size: contain; }
 
+.jumbobutton:hover {
+  background: url("../assets/jumbo_button_hover.png") no-repeat;
+  background-size: contain; }
+
 .jumbobutton.active {
   background: url("../assets/jumbo_button_active.png") no-repeat;
   background-size: contain; }
@@ -39,7 +43,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 30px;
-  width: 570px;
+  width: 800px;
   height: 170px; }
 
 #_left {
@@ -59,8 +63,8 @@
   position: relative; }
 
 .slatebutton {
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
   position: absolute;
   background: url("../assets/slatecell.png") no-repeat;
@@ -79,20 +83,24 @@
   background-size: contain; }
 
 .slategroup {
-  width: 25px;
-  height: 45px;
+  width: 40px;
+  height: 60px;
   margin: 5px;
   float: left; }
 
 .subslate {
-  width: 10px;
+  width: 20px;
   height: 100%; }
 
 .slaterow {
-  width: 570px;
-  height: 35px;
+  width: 800px;
+  height: 80px;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  overflow: hidden; }
 
 #slaterow1 {
   padding-top: 50px; }
+
+#slaterow2 {
+  margin-top: -20px; }

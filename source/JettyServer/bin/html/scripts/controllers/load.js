@@ -7,7 +7,6 @@
 $(document).ready(function() {
   "use strict";
 
-  var mapping;  // holds the mapping from id to bytecode
   var __NUM_SLATEGROUPS = 16; // number of slate groups per row
   var __NUM_SLATEROWS = 2;  // number of slate rows
   var __NUM_SLATEDOTS = 6;  // number of dots per slate group
@@ -18,9 +17,9 @@ $(document).ready(function() {
   var main = function main() {
     // show the loading screen while loading
     window.show_loading();
-
     patch();
     populate_dom();
+    configure_plugins();
     attach_handlers();
     init_processor();
     load_server();
@@ -101,6 +100,41 @@ $(document).ready(function() {
     };
   };
 
+  /** @brief Configures plugins. Adds minimize buttons, etc.
+   */
+  var configure_plugins = function configure_plugins() {
+    // adds a minimize button to the specified element
+    var add_minimize = function add_minimize($el) {
+      var $minimize = $('<div>', {
+        'class': 'minimizer'
+      });
+      $minimize.on('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        $el.find('.content').slideToggle();
+
+        if ($el.hasClass('minimized')) {
+          // if currently minimized, maximize it
+          $el.removeClass('minimized');
+          $el.addClass('active');
+        } else {
+          // otherwise, minimize it
+          $el.addClass('minimized');
+          $el.removeClass('active');
+        };
+      });
+
+      // append the element
+      $el.append($minimize);
+    };
+
+    // add a minimize button to each element
+    $(".plugin").each(function(index, el) {
+      add_minimize($(el));
+    });
+  };
+
   /** @brief Attaches event handlers to a specific button.
    */
   var add_button = function add_button($dom_el) {
@@ -149,23 +183,25 @@ $(document).ready(function() {
       add_button($(el));
     });
 
-//    // add _l and _r buttons differently, as they require different click handlers
-//    var $_left = $("#_left");
-//    var $_right = $("#_right");
-//
-//    /** @brief Small helper function used to add _left and _right buttons.
-//     */
-//    var add_menu_button = function($dom_el) {
-//      add_button($dom_el, function(e, button) {
-//        e.preventDefault();
-//        e.stopPropagation();
-//        button.toggle_hold();
-//        $dom_el.toggleClass("active");
-//      });
-//    };
-//
-//    add_menu_button($_left);
-//    add_menu_button($_right);
+    // handle the init button separately since it doesn't need to
+    // adhere to strange emulator-specific timings
+    $("#_initialize").on('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      // send init code to the server
+      window.LOG_INFO("Sending initialize");
+      $.ajax({
+        url: '/sendBytes.do?code=' + window.input_mapping['_initialize'],
+        type: 'GET',
+        success: function(data) {
+          window.LOG_INFO("initialize succeeded");
+        },
+        error: function(data) {
+          window.LOG_WARNING("initialize failed");
+        },
+      });
+    });
   };
 
   /** @brief Patches functions for our app (e.g. bind if running on iOS)
