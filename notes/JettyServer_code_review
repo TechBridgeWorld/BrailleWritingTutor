@@ -1,0 +1,49 @@
+controller/ActionHandler.java  =============================
+line 56: buttonName.indexOf("init") returns true for "initPluginFunction1"
+- This could cause a very strange bug.
+line 67: why not logger.debug("message") rather than debugLogger.debug?
+line 80: Weren't we going to change these to handShake() throws Exception
+- and let the top level log the exceptions
+line 108: Is it an error if com is null? Why just return? Should we throw an
+- exception?
+line 124: Let's get rid of this thread pool stuff altogether
+line 157: System.out.println ?? Shouldn't it be logger.debug() or something
+line 182: System.out.println again
+============================================================
+controller/GenericServlet.java -----------------------------
+line 35: let's get rid of these super() calls, as they are unnecessary
+line 62, 72, 78: you wouldn't have to have all these returns if you ended
+- with "else { handleError() }"
+line 92: should be sendText throws, and handle upstream.
+------------------------------------------------------------
+controller/TwoWaySerialComm.java ===========================
+line 31: remove super()
+line 54: logger.error() rather than System.out.println
+line 60: SerialReader is defined in two different places. I'm pretty sure
+- this one goes unused.
+line 86: SerialWriter also duplicated.
+============================================================
+exception/EmulatorException.java ---------------------------
+Could you explain this with some comments? Who calls this, what does it do?
+line 23: what does this function do?
+------------------------------------------------------------
+logger/EmulatorLogger.java =================================
+Could you explain this with some comments? Maybe explain who calls each
+- of these logger functions.
+============================================================
+server/JettyServer.java ------------------------------------
+line 41: can you put some spaces in there? it's hard to read at first
+line 92: what is this? Can you explain with a comment?
+line 96: consider throwing a more descriptive exception 
+- IOException / FileNotFoundException
+line 102: why contextPath("/") are we doing something to the root folder
+- of the user's filesystem?
+------------------------------------------------------------
+ui/ControllerUI.java =======================================
+line 70: Just to make it look nicer in the log you could do ("Exception: ", e)
+line 158: Maybe some sort of graphical change in addition to logging the
+- error? Like turn the button red or something?
+line 177: Does printStackTrace print to the logs? Or stdout? If stdout then
+- we should change this to print to the logs.
+line 194, 205: another printStackTrace
+line 240: why invoke later? Maybe a comment explaining?
