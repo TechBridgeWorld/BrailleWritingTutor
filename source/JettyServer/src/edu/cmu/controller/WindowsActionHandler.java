@@ -35,12 +35,7 @@ public class WindowsActionHandler extends AbstractActionHandler{
 		handshaking = false;
 	}
 
-	/**
-	 * Do something with buttonCode sent from ajax request. Requires input
-	 * validation.
-	 * 
-	 * @param buttonCode
-	 */
+	@Override
 	public void handleButtonCode(String buttonName) {
 		if (buttonName == null || buttonName.trim().length() <= 0) {
 			logger.warn("Button code is empty.Illegal button code.");
@@ -99,11 +94,7 @@ public class WindowsActionHandler extends AbstractActionHandler{
 
 	}
 
-	/**
-	 * Initialize the TwoWaySerialComm, if it has not been intialized.
-	 * 
-	 * @throws Exception
-	 */
+	@Override
 	public void initSerialComm() throws Exception {
 		if (com != null)
 			return;

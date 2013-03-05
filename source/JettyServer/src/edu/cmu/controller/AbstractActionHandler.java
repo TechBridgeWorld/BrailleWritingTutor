@@ -11,6 +11,11 @@ public abstract class AbstractActionHandler {
 	 */
 	public abstract void initSerialComm() throws Exception;
 
+	
+	/**
+	 * Handle the buttonCode sent from http request.
+	 * @param buttonCode
+	 */
 	public abstract void handleButtonCode(String buttonCode);
 
 	
