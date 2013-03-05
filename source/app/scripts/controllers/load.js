@@ -117,9 +117,11 @@ $(document).ready(function() {
         if ($el.hasClass('minimized')) {
           // if currently minimized, maximize it
           $el.removeClass('minimized');
+          $el.addClass('active');
         } else {
           // otherwise, minimize it
           $el.addClass('minimized');
+          $el.removeClass('active');
         };
       });
 
