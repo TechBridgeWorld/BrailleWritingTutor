@@ -23,8 +23,12 @@ import edu.cmu.logger.EmulatorLogger;
  */
 public class WindowsActionHandler extends AbstractActionHandler{
 	private TwoWaySerialComm com;
+	
 	private static final String COM_PROT_NAME = "COM7";
+	
+	//a flag that marks if the emulator is trying a handshake.
 	private boolean handshaking;
+	
 	private Logger logger = EmulatorLogger.getEmulatorInfoLogger();
 	private Logger debugLogger = EmulatorLogger.getEmulatorDebugLogger();
 	
@@ -37,7 +41,7 @@ public class WindowsActionHandler extends AbstractActionHandler{
 
 	@Override
 	public void handleButtonCode(String buttonName) {
-		if (buttonName == null || buttonName.trim().length() <= 0) {
+		if (buttonName == null || buttonName.trim().length() == 0) {
 			logger.warn("Button code is empty.Illegal button code.");
 			return;
 		}
@@ -46,8 +50,7 @@ public class WindowsActionHandler extends AbstractActionHandler{
 			return;
 		}
 
-		// TODO using indexOf() for now because of the implementation of the
-		// front end
+		// TODO using indexOf() for now because of the implementation of the front end
 		if (buttonName.indexOf("init") != -1) {
 			handShake();
 			return;
@@ -60,20 +63,20 @@ public class WindowsActionHandler extends AbstractActionHandler{
 			com.getOutputStream().write(decodedName.getBytes());
 			
 			debugLogger.debug("Button code send: " + buttonName);
-			debugLogger.debug("Decodes code    : " + decodedName);
+			debugLogger.debug("Decoded code    : " + decodedName);
 			
 		} catch (UnsupportedEncodingException e) {
 			logger.error("Unable to decode the button code: " + buttonName);
-			logger.error("Exception", e);
+			EmulatorLogger.logException(logger, e);
 		} catch (IOException e) {
 			logger.error("IOException when writing to com.out");
-			logger.error("Exception", e);
+			EmulatorLogger.logException(logger, e);
 		}
 
 	}
 
 	private void handShake() {
-		// tries to handshake
+		// tries to handshake. Reject handshaking if another handshake is in progress.
 		if (!handshaking) {
 			try {
 				handshaking = true;
@@ -81,26 +84,29 @@ public class WindowsActionHandler extends AbstractActionHandler{
 				logger.info("Server is blocking any further handshake until this one is done.");
 				initialize();
 			} catch (Exception e) {
-				logger.error("Error when  handshaking. ");
-				logger.error("Exception", e);
+				logger.error("Error occured when handshaking. ");
+				EmulatorLogger.logException(logger, e);
 			} finally {
-				handshaking = false;// handshake done.
-				logger.info("Setting handshaking flag to false. Server is open to accept handshake again.");
+				handshaking = false;// handshake done either way.
+				logger.info("Server is open to accept handshake again.");
 			}
 		} else {
 			// another handshaking in process.
-			logger.info("Init caught but another handshaking in being processed. Ignore this handshake.");
+			logger.info("Init request caught " +
+					"but another handshaking in being processed. Ignore this handshake.");
 		}
 
 	}
 
 	@Override
 	public void initSerialComm() throws Exception {
-		if (com != null)
+		if (com != null){
+			//already initialized.
 			return;
+		}
 		logger.info("Initializing TwoWaySerialComm");
 		com = new TwoWaySerialComm(COM_PROT_NAME);// this line takes a while on some computers
-		logger.info("SerialComm initialized");
+		logger.info("TwoWaySerialComm initialized");
 	}
 
 	/**
@@ -145,7 +151,6 @@ public class WindowsActionHandler extends AbstractActionHandler{
 						miniBuffer[1] = buffer[i];
 						if (((char) miniBuffer[0] == 'b')
 								&& ((char) miniBuffer[1] == 't')) {
-							System.out.println("extending hand");
 							return;
 						}
 					}
@@ -170,7 +175,6 @@ public class WindowsActionHandler extends AbstractActionHandler{
 
 				try {
 
-					System.out.print("n");
 					this.out.write('n');
 					this.out.write('n');
 					this.out.write('n');

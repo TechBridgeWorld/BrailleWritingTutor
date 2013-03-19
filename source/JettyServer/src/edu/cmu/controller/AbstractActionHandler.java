@@ -7,7 +7,8 @@ public abstract class AbstractActionHandler {
 	 * This is not the handshake, but rather what should be done when the emulator
 	 * displays the loading screen.   
 	 * @throws Exception Any exception that occurred during initialization. Once the 
-	 * exception is thrown, the emulator would catch an error. 
+	 * exception is thrown, the emulator would catch an error and notify the user 
+	 * in the front-end. 
 	 */
 	public abstract void initSerialComm() throws Exception;
 

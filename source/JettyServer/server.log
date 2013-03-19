@@ -21,3 +21,29 @@
 05 Mar 2013 ;17:03:57. INFO [JettyServer.java:52] Server started.
 05 Mar 2013 ;17:04:00. INFO [JettyServer.java:57] Stopping server.
 05 Mar 2013 ;17:04:00. INFO [JettyServer.java:59] Server stopped.
+19 Mar 2013 ;18:58:39. INFO [JettyServer.java:44] Initializing server. Port: 8887
+19 Mar 2013 ;18:58:39. INFO [JettyServer.java:87] Initializing servlet.
+19 Mar 2013 ;18:58:39. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
+19 Mar 2013 ;18:59:03. INFO [JettyServer.java:57] Stopping server.
+19 Mar 2013 ;18:59:03. INFO [JettyServer.java:59] Server stopped.
+19 Mar 2013 ;18:59:47. INFO [JettyServer.java:44] Initializing server. Port: 8887
+19 Mar 2013 ;18:59:47. INFO [JettyServer.java:87] Initializing servlet.
+19 Mar 2013 ;18:59:47. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
+19 Mar 2013 ;18:59:50. INFO [JettyServer.java:50] Starting server.
+19 Mar 2013 ;18:59:50. INFO [JettyServer.java:52] Server started.
+19 Mar 2013 ;18:59:57. INFO [JettyServer.java:57] Stopping server.
+19 Mar 2013 ;18:59:57. INFO [JettyServer.java:59] Server stopped.
+19 Mar 2013 ;19:00:33. INFO [JettyServer.java:44] Initializing server. Port: 8887
+19 Mar 2013 ;19:00:33. INFO [JettyServer.java:87] Initializing servlet.
+19 Mar 2013 ;19:00:34. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
+19 Mar 2013 ;19:00:34. INFO [JettyServer.java:50] Starting server.
+19 Mar 2013 ;19:00:34. INFO [JettyServer.java:52] Server started.
+19 Mar 2013 ;19:05:33. INFO [JettyServer.java:57] Stopping server.
+19 Mar 2013 ;19:05:33. INFO [JettyServer.java:59] Server stopped.
+19 Mar 2013 ;19:09:56. INFO [JettyServer.java:44] Initializing server. Port: 8887
+19 Mar 2013 ;19:09:56. INFO [JettyServer.java:87] Initializing servlet.
+19 Mar 2013 ;19:09:57. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
+19 Mar 2013 ;19:10:00. INFO [JettyServer.java:50] Starting server.
+19 Mar 2013 ;19:10:02. INFO [JettyServer.java:52] Server started.
+19 Mar 2013 ;19:10:06. INFO [JettyServer.java:57] Stopping server.
+19 Mar 2013 ;19:10:06. INFO [JettyServer.java:59] Server stopped.

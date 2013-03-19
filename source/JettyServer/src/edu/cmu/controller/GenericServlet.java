@@ -29,10 +29,9 @@ public class GenericServlet extends HttpServlet {
 	private static final String BUTTON_CODE_PARAM_NAME = "code";
 	private static final String LOADING_REQUEST = "loading.do";
 	
-	private static final String REQUEST_ERROR_MSG = "Invalid request. Request is null";
+	private static final String REQUEST_ERROR_MSG = "Invalid HTTP request.";
 	
 	public GenericServlet(AbstractActionHandler handler) {
-		super();
 		this.handler = handler;
 	}
 	
@@ -47,38 +46,37 @@ public class GenericServlet extends HttpServlet {
 		
 		if (requestURL != null) {
 			if(requestURL.endsWith(LOADING_REQUEST)){
-				logger.info("Loading request sent. Intializing TwoWaySerialCom");
+				logger.info("Loading request captured. Intializing TwoWaySerialCom");
 				try {					
 					handler.initSerialComm();	
 					sendText("TwoWaySerialComm initialized.", response);
 				} catch (Exception e) {
-					//TODO handle this either here or on the front end.
-					//Now this is not parsed as 'error' in $.ajax callback
 					logger.error("Exception when initializing TwoWaySerialCom");
-					logger.error("Exception", e);
+					EmulatorLogger.logException(logger, e);
 					
+					//this will make the response be caught in the 'error' block of jquery.ajax()
 					response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 				}
 				return;
 			}
 			
 			String query = request.getQueryString();
-			if (query == null || query.trim().length() <= 0
+			if (query == null || query.trim().length() == 0
 					|| !requestURL.endsWith(".do")) {
 				// static files requests are handled via another handler.
-				// This servlet should only handle ajax request with buttonCode query.
+				// This servlet should only handle ajax request with buttonCode that ends with .do.
 				// so handle this request as error.
 				handleError(request, response);
-				return;
 			} else {
 				//trim the query
 				query = query.trim();
 				String buttonCode = request.getParameter(BUTTON_CODE_PARAM_NAME);
 				handler.handleButtonCode(buttonCode);
-				return;
 			}
 		}
-		handleError(request, response);
+		else{
+			handleError(request, response);
+		}
 
 	}
 	
@@ -96,7 +94,7 @@ public class GenericServlet extends HttpServlet {
 			response.getWriter().write("message from server: " +text);
 		} catch (IOException e) {
 			logger.error("Exception when sending message to the server.");
-			logger.error("Exception",e);
+			EmulatorLogger.logException(logger, e);
 		}
 	}
 
