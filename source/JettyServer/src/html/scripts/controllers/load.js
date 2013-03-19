@@ -18,6 +18,7 @@ $(document).ready(function() {
   var main = function main() {
     // show the loading screen while loading
     window.show_loading();
+    window.hide_alert();
     patch();
     populate_dom();
     configure_plugins();
@@ -125,6 +126,7 @@ $(document).ready(function() {
 
         // toggle the content from hidden to shown on click
         $el.find('.content').slideToggle();
+//        window.timed_app_alert("Critical", "Some stuff", 2000);
 
         if ($el.hasClass('minimized')) {
           // if currently minimized, maximize it

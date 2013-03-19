@@ -51,6 +51,49 @@ $(document).ready(function() {
    *  @param message The body of the message.
    */
   window.app_alert = function app_alert(header, message) {
-    alert(header + ": " + message);
+  };
+
+  /** @brief Sustained app alert. Returns a callback which, when called,
+   *         removes the alert.
+   *
+   *  @param header The header for this alert.
+   *  @param message The body of the message.
+   */
+  window.sustained_app_alert = function sustained_app_alert(header, message) {
+    var $alert_header = $("#alert_header");
+    var $alert_body = $("#alert_body");
+    var $alert_el = $("#alert");
+
+    // add the alert details
+    $alert_header.text(header + ": ");
+    $alert_body.text(message);
+    $alert_el.addClass("active");
+    $alert_el.removeClass("unactive");
+    $alert_el.slideToggle();
+
+    // return the callback to kill this alert
+    return function sustained_app_alert_killer() {
+      $alert_el.slideToggle();
+      $alert_header.text('');
+      $alert_body.text('');
+      $alert_el.removeClass("active");
+      $alert_el.addClass("unactive");
+    };
+  };
+
+  /** @brief Timed app alert. Alerts for the specified number of milliseconds.
+   *
+   *  @param header The header for this alert.
+   *  @param message The body of the message.
+   *  @param duration The duration of the alert.
+   */
+  window.timed_app_alert = function timed_app_alert(header, message, duration) {
+    // create a sustained app alert
+    var callback = window.sustained_app_alert(header, message);
+
+    // kill the sustained app alert after the specified duration
+    setTimeout(function() {
+      callback();
+    }, duration);
   };
 });

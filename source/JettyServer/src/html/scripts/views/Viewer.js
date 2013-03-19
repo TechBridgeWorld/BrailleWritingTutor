@@ -19,4 +19,10 @@ $(document).ready(function() {
     $("#loading").hide();
     $("#main").show();
   };
+
+  /** @brief Hides the alert div.
+   */
+  window.hide_alert = function hide_alert() {
+    $("#alert").hide();
+  };
 });

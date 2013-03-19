@@ -1,0 +1,33 @@
+/** @file alert.scss
+ *  @brief scss styling for our alert dialogues.
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+#alert {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  z-index: 1000;
+  background: #fa4848;
+  background-image: url("../assets/noise.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(250, 72, 72, 0.2)), to(rgba(250, 72, 72, 0.2))), url("../assets/noise.png");
+  background-image: -webkit-linear-gradient(top, rgba(250, 72, 72, 0.2), rgba(250, 72, 72, 0.2)), url("../assets/noise.png");
+  /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, rgba(250, 72, 72, 0.2), rgba(250, 72, 72, 0.2)), url("../assets/noise.png");
+  /* FF3.6+ */
+  background-image: -ms-linear-gradient(top, rgba(250, 72, 72, 0.2), rgba(250, 72, 72, 0.2)), url("../assets/noise.png");
+  /* IE10 */
+  background-image: -o-linear-gradient(top, rgba(250, 72, 72, 0.2), rgba(250, 72, 72, 0.2)), url("../assets/noise.png");
+  /* Opera 11.10+ */
+  background-image: linear-gradient(top, rgba(250, 72, 72, 0.2), rgba(250, 72, 72, 0.2)), url("../assets/noise.png");
+  /* W3C */
+  color: white;
+  text-align: center; }
+
+#alert_header {
+  font-size: 20px;
+  font-weight: bold; }
+
+#alert_body {
+  font-size: 16px; }
