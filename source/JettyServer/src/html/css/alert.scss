@@ -26,7 +26,7 @@
 
 #alert {
   $RED : rgba(250, 72, 72, 1);
-  $REDA : rgba(250, 72, 72, 0.2);
+  $RED_TRANSPARENT : rgba(250, 72, 72, 0.2);
 
   position: fixed;
   left: 0px;
@@ -35,7 +35,7 @@
   z-index: 1000;
 
   background: $RED;
-  @include noisey($REDA);
+  @include noisey($RED_TRANSPARENT);
   color: white;
   text-align: center;
 }

@@ -3,13 +3,21 @@
  *
  *  @author Lucas Ray (ltray@cmu.edu)
  */
-#logo {
-  width: 300px;
-  height: 60px;
-  position: absolute;
-  right: 20px;
-  top: 15px;
-  background: rgba(33, 49, 38, 0.4);
-  border-radius: 15px;
-  -moz-border-radius: 15px;
+#top_bar {
+  position: static;
+  width: 100%;
+  height: 70px;
+  background: #3c5d47;
+  background-image: url("../assets/noise.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(60, 93, 71, 0.2)), to(rgba(60, 93, 71, 0.2))), url("../assets/noise.png");
+  background-image: -webkit-linear-gradient(top, rgba(60, 93, 71, 0.2), rgba(60, 93, 71, 0.2)), url("../assets/noise.png");
+  /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, rgba(60, 93, 71, 0.2), rgba(60, 93, 71, 0.2)), url("../assets/noise.png");
+  /* FF3.6+ */
+  background-image: -ms-linear-gradient(top, rgba(60, 93, 71, 0.2), rgba(60, 93, 71, 0.2)), url("../assets/noise.png");
+  /* IE10 */
+  background-image: -o-linear-gradient(top, rgba(60, 93, 71, 0.2), rgba(60, 93, 71, 0.2)), url("../assets/noise.png");
+  /* Opera 11.10+ */
+  background-image: linear-gradient(top, rgba(60, 93, 71, 0.2), rgba(60, 93, 71, 0.2)), url("../assets/noise.png");
+  /* W3C */
   border: solid thin rgba(22, 22, 22, 0.2); }

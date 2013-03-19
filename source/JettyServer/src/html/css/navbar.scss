@@ -3,14 +3,28 @@
  *
  *  @author Lucas Ray (ltray@cmu.edu)
  */
-#logo {
-  width: 300px;
-  height: 60px;
-  position: absolute;
-  right: 20px;
-  top: 15px;
-  background: rgba(33, 49, 38, .4);
-  border-radius: 15px;
-  -moz-border-radius: 15px;
+
+// mixins
+@mixin noisey($color) {
+  $NOISE : "../assets/noise.png";
+  background-image: url($NOISE);
+  background-image: -webkit-gradient(linear, left top, left bottom, from($color), to($color)), url($NOISE);
+  background-image: -webkit-linear-gradient(top, $color, $color), url($NOISE); /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, $color, $color), url($NOISE); /* FF3.6+ */;
+  background-image: -ms-linear-gradient(top, $color, $color), url($NOISE); /* IE10 */;
+  background-image: -o-linear-gradient(top, $color, $color), url($NOISE); /* Opera 11.10+ */;
+  background-image: linear-gradient(top, $color, $color), url($NOISE); /* W3C */;
+}
+
+#top_bar {
+  $DARK_GREEN : rgba(60, 93, 71, 1);
+  $DARK_GREEN_TRANSPARENT : rgba(60, 93, 71, .2);
+
+  position: static;
+  width: 100%;
+  height: 70px;
+  background: $DARK_GREEN;
+  @include noisey($DARK_GREEN_TRANSPARENT);
+
   border: solid thin rgba(22, 22, 22, 0.2);
 }
