@@ -22,7 +22,7 @@ public class JettyServer {
 	
 	private Server server;
 	private HttpServlet genericServlet;
-	private static final int DEFAULT_PORT = 8887;
+	public static final int DEFAULT_PORT = 8887;
 	private int port;
 	
 	public static final int READY = 0;
@@ -38,12 +38,12 @@ public class JettyServer {
 	
 	public JettyServer(int port, HttpServlet servlet) throws Exception{
 		this.genericServlet = servlet;
-		this.port =port>0? port : DEFAULT_PORT;
+		this.port = (port>0) ? port : DEFAULT_PORT;
 		server = new Server(this.port);
 		
-		logger.info("Intializing server. Port: " + port);
+		logger.info("Initializing server. Port: " + port);
 		initServerHandler();
-		logger.info("Server and servlet intialized. Ready for start()");
+		logger.info("Server and servlet initialized. Ready for JettyServer#startServer()");
 	}
 	
 	public void startServer() throws Exception{

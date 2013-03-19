@@ -52,24 +52,23 @@ public class ControllerUI extends JFrame {
 	//tooltips
 	private static final String START_SERVER_TOOLTIP = "Start the server.";
 	private static final String STOP_SERVER_TOOLTIP = "Stop the server.";
-	private static final String QUIT_TOOLTIP = "Qui the program.";
-	private static final String LAUNCH_TOOLTIP_ON = "Launch the emulator.";
+	private static final String QUIT_TOOLTIP = "Stop the server and quit the program.";
+	private static final String LAUNCH_TOOLTIP_ON = "Start the server and launch the emulator.";
 	private static final String LAUNCH_TOOLTIP_OFF = "Can't launch the emulator. Server is offline.";
 		
 	public ControllerUI() {
 		initUI();
-		initHandler();
-		updateStatusArea(getServerStatus());
-	}
-	
-	private void initHandler(){
 		try {
 			handler = new UIActionHandler();
+			updateStatusArea(getServerStatus());
 		} catch (Exception e) {
-			logger.error("Error occured when initializing the server.");
-			logger.error("Exception",e);
+			logger.error("Error occured when intializing the server.");
+			EmulatorLogger.logException(logger, e);
+			updateStatusArea("Error occured when initializing the server. Please check the server log.");
 		}
 	}
+	
+
 
 	private void initUI() {
 		JPanel panel = new JPanel();
@@ -82,11 +81,7 @@ public class ControllerUI extends JFrame {
 		
 		panel.add(statusArea);
 		panel.add(quitButton);
-//		panel.add(startButton);
-//		panel.add(stopButton);
 		panel.add(launchButton);
-//		panel.add(msgArea);
-//		panel.add(port);
 
 		setTitle(WINDOW_LABEL);
 		setSize(400, 200);
@@ -126,7 +121,7 @@ public class ControllerUI extends JFrame {
 		startButton.setToolTipText(START_SERVER_TOOLTIP);
 		stopButton.setToolTipText(STOP_SERVER_TOOLTIP);
 		quitButton.setToolTipText(QUIT_TOOLTIP);
-		launchButton.setToolTipText(LAUNCH_TOOLTIP_OFF);
+		launchButton.setToolTipText(LAUNCH_TOOLTIP_ON);
 		
 		
 	}
@@ -141,57 +136,23 @@ public class ControllerUI extends JFrame {
 					handler.stopServer();
 				} catch (Exception e1) {
 					logger.error("Error when stopping the server when quitButton is clicked");
-					logger.error("Exception", e1);
+					EmulatorLogger.logException(logger, e1);
 				} finally {
 					System.exit(0);
 				}
 			}
 		});
 
-		startButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				try {
-					handler.startServer();
-				} catch (Exception e1) {
-					logger.error("Error when starting the server.");
-					logger.error("Exception" , e1);
-				
-				}
-				boolean on = handler.isServerRunning();
-				launchButton.setEnabled(on);
-				launchButton.setToolTipText(on?LAUNCH_TOOLTIP_ON:LAUNCH_TOOLTIP_OFF);
-				updateStatusArea(getServerStatus());
-			}
-
-		});
-
-		stopButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				try {
-					handler.stopServer();
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-				boolean on = handler.isServerRunning();
-				launchButton.setEnabled(on);
-				launchButton.setToolTipText(on?LAUNCH_TOOLTIP_ON:LAUNCH_TOOLTIP_OFF);
-				updateStatusArea(getServerStatus());
-			}
-		});
 
 		launchButton.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {				
 				try {
 					handler.startServer();
-				} catch (Exception e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
+				} catch (Exception e1) {
+					logger.error("Exception when starting the server.");
+					EmulatorLogger.logException(logger, e1);
 				}
 				boolean on = handler.isServerRunning();
 				if(on){
@@ -202,7 +163,8 @@ public class ControllerUI extends JFrame {
 								java.net.URI.create(url));
 					} catch (IOException e1) {
 						updateMsgArea("Error launching the emulator.");
-						e1.printStackTrace();
+						logger.error("Error opening the browser.");
+						EmulatorLogger.logException(logger, e1);
 					}
 				}
 				updateStatusArea(getServerStatus());
