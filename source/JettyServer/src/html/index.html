@@ -3,7 +3,7 @@
      @brief Main page (only page?) for the BWT emulator
      @author Lucas Ray (ltray@cmu.edu)
   -->
-<html lang="en" manifest="cache.manifest">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>BWT Emulator</title>
@@ -36,6 +36,9 @@
   <!-- controllers -->
   <script type="text/javascript" src="./scripts/controllers/load.js"></script>
   <script type="text/javascript" src="./scripts/controllers/util.js"></script>
+
+  <!-- manifest hack to prevent this page from being cached -->
+  <iframe id="manifest_hack" style="display: none;" src="manifest_hack.html"></iframe>
 </head>
 <body>
   <div id="loading">
