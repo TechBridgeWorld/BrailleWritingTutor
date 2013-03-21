@@ -26,6 +26,9 @@ $GREEN : rgba(64, 127, 80, 0.2);
   background: rgba(84, 157, 110, 1);
   @include noisey($GREEN);
   border: solid thin rgba(0, 0, 0, .5);
+
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }
 
 #top_bar {

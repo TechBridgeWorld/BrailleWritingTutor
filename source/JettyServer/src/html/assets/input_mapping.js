@@ -7,6 +7,7 @@
 window.input_mapping =
 {
   "_initialize" : "init",
+  "_uninitialize" : "uninit",
 
   "_left"  : "a n",
 

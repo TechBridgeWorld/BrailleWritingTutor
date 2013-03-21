@@ -208,23 +208,50 @@ $(document).ready(function() {
 
     // handle the init button separately since it doesn't need to
     // adhere to strange emulator-specific timings
+    var is_handshaking = false;
     $("#_initialize").on('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
+      // have initialize toggle
+      if (is_handshaking === false) {
+        is_handshaking = true;
+        $('#_initialize').addClass('active');
+        // send init code to the server
+        window.LOG_INFO("Sending initialize");
 
-      // send init code to the server
-      window.LOG_INFO("Sending initialize");
-      $.ajax({
-        url: '/sendBytes.do?code=' + window.input_mapping['_initialize'],
-        type: 'GET',
-        success: function(data) {
-          window.LOG_INFO("initialize succeeded");
-        },
-        error: function(data) {
-          // TODO: handle this better
-          window.LOG_ERROR("initialize failed");
-        },
-      });
+        // update DOM to reflect press
+        $('#handshake_status').html('ON').addClass('active');
+        $.ajax({
+          url: '/sendBytes.do?code=' + window.input_mapping['_initialize'],
+          type: 'GET',
+          success: function(data) {
+            window.LOG_INFO("initialize succeeded");
+          },
+          error: function(data) {
+            // TODO: handle this better
+            window.LOG_ERROR("initialize failed");
+          },
+        });
+      } else {
+        is_handshaking = false;
+        $('#_initialize').removeClass('active');
+        // otherwise send uninitialize to server
+        window.LOG_INFO("Terminating initialize");
+
+        // update DOM
+        $('#handshake_status').html('OFF').removeClass('active');
+        $.ajax({
+          url: '/sendBytes.do?code=' + window.input_mapping['_uninitialize'],
+          type: 'GET',
+          success: function(data) {
+            window.LOG_INFO("uninitialize succeeded");
+          },
+          error: function(data) {
+            // TODO: handle this better
+            window.LOG_ERROR("uninitialize failed");
+          },
+        });
+      };
     });
   };
 

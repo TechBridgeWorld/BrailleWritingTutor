@@ -19,7 +19,9 @@
   /* Opera 11.10+ */
   background-image: linear-gradient(top, rgba(64, 127, 80, 0.2), rgba(64, 127, 80, 0.2)), url("../assets/noise.png");
   /* W3C */
-  border: solid thin rgba(0, 0, 0, 0.5); }
+  border: solid thin rgba(0, 0, 0, 0.5);
+  -moz-border-radius: 5px;
+  border-radius: 5px; }
 
 #top_bar {
   position: relative;

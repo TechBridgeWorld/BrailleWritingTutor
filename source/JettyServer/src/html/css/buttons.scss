@@ -1,17 +1,94 @@
 // css for buttons
+// mixins
+@mixin noisey($color) {
+  $NOISE : "../assets/noise.png";
+  background-image: url($NOISE);
+  background-image: -webkit-gradient(linear, left top, left bottom, from($color), to($color)), url($NOISE);
+  background-image: -webkit-linear-gradient(top, $color, $color), url($NOISE); /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, $color, $color), url($NOISE); /* FF3.6+ */;
+  background-image: -ms-linear-gradient(top, $color, $color), url($NOISE); /* IE10 */;
+  background-image: -o-linear-gradient(top, $color, $color), url($NOISE); /* Opera 11.10+ */;
+  background-image: linear-gradient(top, $color, $color), url($NOISE); /* W3C */;
+}
+
+@mixin inner_shadow() {
+  -moz-box-shadow:    inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow:         inset 0 0 10px #000000;
+}
+
+@mixin green_inner_shadow() {
+  $THIS_GREEN : rgba(131, 232, 47, 1);
+  -moz-box-shadow:    inset 0 0 10px $THIS_GREEN;
+  -webkit-box-shadow: inset 0 0 10px $THIS_GREEN;
+  box-shadow:         inset 0 0 10px $THIS_GREEN;
+}
+
 .initbutton {
+  $GREEN : rgba(64, 127, 80, 1);
+  $GREEN_TRANSPARENT : rgba(67, 127, 80, 0.2);
   position: absolute;
   left: 20px;
-  top: 20px;
+  top: 15px;
   padding: 5px;
-  background: url("../assets/buttonbox_mid.png");
-  background-size: contain;
+  background: $GREEN;
+  @include noisey($GREEN_TRANSPARENT);
   cursor: pointer;
+  border: solid thin rgba(10, 10, 10, 0.4);
+  padding: 10px;
+
+  font-size: 18px;
+
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }
 
 .initbutton.active {
-  background: url("../assets/buttonbox_mid_down.png");
-  background-size: contain;
+  @include green_inner_shadow();
+}
+
+.initbutton.active:hover {
+  $LIGHT_GREEN : rgba(84, 137, 90, 1);
+  $LIGHT_GREEN_TRANSPARENT : rgba(84, 137, 90, 0.2);
+  background: $LIGHT_GREEN;
+  @include noisey($LIGHT_GREEN_TRANSPARENT);
+  @include green_inner_shadow();
+}
+
+.initbutton.active:active {
+  $DARK_GREEN : rgba(44, 110, 60, 1);
+  $DARK_GREEN_TRANSPARENT : rgba(44, 110, 60, 0.2);
+  background: $DARK_GREEN;
+  @include noisey($DARK_GREEN_TRANSPARENT);
+  @include green_inner_shadow();
+}
+
+.initbutton:active {
+  $DARK_GREEN : rgba(44, 110, 60, 1);
+  $DARK_GREEN_TRANSPARENT : rgba(44, 110, 60, 0.2);
+  background: $DARK_GREEN;
+  @include noisey($DARK_GREEN_TRANSPARENT);
+  @include inner_shadow();
+}
+
+.initbutton:hover {
+  $LIGHT_GREEN : rgba(84, 137, 90, 1);
+  $LIGHT_GREEN_TRANSPARENT : rgba(84, 137, 90, 0.2);
+  background: $LIGHT_GREEN;
+  @include noisey($LIGHT_GREEN_TRANSPARENT);
+}
+
+#handshake_status {
+  $HANDSHAKE_RED : rgba(222, 37, 37, 0.8);
+  display: inline;
+  font-weight: bold;
+  color: $HANDSHAKE_RED;
+  font-family: 'Merriweather Sans', sans-serif;
+}
+
+#handshake_status.active {
+  $HANDSHAKE_GREEN : rgba(111, 222, 37, 0.8);
+  color: $HANDSHAKE_GREEN;
 }
 
 .jumbobutton {

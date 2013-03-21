@@ -5,7 +5,7 @@
  */
 #top_bar {
   position: static;
-  width: 100%;
+  width: auto;
   height: 70px;
   background: #3c5d47;
   background-image: url("../assets/noise.png");

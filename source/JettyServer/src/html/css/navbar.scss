@@ -21,7 +21,7 @@
   $DARK_GREEN_TRANSPARENT : rgba(60, 93, 71, .2);
 
   position: static;
-  width: 100%;
+  width: auto;
   height: 70px;
   background: $DARK_GREEN;
   @include noisey($DARK_GREEN_TRANSPARENT);
