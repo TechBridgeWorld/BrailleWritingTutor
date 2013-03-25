@@ -21,3 +21,118 @@
   background-image: linear-gradient(top, rgba(60, 93, 71, 0.2), rgba(60, 93, 71, 0.2)), url("../assets/noise.png");
   /* W3C */
   border: solid thin rgba(22, 22, 22, 0.2); }
+
+.initbutton {
+  position: absolute;
+  left: 20px;
+  top: 15px; }
+
+.helpbutton {
+  position: absolute;
+  left: 200px;
+  top: 15px; }
+
+.topbutton {
+  padding: 5px;
+  background: #407f50;
+  background-image: url("../assets/noise.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(67, 127, 80, 0.2)), to(rgba(67, 127, 80, 0.2))), url("../assets/noise.png");
+  background-image: -webkit-linear-gradient(top, rgba(67, 127, 80, 0.2), rgba(67, 127, 80, 0.2)), url("../assets/noise.png");
+  /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, rgba(67, 127, 80, 0.2), rgba(67, 127, 80, 0.2)), url("../assets/noise.png");
+  /* FF3.6+ */
+  background-image: -ms-linear-gradient(top, rgba(67, 127, 80, 0.2), rgba(67, 127, 80, 0.2)), url("../assets/noise.png");
+  /* IE10 */
+  background-image: -o-linear-gradient(top, rgba(67, 127, 80, 0.2), rgba(67, 127, 80, 0.2)), url("../assets/noise.png");
+  /* Opera 11.10+ */
+  background-image: linear-gradient(top, rgba(67, 127, 80, 0.2), rgba(67, 127, 80, 0.2)), url("../assets/noise.png");
+  /* W3C */
+  cursor: pointer;
+  border: solid thin rgba(10, 10, 10, 0.4);
+  padding: 10px;
+  font-size: 18px;
+  -moz-border-radius: 5px;
+  border-radius: 5px; }
+
+.topbutton.active {
+  -moz-box-shadow: inset 0 0 10px #83e82f;
+  -webkit-box-shadow: inset 0 0 10px #83e82f;
+  box-shadow: inset 0 0 10px #83e82f; }
+
+.topbutton.active:hover {
+  background: #54895a;
+  background-image: url("../assets/noise.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(84, 137, 90, 0.2)), to(rgba(84, 137, 90, 0.2))), url("../assets/noise.png");
+  background-image: -webkit-linear-gradient(top, rgba(84, 137, 90, 0.2), rgba(84, 137, 90, 0.2)), url("../assets/noise.png");
+  /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, rgba(84, 137, 90, 0.2), rgba(84, 137, 90, 0.2)), url("../assets/noise.png");
+  /* FF3.6+ */
+  background-image: -ms-linear-gradient(top, rgba(84, 137, 90, 0.2), rgba(84, 137, 90, 0.2)), url("../assets/noise.png");
+  /* IE10 */
+  background-image: -o-linear-gradient(top, rgba(84, 137, 90, 0.2), rgba(84, 137, 90, 0.2)), url("../assets/noise.png");
+  /* Opera 11.10+ */
+  background-image: linear-gradient(top, rgba(84, 137, 90, 0.2), rgba(84, 137, 90, 0.2)), url("../assets/noise.png");
+  /* W3C */
+  -moz-box-shadow: inset 0 0 10px #83e82f;
+  -webkit-box-shadow: inset 0 0 10px #83e82f;
+  box-shadow: inset 0 0 10px #83e82f; }
+
+.topbutton.active:active {
+  background: #2c6e3c;
+  background-image: url("../assets/noise.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(44, 110, 60, 0.2)), to(rgba(44, 110, 60, 0.2))), url("../assets/noise.png");
+  background-image: -webkit-linear-gradient(top, rgba(44, 110, 60, 0.2), rgba(44, 110, 60, 0.2)), url("../assets/noise.png");
+  /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, rgba(44, 110, 60, 0.2), rgba(44, 110, 60, 0.2)), url("../assets/noise.png");
+  /* FF3.6+ */
+  background-image: -ms-linear-gradient(top, rgba(44, 110, 60, 0.2), rgba(44, 110, 60, 0.2)), url("../assets/noise.png");
+  /* IE10 */
+  background-image: -o-linear-gradient(top, rgba(44, 110, 60, 0.2), rgba(44, 110, 60, 0.2)), url("../assets/noise.png");
+  /* Opera 11.10+ */
+  background-image: linear-gradient(top, rgba(44, 110, 60, 0.2), rgba(44, 110, 60, 0.2)), url("../assets/noise.png");
+  /* W3C */
+  -moz-box-shadow: inset 0 0 10px #83e82f;
+  -webkit-box-shadow: inset 0 0 10px #83e82f;
+  box-shadow: inset 0 0 10px #83e82f; }
+
+.topbutton:active {
+  background: #2c6e3c;
+  background-image: url("../assets/noise.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(44, 110, 60, 0.2)), to(rgba(44, 110, 60, 0.2))), url("../assets/noise.png");
+  background-image: -webkit-linear-gradient(top, rgba(44, 110, 60, 0.2), rgba(44, 110, 60, 0.2)), url("../assets/noise.png");
+  /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, rgba(44, 110, 60, 0.2), rgba(44, 110, 60, 0.2)), url("../assets/noise.png");
+  /* FF3.6+ */
+  background-image: -ms-linear-gradient(top, rgba(44, 110, 60, 0.2), rgba(44, 110, 60, 0.2)), url("../assets/noise.png");
+  /* IE10 */
+  background-image: -o-linear-gradient(top, rgba(44, 110, 60, 0.2), rgba(44, 110, 60, 0.2)), url("../assets/noise.png");
+  /* Opera 11.10+ */
+  background-image: linear-gradient(top, rgba(44, 110, 60, 0.2), rgba(44, 110, 60, 0.2)), url("../assets/noise.png");
+  /* W3C */
+  -moz-box-shadow: inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow: inset 0 0 10px #000000; }
+
+.topbutton:hover {
+  background: #54895a;
+  background-image: url("../assets/noise.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(84, 137, 90, 0.2)), to(rgba(84, 137, 90, 0.2))), url("../assets/noise.png");
+  background-image: -webkit-linear-gradient(top, rgba(84, 137, 90, 0.2), rgba(84, 137, 90, 0.2)), url("../assets/noise.png");
+  /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, rgba(84, 137, 90, 0.2), rgba(84, 137, 90, 0.2)), url("../assets/noise.png");
+  /* FF3.6+ */
+  background-image: -ms-linear-gradient(top, rgba(84, 137, 90, 0.2), rgba(84, 137, 90, 0.2)), url("../assets/noise.png");
+  /* IE10 */
+  background-image: -o-linear-gradient(top, rgba(84, 137, 90, 0.2), rgba(84, 137, 90, 0.2)), url("../assets/noise.png");
+  /* Opera 11.10+ */
+  background-image: linear-gradient(top, rgba(84, 137, 90, 0.2), rgba(84, 137, 90, 0.2)), url("../assets/noise.png");
+  /* W3C */ }
+
+.buttonstatus {
+  display: inline;
+  font-weight: bold;
+  color: rgba(222, 37, 37, 0.8);
+  font-family: 'Merriweather Sans', sans-serif; }
+
+.buttonstatus.active {
+  color: rgba(111, 222, 37, 0.8); }

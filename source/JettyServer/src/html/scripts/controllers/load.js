@@ -24,6 +24,7 @@ $(document).ready(function() {
     configure_plugins();
     attach_handlers();
     init_processor();
+    add_tooltips();
     load_server();
   };
 
@@ -116,7 +117,7 @@ $(document).ready(function() {
     // helped function to add a minimize button to the specified element
     var add_minimize = function add_minimize($el) {
       var $minimize = $('<div>', {
-        'class': 'minimizer'
+        'class': 'minimizer tips'
       });
 
       // click handler for the minimize button
@@ -201,21 +202,48 @@ $(document).ready(function() {
   /** @brief Attaches event handlers necessary for our app.
    */
   var attach_handlers = function attach_handlers() {
+    // default power tips to enabled
+    window.powerTipsEnabled = true;
+
     // add buttons
     $(".button").each(function(ind, el) {
       add_button($(el));
     });
 
+    // helper used to manage toggle buttons
+    // @param $dom_el The dom element representing the toggle button
+    // @param toggle_bool The boolean used to keep track of this button's toggle status
+    // @param onTrue Callback to be used when we switch to true
+    // @param onFalse Callback to be usde when we switch to false
+    var toggle_button_helper = function toggle_button_helper($dom_el, toggle_bool, onTrue, onFalse) {
+      $dom_el.on('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (toggle_bool === false) {
+          // if switching to true
+          toggle_bool = true;
+
+          // add the active class
+          $dom_el.addClass('active');
+
+          onTrue();
+        } else {
+          // if switching to false
+          toggle_bool = false;
+
+          // remove the active class
+          $dom_el.removeClass('active');
+
+          onFalse();
+        };
+      });
+    };
+
     // handle the init button separately since it doesn't need to
     // adhere to strange emulator-specific timings
     var is_handshaking = false;
-    $("#_initialize").on('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      // have initialize toggle
-      if (is_handshaking === false) {
-        is_handshaking = true;
-        $('#_initialize').addClass('active');
+    toggle_button_helper($("#_initialize"), is_handshaking,
+      function onTrue() {
         // send init code to the server
         window.LOG_INFO("Sending initialize");
 
@@ -232,9 +260,8 @@ $(document).ready(function() {
             window.LOG_ERROR("initialize failed");
           },
         });
-      } else {
-        is_handshaking = false;
-        $('#_initialize').removeClass('active');
+      },
+      function onFalse() {
         // otherwise send uninitialize to server
         window.LOG_INFO("Terminating initialize");
 
@@ -251,14 +278,57 @@ $(document).ready(function() {
             window.LOG_ERROR("uninitialize failed");
           },
         });
-      };
-    });
+      }
+    );
+
+    // handle the help button separately also
+    var is_helping = true;
+    toggle_button_helper($('#help_tooltips'), is_helping,
+      function onTrue() {
+        window.LOG_INFO("Turning help ON.");
+
+        // update DOM
+        $('#help_tooltips_status').html('ON').addClass('active');
+
+        // show powertip
+        window.powerTipsEnabled = true;
+      },
+      function onFalse() {
+        window.LOG_INFO("Turning help OFF.");
+
+        // update DOM
+        $('#help_tooltips_status').html('OFF').removeClass('active');
+
+        // hide tips
+        window.powerTipsEnabled = false;
+      }
+    );
   };
 
   /** @brief Patches functions for our app (e.g. bind if running on iOS)
    */
   var patch = function patch() {
   };
+
+  /** @brief Adds tooltips to items people may need help with.
+   */
+  window.add_tooltips = function add_tooltips() {
+    window.add_info($('#_initialize'),
+      'Handshaking',
+      'Toggles the handshaking process. See the \'<a href="#" class="tooltip_link">Getting Started</a>\' tutorial for ' +
+      'more information.', 'se');
+
+    window.add_info($('.minimizer'),
+      'Maximize/Minimize',
+      'Minimize or maximize this plugin.',
+      'w');
+
+    window.add_info($('#help_tooltips'),
+      'Helpful Tooltips',
+      'Toggles helpful mouseover tooltips like this one.',
+      'se');
+  };
+
 
   // run our main method
   main();

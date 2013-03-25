@@ -25,6 +25,8 @@
 
   <!-- libs -->
   <script type="text/javascript" src="./scripts/libs/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript" src="./scripts/libs/jquery.powertip.js"></script>
+  <link type="text/css" href="./css/libs/jquery.powertip.css" rel="stylesheet" />
 
   <!-- models -->
   <script type="text/javascript" src="./scripts/models/Button.js"></script>
@@ -35,8 +37,8 @@
   <script type="text/javascript" src="./scripts/views/Viewer.js"></script>
 
   <!-- controllers -->
-  <script type="text/javascript" src="./scripts/controllers/load.js"></script>
   <script type="text/javascript" src="./scripts/controllers/util.js"></script>
+  <script type="text/javascript" src="./scripts/controllers/load.js"></script>
 
   <!-- manifest hack to prevent this page from being cached -->
   <iframe id="manifest_hack" style="display: none;" src="manifest_hack.html"></iframe>
@@ -58,7 +60,8 @@
 
       <!-- fixed top navigation bar -->
       <div id="top_bar">
-        <div id="_initialize" class="initbutton">handshaking: <p id="handshake_status">OFF</p></div>
+        <div id="_initialize" class="initbutton topbutton tips">handshaking: <p id="handshake_status" class="buttonstatus">OFF</p></div>
+        <div id="help_tooltips" class="helpbutton topbutton active tips">help tooltips: <p id="help_tooltips_status" class="buttonstatus active">ON</p></div>
       </div>
 
       <!-- main plugin: the emulator -->
@@ -109,7 +112,7 @@
 
     <br />
     </div>
-    <p id="version">Version 1.0.5</p>
+    <p id="version">Version 1.0.7</p>
   </div>
 </body>
 </html>
