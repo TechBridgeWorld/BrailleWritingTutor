@@ -22,111 +22,112 @@
   /* W3C */
   border: solid thin rgba(22, 22, 22, 0.2); }
 
-.initbutton {
-  position: absolute;
-  left: 20px;
-  top: 15px; }
-
-.helpbutton {
-  position: absolute;
-  left: 200px;
-  top: 15px; }
-
 .topbutton {
+  position: static;
+  float: left;
+  margin-top: 12px;
+  margin-left: 15px;
   padding: 5px;
-  background: #407f50;
+  background: #2e2e2e;
   background-image: url("../assets/noise.png");
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(67, 127, 80, 0.2)), to(rgba(67, 127, 80, 0.2))), url("../assets/noise.png");
-  background-image: -webkit-linear-gradient(top, rgba(67, 127, 80, 0.2), rgba(67, 127, 80, 0.2)), url("../assets/noise.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(46, 46, 46, 0.2)), to(rgba(46, 46, 46, 0.2))), url("../assets/noise.png");
+  background-image: -webkit-linear-gradient(top, rgba(46, 46, 46, 0.2), rgba(46, 46, 46, 0.2)), url("../assets/noise.png");
   /* Chrome 10+, Saf5.1+ */
-  background-image: -moz-linear-gradient(top, rgba(67, 127, 80, 0.2), rgba(67, 127, 80, 0.2)), url("../assets/noise.png");
+  background-image: -moz-linear-gradient(top, rgba(46, 46, 46, 0.2), rgba(46, 46, 46, 0.2)), url("../assets/noise.png");
   /* FF3.6+ */
-  background-image: -ms-linear-gradient(top, rgba(67, 127, 80, 0.2), rgba(67, 127, 80, 0.2)), url("../assets/noise.png");
+  background-image: -ms-linear-gradient(top, rgba(46, 46, 46, 0.2), rgba(46, 46, 46, 0.2)), url("../assets/noise.png");
   /* IE10 */
-  background-image: -o-linear-gradient(top, rgba(67, 127, 80, 0.2), rgba(67, 127, 80, 0.2)), url("../assets/noise.png");
+  background-image: -o-linear-gradient(top, rgba(46, 46, 46, 0.2), rgba(46, 46, 46, 0.2)), url("../assets/noise.png");
   /* Opera 11.10+ */
-  background-image: linear-gradient(top, rgba(67, 127, 80, 0.2), rgba(67, 127, 80, 0.2)), url("../assets/noise.png");
+  background-image: linear-gradient(top, rgba(46, 46, 46, 0.2), rgba(46, 46, 46, 0.2)), url("../assets/noise.png");
   /* W3C */
   cursor: pointer;
   border: solid thin rgba(10, 10, 10, 0.4);
   padding: 10px;
   font-size: 18px;
+  color: #e6e6e6;
   -moz-border-radius: 5px;
-  border-radius: 5px; }
+  border-radius: 5px;
+  -moz-box-shadow: inset 0 0 3px #c80000;
+  -webkit-box-shadow: inset 0 0 3px #c80000;
+  box-shadow: inset 0 0 3px #c80000; }
 
 .topbutton.active {
-  -moz-box-shadow: inset 0 0 10px #83e82f;
-  -webkit-box-shadow: inset 0 0 10px #83e82f;
-  box-shadow: inset 0 0 10px #83e82f; }
+  -moz-box-shadow: inset 0 0 3px #83e82f;
+  -webkit-box-shadow: inset 0 0 3px #83e82f;
+  box-shadow: inset 0 0 3px #83e82f; }
 
 .topbutton.active:hover {
-  background: #54895a;
+  background: #4d4d4d;
   background-image: url("../assets/noise.png");
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(84, 137, 90, 0.2)), to(rgba(84, 137, 90, 0.2))), url("../assets/noise.png");
-  background-image: -webkit-linear-gradient(top, rgba(84, 137, 90, 0.2), rgba(84, 137, 90, 0.2)), url("../assets/noise.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(77, 77, 77, 0.2)), to(rgba(77, 77, 77, 0.2))), url("../assets/noise.png");
+  background-image: -webkit-linear-gradient(top, rgba(77, 77, 77, 0.2), rgba(77, 77, 77, 0.2)), url("../assets/noise.png");
   /* Chrome 10+, Saf5.1+ */
-  background-image: -moz-linear-gradient(top, rgba(84, 137, 90, 0.2), rgba(84, 137, 90, 0.2)), url("../assets/noise.png");
+  background-image: -moz-linear-gradient(top, rgba(77, 77, 77, 0.2), rgba(77, 77, 77, 0.2)), url("../assets/noise.png");
   /* FF3.6+ */
-  background-image: -ms-linear-gradient(top, rgba(84, 137, 90, 0.2), rgba(84, 137, 90, 0.2)), url("../assets/noise.png");
+  background-image: -ms-linear-gradient(top, rgba(77, 77, 77, 0.2), rgba(77, 77, 77, 0.2)), url("../assets/noise.png");
   /* IE10 */
-  background-image: -o-linear-gradient(top, rgba(84, 137, 90, 0.2), rgba(84, 137, 90, 0.2)), url("../assets/noise.png");
+  background-image: -o-linear-gradient(top, rgba(77, 77, 77, 0.2), rgba(77, 77, 77, 0.2)), url("../assets/noise.png");
   /* Opera 11.10+ */
-  background-image: linear-gradient(top, rgba(84, 137, 90, 0.2), rgba(84, 137, 90, 0.2)), url("../assets/noise.png");
+  background-image: linear-gradient(top, rgba(77, 77, 77, 0.2), rgba(77, 77, 77, 0.2)), url("../assets/noise.png");
   /* W3C */
-  -moz-box-shadow: inset 0 0 10px #83e82f;
-  -webkit-box-shadow: inset 0 0 10px #83e82f;
-  box-shadow: inset 0 0 10px #83e82f; }
+  -moz-box-shadow: inset 0 0 3px #83e82f;
+  -webkit-box-shadow: inset 0 0 3px #83e82f;
+  box-shadow: inset 0 0 3px #83e82f; }
 
-.topbutton.active:active {
-  background: #2c6e3c;
+.topbutton.active.tips:active {
+  background: #1b1b1b;
   background-image: url("../assets/noise.png");
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(44, 110, 60, 0.2)), to(rgba(44, 110, 60, 0.2))), url("../assets/noise.png");
-  background-image: -webkit-linear-gradient(top, rgba(44, 110, 60, 0.2), rgba(44, 110, 60, 0.2)), url("../assets/noise.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(27, 27, 27, 0.2)), to(rgba(27, 27, 27, 0.2))), url("../assets/noise.png");
+  background-image: -webkit-linear-gradient(top, rgba(27, 27, 27, 0.2), rgba(27, 27, 27, 0.2)), url("../assets/noise.png");
   /* Chrome 10+, Saf5.1+ */
-  background-image: -moz-linear-gradient(top, rgba(44, 110, 60, 0.2), rgba(44, 110, 60, 0.2)), url("../assets/noise.png");
+  background-image: -moz-linear-gradient(top, rgba(27, 27, 27, 0.2), rgba(27, 27, 27, 0.2)), url("../assets/noise.png");
   /* FF3.6+ */
-  background-image: -ms-linear-gradient(top, rgba(44, 110, 60, 0.2), rgba(44, 110, 60, 0.2)), url("../assets/noise.png");
+  background-image: -ms-linear-gradient(top, rgba(27, 27, 27, 0.2), rgba(27, 27, 27, 0.2)), url("../assets/noise.png");
   /* IE10 */
-  background-image: -o-linear-gradient(top, rgba(44, 110, 60, 0.2), rgba(44, 110, 60, 0.2)), url("../assets/noise.png");
+  background-image: -o-linear-gradient(top, rgba(27, 27, 27, 0.2), rgba(27, 27, 27, 0.2)), url("../assets/noise.png");
   /* Opera 11.10+ */
-  background-image: linear-gradient(top, rgba(44, 110, 60, 0.2), rgba(44, 110, 60, 0.2)), url("../assets/noise.png");
+  background-image: linear-gradient(top, rgba(27, 27, 27, 0.2), rgba(27, 27, 27, 0.2)), url("../assets/noise.png");
   /* W3C */
-  -moz-box-shadow: inset 0 0 10px #83e82f;
-  -webkit-box-shadow: inset 0 0 10px #83e82f;
-  box-shadow: inset 0 0 10px #83e82f; }
+  -moz-box-shadow: inset 0 0 3px #83e82f;
+  -webkit-box-shadow: inset 0 0 3px #83e82f;
+  box-shadow: inset 0 0 3px #83e82f; }
 
-.topbutton:active {
-  background: #2c6e3c;
+.topbutton.tips:active {
+  background: #1b1b1b;
   background-image: url("../assets/noise.png");
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(44, 110, 60, 0.2)), to(rgba(44, 110, 60, 0.2))), url("../assets/noise.png");
-  background-image: -webkit-linear-gradient(top, rgba(44, 110, 60, 0.2), rgba(44, 110, 60, 0.2)), url("../assets/noise.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(27, 27, 27, 0.2)), to(rgba(27, 27, 27, 0.2))), url("../assets/noise.png");
+  background-image: -webkit-linear-gradient(top, rgba(27, 27, 27, 0.2), rgba(27, 27, 27, 0.2)), url("../assets/noise.png");
   /* Chrome 10+, Saf5.1+ */
-  background-image: -moz-linear-gradient(top, rgba(44, 110, 60, 0.2), rgba(44, 110, 60, 0.2)), url("../assets/noise.png");
+  background-image: -moz-linear-gradient(top, rgba(27, 27, 27, 0.2), rgba(27, 27, 27, 0.2)), url("../assets/noise.png");
   /* FF3.6+ */
-  background-image: -ms-linear-gradient(top, rgba(44, 110, 60, 0.2), rgba(44, 110, 60, 0.2)), url("../assets/noise.png");
+  background-image: -ms-linear-gradient(top, rgba(27, 27, 27, 0.2), rgba(27, 27, 27, 0.2)), url("../assets/noise.png");
   /* IE10 */
-  background-image: -o-linear-gradient(top, rgba(44, 110, 60, 0.2), rgba(44, 110, 60, 0.2)), url("../assets/noise.png");
+  background-image: -o-linear-gradient(top, rgba(27, 27, 27, 0.2), rgba(27, 27, 27, 0.2)), url("../assets/noise.png");
   /* Opera 11.10+ */
-  background-image: linear-gradient(top, rgba(44, 110, 60, 0.2), rgba(44, 110, 60, 0.2)), url("../assets/noise.png");
+  background-image: linear-gradient(top, rgba(27, 27, 27, 0.2), rgba(27, 27, 27, 0.2)), url("../assets/noise.png");
   /* W3C */
-  -moz-box-shadow: inset 0 0 10px #000000;
-  -webkit-box-shadow: inset 0 0 10px #000000;
-  box-shadow: inset 0 0 10px #000000; }
+  -moz-box-shadow: inset 0 0 3px #c80000;
+  -webkit-box-shadow: inset 0 0 3px #c80000;
+  box-shadow: inset 0 0 3px #c80000; }
 
 .topbutton:hover {
-  background: #54895a;
+  background: #4d4d4d;
   background-image: url("../assets/noise.png");
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(84, 137, 90, 0.2)), to(rgba(84, 137, 90, 0.2))), url("../assets/noise.png");
-  background-image: -webkit-linear-gradient(top, rgba(84, 137, 90, 0.2), rgba(84, 137, 90, 0.2)), url("../assets/noise.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(77, 77, 77, 0.2)), to(rgba(77, 77, 77, 0.2))), url("../assets/noise.png");
+  background-image: -webkit-linear-gradient(top, rgba(77, 77, 77, 0.2), rgba(77, 77, 77, 0.2)), url("../assets/noise.png");
   /* Chrome 10+, Saf5.1+ */
-  background-image: -moz-linear-gradient(top, rgba(84, 137, 90, 0.2), rgba(84, 137, 90, 0.2)), url("../assets/noise.png");
+  background-image: -moz-linear-gradient(top, rgba(77, 77, 77, 0.2), rgba(77, 77, 77, 0.2)), url("../assets/noise.png");
   /* FF3.6+ */
-  background-image: -ms-linear-gradient(top, rgba(84, 137, 90, 0.2), rgba(84, 137, 90, 0.2)), url("../assets/noise.png");
+  background-image: -ms-linear-gradient(top, rgba(77, 77, 77, 0.2), rgba(77, 77, 77, 0.2)), url("../assets/noise.png");
   /* IE10 */
-  background-image: -o-linear-gradient(top, rgba(84, 137, 90, 0.2), rgba(84, 137, 90, 0.2)), url("../assets/noise.png");
+  background-image: -o-linear-gradient(top, rgba(77, 77, 77, 0.2), rgba(77, 77, 77, 0.2)), url("../assets/noise.png");
   /* Opera 11.10+ */
-  background-image: linear-gradient(top, rgba(84, 137, 90, 0.2), rgba(84, 137, 90, 0.2)), url("../assets/noise.png");
-  /* W3C */ }
+  background-image: linear-gradient(top, rgba(77, 77, 77, 0.2), rgba(77, 77, 77, 0.2)), url("../assets/noise.png");
+  /* W3C */
+  -moz-box-shadow: inset 0 0 3px #c80000;
+  -webkit-box-shadow: inset 0 0 3px #c80000;
+  box-shadow: inset 0 0 3px #c80000; }
 
 .buttonstatus {
   display: inline;

@@ -24,9 +24,16 @@
 
 @mixin green_inner_shadow() {
   $THIS_GREEN : rgba(131, 232, 47, 1);
-  -moz-box-shadow:    inset 0 0 10px $THIS_GREEN;
-  -webkit-box-shadow: inset 0 0 10px $THIS_GREEN;
-  box-shadow:         inset 0 0 10px $THIS_GREEN;
+  -moz-box-shadow:    inset 0 0 3px $THIS_GREEN;
+  -webkit-box-shadow: inset 0 0 3px $THIS_GREEN;
+  box-shadow:         inset 0 0 3px $THIS_GREEN;
+}
+
+@mixin red_inner_shadow() {
+  $THIS_RED : rgba(200, 0, 0, 1);
+  -moz-box-shadow:    inset 0 0 3px $THIS_RED;
+  -webkit-box-shadow: inset 0 0 3px $THIS_RED;
+  box-shadow:         inset 0 0 3px $THIS_RED;
 }
 
 #top_bar {
@@ -42,32 +49,28 @@
   border: solid thin rgba(22, 22, 22, 0.2);
 }
 
-.initbutton {
-  position: absolute;
-  left: 20px;
-  top: 15px;
-}
-
-.helpbutton {
-  position: absolute;
-  left: 200px;
-  top: 15px;
-}
-
 .topbutton {
-  $GREEN : rgba(64, 127, 80, 1);
-  $GREEN_TRANSPARENT : rgba(67, 127, 80, 0.2);
+  position: static;
+  float: left;
+  margin-top: 12px;
+  margin-left: 15px;
+
+  $DARK_GRAY : rgba(46, 46, 46, 1);
+  $DARK_GRAY_TRANSPARENT : rgba(46, 46, 46, 0.2);
   padding: 5px;
-  background: $GREEN;
-  @include noisey($GREEN_TRANSPARENT);
+  background: $DARK_GRAY;
+  @include noisey($DARK_GRAY_TRANSPARENT);
   cursor: pointer;
   border: solid thin rgba(10, 10, 10, 0.4);
   padding: 10px;
 
   font-size: 18px;
+  color: rgba(230, 230, 230, 1);
 
   -moz-border-radius: 5px;
   border-radius: 5px;
+
+  @include red_inner_shadow();
 }
 
 .topbutton.active {
@@ -75,34 +78,37 @@
 }
 
 .topbutton.active:hover {
-  $LIGHT_GREEN : rgba(84, 137, 90, 1);
-  $LIGHT_GREEN_TRANSPARENT : rgba(84, 137, 90, 0.2);
-  background: $LIGHT_GREEN;
-  @include noisey($LIGHT_GREEN_TRANSPARENT);
+  $LIGHT_GRAY : rgba(77, 77, 77, 1);
+  $LIGHT_GRAY_TRANSPARENT : rgba(77, 77, 77, 0.2);
+  background: $LIGHT_GRAY;
+  @include noisey($LIGHT_GRAY_TRANSPARENT);
   @include green_inner_shadow();
 }
 
-.topbutton.active:active {
-  $DARK_GREEN : rgba(44, 110, 60, 1);
-  $DARK_GREEN_TRANSPARENT : rgba(44, 110, 60, 0.2);
-  background: $DARK_GREEN;
-  @include noisey($DARK_GREEN_TRANSPARENT);
+// HACK: need to increase specificity of below, so add .tips to selector
+.topbutton.active.tips:active {
+  $DARKER_GRAY : rgba(27, 27, 27, 1);
+  $DARKER_GRAY_TRANSPARENT : rgba(27, 27, 27, 0.2);
+  background: $DARKER_GRAY;
+  @include noisey($DARKER_GRAY_TRANSPARENT);
   @include green_inner_shadow();
 }
 
-.topbutton:active {
-  $DARK_GREEN : rgba(44, 110, 60, 1);
-  $DARK_GREEN_TRANSPARENT : rgba(44, 110, 60, 0.2);
-  background: $DARK_GREEN;
-  @include noisey($DARK_GREEN_TRANSPARENT);
-  @include inner_shadow();
+// HACK: need to increase specificity of below, so add .tips to selector
+.topbutton.tips:active {
+  $DARKER_GRAY : rgba(27, 27, 27, 1);
+  $DARKER_GRAY_TRANSPARENT : rgba(27, 27, 27, 0.2);
+  background: $DARKER_GRAY;
+  @include noisey($DARKER_GRAY_TRANSPARENT);
+  @include red_inner_shadow();
 }
 
 .topbutton:hover {
-  $LIGHT_GREEN : rgba(84, 137, 90, 1);
-  $LIGHT_GREEN_TRANSPARENT : rgba(84, 137, 90, 0.2);
-  background: $LIGHT_GREEN;
-  @include noisey($LIGHT_GREEN_TRANSPARENT);
+  $LIGHT_GRAY : rgba(77, 77, 77, 1);
+  $LIGHT_GRAY_TRANSPARENT : rgba(77, 77, 77, 0.2);
+  background: $LIGHT_GRAY;
+  @include noisey($LIGHT_GRAY_TRANSPARENT);
+  @include red_inner_shadow();
 }
 
 .buttonstatus {
