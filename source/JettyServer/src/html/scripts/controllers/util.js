@@ -3,6 +3,9 @@
  *
  *  @author Lucas Ray (ltray@cmu.edu)
  */
+
+// call this immediately, as some initialization code in models requires
+// some of these methods
 $(document).ready(function() {
   "use strict";
 

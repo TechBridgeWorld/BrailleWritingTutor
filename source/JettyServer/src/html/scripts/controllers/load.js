@@ -11,7 +11,10 @@ $(document).ready(function() {
   var __NUM_SLATEROWS = 2;  // number of slate rows
   var __NUM_SLATEDOTS = 6;  // number of dots per slate group
   var __NUM_SLATEDOTS_LEFT = 3; // number of dots in left group
-  var __BUTTON_MAP = {}; // object holding our buttons
+  var __GLYPH_MAP = {}; // object holding our glyphs
+  var __CODE_TO_GLYPH_ID = {}; // object mapping keycodes to glyph IDs
+  window.__BUTTON_MAP = {}; // object holding our buttons
+  window.cur_mouseover = undefined;
 
   /** @brief Main method for load.
    */
@@ -67,8 +70,29 @@ $(document).ready(function() {
     var i;
     for (i = 0; i < __NUM_SLATEROWS * __NUM_SLATEGROUPS; i++) {
       var $slategroup = $('<div>', {
-        'class': 'slategroup shadow'
+        'class': 'slategroup shadow',
+        'groupnumber': i + 1
       });
+
+      // Add mouseover handler for the slategroup for our glyphs. See Glyph.js
+      // for more info
+      $slategroup.on('mouseover', (function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        // clear current mouseover if any
+        if (window.__GLYPHS_ENABLED === true) {
+          if (window.cur_mouseover !== undefined) {
+            window.cur_mouseover.removeClass('mouseover');
+          };
+          window.cur_mouseover = undefined;
+
+          // set the mouse_cell and cur_mouseover to this slategroup
+          window.mouse_cell = "_slate" + this.attr('groupnumber') + "_";
+          window.cur_mouseover = this;
+          window.cur_mouseover.addClass('mouseover');
+        };
+      }).bind($slategroup));
 
       // Add the buttons to each slate group
       var j;
@@ -98,6 +122,12 @@ $(document).ready(function() {
       $slategroup.append($leftgroup);
       $slategroup.append($rightgroup);
 
+      // append a glyph display
+      var $glyph_display = $('<p>', {
+        'class': 'glyph_display'
+      });
+      $slategroup.append($glyph_display);
+
       // add to row 1 if first 16, row 2 otherwise
       var $row;
       if (i < __NUM_SLATEGROUPS) {
@@ -109,6 +139,21 @@ $(document).ready(function() {
       // append the slate group to the slate row
       $row.append($slategroup);
     };
+
+    // add event handler for the board to remove window.mouse_cell when
+    // not hovering over a cell
+    $(window).on('mouseover', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (window.__GLYPHS_ENABLED === true) {
+        window.mouse_cell = undefined;
+        if (window.cur_mouseover !== undefined) {
+          window.cur_mouseover.removeClass('mouseover');
+        };
+        window.cur_mouseover = undefined;
+      };
+    });
   };
 
   /** @brief Configures plugins. Adds minimize buttons, etc.
@@ -210,6 +255,73 @@ $(document).ready(function() {
       add_button($(el));
     });
 
+    attach_toggle_buttons();
+    attach_glyph_handlers();
+  };
+
+  /** @brief Attaches handlers to buttons to send the glyph associated with that letter.
+   */
+  var attach_glyph_handlers = function attach_glyph_handlers() {
+    // initialize glyphs to on
+    window.__GLYPHS_ENABLED = true;
+
+    // first, create glyphs for each of the letters in glyph_mapping
+    var i;
+    for (i in window.glyph_mapping) {
+      var this_glyph = new window.Glyph({
+        'id': i,
+        'code': window.glyph_mapping[i]
+      });
+
+      __GLYPH_MAP[i] = this_glyph;
+    };
+
+    // attach a global keypress handler to the window to handle all glyph button
+    // presses rather than per-letter handlers
+    $(window).on('keypress', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      // only update if glyphs are enabled
+      if (window.__GLYPHS_ENABLED === true) {
+        var key_code = e.keyCode || e.which;
+        try {
+          var this_glyph = __GLYPH_MAP[__CODE_TO_GLYPH_ID[key_code]];
+          this_glyph.send();
+        } catch(err) {
+          // Only throws if the key press isn't registered as a glyph button, so
+          // just ignore it
+          return;
+        };
+      };
+    });
+
+    // now bind keypresses to fire these glyphs
+
+    /** @brief Helper to attach a specific letter to the window handler.
+     *
+     *  @param keycode Which ascii keycode should fire this glyph.
+     *  @param id The ID of the glyph to fire (must match key in window.glyph_mapping).
+     */
+    var attach_letter = function attach_letter(keycode, id) {
+      __CODE_TO_GLYPH_ID[keycode] = id;
+    };
+
+    // ENGLISH
+    // add each of the english letters as glyphs
+    var english_alphabet = "abcdefghijklmnopqrstuvwxyz".split('');
+    english_alphabet.map(function(el) {
+      attach_letter(el.charCodeAt(0), el);
+    });
+
+    // OTHER LANGUAGES
+    // if you want to add support for glyphs in other languages, attach them here.
+    // be sure to update /assets/glyph_mapping.js as well
+  };
+
+  /** @brief Helper function to attach the toggle button handlers.
+   */
+  var attach_toggle_buttons = function attach_toggle_buttons() {
     // helper used to manage toggle buttons
     // @param $dom_el The dom element representing the toggle button
     // @param toggle_bool The boolean used to keep track of this button's toggle status
@@ -303,6 +415,24 @@ $(document).ready(function() {
         window.powerTipsEnabled = false;
       }
     );
+
+    // toggle button to enable glyphs
+    toggle_button_helper($('#glyph_toggle'), window.__GLYPHS_ENABLED,
+      function onTrue() {
+        window.LOG_INFO("Turning glyphs OFF.");
+
+        // update DOM
+        $('#glyphs_enabled_status').html('ON').addClass('active');
+        window.__GLYPHS_ENABLED = true;
+      },
+      function onFalse() {
+        window.LOG_INFO("Turning glyphs ON.");
+
+        // update DOM
+        $('#glyphs_enabled_status').html('OFF').removeClass('active');
+        window.__GLYPHS_ENABLED = false;
+      }
+    );
   };
 
   /** @brief Patches functions for our app (e.g. bind if running on iOS)
@@ -316,17 +446,27 @@ $(document).ready(function() {
     window.add_info($('#_initialize'),
       'Handshaking',
       'Toggles the handshaking process. See the \'<a href="#" class="tooltip_link">Getting Started</a>\' tutorial for ' +
-      'more information.', 'se');
+      'more information.', 'se'
+    );
 
     window.add_info($('.minimizer'),
       'Maximize/Minimize',
       'Minimize or maximize this plugin.',
-      'w');
+      'w'
+    );
 
     window.add_info($('#help_tooltips'),
       'Helpful Tooltips',
       'Toggles helpful mouseover tooltips like this one.',
-      'se');
+      'se'
+    );
+
+    window.add_info($('#glyph_toggle'),
+      'Glyphs',
+      'Toggles the use of glyphs. See \'<a href="#" class="tooltip_link">Glyphs</a>\' for' +
+      'more information.',
+      'se'
+    );
   };
 
 

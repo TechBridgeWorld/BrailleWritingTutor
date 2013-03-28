@@ -124,3 +124,41 @@
 #slaterow2 {
   margin-top: -20px;
 }
+
+// Glyph specific stylings
+.glyphd:after {
+  $OVERLAY_COLOR : rgba(40, 40, 40, 0.7);
+
+  content: '';
+  color: white;
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: $OVERLAY_COLOR;
+}
+
+.slatebutton.button_glyphd {
+  background: url("../assets/slatecell_held.png") no-repeat;
+  background-size: contain;
+}
+
+.jumbobutton.button_glyphd {
+  background: url("../assets/jumbo_button_active.png") no-repeat;
+  background-size: contain;
+}
+
+.glyph_display {
+  display: none;
+}
+
+.glyph_display.active {
+  display: inline;
+  position: absolute;
+
+  text-align: center;
+  font-size: 30px;
+  color: white;
+  background: none;
+  z-index: 1000;
+}
