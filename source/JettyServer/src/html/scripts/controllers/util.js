@@ -5,6 +5,8 @@
  */
 $(document).ready(function() {
   "use strict";
+  //TODO Setting this to true for dev purpose.
+  window.__DEBUG = true;
 
   /** @brief Logs at the info level.
    *

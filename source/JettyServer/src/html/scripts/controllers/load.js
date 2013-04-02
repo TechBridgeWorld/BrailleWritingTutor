@@ -19,6 +19,7 @@ $(document).ready(function() {
     // show the loading screen while loading
     window.show_loading();
     window.hide_alert();
+    initializeRecording();
     patch();
     populate_dom();
     configure_plugins();
