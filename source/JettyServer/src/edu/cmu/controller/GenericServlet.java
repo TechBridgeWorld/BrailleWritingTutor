@@ -12,11 +12,10 @@ import org.slf4j.Logger;
 import edu.cmu.logger.EmulatorLogger;
 
 /**
- * A generic servlet that handles all HTTP requests except for static files. It
- * invokes {@link ActionHandler} to talk to the serial COM port.
+ * A generic servlet that handles all HTTP requests except for serving static files. It
+ * invokes {@link AbstractActionHandler} to talk to the serial COM port.
  * 
  * @author ziw
- * @see ActionHandler
  * 
  */
 public class GenericServlet extends HttpServlet {
@@ -27,7 +26,9 @@ public class GenericServlet extends HttpServlet {
 	
 	
 	private static final String BUTTON_CODE_PARAM_NAME = "code";
-	private static final String LOADING_REQUEST = "loading.do";
+	private static final String LOAD_REQUEST = "loading.do";
+	private static final String LOAD_SCRIPTS_REQUEST = "scripting.do";
+	private static final String SEND_BYTES_REQUEST = "sendBytes.do";
 	
 	private static final String REQUEST_ERROR_MSG = "Invalid HTTP request.";
 	
@@ -43,39 +44,20 @@ public class GenericServlet extends HttpServlet {
 		
 		String requestURL = request.getRequestURL().toString();
 		logger.info("Handling request: " + requestURL);
-		
-		if (requestURL != null) {
-			if(requestURL.endsWith(LOADING_REQUEST)){
-				logger.info("Loading request captured. Intializing TwoWaySerialCom");
-				try {					
-					handler.initSerialComm();	
-					sendText("TwoWaySerialComm initialized.", response);
-				} catch (Exception e) {
-					logger.error("Exception when initializing TwoWaySerialCom");
-					EmulatorLogger.logException(logger, e);
-					
-					//this will make the response be caught in the 'error' block of jquery.ajax()
-					response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-				}
-				return;
-			}
-			
-			String query = request.getQueryString();
-			if (query == null || query.trim().length() == 0
-					|| !requestURL.endsWith(".do")) {
-				// static files requests are handled via another handler.
-				// This servlet should only handle ajax request with buttonCode that ends with .do.
-				// so handle this request as error.
-				handleError(request, response);
-			} else {
-				//trim the query
-				query = query.trim();
-				String buttonCode = request.getParameter(BUTTON_CODE_PARAM_NAME);
-				handler.handleButtonCode(buttonCode);
-			}
+		if(requestURL == null){
+			handleError(request,response);
+		}
+		else if(requestURL.endsWith(LOAD_REQUEST)){
+			handleInitialLoadingRequest(request, response);
+		}
+		else if(requestURL.endsWith(LOAD_SCRIPTS_REQUEST)){
+			handleScriptingRequest(request, response);
+		}
+		else if(requestURL.endsWith(SEND_BYTES_REQUEST)){
+			handleButtonRequest(request, response);
 		}
 		else{
-			handleError(request, response);
+			handleError(request,response);
 		}
 
 	}
@@ -103,6 +85,42 @@ public class GenericServlet extends HttpServlet {
 		// handle error. log invalid request / redirect to error page.
 		logger.error("Invalid request. Request is null.");
 		sendText(REQUEST_ERROR_MSG,response);
+	}
+	
+	private void handleInitialLoadingRequest(HttpServletRequest request,
+			HttpServletResponse response) throws IOException{
+		logger.info("Loading request captured. Intializing TwoWaySerialCom");
+		try {					
+			handler.initSerialComm();	
+			sendText("TwoWaySerialComm initialized.", response);
+		} catch (Exception e) {
+			logger.error("Exception when initializing TwoWaySerialCom");
+			EmulatorLogger.logException(logger, e);
+			//this will make the response be caught in the 'error' block of jquery.ajax()
+			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+		}
+		return;
+	}
+	
+	private void handleButtonRequest(HttpServletRequest request,
+			HttpServletResponse response){
+		
+		String query = request.getQueryString();
+		if (query == null || query.trim().length() == 0) {
+			logger.error("send bytes request failed. Query is null. ");
+			handleError(request, response);
+		} else {
+			//trim the query
+			query = query.trim();
+			String buttonCode = request.getParameter(BUTTON_CODE_PARAM_NAME);
+			handler.handleButtonCode(buttonCode);
+		}
+		
+	}
+	
+	private void handleScriptingRequest(HttpServletRequest request,
+			HttpServletResponse response){
+		
 	}
 
 }

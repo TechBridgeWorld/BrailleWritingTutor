@@ -13,6 +13,7 @@ import javax.swing.SwingUtilities;
 import org.slf4j.Logger;
 
 import edu.cmu.logger.EmulatorLogger;
+import edu.cmu.scripting.ScriptLoader;
 import edu.cmu.server.JettyServer;
 
 /**
@@ -58,6 +59,7 @@ public class ControllerUI extends JFrame {
 		
 	public ControllerUI() {
 		initUI();
+//		logger.info(ClassLoader.getSystemClassLoader().getResource(".").getPath());
 		try {
 			handler = new UIActionHandler();
 			updateStatusArea(getServerStatus());

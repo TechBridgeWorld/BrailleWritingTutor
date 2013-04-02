@@ -17,7 +17,8 @@ public class EmulatorLogger {
 	
 	
 	/**
-	 * Returns a logger that writes to server.log. It should be used to log any server-related issues.
+	 * Returns a logger that writes to ./BWT_LOGS/server.log. 
+	 * It should be used to log any server-related issues.
 	 * @return
 	 */
 	public static Logger getServerLogger(){
@@ -25,8 +26,9 @@ public class EmulatorLogger {
 	}
 	
 	/**
-	 * Returns a logger that writes to emulator_debug.log. This log is used only for client debug when they 
-	 * develop for the BWT. Currently it only logs bytes sent to the hardware.
+	 * Returns a logger that writes to ./BWT_LOGS/emulator_debug.log. 
+	 * This log is used only for client to debug when developing for the BWT. 
+	 * Currently it only logs bytes sent to the hardware.
 	 * @return
 	 */
 	public static Logger getEmulatorDebugLogger(){
@@ -34,8 +36,8 @@ public class EmulatorLogger {
 	}
 	
 	/**
-	 * Returns a logger that writes to emulator_error.log. This log is used for any internal 
-	 * error(except for server errors) occurred when the emulator runs. 
+	 * Returns a logger that writes to ./BWT_LOGS/emulator_error.log. This log is used for any internal 
+	 * errors(except for server errors) and warnings occurred when the emulator runs. 
 	 * @return
 	 */
 	public static Logger getEmulatorInfoLogger(){
@@ -43,7 +45,7 @@ public class EmulatorLogger {
 	}
 	
 	/**
-	 * Logger an exception with the stack trace
+	 * Log an exception with the stack trace
 	 * @param logger
 	 */
 	public static void logException(Logger logger, Exception e){

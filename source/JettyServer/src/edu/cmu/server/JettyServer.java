@@ -100,7 +100,7 @@ public class JettyServer {
         //handler for ajax request
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
-        context.addServlet(new ServletHolder(this.genericServlet),"/");
+        context.addServlet(new ServletHolder(this.genericServlet),"/*");
         
         //add both handlers
         handlers.setHandlers(new Handler[] { resource_handler, context});

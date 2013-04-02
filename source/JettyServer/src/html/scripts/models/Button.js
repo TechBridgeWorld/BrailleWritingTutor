@@ -44,12 +44,15 @@ $(document).ready(function() {
    */
   window.Button.prototype.press_down = function press_down() {
     var prev_status = this.__holding;
-
+    
     // if not holding down, start holding
     if (this.__holding === false) {
       this.$dom_el.addClass('active');
       window._Processor.add_code(this.code, window.Constants.PRESSDOWN_NUM_TO_SEND);
       window._Processor.add_hold(this);
+      if(window.recording){
+          appendToRecordingQueue(this,__KEY_DOWN);
+      }
     }
 
     // if we were holding before, stop holding now
@@ -65,7 +68,11 @@ $(document).ready(function() {
       // remove the hold on press_up
       window._Processor.remove_hold(this);
       this.$dom_el.removeClass('active');
-    };
+      if(window.recording){
+          appendToRecordingQueue(this,__KEY_UP);
+      }
+    }
+
     // if holding (from a shift), ignore the press_up event
   };
 
