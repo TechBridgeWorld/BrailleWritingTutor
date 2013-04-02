@@ -36,3 +36,17 @@ $SOFT_SHADOW_COLOR : rgba(10, 10, 10, 0.6);
   border-radius: 10px;
   -moz-border-radius: 10px;
 }
+
+.tooltip_header {
+  font-weight: bold;
+  text-align: center;
+}
+
+#powerTip {
+  max-width: 300px;
+  white-space: normal !important;
+}
+
+.tooltip_link {
+  color: rgba(0, 204, 255, 1);
+}

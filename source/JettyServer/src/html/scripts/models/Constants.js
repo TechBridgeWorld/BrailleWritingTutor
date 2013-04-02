@@ -16,4 +16,7 @@ $(document).ready(function() {
 
   // Bytecode related constants
   window.Constants.PRESSDOWN_NUM_TO_SEND = 3;
+
+  // UI constants
+  window.Constants.LENGTH_GLYPH_VISIBLE = 1000;
 });

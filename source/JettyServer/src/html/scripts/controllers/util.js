@@ -3,6 +3,7 @@
  *
  *  @author Lucas Ray (ltray@cmu.edu)
  */
+
 $(document).ready(function() {
   "use strict";
   //TODO Setting this to true for dev purpose.
@@ -97,5 +98,38 @@ $(document).ready(function() {
     setTimeout(function() {
       callback();
     }, duration);
+  };
+
+  /** @brief Adds an on-hover message about the input dom element.
+   *
+   *  @param $dom_el jquery object representing the DOM element you want to add
+   *                 the message to.
+   *  @param header Header of the message.
+   *  @param body Body of the message.
+   *  @param placement Placement position for this tooltip.
+   */
+  window.add_info = function add_info($dom_el, header, body, placement) {
+    var $message = $('<div>', {
+      class: 'tooltip_message'
+    });
+
+    $message.append(
+        $('<h3>', {
+          class: 'tooltip_header'
+        }).html(header)
+      ).append(
+        $('<div>', {
+          class: 'tooltip_body'
+        }).html(body)
+      );
+
+    // add the tooltip
+    $dom_el.powerTip({
+      'placement': placement,
+      mouseOnToPopup: true,
+      intentPollInterval: 300,
+      closeDelay: 50
+    });
+    $dom_el.data('powertipjq', $message);
   };
 });
