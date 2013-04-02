@@ -46,7 +46,6 @@ $(document).ready(function() {
       var i;
       for (i in [1, 2, 3, 4, 5, 6]) {
         $('#' + cell_prefix + i).removeClass('button_glyphd');
-        console.log("removed " + cell_prefix + i);
       };
 
       this.buttons.map((function(el) {
