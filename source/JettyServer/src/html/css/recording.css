@@ -1,8 +1,20 @@
+/** @file recording.scss
+ *  @brief scss file defining the styles for our recording plugin.
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+
 #recording_name{
-	-webkit-touch-callout: all;
-  	-webkit-user-select: all;
-  	-khtml-user-select: all;
-  	-moz-user-select: all;
-  	-ms-user-select: all;
-  	user-select: all;
+  -webkit-touch-callout: all;
+  -webkit-user-select: all;
+   -khtml-user-select: all;
+     -moz-user-select: all;
+      -ms-user-select: all;
+          user-select: all;
+}
+
+#recording_toggle {
+  position: absolute;
+  left: 20px;
+  top: 100px;
 }

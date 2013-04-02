@@ -85,7 +85,7 @@
       <div id="top_bar">
         <div id="_initialize" class="initbutton topbutton tips">handshaking: <p id="handshake_status" class="buttonstatus">OFF</p></div>
         <div id="help_tooltips" class="helpbutton topbutton active tips">help tooltips: <p id="help_tooltips_status" class="buttonstatus active">ON</p></div>
-        <div id="glyph_toggle" class="glyphbutton topbutton active tips">glyphs: <p id="glyphs_enabled_status" class="buttonstatus active">ON</p></div>
+        <div id="glyph_toggle" class="glyphbutton topbutton tips">glyphs: <p id="glyphs_enabled_status" class="buttonstatus">OFF</p></div>
       </div>
 
       <!-- main plugin: the emulator -->
@@ -117,10 +117,13 @@
       </div>
 
       <!-- temp test plugin -->
-      <div id="plugin_test" class="plugin active">
-        <div class="label">Plugin #2</div>
+      <div id="recording_plugin" class="plugin active">
+        <div class="label">Recorder</div>
         <div class="content">
-          <div id="wat"></div>
+          <input type="button" id="recording_toggle"></input>
+          <input type="text" id="recording_name" value=""/>
+          <select id="recording_select"></select>
+          <input type="button" id="send_recording"></input>
         </div>
       </div>
 
@@ -131,18 +134,6 @@
           <div id="wat2"></div>
         </div>
       </div>
-
-      <!-- other plugins go here -->
-      <div id="recording_plugin">
-              <button id="recording_toggle"></button>
-              <input id="recording_name" type="text" value=""/>
-
-              <select id="recording_select">
-              </select>
-              <button id="send_recording"></button>
-      </div>
-
-
 
     <br />
     </div>
