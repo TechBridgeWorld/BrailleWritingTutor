@@ -255,6 +255,27 @@ $(document).ready(function() {
       add_button($(el));
     });
 
+// @TODO: Get this working
+//    // Add mouseover handler for the jumbocell for our glyphs. See Glyph.js
+//    // for more info
+//    $("#jumboslate").on('mouseover', (function(e) {
+//      e.preventDefault();
+//      e.stopPropagation();
+//
+//      // clear current mouseover if any
+//      if (window.__GLYPHS_ENABLED === true) {
+//        if (window.cur_mouseover !== undefined) {
+//          window.cur_mouseover.removeClass('mouseover');
+//        };
+//        window.cur_mouseover = undefined;
+//
+//        // set the mouse_cell and cur_mouseover to this slategroup
+//        window.mouse_cell = "_slate" + this.attr('groupnumber') + "_";
+//        window.cur_mouseover = this;
+//        window.cur_mouseover.addClass('mouseover');
+//      };
+//    }));
+
     attach_toggle_buttons();
     attach_glyph_handlers();
   };

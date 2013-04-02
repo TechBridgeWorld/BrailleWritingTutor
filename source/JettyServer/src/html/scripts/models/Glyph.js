@@ -36,14 +36,14 @@ $(document).ready(function() {
    *         rapid succession.
    */
   window.Glyph.prototype.send = function send() {
+    // For now, only register glyph presses when mousing over a slate
     if (window.mouse_cell !== undefined) {
       var this_mouseover = window.cur_mouseover;
-      // if currently hovering over a cell, use that cell. Defaults to
-      // the jumbo cell
       var cell_prefix = window.mouse_cell;
 
       // clear the currently pressed keys
       var i;
+      // @TODO: there is probably a more elegant way to do this
       for (i in [1, 2, 3, 4, 5, 6]) {
         $('#' + cell_prefix + i).removeClass('button_glyphd');
       };
