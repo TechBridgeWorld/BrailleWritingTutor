@@ -1,0 +1,334 @@
+06 Apr 2013 ;17:09:34. INFO [GenericServlet.java:48] Handling request: http://localhost:8887/loading.do
+06 Apr 2013 ;17:09:34. INFO [GenericServlet.java:94] Loading request captured. Intializing TwoWaySerialCom
+06 Apr 2013 ;17:09:34. INFO [WindowsActionHandler.java:107] Initializing TwoWaySerialComm
+06 Apr 2013 ;17:09:34. INFO [GenericServlet.java:48] Handling request: http://localhost:8887/manifest.appcache
+06 Apr 2013 ;17:09:34. ERROR [GenericServlet.java:88] Invalid request. Request is null.
+06 Apr 2013 ;17:09:34. ERROR [GenericServlet.java:99] Exception when initializing TwoWaySerialCom
+06 Apr 2013 ;17:09:34. ERROR [EmulatorLogger.java:55] Exception occurred. Printing stack trace.
+gnu.io.NoSuchPortException: null
+	at gnu.io.CommPortIdentifier.getPortIdentifier(CommPortIdentifier.java:273) ~[nrjavaserial-3.8.8.jar:na]
+	at edu.cmu.controller.TwoWaySerialComm.connect(TwoWaySerialComm.java:37) ~[bin/:na]
+	at edu.cmu.controller.TwoWaySerialComm.<init>(TwoWaySerialComm.java:32) ~[bin/:na]
+	at edu.cmu.controller.WindowsActionHandler.initSerialComm(WindowsActionHandler.java:108) ~[bin/:na]
+	at edu.cmu.controller.GenericServlet.handleInitialLoadingRequest(GenericServlet.java:96) [bin/:na]
+	at edu.cmu.controller.GenericServlet.doGet(GenericServlet.java:53) [bin/:na]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:735) [servlet-api-3.0.jar:na]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:848) [servlet-api-3.0.jar:na]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:671) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:448) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:211) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1070) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:375) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:175) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1004) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:136) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.Server.handle(Server.java:449) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.HttpChannel.run(HttpChannel.java:246) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:265) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.run(AbstractConnection.java:240) [jetty-io-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:589) [jetty-util-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:520) [jetty-util-9.0.0.RC0.jar:9.0.0.RC0]
+	at java.lang.Thread.run(Thread.java:722) [na:1.7.0_04]
+06 Apr 2013 ;17:09:42. INFO [GenericServlet.java:48] Handling request: http://localhost:8887/loading.do
+06 Apr 2013 ;17:09:42. INFO [GenericServlet.java:94] Loading request captured. Intializing TwoWaySerialCom
+06 Apr 2013 ;17:09:42. INFO [WindowsActionHandler.java:107] Initializing TwoWaySerialComm
+06 Apr 2013 ;17:09:42. ERROR [GenericServlet.java:99] Exception when initializing TwoWaySerialCom
+06 Apr 2013 ;17:09:42. ERROR [EmulatorLogger.java:55] Exception occurred. Printing stack trace.
+gnu.io.NoSuchPortException: null
+	at gnu.io.CommPortIdentifier.getPortIdentifier(CommPortIdentifier.java:273) ~[nrjavaserial-3.8.8.jar:na]
+	at edu.cmu.controller.TwoWaySerialComm.connect(TwoWaySerialComm.java:37) ~[bin/:na]
+	at edu.cmu.controller.TwoWaySerialComm.<init>(TwoWaySerialComm.java:32) ~[bin/:na]
+	at edu.cmu.controller.WindowsActionHandler.initSerialComm(WindowsActionHandler.java:108) ~[bin/:na]
+	at edu.cmu.controller.GenericServlet.handleInitialLoadingRequest(GenericServlet.java:96) [bin/:na]
+	at edu.cmu.controller.GenericServlet.doGet(GenericServlet.java:53) [bin/:na]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:735) [servlet-api-3.0.jar:na]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:848) [servlet-api-3.0.jar:na]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:671) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:448) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:211) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1070) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:375) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:175) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1004) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:136) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.Server.handle(Server.java:449) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.HttpChannel.run(HttpChannel.java:246) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:265) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.run(AbstractConnection.java:240) [jetty-io-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:589) [jetty-util-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:520) [jetty-util-9.0.0.RC0.jar:9.0.0.RC0]
+	at java.lang.Thread.run(Thread.java:722) [na:1.7.0_04]
+06 Apr 2013 ;17:09:42. INFO [GenericServlet.java:48] Handling request: http://localhost:8887/manifest.appcache
+06 Apr 2013 ;17:09:42. ERROR [GenericServlet.java:88] Invalid request. Request is null.
+06 Apr 2013 ;17:09:55. INFO [GenericServlet.java:48] Handling request: http://localhost:8887/scripting.do
+06 Apr 2013 ;17:09:55. INFO [GenericServlet.java:48] Handling request: http://localhost:8887/favicon.ico
+06 Apr 2013 ;17:09:55. ERROR [GenericServlet.java:88] Invalid request. Request is null.
+06 Apr 2013 ;17:10:36. INFO [GenericServlet.java:48] Handling request: http://localhost:8887/manifest.appcache
+06 Apr 2013 ;17:10:36. ERROR [GenericServlet.java:88] Invalid request. Request is null.
+06 Apr 2013 ;17:10:37. INFO [GenericServlet.java:48] Handling request: http://localhost:8887/loading.do
+06 Apr 2013 ;17:10:37. INFO [GenericServlet.java:94] Loading request captured. Intializing TwoWaySerialCom
+06 Apr 2013 ;17:10:37. INFO [WindowsActionHandler.java:107] Initializing TwoWaySerialComm
+06 Apr 2013 ;17:10:37. ERROR [GenericServlet.java:99] Exception when initializing TwoWaySerialCom
+06 Apr 2013 ;17:10:37. ERROR [EmulatorLogger.java:55] Exception occurred. Printing stack trace.
+gnu.io.NoSuchPortException: null
+	at gnu.io.CommPortIdentifier.getPortIdentifier(CommPortIdentifier.java:273) ~[nrjavaserial-3.8.8.jar:na]
+	at edu.cmu.controller.TwoWaySerialComm.connect(TwoWaySerialComm.java:37) ~[bin/:na]
+	at edu.cmu.controller.TwoWaySerialComm.<init>(TwoWaySerialComm.java:32) ~[bin/:na]
+	at edu.cmu.controller.WindowsActionHandler.initSerialComm(WindowsActionHandler.java:108) ~[bin/:na]
+	at edu.cmu.controller.GenericServlet.handleInitialLoadingRequest(GenericServlet.java:96) [bin/:na]
+	at edu.cmu.controller.GenericServlet.doGet(GenericServlet.java:53) [bin/:na]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:735) [servlet-api-3.0.jar:na]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:848) [servlet-api-3.0.jar:na]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:671) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:448) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:211) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1070) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:375) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:175) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1004) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:136) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.Server.handle(Server.java:449) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.HttpChannel.run(HttpChannel.java:246) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:265) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.run(AbstractConnection.java:240) [jetty-io-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:589) [jetty-util-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:520) [jetty-util-9.0.0.RC0.jar:9.0.0.RC0]
+	at java.lang.Thread.run(Thread.java:722) [na:1.7.0_04]
+06 Apr 2013 ;17:10:59. INFO [GenericServlet.java:48] Handling request: http://localhost:8887/loadScripts.do
+06 Apr 2013 ;17:10:59. INFO [GenericServlet.java:48] Handling request: http://localhost:8887/favicon.ico
+06 Apr 2013 ;17:10:59. ERROR [GenericServlet.java:88] Invalid request. Request is null.
+06 Apr 2013 ;17:22:30. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loading.do
+06 Apr 2013 ;17:22:30. INFO [GenericServlet.java:96] Loading request captured. Intializing TwoWaySerialCom
+06 Apr 2013 ;17:22:30. INFO [WindowsActionHandler.java:107] Initializing TwoWaySerialComm
+06 Apr 2013 ;17:22:30. ERROR [GenericServlet.java:101] Exception when initializing TwoWaySerialCom
+06 Apr 2013 ;17:22:30. ERROR [EmulatorLogger.java:55] Exception occurred. Printing stack trace.
+gnu.io.NoSuchPortException: null
+	at gnu.io.CommPortIdentifier.getPortIdentifier(CommPortIdentifier.java:273) ~[nrjavaserial-3.8.8.jar:na]
+	at edu.cmu.controller.TwoWaySerialComm.connect(TwoWaySerialComm.java:37) ~[bin/:na]
+	at edu.cmu.controller.TwoWaySerialComm.<init>(TwoWaySerialComm.java:32) ~[bin/:na]
+	at edu.cmu.controller.WindowsActionHandler.initSerialComm(WindowsActionHandler.java:108) ~[bin/:na]
+	at edu.cmu.controller.GenericServlet.handleInitialLoadingRequest(GenericServlet.java:98) [bin/:na]
+	at edu.cmu.controller.GenericServlet.doGet(GenericServlet.java:55) [bin/:na]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:735) [servlet-api-3.0.jar:na]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:848) [servlet-api-3.0.jar:na]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:671) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:448) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:211) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1070) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:375) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:175) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1004) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:136) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.Server.handle(Server.java:449) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.HttpChannel.run(HttpChannel.java:246) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:265) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.run(AbstractConnection.java:240) [jetty-io-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:589) [jetty-util-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:520) [jetty-util-9.0.0.RC0.jar:9.0.0.RC0]
+	at java.lang.Thread.run(Thread.java:722) [na:1.7.0_04]
+06 Apr 2013 ;17:22:30. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/manifest.appcache
+06 Apr 2013 ;17:22:30. ERROR [GenericServlet.java:90] Invalid request. Request is null.
+06 Apr 2013 ;17:22:44. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loadScripts.do
+06 Apr 2013 ;17:22:44. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/favicon.ico
+06 Apr 2013 ;17:22:44. ERROR [GenericServlet.java:90] Invalid request. Request is null.
+06 Apr 2013 ;17:22:50. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loadScripts.do
+06 Apr 2013 ;17:22:50. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/favicon.ico
+06 Apr 2013 ;17:22:50. ERROR [GenericServlet.java:90] Invalid request. Request is null.
+06 Apr 2013 ;17:27:51. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loading.do
+06 Apr 2013 ;17:27:51. INFO [GenericServlet.java:96] Loading request captured. Intializing TwoWaySerialCom
+06 Apr 2013 ;17:27:51. INFO [WindowsActionHandler.java:107] Initializing TwoWaySerialComm
+06 Apr 2013 ;17:27:51. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/manifest.appcache
+06 Apr 2013 ;17:27:51. ERROR [GenericServlet.java:90] Invalid request. Request is null.
+06 Apr 2013 ;17:27:51. ERROR [GenericServlet.java:101] Exception when initializing TwoWaySerialCom
+06 Apr 2013 ;17:27:51. ERROR [EmulatorLogger.java:55] Exception occurred. Printing stack trace.
+gnu.io.NoSuchPortException: null
+	at gnu.io.CommPortIdentifier.getPortIdentifier(CommPortIdentifier.java:273) ~[nrjavaserial-3.8.8.jar:na]
+	at edu.cmu.controller.TwoWaySerialComm.connect(TwoWaySerialComm.java:37) ~[bin/:na]
+	at edu.cmu.controller.TwoWaySerialComm.<init>(TwoWaySerialComm.java:32) ~[bin/:na]
+	at edu.cmu.controller.WindowsActionHandler.initSerialComm(WindowsActionHandler.java:108) ~[bin/:na]
+	at edu.cmu.controller.GenericServlet.handleInitialLoadingRequest(GenericServlet.java:98) [bin/:na]
+	at edu.cmu.controller.GenericServlet.doGet(GenericServlet.java:55) [bin/:na]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:735) [servlet-api-3.0.jar:na]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:848) [servlet-api-3.0.jar:na]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:671) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:448) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:211) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1070) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:375) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:175) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1004) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:136) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.Server.handle(Server.java:449) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.HttpChannel.run(HttpChannel.java:246) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:265) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.run(AbstractConnection.java:240) [jetty-io-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:589) [jetty-util-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:520) [jetty-util-9.0.0.RC0.jar:9.0.0.RC0]
+	at java.lang.Thread.run(Thread.java:722) [na:1.7.0_04]
+06 Apr 2013 ;17:27:55. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loadScripts.do
+06 Apr 2013 ;17:27:55. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/favicon.ico
+06 Apr 2013 ;17:27:55. ERROR [GenericServlet.java:90] Invalid request. Request is null.
+06 Apr 2013 ;17:28:10. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loadScripts.do
+06 Apr 2013 ;17:28:11. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/favicon.ico
+06 Apr 2013 ;17:28:11. ERROR [GenericServlet.java:90] Invalid request. Request is null.
+06 Apr 2013 ;17:31:45. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loading.do
+06 Apr 2013 ;17:31:45. INFO [GenericServlet.java:96] Loading request captured. Intializing TwoWaySerialCom
+06 Apr 2013 ;17:31:45. INFO [WindowsActionHandler.java:107] Initializing TwoWaySerialComm
+06 Apr 2013 ;17:31:45. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/manifest.appcache
+06 Apr 2013 ;17:31:45. ERROR [GenericServlet.java:90] Invalid request. Request is null.
+06 Apr 2013 ;17:31:45. ERROR [GenericServlet.java:101] Exception when initializing TwoWaySerialCom
+06 Apr 2013 ;17:31:45. ERROR [EmulatorLogger.java:55] Exception occurred. Printing stack trace.
+gnu.io.NoSuchPortException: null
+	at gnu.io.CommPortIdentifier.getPortIdentifier(CommPortIdentifier.java:273) ~[nrjavaserial-3.8.8.jar:na]
+	at edu.cmu.controller.TwoWaySerialComm.connect(TwoWaySerialComm.java:37) ~[bin/:na]
+	at edu.cmu.controller.TwoWaySerialComm.<init>(TwoWaySerialComm.java:32) ~[bin/:na]
+	at edu.cmu.controller.WindowsActionHandler.initSerialComm(WindowsActionHandler.java:108) ~[bin/:na]
+	at edu.cmu.controller.GenericServlet.handleInitialLoadingRequest(GenericServlet.java:98) [bin/:na]
+	at edu.cmu.controller.GenericServlet.doGet(GenericServlet.java:55) [bin/:na]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:735) [servlet-api-3.0.jar:na]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:848) [servlet-api-3.0.jar:na]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:671) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:448) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:211) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1070) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:375) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:175) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1004) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:136) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.Server.handle(Server.java:449) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.HttpChannel.run(HttpChannel.java:246) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:265) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.run(AbstractConnection.java:240) [jetty-io-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:589) [jetty-util-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:520) [jetty-util-9.0.0.RC0.jar:9.0.0.RC0]
+	at java.lang.Thread.run(Thread.java:722) [na:1.7.0_04]
+06 Apr 2013 ;17:32:39. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loadScripts.do
+06 Apr 2013 ;17:33:31. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loading.do
+06 Apr 2013 ;17:33:31. INFO [GenericServlet.java:96] Loading request captured. Intializing TwoWaySerialCom
+06 Apr 2013 ;17:33:31. INFO [WindowsActionHandler.java:107] Initializing TwoWaySerialComm
+06 Apr 2013 ;17:33:31. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/manifest.appcache
+06 Apr 2013 ;17:33:31. ERROR [GenericServlet.java:90] Invalid request. Request is null.
+06 Apr 2013 ;17:33:31. ERROR [GenericServlet.java:101] Exception when initializing TwoWaySerialCom
+06 Apr 2013 ;17:33:31. ERROR [EmulatorLogger.java:55] Exception occurred. Printing stack trace.
+gnu.io.NoSuchPortException: null
+	at gnu.io.CommPortIdentifier.getPortIdentifier(CommPortIdentifier.java:273) ~[nrjavaserial-3.8.8.jar:na]
+	at edu.cmu.controller.TwoWaySerialComm.connect(TwoWaySerialComm.java:37) ~[bin/:na]
+	at edu.cmu.controller.TwoWaySerialComm.<init>(TwoWaySerialComm.java:32) ~[bin/:na]
+	at edu.cmu.controller.WindowsActionHandler.initSerialComm(WindowsActionHandler.java:108) ~[bin/:na]
+	at edu.cmu.controller.GenericServlet.handleInitialLoadingRequest(GenericServlet.java:98) [bin/:na]
+	at edu.cmu.controller.GenericServlet.doGet(GenericServlet.java:55) [bin/:na]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:735) [servlet-api-3.0.jar:na]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:848) [servlet-api-3.0.jar:na]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:671) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:448) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:211) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1070) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:375) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:175) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1004) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:136) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.Server.handle(Server.java:449) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.HttpChannel.run(HttpChannel.java:246) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:265) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.run(AbstractConnection.java:240) [jetty-io-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:589) [jetty-util-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:520) [jetty-util-9.0.0.RC0.jar:9.0.0.RC0]
+	at java.lang.Thread.run(Thread.java:722) [na:1.7.0_04]
+06 Apr 2013 ;17:33:34. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loadScripts.do
+06 Apr 2013 ;17:34:06. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loading.do
+06 Apr 2013 ;17:34:06. INFO [GenericServlet.java:96] Loading request captured. Intializing TwoWaySerialCom
+06 Apr 2013 ;17:34:06. INFO [WindowsActionHandler.java:107] Initializing TwoWaySerialComm
+06 Apr 2013 ;17:34:06. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/manifest.appcache
+06 Apr 2013 ;17:34:06. ERROR [GenericServlet.java:90] Invalid request. Request is null.
+06 Apr 2013 ;17:34:06. ERROR [GenericServlet.java:101] Exception when initializing TwoWaySerialCom
+06 Apr 2013 ;17:34:06. ERROR [EmulatorLogger.java:55] Exception occurred. Printing stack trace.
+gnu.io.NoSuchPortException: null
+	at gnu.io.CommPortIdentifier.getPortIdentifier(CommPortIdentifier.java:273) ~[nrjavaserial-3.8.8.jar:na]
+	at edu.cmu.controller.TwoWaySerialComm.connect(TwoWaySerialComm.java:37) ~[bin/:na]
+	at edu.cmu.controller.TwoWaySerialComm.<init>(TwoWaySerialComm.java:32) ~[bin/:na]
+	at edu.cmu.controller.WindowsActionHandler.initSerialComm(WindowsActionHandler.java:108) ~[bin/:na]
+	at edu.cmu.controller.GenericServlet.handleInitialLoadingRequest(GenericServlet.java:98) [bin/:na]
+	at edu.cmu.controller.GenericServlet.doGet(GenericServlet.java:55) [bin/:na]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:735) [servlet-api-3.0.jar:na]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:848) [servlet-api-3.0.jar:na]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:671) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:448) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:211) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1070) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:375) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:175) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1004) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:136) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.Server.handle(Server.java:449) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.HttpChannel.run(HttpChannel.java:246) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:265) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.run(AbstractConnection.java:240) [jetty-io-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:589) [jetty-util-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:520) [jetty-util-9.0.0.RC0.jar:9.0.0.RC0]
+	at java.lang.Thread.run(Thread.java:722) [na:1.7.0_04]
+06 Apr 2013 ;17:34:09. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loadScripts.do
+06 Apr 2013 ;17:34:35. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loadScripts.do
+06 Apr 2013 ;17:34:52. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loadScripts.do
+06 Apr 2013 ;17:34:59. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loadScripts.do
+06 Apr 2013 ;17:35:31. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loadScripts.do
+06 Apr 2013 ;17:51:23. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loading.do
+06 Apr 2013 ;17:51:23. INFO [GenericServlet.java:96] Loading request captured. Intializing TwoWaySerialCom
+06 Apr 2013 ;17:51:23. INFO [WindowsActionHandler.java:107] Initializing TwoWaySerialComm
+06 Apr 2013 ;17:51:23. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/manifest.appcache
+06 Apr 2013 ;17:51:23. ERROR [GenericServlet.java:90] Invalid request. Request is null.
+06 Apr 2013 ;17:51:23. ERROR [GenericServlet.java:101] Exception when initializing TwoWaySerialCom
+06 Apr 2013 ;17:51:23. ERROR [EmulatorLogger.java:55] Exception occurred. Printing stack trace.
+gnu.io.NoSuchPortException: null
+	at gnu.io.CommPortIdentifier.getPortIdentifier(CommPortIdentifier.java:273) ~[nrjavaserial-3.8.8.jar:na]
+	at edu.cmu.controller.TwoWaySerialComm.connect(TwoWaySerialComm.java:37) ~[bin/:na]
+	at edu.cmu.controller.TwoWaySerialComm.<init>(TwoWaySerialComm.java:32) ~[bin/:na]
+	at edu.cmu.controller.WindowsActionHandler.initSerialComm(WindowsActionHandler.java:108) ~[bin/:na]
+	at edu.cmu.controller.GenericServlet.handleInitialLoadingRequest(GenericServlet.java:98) [bin/:na]
+	at edu.cmu.controller.GenericServlet.doGet(GenericServlet.java:55) [bin/:na]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:735) [servlet-api-3.0.jar:na]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:848) [servlet-api-3.0.jar:na]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:671) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:448) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:211) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1070) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:375) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:175) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1004) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:136) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.Server.handle(Server.java:449) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.HttpChannel.run(HttpChannel.java:246) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:265) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.run(AbstractConnection.java:240) [jetty-io-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:589) [jetty-util-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:520) [jetty-util-9.0.0.RC0.jar:9.0.0.RC0]
+	at java.lang.Thread.run(Thread.java:722) [na:1.7.0_04]
+06 Apr 2013 ;17:51:28. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loadScripts.do
+06 Apr 2013 ;17:51:28. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/favicon.ico
+06 Apr 2013 ;17:51:28. ERROR [GenericServlet.java:90] Invalid request. Request is null.
+06 Apr 2013 ;17:51:32. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loadScripts.do
+06 Apr 2013 ;17:51:32. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/favicon.ico
+06 Apr 2013 ;17:51:32. ERROR [GenericServlet.java:90] Invalid request. Request is null.
+06 Apr 2013 ;17:51:34. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loadScripts.do
+06 Apr 2013 ;17:51:34. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/favicon.ico
+06 Apr 2013 ;17:51:34. ERROR [GenericServlet.java:90] Invalid request. Request is null.
+06 Apr 2013 ;17:51:35. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loadScripts.do
+06 Apr 2013 ;17:51:35. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/favicon.ico
+06 Apr 2013 ;17:51:35. ERROR [GenericServlet.java:90] Invalid request. Request is null.
