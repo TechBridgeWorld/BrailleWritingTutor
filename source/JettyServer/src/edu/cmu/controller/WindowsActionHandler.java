@@ -40,8 +40,8 @@ public class WindowsActionHandler extends AbstractActionHandler{
 	}
 
 	@Override
-	public void handleButtonCode(String buttonName) {
-		if (buttonName == null || buttonName.trim().length() == 0) {
+	public void handleButtonCode(String buttonCode) {
+		if (buttonCode == null || buttonCode.trim().length() == 0) {
 			logger.warn("Button code is empty.Illegal button code.");
 			return;
 		}
@@ -51,22 +51,22 @@ public class WindowsActionHandler extends AbstractActionHandler{
 		}
 
 		// TODO using indexOf() for now because of the implementation of the front end
-		if (buttonName.indexOf("init") != -1) {
+		if (buttonCode.indexOf("init") != -1) {
 			handShake();
 			return;
 		}
 
 		String decodedName = null;
 		try {
-			decodedName = URLDecoder.decode(buttonName, "UTF-8");
+			decodedName = URLDecoder.decode(buttonCode, "UTF-8");
 			logger.info("Decoded button code: " + decodedName);
 			com.getOutputStream().write(decodedName.getBytes());
 			
-			debugLogger.debug("Button code send: " + buttonName);
+			debugLogger.debug("Button code send: " + buttonCode);
 			debugLogger.debug("Decoded code    : " + decodedName);
 			
 		} catch (UnsupportedEncodingException e) {
-			logger.error("Unable to decode the button code: " + buttonName);
+			logger.error("Unable to decode the button code: " + buttonCode);
 			EmulatorLogger.logException(logger, e);
 		} catch (IOException e) {
 			logger.error("IOException when writing to com.out");
@@ -162,7 +162,7 @@ public class WindowsActionHandler extends AbstractActionHandler{
 		}
 
 	}
-
+	
 	private static class SerialWriter implements Runnable {
 		OutputStream out;
 
