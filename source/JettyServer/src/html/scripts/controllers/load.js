@@ -91,8 +91,7 @@ $(document).ready(function() {
           };
           window.cur_mouseover = undefined;
 
-          // set the mouse_cell and cur_mouseover to this slategroup
-          window.mouse_cell = "_slate" + this.attr('groupnumber') + "_";
+          // set the cur_mouseover to this slategroup
           window.cur_mouseover = this;
           window.cur_mouseover.addClass('mouseover');
         };
@@ -144,14 +143,13 @@ $(document).ready(function() {
       $row.append($slategroup);
     };
 
-    // add event handler for the board to remove window.mouse_cell when
+    // add event handler for the board to remove window.cur_mouseover when
     // not hovering over a cell
     $(window).on('mouseover', function(e) {
       e.preventDefault();
       e.stopPropagation();
 
       if (window.__GLYPHS_ENABLED === true) {
-        window.mouse_cell = undefined;
         if (window.cur_mouseover !== undefined) {
           window.cur_mouseover.removeClass('mouseover');
         };
@@ -273,8 +271,7 @@ $(document).ready(function() {
 //        };
 //        window.cur_mouseover = undefined;
 //
-//        // set the mouse_cell and cur_mouseover to this slategroup
-//        window.mouse_cell = "_slate" + this.attr('groupnumber') + "_";
+//        // set the cur_mouseover to this slategroup
 //        window.cur_mouseover = this;
 //        window.cur_mouseover.addClass('mouseover');
 //      };
@@ -309,7 +306,7 @@ $(document).ready(function() {
         var key_code = e.keyCode || e.which;
         try {
           var this_glyph = __GLYPH_MAP[__CODE_TO_GLYPH_ID[key_code]];
-          this_glyph.send();
+          this_glyph.send(window.cur_mouseover);
         } catch(err) {
           // Only throws if the key press isn't registered as a glyph button, so
           // just ignore it

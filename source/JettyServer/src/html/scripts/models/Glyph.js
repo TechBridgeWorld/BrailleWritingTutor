@@ -32,14 +32,61 @@ $(document).ready(function() {
     };
   };
 
+  /** @brief State machine that presses the next button to press in the input
+   *         and then stalls to give this button time to complete.
+   *
+   *  @param cell_prefix The cell prefix of the slate to press.
+   *  @param mouseover Current mouseover slate at time of glyph press.
+   *  @param index The index of the button map we are on.
+   */
+  window.Glyph.prototype.__button_step = function __button_step(cell_prefix, mouseover, index) {
+    var to_press = this.buttons[index];
+
+    // if we're done, handle the ui
+    if (to_press === undefined) {
+      // display that the user typed a glyph into this cell
+      mouseover.find('.glyph_display').addClass('active').html(this.id);
+      mouseover.addClass('glyphd');
+      var self = this;
+      var cur_mousecell = "_slate" + mouseover.attr('groupnumber') + "_";
+      setTimeout((function() {
+        this.removeClass('glyphd');
+        self.buttons.map(function(el) {
+          $('#' + cur_mousecell + el).removeClass('button_glyphd');
+          (mouseover).find('.glyph_display').removeClass('active').html('');
+        });
+      }).bind(mouseover), window.Constants.LENGTH_GLYPH_VISIBLE);
+      return;
+    };
+
+    // otherwise, try pressing the button
+    window.LOG_INFO("Glyph sending button: " + to_press);
+    try {
+      // press up and down immediately
+      __BUTTON_MAP[cell_prefix + to_press].press_down();
+      __BUTTON_MAP[cell_prefix + to_press].press_up();
+
+      // display this button as being pressed down for a bit
+      $('#' + cell_prefix + to_press).addClass('button_glyphd');
+
+    } catch(err) {
+      window.LOG_ERROR("Cannot find button for glyph: " + this);
+    };
+
+    // wait and then call self on new button set
+    setTimeout((function() {
+      this.__button_step(cell_prefix, mouseover, index + 1);
+    }).bind(this), window.Constants.TIME_BETWEEN_GLYPH_BUTTONS);
+  };
+
   /** @brief Sends this glyph to the server as a series of button presses in
    *         rapid succession.
    */
   window.Glyph.prototype.send = function send() {
     // For now, only register glyph presses when mousing over a slate
-    if (window.mouse_cell !== undefined) {
-      var this_mouseover = window.cur_mouseover;
-      var cell_prefix = window.mouse_cell;
+    if (window.cur_mouseover !== undefined) {
+      var cur_mouseover = window.cur_mouseover; // save locally in case cur_mouseover changes
+      var cell_prefix = "_slate" + window.cur_mouseover.attr('groupnumber') + "_";
 
       // clear the currently pressed keys
       var i;
@@ -48,33 +95,10 @@ $(document).ready(function() {
         $('#' + cell_prefix + i).removeClass('button_glyphd');
       };
 
-      this.buttons.map((function(el) {
-        try {
-          // press up and down immediately
-          __BUTTON_MAP[cell_prefix + el].press_down();
-          __BUTTON_MAP[cell_prefix + el].press_up();
-
-          // display this button as being pressed down for a bit
-          $('#' + cell_prefix + el).addClass('button_glyphd');
-
-        } catch(err) {
-          window.LOG_ERROR("Cannot find button for glyph: " + this);
-        };
-      }).bind(this));
-
-      // display that the user typed a glyph into this cell
-      window.cur_mouseover.find('.glyph_display').addClass('active').html(this.id);
-      window.cur_mouseover.addClass('glyphd');
-      var self = this;
-      var cur_mousecell = window.mouse_cell;
-      setTimeout((function() {
-        this.removeClass('glyphd');
-        self.buttons.map(function(el) {
-          var cell_prefix = cur_mousecell || "_jumbo";
-          $('#' + cell_prefix + el).removeClass('button_glyphd');
-          (this_mouseover).find('.glyph_display').removeClass('active').html('');
-        });
-      }).bind(window.cur_mouseover), window.Constants.LENGTH_GLYPH_VISIBLE);
+      // Press each button. Buttons cannot be pressed simultaneously, so we
+      // iterate over each button, only pressing the next button after the
+      // previous one has had sufficient time to complete
+      this.__button_step(cell_prefix, cur_mouseover, 0);
     };
 
     /** @brief toString method for glyphs.
