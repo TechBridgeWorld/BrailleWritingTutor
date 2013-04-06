@@ -3,18 +3,24 @@
  *
  *  @author Lucas Ray (ltray@cmu.edu)
  */
-
-#recording_name{
+#recording_name {
   -webkit-touch-callout: all;
   -webkit-user-select: all;
-   -khtml-user-select: all;
-     -moz-user-select: all;
-      -ms-user-select: all;
-          user-select: all;
-}
+  -khtml-user-select: all;
+  -moz-user-select: all;
+  -ms-user-select: all;
+  user-select: all; }
 
 #recording_toggle {
   position: absolute;
   left: 20px;
-  top: 100px;
-}
+  top: 100px; }
+
+#recording_plugin .content {
+  height: 150px; }
+
+#recording_toggle {
+  background: url("../assets/recording_off.png") no-repeat;
+  background-size: contain;
+  width: 50px;
+  height: 50px; }
