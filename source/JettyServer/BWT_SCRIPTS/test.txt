@@ -1,0 +1,2 @@
+Dummy file. Here to make sure script loader only picks up files with .bwt extension but not 
+other files like this one.

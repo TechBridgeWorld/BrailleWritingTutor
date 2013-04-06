@@ -2,6 +2,7 @@ package edu.cmu.controller;
 
 public abstract class AbstractActionHandler {
 
+	
 	/**
 	 * Initialization. This method is called each time a new emulator is launched.
 	 * This is not the handshake, but rather what should be done when the emulator
