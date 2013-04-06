@@ -56,6 +56,36 @@ $(document).ready(function() {
   window.app_alert = function app_alert(header, message) {
   };
 
+  /** @brief Confirmation dialog with yes/no options.
+   *
+   *  @param header The header for this dialog.
+   *  @param message The body of the message.
+   *  @param confirm_dialog Confirm message (e.g. "yes" or "save")
+   *  @param deny_dialog Deny message (e.g. "no" or "cancel")
+   *  @param on_confirm Callback to be called on confirm.
+   *  @param on_deny Callback to be called on deny.
+   */
+  window.app_confirm = function app_confirm(header, message, confirm_dialog, deny_dialog, on_confirm, on_deny) {
+    // fill in the modal heading and body
+    $("#modal_heading").html(header);
+    $("#modal_content").html(message);
+    $("#modal_confirm").text(confirm_dialog);
+    $("#modal_deny").text(deny_dialog);
+
+    // remove old callbacks (for whatever previous app_confirm was called) and
+    // replace with new ones
+    $("#modal_confirm_button").off('click').on('click', on_confirm);
+    $("#modal_deny_button").off('click').on('click', on_deny);
+
+    // reveal the modal
+    $("#modal").reveal({
+      animation: 'fadeAndPop',
+      animationspeed: 200,
+      closeonbackgroundclick: false,
+      dismissmodalclass: 'modal_close'
+    });
+  };
+
   /** @brief Sustained app alert. Returns a callback which, when called,
    *         removes the alert.
    *

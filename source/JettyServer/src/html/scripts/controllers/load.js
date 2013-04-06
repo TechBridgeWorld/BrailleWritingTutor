@@ -16,6 +16,9 @@ $(document).ready(function() {
   window.__BUTTON_MAP = {}; // object holding our buttons
   window.cur_mouseover = undefined;
 
+  // initialize glyphs to off
+  window.__GLYPHS_ENABLED = false;
+
   /** @brief Main method for load.
    */
   var main = function main() {
@@ -256,6 +259,27 @@ $(document).ready(function() {
       add_button($(el));
     });
 
+// @TODO: Get this working
+//    // Add mouseover handler for the jumbocell for our glyphs. See Glyph.js
+//    // for more info
+//    $("#jumboslate").on('mouseover', (function(e) {
+//      e.preventDefault();
+//      e.stopPropagation();
+//
+//      // clear current mouseover if any
+//      if (window.__GLYPHS_ENABLED === true) {
+//        if (window.cur_mouseover !== undefined) {
+//          window.cur_mouseover.removeClass('mouseover');
+//        };
+//        window.cur_mouseover = undefined;
+//
+//        // set the mouse_cell and cur_mouseover to this slategroup
+//        window.mouse_cell = "_slate" + this.attr('groupnumber') + "_";
+//        window.cur_mouseover = this;
+//        window.cur_mouseover.addClass('mouseover');
+//      };
+//    }));
+
     attach_toggle_buttons();
     attach_glyph_handlers();
   };
@@ -263,9 +287,6 @@ $(document).ready(function() {
   /** @brief Attaches handlers to buttons to send the glyph associated with that letter.
    */
   var attach_glyph_handlers = function attach_glyph_handlers() {
-    // initialize glyphs to on
-    window.__GLYPHS_ENABLED = true;
-
     // first, create glyphs for each of the letters in glyph_mapping
     var i;
     for (i in window.glyph_mapping) {
@@ -420,14 +441,15 @@ $(document).ready(function() {
     // toggle button to enable glyphs
     toggle_button_helper($('#glyph_toggle'), window.__GLYPHS_ENABLED,
       function onTrue() {
-        window.LOG_INFO("Turning glyphs OFF.");
+        window.LOG_INFO("Turning glyphs ON.");
 
         // update DOM
         $('#glyphs_enabled_status').html('ON').addClass('active');
         window.__GLYPHS_ENABLED = true;
       },
       function onFalse() {
-        window.LOG_INFO("Turning glyphs ON.");
+        window.LOG_INFO(window.__GLYPHS_ENABLED);
+        window.LOG_INFO("Turning glyphs OFF.");
 
         // update DOM
         $('#glyphs_enabled_status').html('OFF').removeClass('active');
