@@ -13,7 +13,7 @@ import javax.swing.SwingUtilities;
 import org.slf4j.Logger;
 
 import edu.cmu.logger.EmulatorLogger;
-import edu.cmu.scripting.ScriptLoader;
+//import edu.cmu.scripting.ScriptLoader;
 import edu.cmu.server.JettyServer;
 
 /**
@@ -55,7 +55,7 @@ public class ControllerUI extends JFrame {
 	private static final String STOP_SERVER_TOOLTIP = "Stop the server.";
 	private static final String QUIT_TOOLTIP = "Stop the server and quit the program.";
 	private static final String LAUNCH_TOOLTIP_ON = "Start the server and launch the emulator.";
-	private static final String LAUNCH_TOOLTIP_OFF = "Can't launch the emulator. Server is offline.";
+	//private static final String LAUNCH_TOOLTIP_OFF = "Can't launch the emulator. Server is offline.";
 		
 	public ControllerUI() {
 		initUI();
