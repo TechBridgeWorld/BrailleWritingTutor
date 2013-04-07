@@ -28,8 +28,9 @@ function loadAllScripts () {
 			__updateScriptsDropdown(data);
 		},
 		error : function(error){
-			showScriptingMsg("Errors occurred in retriving all scripts listing.<br />" + error);
+			showScriptingMsg("Errors occurred in retriving all scripts listing.<br />");
 			window.LOG_ERROR("Errors occurred in retriving all scripts listing.");
+			window.LOG_ERROR(error);
 		}
 	});
 
@@ -69,7 +70,8 @@ function compileAndRun(){
 			__runScript(data);
 		},
 		error : function(error){
-
+			window.LOG_ERROR("Error occurred in connecting to the server to compile. ");
+			window.LOG_ERROR(error);
 		}
 	});
 

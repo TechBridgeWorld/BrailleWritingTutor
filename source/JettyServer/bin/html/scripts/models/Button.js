@@ -37,6 +37,11 @@ $(document).ready(function() {
     this.code = options.code;
     this.$dom_el = options.dom_el;
     this.__holding = false;
+
+    // @TODO: this is a bit of a hack, but gets the job done. Exists to fix the
+    // "press and drag off" bug that keeps adding the same button to the
+    // processing queue
+    this.received_up = true;
   };
 
   /** @brief Represents a button press down. On press down, send the byte code
@@ -44,7 +49,14 @@ $(document).ready(function() {
    */
   window.Button.prototype.press_down = function press_down() {
     var prev_status = this.__holding;
-    
+
+    // if we never received the press_up event, that means the user dragged the
+    // mouse off the button
+    if (this.received_up === false) {
+      // if we never received up, we count this as a hold
+      this.__holding = true;
+    };
+
     // if not holding down, start holding
     if (this.__holding === false) {
       this.$dom_el.addClass('active');
@@ -57,6 +69,7 @@ $(document).ready(function() {
 
     // if we were holding before, stop holding now
     this.__holding = false;
+    this.received_up = false;
     return prev_status;
   };
 
@@ -64,6 +77,8 @@ $(document).ready(function() {
    *         queue.
    */
   window.Button.prototype.press_up = function press_up() {
+    // mark that we received the up event
+    this.received_up = true;
     if (this.__holding === false) {
       // remove the hold on press_up
       window._Processor.remove_hold(this);

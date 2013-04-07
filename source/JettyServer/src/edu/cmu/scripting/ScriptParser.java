@@ -232,10 +232,6 @@ public class ScriptParser {
 	}
 
 
-	public static void foo() {
-		
-	}
-
 	
 	
 }
