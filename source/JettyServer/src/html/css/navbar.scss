@@ -11,6 +11,7 @@
   $DARK_GREEN : rgba(60, 93, 71, 1);
   $DARK_GREEN_TRANSPARENT : rgba(60, 93, 71, .2);
 
+  overflow: scroll;
   position: static;
   width: auto;
   height: 70px;
@@ -93,4 +94,24 @@
 .buttonstatus.active {
   $HANDSHAKE_GREEN : rgba(111, 222, 37, 0.8);
   color: $HANDSHAKE_GREEN;
+}
+
+#app_title {
+  $LIGHT_GREEN : rgba(80, 144, 100, 0.8);
+  position: absolute;
+  height: 50px;
+  right: 40px;
+  top: -33px;
+  font-family: 'Open Sans', sans-serif;
+  color: rgba(46, 46, 46, 0.8);
+  font-size: 40px;
+  white-space: nowrap;
+}
+
+@media (max-width:865px) {
+  #app_title {
+    position: absolute;
+    left: 500px;
+    top: -33px;
+  }
 }
