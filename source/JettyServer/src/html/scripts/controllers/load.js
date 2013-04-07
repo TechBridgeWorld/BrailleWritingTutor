@@ -252,6 +252,14 @@ $(document).ready(function() {
     // default power tips to enabled
     window.powerTipsEnabled = true;
 
+    // mark the focusable objects so we know when to ignore keypress events
+    $(".focusable").on('focus', function(e) {
+      window.__focusable = true;
+    });
+    $(".focusable").on('blur', function(e) {
+      window.__focusable = false;
+    });
+
     // add buttons
     $(".button").each(function(ind, el) {
       add_button($(el));
@@ -298,6 +306,11 @@ $(document).ready(function() {
     // attach a global keypress handler to the window to handle all glyph button
     // presses rather than per-letter handlers
     $(window).on('keypress', function(e) {
+      // if focused on an input, ignore this handler
+      if (window.__focusable === true) {
+        return;
+      };
+
       e.preventDefault();
       e.stopPropagation();
 

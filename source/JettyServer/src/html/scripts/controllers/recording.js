@@ -3,9 +3,6 @@
 * Allows the user to record a sequence of button presses and resend
 * the exact sequence later.
 */
-var __START_RECORDING_TEXT = "Start Recording";
-var __STOP_RECORDING_TEXT = "Stop & Save Recording";
-var __SENT_RECORDING_TEXT = "Send Recording";
 var __KEY_DOWN = "Key down";
 var __KEY_UP = "Key up";
 var __KEY_HOLD = "Key hold";
@@ -19,18 +16,13 @@ function __registerButtons(){
   var toggleButton = $("#recording_toggle");
   var sendButton = $("#send_recording");
 
-  sendButton.html(__SENT_RECORDING_TEXT);
-  toggleButton.html(__START_RECORDING_TEXT);
-
   toggleButton.on('click',function(e){
     window.recording = !window.recording;
     $("#recording_toggle").toggleClass("active");
     if(window.recording){
-      toggleButton.html(__STOP_RECORDING_TEXT);
       sendButton.attr('disabled', 'disabled');
     }
     else{
-      toggleButton.html(__START_RECORDING_TEXT);
       sendButton.removeAttr('disabled');
       __saveRecording();
       __updateRecordingDropdown();
