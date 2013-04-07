@@ -2,12 +2,7 @@ package edu.cmu.scripting;
 
 import java.io.File;
 import java.io.FilenameFilter;
-
-import org.slf4j.Logger;
-
 import com.google.gson.Gson;
-
-import edu.cmu.logger.EmulatorLogger;
 
 /**
  * A class used to find and load user scripts that reside
@@ -19,8 +14,7 @@ public class ScriptLoader {
 
 	private static final String SCRIPT_FOLDER_PATH = "./BWT_SCRIPTS";
 	private static final String SCRIPT_EXTENSION = ".bwt";
-	
-	private Logger logger = EmulatorLogger.getEmulatorInfoLogger();
+
 	private File scriptsFolder;//the root folder that holds all scripts
 	
 	public ScriptLoader(){
@@ -30,7 +24,6 @@ public class ScriptLoader {
 	private void checkAndCreateFolder(){
 		File f = new File(SCRIPT_FOLDER_PATH);
 		if(!f.exists() ||  !f.isDirectory()){
-			logger.info("Script folder doesn't exist. Creating the folder now.");
 			f.mkdir();
 		}
 		scriptsFolder = f;

@@ -65,12 +65,10 @@ public class ScriptParser {
 				}
 			}
 		} catch (FileNotFoundException e) {
-			logger.error("input_mapping.csv is not found. Fatal. Script parsing may not work.");
-			EmulatorLogger.logException(logger, e);
+			logger.error("input_mapping.csv is not found. Fatal.");
 		} catch (IOException e) {
-			logger.error("IOException when reading from input_mapping.csv. Fatal. Script parsing may not work.");
-			EmulatorLogger.logException(logger, e);
-
+			//TODO
+			e.printStackTrace();
 		}
 		
 	}

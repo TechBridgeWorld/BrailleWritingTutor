@@ -30,7 +30,6 @@ public class ScriptLoader {
 	private void checkAndCreateFolder(){
 		File f = new File(SCRIPT_FOLDER_PATH);
 		if(!f.exists() ||  !f.isDirectory()){
-			logger.info("Script folder doesn't exist. Creating the folder now.");
 			f.mkdir();
 		}
 		scriptsFolder = f;

@@ -13,8 +13,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-import org.slf4j.Logger;
-
 import com.google.gson.Gson;
 
 import edu.cmu.logger.EmulatorLogger;
@@ -48,7 +46,6 @@ public class ScriptParser {
 	
 	//Initialization block. Read all button codes from input mapping.
 	static{
-		Logger logger = EmulatorLogger.getEmulatorInfoLogger();
 		allButtonNames = new ArrayList<String>();
 		File inputMapping = new File("./resources/input_mapping.csv");
 		try {
@@ -65,12 +62,11 @@ public class ScriptParser {
 				}
 			}
 		} catch (FileNotFoundException e) {
-			logger.error("input_mapping.csv is not found. Fatal. Script parsing may not work.");
-			EmulatorLogger.logException(logger, e);
+			//TODO
+			e.printStackTrace();
 		} catch (IOException e) {
-			logger.error("IOException when reading from input_mapping.csv. Fatal. Script parsing may not work.");
-			EmulatorLogger.logException(logger, e);
-
+			//TODO
+			e.printStackTrace();
 		}
 		
 	}
@@ -87,6 +83,7 @@ public class ScriptParser {
 	 * @return
 	 */
 	public static String parseScript(String scriptName){
+		Logger logger = EmulatorLogger.getEmulatorInfoLogger();
 		Map<String, Object> result = new HashMap<String,Object>();
 		//a set of buttons that are held down
 		Set<String> heldDown = new HashSet<String>();
