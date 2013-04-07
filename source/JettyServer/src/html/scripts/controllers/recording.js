@@ -84,7 +84,7 @@ function appendToRecordingQueue(button, eventType){
 */
 function sendRecording(){
 	if(recording){
-		LOG_ERROR("Can't send saved recordings while recording new one.");
+		LOG_ERROR("Can't send saved recordings while another recording is going on.");
 		return;
 	}
 	var recordingIndex = $("#recording_select").val();
@@ -180,6 +180,10 @@ function __isValidRecordingQueue(queue){
 	}
 	return true;
 
+}
+
+function createQueueFromScripts(){
+	
 }
 
 
