@@ -1,3 +1,13 @@
+/** @file board.scss
+ *  @brief scss file defining styles for our overall board
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+/** @file _mixins.scss
+ *  @brief Mixins used in other scss files go here
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
 #board {
   position: absolute;
   overflow: auto;

@@ -2,11 +2,7 @@ package edu.cmu.scripting;
 
 import java.io.File;
 import java.io.FilenameFilter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
 
 import com.google.gson.Gson;
 
@@ -65,10 +61,6 @@ public class ScriptLoader {
 	public String loadScript(String scriptName){
 		return ScriptParser.parseScript(SCRIPT_FOLDER_PATH+"/"+scriptName);
 	}	
-	
-	public static void main(String[] args){
-		StringBuffer sb = new StringBuffer();
-	}
 	
 	
 	

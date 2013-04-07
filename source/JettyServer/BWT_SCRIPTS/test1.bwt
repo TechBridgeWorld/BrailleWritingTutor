@@ -1,0 +1,20 @@
+click jumbo1
+wait 200
+click jumbo2
+wait 300
+click jumbo3
+wait 200
+click jumbo4
+wait 300
+click jumbo5
+wait 1200
+click jumbo6
+
+wait 1000
+hold slate1_1
+hold slate1_2
+hold slate1_3
+wait 1500
+release slate1_1
+release slate1_2
+release slate1_3

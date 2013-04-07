@@ -11,22 +11,22 @@
 # everything is case insensitive
 
 click jumbo_1
+wait 100
 click jumbo_2
 wait 150
 
 #These two lines are omitted when compiled 
 #because slate1_1 is not held down
 #This will not trigger an error in compilation
-release slate1_1
-release slate1_1
+#release slate1_1
+#release slate1_1
 
 hold slate1_2
 wait 100
 hold slate1_3
-wait 300
+wait 500
 release slate1_2
-
-wait 1000
+wait 500
 
 # if we are done here, the script won't 
 # compile becasuse slate1_3 is never released
