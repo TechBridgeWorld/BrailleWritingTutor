@@ -13,7 +13,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 
+import org.slf4j.Logger;
+
 import com.google.gson.Gson;
+
+import edu.cmu.logger.EmulatorLogger;
 
 
 /**
@@ -44,6 +48,7 @@ public class ScriptParser {
 	
 	//Initialization block. Read all button codes from input mapping.
 	static{
+		Logger logger = EmulatorLogger.getEmulatorInfoLogger();
 		allButtonNames = new ArrayList<String>();
 		File inputMapping = new File("./resources/input_mapping.csv");
 		try {
@@ -60,18 +65,27 @@ public class ScriptParser {
 				}
 			}
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			logger.error("input_mapping.csv is not found. Fatal. Script parsing may not work.");
+			EmulatorLogger.logException(logger, e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("IOException when reading from input_mapping.csv. Fatal. Script parsing may not work.");
+			EmulatorLogger.logException(logger, e);
+
 		}
-		for(String s : allButtonNames){
-			System.out.println(s);
-		}
+		
 	}
 	
 	
 	
-	
+	/**
+	 * Try to parse/compile the script with the given file name.
+	 * The function return a JSON string representing the result of 
+	 * compilation. The corresponding JSON object contains two fields,
+	 * "status" and "message". If status is success, message stores
+	 * an array of {@link ButtonAction}. Otherwise it stores the error messages.
+	 * @param scriptName
+	 * @return
+	 */
 	public static String parseScript(String scriptName){
 		Map<String, Object> result = new HashMap<String,Object>();
 		//a set of buttons that are held down
@@ -213,7 +227,13 @@ public class ScriptParser {
 		return "Error at line "+ lineNumber+ ". " + message.trim();
 	}
 	
-
+	
+	/**
+	 * A private class used to temporarily store a frame in a recording queue and 
+	 * serves as a wrapper for the Gson library to use to generate JSON string.
+	 * @author ziw
+	 *
+	 */
 	private static class ButtonAction{
 		
 		private String button;
