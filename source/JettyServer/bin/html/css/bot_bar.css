@@ -1,0 +1,18 @@
+/** @file bot_bar.scss
+ *  @brief scss file for formatting the bottom bar.
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+#version {
+  position: fixed;
+  right: 15px;
+  bottom: -3px; }
+
+#copyright {
+  position: fixed;
+  left: 15px;
+  bottom: -3px; }
+
+.botbar {
+  font-size: 15px;
+  color: rgba(40, 40, 40, 0.6); }

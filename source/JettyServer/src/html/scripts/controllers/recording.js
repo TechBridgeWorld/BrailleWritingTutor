@@ -76,22 +76,23 @@ function appendToRecordingQueue(button, eventType){
 * Send the recordings and clear the recording queue.
 */
 function sendRecording(){
-  if(recording){
-    LOG_ERROR("Can't send saved recordings while recording new one.");
-    return;
-  }
-  var recordingIndex = $("#recording_select").val();
-  if(recordingIndex >= __SAVED_RECORDING_QUEUE.length){
-    LOG_ERROR("No such recording");
-    return;
-  }
-  var queue = __SAVED_RECORDING_QUEUE[recordingIndex].queue;
 
-  if(!__isValidRecordingQueue(queue)){
-    LOG_ERROR("Invalid recording: " + __SAVED_RECORDING_QUEUE[recordingIndex].name);
-    return;
-  }
-  __sendRecordingHelper(queue,0);
+	if(recording){
+		LOG_ERROR("Can't send saved recordings while another recording is going on.");
+		return;
+	}
+	var recordingIndex = $("#recording_select").val();
+	if(recordingIndex >= __SAVED_RECORDING_QUEUE.length){
+		LOG_ERROR("No such recording");
+		return;
+	}
+	var queue = __SAVED_RECORDING_QUEUE[recordingIndex].queue;
+
+	if(!__isValidRecordingQueue(queue)){
+		LOG_ERROR("Invalid recording: " + __SAVED_RECORDING_QUEUE[recordingIndex].name);
+		return;
+	}
+	__sendRecordingHelper(queue,0);
 
 }
 
@@ -173,6 +174,10 @@ function __isValidRecordingQueue(queue){
   }
   return true;
 
+}
+
+function createQueueFromScripts(){
+	
 }
 
 

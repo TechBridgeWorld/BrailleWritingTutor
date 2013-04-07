@@ -1,0 +1,35 @@
+package edu.cmu.scripting;
+
+/**
+ * Represents one button (press or release) action, including
+ * the button's id, the action type and a timestamp
+ * indicating the time the emulator should wait before 
+ * executing this action. This class is meant to be a 
+ * JSON-like object in java so the server and use gson library and call
+ * stringify(ButtonAction) to generating a JSON string that is
+ * sent back to the front-end to be parsed and added to the 
+ * recording queue.
+ * @author ziw
+ *
+ */
+public class ButtonAction {
+	
+	private String button;
+	private String eventType;
+	private int timeStamp;
+	
+	public String getButton() {
+		return button;
+	}
+
+	public String getEventType() {
+		return eventType;
+	}
+
+	public int getTimeStamp() {
+		return timeStamp;
+	}
+	public void setTimeStamp(int timeStamp) {
+		this.timeStamp = timeStamp;
+	}
+}

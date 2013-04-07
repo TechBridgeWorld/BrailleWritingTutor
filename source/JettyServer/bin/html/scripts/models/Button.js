@@ -27,8 +27,9 @@ $(document).ready(function() {
 
   /** @brief Constructor for a request.
    *
-   *  @param options Options for the request. These include:
+   *  @param options Options for this button. These include:
    *           -code: Byte code for the request (e.g. "b n")
+   *           -$dom_el: The DOM element representing this button
    */
   window.Button = function Button(options) {
     // the software expects 3 button presses when you click on slate cells, so
@@ -43,11 +44,18 @@ $(document).ready(function() {
    */
   window.Button.prototype.press_down = function press_down() {
     var prev_status = this.__holding;
+    
+    // if not holding down, start holding
     if (this.__holding === false) {
       this.$dom_el.addClass('active');
       window._Processor.add_code(this.code, window.Constants.PRESSDOWN_NUM_TO_SEND);
       window._Processor.add_hold(this);
+      if(window.recording){
+          appendToRecordingQueue(this,__KEY_DOWN);
+      }
     }
+
+    // if we were holding before, stop holding now
     this.__holding = false;
     return prev_status;
   };
@@ -57,9 +65,15 @@ $(document).ready(function() {
    */
   window.Button.prototype.press_up = function press_up() {
     if (this.__holding === false) {
+      // remove the hold on press_up
       window._Processor.remove_hold(this);
       this.$dom_el.removeClass('active');
-    };
+      if(window.recording){
+          appendToRecordingQueue(this,__KEY_UP);
+      }
+    }
+
+    // if holding (from a shift), ignore the press_up event
   };
 
   /** @brief Represents a button hold. Same as button press but press_up has

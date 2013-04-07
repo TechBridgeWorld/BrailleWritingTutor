@@ -11,8 +11,11 @@
 @import "board.css";
 @import "general.css";
 @import "loading.css";
-@import "version.css";
+@import "bot_bar.css";
 @import "plugin.css";
+@import "alert.css";
+@import "navbar.css";
+@import "recording.css";
 
 // mixins
 @mixin noisey($color) {

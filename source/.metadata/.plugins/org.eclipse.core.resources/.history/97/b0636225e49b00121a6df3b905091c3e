@@ -1,0 +1,13 @@
+package edu.cmu.scripting;
+
+/**
+ * Represents one button (press or release) action, including
+ * the button's id, the action type and a timestamp
+ * indicating the time the emulator should wait after the previous 
+ * button action. 
+ * @author ziw
+ *
+ */
+public class ButtonAction {
+
+}

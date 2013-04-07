@@ -1,0 +1,13 @@
+/** @file non_ie_specifics.scss
+ *  @brief Contains specific rules to non-IE browsers.
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+.slategroup.mouseover:not(.glyphd):after {
+  content: '';
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: rgba(6, 217, 255, 0.4);
+  pointer-events: none; }

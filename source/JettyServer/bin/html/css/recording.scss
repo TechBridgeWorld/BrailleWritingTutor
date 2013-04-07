@@ -1,0 +1,167 @@
+/** @file recording.scss
+ *  @brief scss file defining the styles for our recording plugin.
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+
+// helpers for animations
+
+@mixin animation-name($name) {
+  -webkit-animation-name: $name;
+  -moz-animation-name: $name;
+  -ms-animation-name: $name;
+  animation-name: $name;
+}
+ 
+@mixin animation-duration($name) {
+  -webkit-animation-duration: $name;
+  -moz-animation-duration: $name;
+  -ms-animation-duration: $name;
+  animation-duration: $name;
+}
+ 
+@mixin animation-timing-function($name) {
+  -webkit-animation-timing-function: $name;
+  -moz-animation-timing-function: $name;
+  -ms-animation-timing-function: $name;
+  animation-timing-function: $name;
+}
+ 
+@mixin animation-iteration-count($name) {
+  -webkit-animation-iteration-count: $name;
+  -moz-animation-iteration-count: $name;
+  -ms-animation-iteration-count: $name;
+  animation-iteration-count: $name;
+}
+ 
+@mixin animation-direction($name) {
+  -webkit-animation-direction: $name;
+  -moz-animation-direction: $name;
+  -ms-animation-direction: $name;
+  animation-direction: $name;
+}
+ 
+@mixin animation-delay($name) {
+  -webkit-animation-delay: $name;
+  -moz-animation-delay: $name;
+  -ms-animation-delay: $name;
+  animation-delay: $name;
+}
+ 
+@mixin animation-play-state($name) {
+  -webkit-animation-play-state: $name;
+  -moz-animation-play-state: $name;
+  -ms-animation-play-state: $name;
+  animation-play-state: $name;
+}
+ 
+@mixin animation-fill-mode($name) {
+  -webkit-animation-fill-mode: $name;
+  -moz-animation-fill-mode: $name;
+  -ms-animation-fill-mode: $name;
+  animation-fill-mode: $name;
+}
+ 
+@mixin keyframes($name) {
+  @-webkit-keyframes $name { @content; }
+  @-moz-keyframes $name { @content; }
+  @-ms-keyframes $name { @content; }
+  @keyframes $name { @content; }
+}
+
+// animations
+@include keyframes(record_toggle) {
+  0% {
+    background: url("../assets/recording_on.png") no-repeat;
+    background-size: contain;
+  }
+
+  100% {
+    background: url("../assets/recording_off.png") no-repeat;
+    background-size: contain;
+  }
+}
+
+#recording_name{
+  -webkit-touch-callout: all;
+  -webkit-user-select: all;
+   -khtml-user-select: all;
+     -moz-user-select: all;
+      -ms-user-select: all;
+          user-select: all;
+}
+
+#recording_toggle {
+  position: absolute;
+  left: 30px;
+  top: 90px;
+}
+
+#recording_plugin .content {
+  height: 150px;
+}
+
+#recording_toggle {
+  background: url("../assets/recording_off.png") no-repeat;
+  background-size: contain;
+  width: 50px;
+  height: 50px;
+}
+
+#recording_toggle.active {
+  @include animation-name(record_toggle);
+  @include animation-duration(1s);
+  @include animation-iteration-count(infinite);
+}
+
+#recording_toggle:active {
+  background: url("../assets/record_button_down_off.png") no-repeat;
+  background-size: contain;
+}
+
+#recording_toggle.active:active {
+  background: url("../assets/record_button_down_on.png") no-repeat;
+  background-size: contain;
+}
+
+#recording_name {
+  position: absolute;
+  left: 90px;
+  top: 90px;
+  height: 15px;
+}
+
+#recording_name_helper {
+  position: absolute;
+  left: 90px;
+  top: 95px;
+}
+
+.record_label {
+  $DARK_GREEN : rgba(45, 84, 59, 0.4);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  color: $DARK_GREEN;
+}
+
+#recording_select {
+  position: absolute;
+  left: 250px;
+  top: 90px;
+  height: 15px;
+  width: 130px;
+}
+
+#recording_select_helper {
+  position: absolute;
+  left: 250px;
+  top: 95px;
+}
+
+#send_recording {
+  position: absolute;
+  left: 420px;
+  top: 90px;
+  height: 40px;
+  width: 130px;
+}

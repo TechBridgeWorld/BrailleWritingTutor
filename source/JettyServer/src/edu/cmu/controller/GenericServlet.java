@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 
 import edu.cmu.logger.EmulatorLogger;
+import edu.cmu.scripting.*;
 
 /**
  * A generic servlet that handles all HTTP requests except for serving static files. It
@@ -23,17 +24,20 @@ public class GenericServlet extends HttpServlet {
 	private static final long serialVersionUID = 895965106069516878L;
 	private Logger logger = EmulatorLogger.getEmulatorInfoLogger();
 	private AbstractActionHandler handler;
-	
-	
+	private ScriptLoader scriptLoader;
+	//parameter name
 	private static final String BUTTON_CODE_PARAM_NAME = "code";
+	private static final String SCRIPTS_NAME_PARAM_NAME= "name";
+	
 	private static final String LOAD_REQUEST = "loading.do";
-	private static final String LOAD_SCRIPTS_REQUEST = "scripting.do";
+	private static final String LOAD_SCRIPTS_REQUEST = "loadScripts.do";
 	private static final String SEND_BYTES_REQUEST = "sendBytes.do";
 	
 	private static final String REQUEST_ERROR_MSG = "Invalid HTTP request.";
 	
 	public GenericServlet(AbstractActionHandler handler) {
 		this.handler = handler;
+		scriptLoader = new ScriptLoader();
 	}
 	
 	
@@ -73,7 +77,7 @@ public class GenericServlet extends HttpServlet {
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");
 		try {
-			response.getWriter().write("message from server: " +text);
+			response.getWriter().write(text);
 		} catch (IOException e) {
 			logger.error("Exception when sending message to the server.");
 			EmulatorLogger.logException(logger, e);
@@ -120,7 +124,16 @@ public class GenericServlet extends HttpServlet {
 	
 	private void handleScriptingRequest(HttpServletRequest request,
 			HttpServletResponse response){
-		
+		String scriptName = request.getParameter(SCRIPTS_NAME_PARAM_NAME);
+		if(scriptName == null){
+			//error TODO
+		}
+		else if(scriptName.equals("listing")){
+			sendText(scriptLoader.getAllScriptNames(),response);
+			return;
+		}
+		String jsonString = scriptLoader.loadScript(scriptName);
+		sendText(jsonString, response);
 	}
 
 }

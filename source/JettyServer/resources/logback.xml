@@ -1,7 +1,7 @@
 <configuration >
 
 	<appender name="SERVER_LOG" class="ch.qos.logback.core.FileAppender">
-		<file>server.log</file>
+		<file>./BWT_LOGS/server.log</file>
 		<encoder>
 			<pattern>%date{dd MMM yyyy ;HH:mm:ss.} %level [%file:%line] %msg%n
 			</pattern>
@@ -9,7 +9,7 @@
 	</appender>
 	
 	<appender name="EMULATOR_INFO_LOG" class="ch.qos.logback.core.FileAppender">
-		<file>emulator_info.log</file>
+		<file>./BWT_LOGS/emulator_info.log</file>
 		<encoder>
 			<pattern>%date{dd MMM yyyy ;HH:mm:ss.} %level [%file:%line] %msg%n
 			</pattern>
@@ -17,7 +17,7 @@
 	</appender>
 	
 	<appender name="EMULATOR_DEBUG_LOG" class="ch.qos.logback.core.FileAppender">
-		<file>emulator_debug.log</file>
+		<file>./BWT_LOGS/emulator_debug.log</file>
 		<encoder>
 			<pattern>%date{dd MMM yyyy ;HH:mm:ss.} %level [%file:%line] %msg%n
 			</pattern>

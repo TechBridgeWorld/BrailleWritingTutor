@@ -7,6 +7,8 @@ $(document).ready(function() {
   "use strict";
 
   /** @brief Constructor for a Processor.
+   *
+   *  @param options Configuration options for the Processor.
    */
   window.Processor = function Processor(options) {
     this.__PROCESSING_QUEUE = [];
@@ -58,6 +60,9 @@ $(document).ready(function() {
 
   /** @brief Adds the input bytecode the specified number of times to the
    *         sending queue.
+   *
+   *  @param code The code to add to the queue.
+   *  @param num_to_send The number of times to send this code.
    */
   window.Processor.prototype.add_code = function add_code(code, num_to_send) {
     this.__PROCESSING_QUEUE.push(code);
@@ -72,6 +77,8 @@ $(document).ready(function() {
   };
 
   /** @brief Adds a button to the processor's holding queue.
+   *
+   *  @param button The button to add to the holding set.
    */
   window.Processor.prototype.add_hold = function add_hold(button) {
     // simply add to the queue
@@ -79,6 +86,8 @@ $(document).ready(function() {
   };
 
   /** @brief Removes a button from the processor's holding queue.
+   *
+   *  @param button The button to remove from the holding set.
    */
   window.Processor.prototype.remove_hold = function remove_hold(button) {
     var index = this.__BUTTONS_HELD.indexOf(button);
@@ -101,6 +110,8 @@ $(document).ready(function() {
   };
 
   /** @brief Sends the input bytecode to the server.
+   *
+   *  @param code The code to send.
    */
   window.Processor.prototype.send = function send(code) {
     window.LOG_INFO("Sending bytes: " + code);
@@ -118,7 +129,7 @@ $(document).ready(function() {
   window.Processor.prototype.__add_holdings = function __add_holdings() {
     var i;
 
-    // iterate through all buttons being held
+    // iterate through all buttons being held and add their codes
     for (i = 0; i < this.__BUTTONS_HELD.length; i++) {
       var this_button = this.__BUTTONS_HELD[i];
       this.add_code(this_button.code, 1);
