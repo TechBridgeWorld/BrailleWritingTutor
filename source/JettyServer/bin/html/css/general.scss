@@ -1,10 +1,17 @@
 // general classes
 $SHADOW_COLOR : rgba(32, 32, 32, 0.8);
+$SOFT_SHADOW_COLOR : rgba(10, 10, 10, 0.6);
 
 .shadow {
   -moz-box-shadow:    0px 0px 2px 1px $SHADOW_COLOR;
   -webkit-box-shadow: 0px 0px 2px 1px $SHADOW_COLOR;
   box-shadow:         0px 0px 2px 1px $SHADOW_COLOR;
+}
+
+.softshadow {
+  -moz-box-shadow:    0px 0px 3px 2px $SOFT_SHADOW_COLOR;
+  -webkit-box-shadow: 0px 0px 3px 2px $SOFT_SHADOW_COLOR;
+  box-shadow:         0px 0px 3px 2px $SOFT_SHADOW_COLOR;
 }
 
 .greyshadow {
@@ -28,4 +35,18 @@ $SHADOW_COLOR : rgba(32, 32, 32, 0.8);
 .rounded {
   border-radius: 10px;
   -moz-border-radius: 10px;
+}
+
+.tooltip_header {
+  font-weight: bold;
+  text-align: center;
+}
+
+#powerTip {
+  max-width: 300px;
+  white-space: normal !important;
+}
+
+.tooltip_link {
+  color: rgba(0, 204, 255, 1);
 }

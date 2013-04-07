@@ -18,11 +18,11 @@ public class LinuxActionHandler extends AbstractActionHandler {
 	
 	private byte[] writeBuffer;
 	private int nWrite;
-	private byte[] readBuffer;
-	private int nRead;
+	//private byte[] readBuffer;
+	//private int nRead;
 	
 	private Thread writer;
-	private Thread reader;
+	//private Thread reader;
 	
 	public LinuxActionHandler() {
 		// Do any initialization here.

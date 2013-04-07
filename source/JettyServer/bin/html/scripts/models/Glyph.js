@@ -1,0 +1,110 @@
+/** @file Glyph.js
+ *  @brief Object representing a single glyph.
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+$(document).ready(function() {
+  "use strict";
+
+  /** @brief Constructor for a glyph.
+   *
+   *  @param options Options for this glyph. These include:
+   *           -id: Identifier for this glyph (e.g. "a" to represent
+   *                the letter "a")
+   *           -code: comma-separated list of buttons to be pressed for this
+   *                  glyph (e.g. "1,2" for "b", or "3,1,5" for "o")
+   */
+  window.Glyph = function Glyph(options) {
+    this.id = options.id;
+
+    // parse options.code
+    try {
+      this.buttons = options.code.split(",")
+        .map(function(el) {
+          var this_int = parseInt(el);
+          if ((this_int < 1) || (this_int > 6) || (isNaN(this_int))) {
+            throw new Error(); // will be caught below and prettified
+          };
+          return this_int;
+        }).sort();
+    } catch(err) {
+      window.LOG_ERROR("Invalid glyph: " + this);
+    };
+  };
+
+  /** @brief State machine that presses the next button to press in the input
+   *         and then stalls to give this button time to complete.
+   *
+   *  @param cell_prefix The cell prefix of the slate to press.
+   *  @param mouseover Current mouseover slate at time of glyph press.
+   *  @param index The index of the button map we are on.
+   */
+  window.Glyph.prototype.__button_step = function __button_step(cell_prefix, mouseover, index) {
+    var to_press = this.buttons[index];
+
+    // if we're done, handle the ui
+    if (to_press === undefined) {
+      // display that the user typed a glyph into this cell
+      mouseover.find('.glyph_display').addClass('active').html(this.id);
+      mouseover.addClass('glyphd');
+      var self = this;
+      var cur_mousecell = "_slate" + mouseover.attr('groupnumber') + "_";
+      setTimeout((function() {
+        this.removeClass('glyphd');
+        self.buttons.map(function(el) {
+          $('#' + cur_mousecell + el).removeClass('button_glyphd');
+          (mouseover).find('.glyph_display').removeClass('active').html('');
+        });
+      }).bind(mouseover), window.Constants.LENGTH_GLYPH_VISIBLE);
+      return;
+    };
+
+    // otherwise, try pressing the button
+    window.LOG_INFO("Glyph sending button: " + to_press);
+    try {
+      // press up and down immediately
+      __BUTTON_MAP[cell_prefix + to_press].press_down();
+      __BUTTON_MAP[cell_prefix + to_press].press_up();
+
+      // display this button as being pressed down for a bit
+      $('#' + cell_prefix + to_press).addClass('button_glyphd');
+
+    } catch(err) {
+      window.LOG_ERROR("Cannot find button for glyph: " + this);
+    };
+
+    // wait and then call self on new button set
+    setTimeout((function() {
+      this.__button_step(cell_prefix, mouseover, index + 1);
+    }).bind(this), window.Constants.TIME_BETWEEN_GLYPH_BUTTONS);
+  };
+
+  /** @brief Sends this glyph to the server as a series of button presses in
+   *         rapid succession.
+   */
+  window.Glyph.prototype.send = function send() {
+    // For now, only register glyph presses when mousing over a slate
+    if (window.cur_mouseover !== undefined) {
+      var cur_mouseover = window.cur_mouseover; // save locally in case cur_mouseover changes
+      var cell_prefix = "_slate" + window.cur_mouseover.attr('groupnumber') + "_";
+
+      // clear the currently pressed keys
+      var i;
+      // @TODO: there is probably a more elegant way to do this
+      for (i in [1, 2, 3, 4, 5, 6]) {
+        $('#' + cell_prefix + i).removeClass('button_glyphd');
+      };
+
+      // Press each button. Buttons cannot be pressed simultaneously, so we
+      // iterate over each button, only pressing the next button after the
+      // previous one has had sufficient time to complete
+      this.__button_step(cell_prefix, cur_mouseover, 0);
+    };
+
+    /** @brief toString method for glyphs.
+     */
+    window.Glyph.prototype.toString = function toString() {
+      return "Glyph {id : \"" + this.id + "\", code : \"" + this.buttons + "\"}";
+    };
+  };
+});

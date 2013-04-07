@@ -1,0 +1,83 @@
+package edu.cmu.scripting;
+
+import java.util.List;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.StringTokenizer;
+
+public class ScriptParser {
+
+	public static final String SUCCESS = "Success";
+	public static final String ERROR = "Error";
+	
+	public static final int STATUS_KEY = 0;
+	public static final int MESSAGE_KEY = 1;
+
+	private static final char COMMENT_SIGN = '#';
+	private static final String WAIT_COMMAND = "wait";
+	private static final List<String> ACTION_COMMANDS = new ArrayList<String>(
+			Arrays.asList(new String[]{"click","hold_down","release"})
+	);
+
+	public static Map<Integer, String> parseScript(String scriptName){
+		Map<Integer, String> result = new HashMap<Integer,String>();
+		List<String> heldDown = new ArrayList<String>();
+		
+		List<String> errors = new ArrayList<String>();
+
+		boolean isButtonCommand = false;
+		int lineNumber = 0;
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(scriptName));
+			String line;
+			while((line = reader.readLine()) != null ){
+				line = line.trim();
+				if(line.charAt(0) != COMMENT_SIGN){			
+					StringTokenizer st = new StringTokenizer(scriptName, " \t\n");
+					int count = st.countTokens();
+					if(count<2){
+						errors.add("Error: line "+ lineNumber+". Too few arguments");
+					}
+					else if(count > 2){
+						errors.add("Error: line "+ lineNumber+". Too many arguments");
+					}
+					else{
+						String action = st.nextToken().toLowerCase();
+						String argument = st.nextToken().toLowerCase();
+						if(isWaitCommand(action)){
+							
+						}
+						
+					}
+				}
+				lineNumber ++;
+			}
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}
+	
+	private static boolean isButtonCommand(String action){
+		//TODO
+		return action!=null && ACTION_COMMANDS.indexOf(action)!=-1; 
+	}
+	
+	private static boolean isWaitCommand(String action){
+		return action!=null && action.equals(WAIT_COMMAND); 
+	}
+	
+	
+}

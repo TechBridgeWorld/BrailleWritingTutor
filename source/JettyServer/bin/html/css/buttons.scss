@@ -1,17 +1,14 @@
 // css for buttons
-.initbutton {
-  position: absolute;
-  left: 20px;
-  top: 20px;
-  padding: 5px;
-  background: url("../assets/buttonbox_mid.png");
-  background-size: contain;
-  cursor: pointer;
-}
-
-.initbutton.active {
-  background: url("../assets/buttonbox_mid_down.png");
-  background-size: contain;
+// mixins
+@mixin noisey($color) {
+  $NOISE : "../assets/noise.png";
+  background-image: url($NOISE);
+  background-image: -webkit-gradient(linear, left top, left bottom, from($color), to($color)), url($NOISE);
+  background-image: -webkit-linear-gradient(top, $color, $color), url($NOISE); /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, $color, $color), url($NOISE); /* FF3.6+ */;
+  background-image: -ms-linear-gradient(top, $color, $color), url($NOISE); /* IE10 */;
+  background-image: -o-linear-gradient(top, $color, $color), url($NOISE); /* Opera 11.10+ */;
+  background-image: linear-gradient(top, $color, $color), url($NOISE); /* W3C */;
 }
 
 .jumbobutton {
@@ -126,4 +123,42 @@
 
 #slaterow2 {
   margin-top: -20px;
+}
+
+// Glyph specific stylings
+.glyphd:after {
+  $OVERLAY_COLOR : rgba(40, 40, 40, 0.7);
+
+  content: '';
+  color: white;
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: $OVERLAY_COLOR;
+}
+
+.slatebutton.button_glyphd {
+  background: url("../assets/slatecell_held.png") no-repeat;
+  background-size: contain;
+}
+
+.jumbobutton.button_glyphd {
+  background: url("../assets/jumbo_button_active.png") no-repeat;
+  background-size: contain;
+}
+
+.glyph_display {
+  display: none;
+}
+
+.glyph_display.active {
+  display: inline;
+  position: absolute;
+
+  text-align: center;
+  font-size: 30px;
+  color: white;
+  background: none;
+  z-index: 1000;
 }

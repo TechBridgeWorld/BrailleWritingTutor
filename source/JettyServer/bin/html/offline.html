@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<!-- @file offline.html
+     @brief Page to be displayed in case server connection is lost.
+     @author Lucas Ray (ltray@cmu.edu)
+  -->
+<html lang="en" manifest="manifest.appcache">
+<head>
+  <meta charset="UTF-8">
+  <title>BWT Emulator</title>
+
+  <!-- favicon -->
+  <link rel="shortcut icon" href="./assets/favicon.ico">
+
+  <!-- stylesheets -->
+  <link type="text/css" href="./css/offline.css" rel="stylesheet" />
+</head>
+<body>
+  <img id="offline_error" src="./assets/offline_error.jpg"></img>
+  <div id="offline_message">
+    Uh oh!
+    <br/>
+    Connection to the server was lost. Please restart the server.
+  </div>
+</body>
+</html>

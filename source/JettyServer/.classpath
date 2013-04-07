@@ -45,5 +45,8 @@
 	<classpathentry kind="lib" path="/Users/ziw/Downloads/commons-lang3-3.1/commons-lang3-3.1-sources.jar"/>
 	<classpathentry kind="lib" path="/Users/ziw/Downloads/commons-lang3-3.1/commons-lang3-3.1-tests.jar"/>
 	<classpathentry kind="lib" path="/Users/ziw/Downloads/commons-lang3-3.1/commons-lang3-3.1.jar"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/google-gson-2.2.2 2/gson-2.2.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/google-gson-2.2.2 2/gson-2.2.2-sources.jar"/>
+	<classpathentry kind="lib" path="/Users/ziw/Downloads/google-gson-2.2.2 2/gson-2.2.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
