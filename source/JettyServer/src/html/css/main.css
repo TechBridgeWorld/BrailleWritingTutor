@@ -7,12 +7,18 @@
 @import url(alert.css);
 @import url(navbar.css);
 @import url(recording.css);
+@import url(scripting.css);
 /** @file main.scss
  *  @brief Main scss file for our app.
  *
  *  All css/scss files should be written in separate files and aggregated here.
  *  e.g. After writing "splashscreen.scss", include it here via:
  *  @import "splashscreen.css";
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+/** @file _mixins.scss
+ *  @brief Mixins used in other scss files go here
  *
  *  @author Lucas Ray (ltray@cmu.edu)
  */

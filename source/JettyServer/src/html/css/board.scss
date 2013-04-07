@@ -1,19 +1,16 @@
-// css for the board
+/** @file board.scss
+ *  @brief scss file defining styles for our overall board
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+
+// mixins
+@import "_mixins.scss";
+
+// constants
 $CIRCUITURL : "../assets/circuit.jpg";
 $NOISE : "../assets/noise.png";
 $GREEN : rgba(64, 127, 80, 0.2);
-
-// mixins
-@mixin noisey($color) {
-  $NOISE : "../assets/noise.png";
-  background-image: url($NOISE);
-  background-image: -webkit-gradient(linear, left top, left bottom, from($color), to($color)), url($NOISE);
-  background-image: -webkit-linear-gradient(top, $color, $color), url($NOISE); /* Chrome 10+, Saf5.1+ */
-  background-image: -moz-linear-gradient(top, $color, $color), url($NOISE); /* FF3.6+ */;
-  background-image: -ms-linear-gradient(top, $color, $color), url($NOISE); /* IE10 */;
-  background-image: -o-linear-gradient(top, $color, $color), url($NOISE); /* Opera 11.10+ */;
-  background-image: linear-gradient(top, $color, $color), url($NOISE); /* W3C */;
-}
 
 #board {
   position: absolute;

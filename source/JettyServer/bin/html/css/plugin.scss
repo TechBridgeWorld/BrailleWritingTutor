@@ -7,13 +7,7 @@ $DARK_GREEN : rgba(68, 124, 88, 0.8);
 $DARKER_GREEN : rgba(45, 84, 59, 0.4);
 
 // mixins
-@mixin transition($transition-property, $transition-time, $method) {
-  -webkit-transition: $transition-property $transition-time $method;
-     -moz-transition: $transition-property $transition-time $method;
-      -ms-transition: $transition-property $transition-time $method;
-       -o-transition: $transition-property $transition-time $method;
-          transition: $transition-property $transition-time $method;
-}
+@import "_mixins.scss";
 
 .plugin {
   @include transition(height, .5s, ease-in-out);

@@ -55,3 +55,40 @@
 06 Apr 2013 ;17:51:22. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
 06 Apr 2013 ;17:51:22. INFO [JettyServer.java:50] Starting server.
 06 Apr 2013 ;17:51:22. INFO [JettyServer.java:52] Server started.
+07 Apr 2013 ;13:42:06. INFO [JettyServer.java:44] Initializing server. Port: 8887
+07 Apr 2013 ;13:42:06. INFO [JettyServer.java:87] Initializing servlet.
+07 Apr 2013 ;13:42:06. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
+07 Apr 2013 ;13:42:07. INFO [JettyServer.java:50] Starting server.
+07 Apr 2013 ;13:42:07. INFO [JettyServer.java:52] Server started.
+07 Apr 2013 ;13:45:20. INFO [JettyServer.java:57] Stopping server.
+07 Apr 2013 ;13:45:20. INFO [JettyServer.java:59] Server stopped.
+07 Apr 2013 ;13:47:45. INFO [JettyServer.java:44] Initializing server. Port: 8887
+07 Apr 2013 ;13:47:45. INFO [JettyServer.java:87] Initializing servlet.
+07 Apr 2013 ;13:47:45. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
+07 Apr 2013 ;13:47:46. INFO [JettyServer.java:50] Starting server.
+07 Apr 2013 ;13:47:46. INFO [JettyServer.java:52] Server started.
+07 Apr 2013 ;15:21:49. INFO [JettyServer.java:44] Initializing server. Port: 8887
+07 Apr 2013 ;15:21:49. INFO [JettyServer.java:87] Initializing servlet.
+07 Apr 2013 ;15:21:49. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
+07 Apr 2013 ;15:22:16. INFO [JettyServer.java:44] Initializing server. Port: 8887
+07 Apr 2013 ;15:22:16. INFO [JettyServer.java:87] Initializing servlet.
+07 Apr 2013 ;15:22:16. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
+07 Apr 2013 ;15:22:17. INFO [JettyServer.java:50] Starting server.
+07 Apr 2013 ;15:22:17. INFO [JettyServer.java:52] Server started.
+07 Apr 2013 ;15:23:02. INFO [JettyServer.java:44] Initializing server. Port: 8887
+07 Apr 2013 ;15:23:02. INFO [JettyServer.java:87] Initializing servlet.
+07 Apr 2013 ;15:23:02. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
+07 Apr 2013 ;15:23:03. INFO [JettyServer.java:50] Starting server.
+07 Apr 2013 ;15:23:03. INFO [JettyServer.java:52] Server started.
+07 Apr 2013 ;15:48:56. INFO [JettyServer.java:44] Initializing server. Port: 8887
+07 Apr 2013 ;15:48:56. INFO [JettyServer.java:87] Initializing servlet.
+07 Apr 2013 ;15:48:57. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
+07 Apr 2013 ;15:48:58. INFO [JettyServer.java:50] Starting server.
+07 Apr 2013 ;15:48:58. INFO [JettyServer.java:52] Server started.
+07 Apr 2013 ;15:51:24. INFO [JettyServer.java:44] Initializing server. Port: 8887
+07 Apr 2013 ;15:51:24. INFO [JettyServer.java:87] Initializing servlet.
+07 Apr 2013 ;15:51:24. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
+07 Apr 2013 ;15:51:24. INFO [JettyServer.java:50] Starting server.
+07 Apr 2013 ;15:51:24. INFO [JettyServer.java:52] Server started.
+07 Apr 2013 ;15:52:53. INFO [JettyServer.java:57] Stopping server.
+07 Apr 2013 ;15:52:53. INFO [JettyServer.java:59] Server stopped.

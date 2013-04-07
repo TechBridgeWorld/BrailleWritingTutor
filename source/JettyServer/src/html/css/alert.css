@@ -3,6 +3,11 @@
  *
  *  @author Lucas Ray (ltray@cmu.edu)
  */
+/** @file _mixins.scss
+ *  @brief Mixins used in other scss files go here
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
 #alert {
   position: fixed;
   left: 0px;

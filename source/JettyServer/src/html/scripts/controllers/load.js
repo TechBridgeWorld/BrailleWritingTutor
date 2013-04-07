@@ -26,6 +26,7 @@ $(document).ready(function() {
     window.show_loading();
     window.hide_alert();
     initializeRecording();
+    initializeScripting();
     patch();
     populate_dom();
     configure_plugins();

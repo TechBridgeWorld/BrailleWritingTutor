@@ -1,3 +1,14 @@
+/** @file buttons.scss
+ *  @brief scss file defining styles for many of our buttons (in
+ *         the emulator plugin)
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+/** @file _mixins.scss
+ *  @brief Mixins used in other scss files go here
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
 .jumbobutton {
   width: 40px;
   height: 40px;

@@ -1,0 +1,91 @@
+/** @file scripting.scss
+ *  @brief scss file defining styles for our scripting plugin.
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+/** @file _mixins.scss
+ *  @brief Mixins used in other scss files go here
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+#scripting_plugin .content {
+  height: 150px; }
+
+#load_scripts {
+  position: absolute;
+  left: 30px;
+  top: 90px;
+  background: url("../assets/refresh.png") no-repeat;
+  background-size: contain;
+  width: 50px;
+  height: 50px; }
+
+#load_scripts:active {
+  background: url("../assets/refresh_active.png") no-repeat;
+  background-size: contain; }
+
+#scripts_select {
+  position: absolute;
+  left: 95px;
+  top: 90px;
+  height: 15px;
+  width: 135px; }
+
+#scripts_select_helper {
+  position: absolute;
+  left: 95px;
+  top: 95px; }
+
+.script_label {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  color: rgba(45, 84, 59, 0.8); }
+
+#run_script {
+  position: absolute;
+  left: 250px;
+  top: 85px;
+  height: 30px;
+  width: 130px;
+  text-align: center;
+  padding: 5px;
+  background: #2e2e2e;
+  background-image: url("../assets/noise.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(46, 46, 46, 0.2)), to(rgba(46, 46, 46, 0.2))), url("../assets/noise.png");
+  background-image: -webkit-linear-gradient(top, rgba(46, 46, 46, 0.2), rgba(46, 46, 46, 0.2)), url("../assets/noise.png");
+  /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, rgba(46, 46, 46, 0.2), rgba(46, 46, 46, 0.2)), url("../assets/noise.png");
+  /* FF3.6+ */
+  background-image: -ms-linear-gradient(top, rgba(46, 46, 46, 0.2), rgba(46, 46, 46, 0.2)), url("../assets/noise.png");
+  /* IE10 */
+  background-image: -o-linear-gradient(top, rgba(46, 46, 46, 0.2), rgba(46, 46, 46, 0.2)), url("../assets/noise.png");
+  /* Opera 11.10+ */
+  background-image: linear-gradient(top, rgba(46, 46, 46, 0.2), rgba(46, 46, 46, 0.2)), url("../assets/noise.png");
+  /* W3C */
+  cursor: pointer;
+  border: solid thin rgba(10, 10, 10, 0.4);
+  padding-top: 10px;
+  font-size: 18px;
+  color: #e6e6e6;
+  -moz-border-radius: 5px;
+  border-radius: 5px; }
+
+#script_message {
+  background-color: black;
+  width: 500px;
+  height: 44px;
+  position: absolute;
+  left: 430px;
+  top: 85px;
+  border: solid thin rgba(46, 46, 46, 0.4);
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 18px;
+  padding: 2px;
+  padding-left: 7px;
+  overflow: scroll; }
+
+#script_message_helper {
+  position: absolute;
+  left: 430px;
+  top: 40px; }

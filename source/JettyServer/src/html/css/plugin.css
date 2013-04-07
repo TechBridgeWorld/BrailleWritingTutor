@@ -3,6 +3,11 @@
  *
  *  @author Lucas Ray (ltray@cmu.edu)
  */
+/** @file _mixins.scss
+ *  @brief Mixins used in other scss files go here
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
 .plugin {
   -webkit-transition: height 0.5s ease-in-out;
   -moz-transition: height 0.5s ease-in-out;

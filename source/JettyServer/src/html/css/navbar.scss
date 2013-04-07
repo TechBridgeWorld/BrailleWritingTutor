@@ -5,36 +5,7 @@
  */
 
 // mixins
-@mixin noisey($color) {
-  $NOISE : "../assets/noise.png";
-  background-image: url($NOISE);
-  background-image: -webkit-gradient(linear, left top, left bottom, from($color), to($color)), url($NOISE);
-  background-image: -webkit-linear-gradient(top, $color, $color), url($NOISE); /* Chrome 10+, Saf5.1+ */
-  background-image: -moz-linear-gradient(top, $color, $color), url($NOISE); /* FF3.6+ */;
-  background-image: -ms-linear-gradient(top, $color, $color), url($NOISE); /* IE10 */;
-  background-image: -o-linear-gradient(top, $color, $color), url($NOISE); /* Opera 11.10+ */;
-  background-image: linear-gradient(top, $color, $color), url($NOISE); /* W3C */;
-}
-
-@mixin inner_shadow() {
-  -moz-box-shadow:    inset 0 0 10px #000000;
-  -webkit-box-shadow: inset 0 0 10px #000000;
-  box-shadow:         inset 0 0 10px #000000;
-}
-
-@mixin green_inner_shadow() {
-  $THIS_GREEN : rgba(131, 232, 47, 1);
-  -moz-box-shadow:    inset 0 0 3px $THIS_GREEN;
-  -webkit-box-shadow: inset 0 0 3px $THIS_GREEN;
-  box-shadow:         inset 0 0 3px $THIS_GREEN;
-}
-
-@mixin red_inner_shadow() {
-  $THIS_RED : rgba(200, 0, 0, 1);
-  -moz-box-shadow:    inset 0 0 3px $THIS_RED;
-  -webkit-box-shadow: inset 0 0 3px $THIS_RED;
-  box-shadow:         inset 0 0 3px $THIS_RED;
-}
+@import "_mixins.scss";
 
 #top_bar {
   $DARK_GREEN : rgba(60, 93, 71, 1);

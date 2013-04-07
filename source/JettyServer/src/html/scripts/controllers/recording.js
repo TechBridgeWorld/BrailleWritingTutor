@@ -176,9 +176,7 @@ function __isValidRecordingQueue(queue){
 
 }
 
-function createQueueFromScripts(){
-	
-}
+
 
 
 

@@ -54,8 +54,7 @@ public class ScriptParser {
 				if(words.length>0){
 					//trim the leading _ and the quotes
 					String name = words[0].substring(2, words[0].length()-1);
-					if(!name.equals("left") && !name.equals("right") &&
-							!name.equals("initialize") && !name.equals("uninitialize")){
+					if(!name.equals("initialize") && !name.equals("uninitialize")){
 						allButtonNames.add(name);
 					}
 				}
@@ -176,10 +175,14 @@ public class ScriptParser {
 		if(errors.size()>0){
 			StringBuffer sb = new StringBuffer();
 			for(String error : errors){
-				sb.append(error+"\n");
+				sb.append(error+"<br />");
 			}
 			result.put(STATUS_KEY, ERROR);
 			result.put(MESSAGE_KEY, sb.toString());
+		}
+		else if(recordingQueue.size()==0){
+			result.put(STATUS_KEY, ERROR);
+			result.put(MESSAGE_KEY, "Script is empty.");
 		}
 		else{
 			result.put(STATUS_KEY, SUCCESS);
