@@ -49,8 +49,8 @@
 
 #recording_toggle {
   position: absolute;
-  left: 20px;
-  top: 100px; }
+  left: 30px;
+  top: 90px; }
 
 #recording_plugin .content {
   height: 150px; }
@@ -82,3 +82,38 @@
 #recording_toggle.active:active {
   background: url("../assets/record_button_down_on.png") no-repeat;
   background-size: contain; }
+
+#recording_name {
+  position: absolute;
+  left: 90px;
+  top: 90px;
+  height: 15px; }
+
+#recording_name_helper {
+  position: absolute;
+  left: 90px;
+  top: 95px; }
+
+.record_label {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  color: rgba(45, 84, 59, 0.4); }
+
+#recording_select {
+  position: absolute;
+  left: 250px;
+  top: 90px;
+  height: 15px;
+  width: 130px; }
+
+#recording_select_helper {
+  position: absolute;
+  left: 250px;
+  top: 95px; }
+
+#send_recording {
+  position: absolute;
+  left: 420px;
+  top: 90px;
+  height: 40px;
+  width: 130px; }
