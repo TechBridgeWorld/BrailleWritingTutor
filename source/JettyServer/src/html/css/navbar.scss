@@ -97,13 +97,12 @@
 }
 
 #app_title {
-  $LIGHT_GREEN : rgba(80, 144, 100, 0.8);
   position: absolute;
   height: 50px;
   right: 40px;
   top: -33px;
   font-family: 'Open Sans', sans-serif;
-  color: rgba(46, 46, 46, 0.8);
+  color: rgba(46, 46, 46, 0.6);
   font-size: 40px;
   white-space: nowrap;
 }
