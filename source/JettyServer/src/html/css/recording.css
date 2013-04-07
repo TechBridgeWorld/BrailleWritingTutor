@@ -39,14 +39,6 @@
     background: url("../assets/recording_off.png") no-repeat;
     background-size: contain; } }
 
-#recording_name {
-  -webkit-touch-callout: all;
-  -webkit-user-select: all;
-  -khtml-user-select: all;
-  -moz-user-select: all;
-  -ms-user-select: all;
-  user-select: all; }
-
 #recording_toggle {
   position: absolute;
   left: 30px;
@@ -85,13 +77,19 @@
 
 #recording_name {
   position: absolute;
-  left: 90px;
+  left: 95px;
   top: 90px;
-  height: 15px; }
+  height: 15px;
+  -webkit-touch-callout: auto;
+  -webkit-user-select: auto;
+  -khtml-user-select: auto;
+  -moz-user-select: auto;
+  -ms-user-select: auto;
+  user-select: auto; }
 
 #recording_name_helper {
   position: absolute;
-  left: 90px;
+  left: 95px;
   top: 95px; }
 
 .record_label {
@@ -101,19 +99,56 @@
 
 #recording_select {
   position: absolute;
-  left: 250px;
+  left: 255px;
   top: 90px;
   height: 15px;
   width: 130px; }
 
 #recording_select_helper {
   position: absolute;
-  left: 250px;
+  left: 255px;
   top: 95px; }
 
 #send_recording {
   position: absolute;
   left: 420px;
-  top: 90px;
-  height: 40px;
-  width: 130px; }
+  top: 85px;
+  height: 30px;
+  width: 130px;
+  text-align: center;
+  padding: 5px;
+  background: #2e2e2e;
+  background-image: url("../assets/noise.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(46, 46, 46, 0.2)), to(rgba(46, 46, 46, 0.2))), url("../assets/noise.png");
+  background-image: -webkit-linear-gradient(top, rgba(46, 46, 46, 0.2), rgba(46, 46, 46, 0.2)), url("../assets/noise.png");
+  /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, rgba(46, 46, 46, 0.2), rgba(46, 46, 46, 0.2)), url("../assets/noise.png");
+  /* FF3.6+ */
+  background-image: -ms-linear-gradient(top, rgba(46, 46, 46, 0.2), rgba(46, 46, 46, 0.2)), url("../assets/noise.png");
+  /* IE10 */
+  background-image: -o-linear-gradient(top, rgba(46, 46, 46, 0.2), rgba(46, 46, 46, 0.2)), url("../assets/noise.png");
+  /* Opera 11.10+ */
+  background-image: linear-gradient(top, rgba(46, 46, 46, 0.2), rgba(46, 46, 46, 0.2)), url("../assets/noise.png");
+  /* W3C */
+  cursor: pointer;
+  border: solid thin rgba(10, 10, 10, 0.4);
+  padding-top: 10px;
+  font-size: 18px;
+  color: #e6e6e6;
+  -moz-border-radius: 5px;
+  border-radius: 5px; }
+
+#send_recording:active {
+  background: #1b1b1b;
+  background-image: url("../assets/noise.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(27, 27, 27, 0.2)), to(rgba(27, 27, 27, 0.2))), url("../assets/noise.png");
+  background-image: -webkit-linear-gradient(top, rgba(27, 27, 27, 0.2), rgba(27, 27, 27, 0.2)), url("../assets/noise.png");
+  /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, rgba(27, 27, 27, 0.2), rgba(27, 27, 27, 0.2)), url("../assets/noise.png");
+  /* FF3.6+ */
+  background-image: -ms-linear-gradient(top, rgba(27, 27, 27, 0.2), rgba(27, 27, 27, 0.2)), url("../assets/noise.png");
+  /* IE10 */
+  background-image: -o-linear-gradient(top, rgba(27, 27, 27, 0.2), rgba(27, 27, 27, 0.2)), url("../assets/noise.png");
+  /* Opera 11.10+ */
+  background-image: linear-gradient(top, rgba(27, 27, 27, 0.2), rgba(27, 27, 27, 0.2)), url("../assets/noise.png");
+  /* W3C */ }
