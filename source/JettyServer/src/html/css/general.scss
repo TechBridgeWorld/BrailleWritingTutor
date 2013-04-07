@@ -65,3 +65,7 @@ $SOFT_SHADOW_COLOR : rgba(10, 10, 10, 0.6);
         -ms-user-select: auto;
             user-select: auto;
 }
+
+.clickable {
+  cursor: pointer;
+}

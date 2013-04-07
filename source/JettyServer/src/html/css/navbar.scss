@@ -14,7 +14,8 @@
   overflow: scroll;
   position: static;
   width: auto;
-  height: 70px;
+  height: auto;
+  padding-bottom: 10px;
   background: $DARK_GREEN;
   @include noisey($DARK_GREEN_TRANSPARENT);
 
@@ -98,6 +99,7 @@
 
 #app_title {
   position: absolute;
+  overflow: hidden;
   height: 50px;
   right: 40px;
   top: -33px;
@@ -112,5 +114,6 @@
     position: absolute;
     left: 500px;
     top: -33px;
+    right: 0px;
   }
 }
