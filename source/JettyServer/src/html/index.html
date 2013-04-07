@@ -116,7 +116,7 @@
         </div>
       </div>
 
-      <!-- temp test plugin -->
+      <!-- recording plugin -->
       <div id="recording_plugin" class="plugin active">
         <div class="label">Recorder</div>
         <div class="content">
@@ -129,25 +129,23 @@
         </div>
       </div>
 
-      <!-- temp test plugin -->
-      <div id="plugin_test2" class="plugin active">
-        <div class="label">Plugin #3</div>
+      <!-- scripting plugin -->
+      <div id="scripting_plugin" class="plugin active">
+        <div class="label">Scripting</div>
         <div class="content">
-          <div id="wat2"></div>
+          <input type="button" id="load_scripts" class="rounded"></input>
+          <select id="scripts_select"></select>
+          <p id="scripts_select_helper" class="script_label">Saved Scripts</p>
+          <div id="run_script">Run</div>
+          <div id="script_message" class="rounded"></div>
+          <p id="script_message_helper" class="script_label">Error Log</p>
         </div>
-      </div>
-
-      <div id="scripting_plugin">
-        <button id="load_scripts">Load All Scripts</button>
-        <select id="scripts_select"></select>
-        <button id="run_script">Run Script</button>
-        <div id="script_message"></div>
       </div>
 
     <br />
     </div>
-    <p id="copyright" class="botbar">Copyright 2013, Carnegie Mellon University</p>
-    <p id="version" class="botbar">Version 1.0.10</p>
+    <p id="copyright" class="botbar">Carnegie Mellon University</p>
+    <p id="version" class="botbar">Version 1.0.11</p>
   </div>
 </body>
 </html>

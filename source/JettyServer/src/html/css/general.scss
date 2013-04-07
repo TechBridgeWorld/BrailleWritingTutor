@@ -1,3 +1,9 @@
+/** @file general.scss
+ *  @brief Styling used for general classes go here.
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+
 // general classes
 $SHADOW_COLOR : rgba(32, 32, 32, 0.8);
 $SOFT_SHADOW_COLOR : rgba(10, 10, 10, 0.6);
@@ -49,4 +55,13 @@ $SOFT_SHADOW_COLOR : rgba(10, 10, 10, 0.6);
 
 .tooltip_link {
   color: rgba(0, 204, 255, 1);
+}
+
+.focusable {
+  -webkit-touch-callout: auto;
+    -webkit-user-select: auto;
+     -khtml-user-select: auto;
+       -moz-user-select: auto;
+        -ms-user-select: auto;
+            user-select: auto;
 }
