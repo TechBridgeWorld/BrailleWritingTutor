@@ -1,3 +1,10 @@
+/** @file scriptsLoader.js
+ *  @brief Handles the scripting plugin of the emulator.
+ *
+ * Allows the user to load and run saved scripts.
+ *
+ *  @author Zi Wang
+ */
 
 
 /**
@@ -80,7 +87,7 @@ function compileAndRun(){
 
 /**
 * Convert the array sent from the server into a valid 
-* recording queue. If successful, then play the queue.
+* recording queue. If successful, then run the recording queue.
 */
 function __prepareScript(data){
 	if(data === undefined){

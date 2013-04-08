@@ -1,8 +1,12 @@
-/**
-* Handles the recording feature of the emulator.
-* Allows the user to record a sequence of button presses and resend
-* the exact sequence later.
-*/
+/** @file recording.js
+ *  @brief Handles the recording plugin of the emulator.
+ *
+ * Allows the user to record a sequence of button presses and resend
+ * the exact sequence later.
+ *
+ *  @author Zi Wang
+ */
+
 var __KEY_DOWN = "Key down";
 var __KEY_UP = "Key up";
 var __KEY_HOLD = "Key hold";
