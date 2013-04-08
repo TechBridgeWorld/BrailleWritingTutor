@@ -12,7 +12,8 @@
   overflow: scroll;
   position: static;
   width: auto;
-  height: 70px;
+  height: auto;
+  padding-bottom: 10px;
   background: #3c5d47;
   background-image: url("../assets/noise.png");
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(60, 93, 71, 0.2)), to(rgba(60, 93, 71, 0.2))), url("../assets/noise.png");
@@ -146,6 +147,7 @@
 
 #app_title {
   position: absolute;
+  overflow: hidden;
   height: 50px;
   right: 40px;
   top: -33px;
@@ -158,4 +160,5 @@
   #app_title {
     position: absolute;
     left: 500px;
-    top: -33px; } }
+    top: -33px;
+    right: 0px; } }
