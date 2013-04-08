@@ -10,9 +10,9 @@
 # a button name for the other three actions.
 # everything is case insensitive
 
-click jumbo_1
+click jumbo1
 wait 100
-click jumbo_2
+click jumbo2
 wait 150
 
 #These two lines are omitted when compiled 

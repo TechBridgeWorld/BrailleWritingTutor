@@ -1,7 +1,15 @@
+/** @file scriptsLoader.js
+ *  @brief Handles the scripting plugin of the emulator.
+ *
+ * Allows the user to load and run saved scripts.
+ *
+ *  @author Zi Wang
+ */
+
 
 /**
-* Initialize the scripting plugin. 
-*/
+ * Initialize the scripting plugin. 
+ */
 function initializeScripting(){
 	$('#load_scripts').on('click',function(){
 		loadAllScripts();
@@ -33,7 +41,6 @@ function loadAllScripts () {
 			window.LOG_ERROR(error);
 		}
 	});
-
 }
 
 
@@ -67,11 +74,11 @@ function compileAndRun(){
 		url : '/loadScripts.do?name='+scriptName,
 		type: 'GET',
 		success : function(data){
-			__runScript(data);
+			__prepareScript(data);
 		},
 		error : function(error){
-			showScriptingMsg("Error occurred when connecting to the server to compile. ");
-			window.LOG_ERROR("Error occurred when connecting to the server to compile. ");
+			showScriptingMsg("Error occurred when connecting to the server to compile the script.");
+			window.LOG_ERROR("Error occurred when connecting to the server to compile the script.");
 			window.LOG_ERROR(error);
 		}
 	});
@@ -80,11 +87,11 @@ function compileAndRun(){
 
 /**
 * Convert the array sent from the server into a valid 
-* recording queue. If successful, then play the queue.
+* recording queue. If successful, then run the recording queue.
 */
-function __runScript(data){
+function __prepareScript(data){
 	if(data === undefined){
-		window.LOG_WARNING("Empty script data sent from server.");
+		window.LOG_WARNING("Empty script sent from server.");
 		return;
 	}
 	try{
@@ -134,11 +141,14 @@ function __runScript(data){
 			showScriptingMsg("Error when compiling script. <br />" + parsedData.message );
 		}
 	}
-	catch(e){
-
+	catch(error){
+		window.LOG_ERROR("Error when preparing the script. Unable to parse.");
+		showScriptingMsg("Error when preparing the script. Unable to parse.");
 	}
 
 }
+
+
 
 /**
 * Show message on the message area.

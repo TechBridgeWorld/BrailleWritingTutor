@@ -128,6 +128,11 @@ function __sendRecordingHelper(queue, index){
 }
 
 function __saveRecording(){
+  if(recordingQueue ===undefined || recordingQueue.length ==0){
+  	window.LOG_WARNING("No action recorded. Can't save empty recording queue.");
+  	recordingQueue = [];
+  	return;
+  }
   var name = $("#recording_name").val();
   if(name === undefined || name.trim().length==0){
     name = "Recording " + (__SAVED_RECORDING_QUEUE.length+1);

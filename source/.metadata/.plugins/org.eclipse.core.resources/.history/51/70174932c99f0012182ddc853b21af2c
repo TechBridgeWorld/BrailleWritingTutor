@@ -50,7 +50,7 @@ public class ScriptParser {
 	static{
 		Logger logger = EmulatorLogger.getEmulatorInfoLogger();
 		allButtonNames = new ArrayList<String>();
-		File inputMapping = new File("./BWT_SCRIPTS/input_mapping.csv");
+		File inputMapping = new File("./resources/input_mapping.csv");
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(inputMapping));
 			String line;
