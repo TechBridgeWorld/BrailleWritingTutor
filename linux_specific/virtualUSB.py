@@ -16,7 +16,7 @@ def handshake(fd, conn):
         resp += nbread(fd, 2, 0.001)
         if resp is not "":
             print "resp=",resp
-        if resp=="bt":
+        if "bt" in resp:
             master_write(fd, "bt") 
             return 1 
         
