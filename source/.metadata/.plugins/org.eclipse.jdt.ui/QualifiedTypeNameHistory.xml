@@ -15,4 +15,6 @@
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="java.io.InputStream"/>
 <fullyQualifiedTypeName name="edu.cmu.scripting.ScriptParser"/>
+<fullyQualifiedTypeName name="edu.cmu.logger.EmulatorLogger"/>
+<fullyQualifiedTypeName name="org.slf4j.Logger"/>
 </qualifiedTypeNameHistroy>

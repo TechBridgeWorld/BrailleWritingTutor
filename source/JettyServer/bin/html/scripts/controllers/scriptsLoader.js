@@ -28,8 +28,8 @@ function loadAllScripts () {
 			__updateScriptsDropdown(data);
 		},
 		error : function(error){
-			showScriptingMsg("Errors occurred in retriving all scripts listing.<br />");
-			window.LOG_ERROR("Errors occurred in retriving all scripts listing.");
+			showScriptingMsg("Errors occurred in retrieving all scripts listing.<br />");
+			window.LOG_ERROR("Errors occurred in retrieving all scripts listing.");
 			window.LOG_ERROR(error);
 		}
 	});
@@ -48,7 +48,7 @@ function __updateScriptsDropdown(data){
 		dropdown.html(options);
 	}
 	catch(err){
-		window.LOG_WARNING("Unable to parse the JSON string. Can't generate scripts list.");	
+		window.LOG_WARNING("Unable to parse the JSON string. Can't update scripts list.");	
 	}
 }
 
@@ -70,16 +70,21 @@ function compileAndRun(){
 			__runScript(data);
 		},
 		error : function(error){
-			window.LOG_ERROR("Error occurred in connecting to the server to compile. ");
+			showScriptingMsg("Error occurred when connecting to the server to compile. ");
+			window.LOG_ERROR("Error occurred when connecting to the server to compile. ");
 			window.LOG_ERROR(error);
 		}
 	});
 
 }
 
+/**
+* Convert the array sent from the server into a valid 
+* recording queue. If successful, then play the queue.
+*/
 function __runScript(data){
 	if(data === undefined){
-		window.LOG_WARNING("Unrecognized script. ");
+		window.LOG_WARNING("Empty script data sent from server.");
 		return;
 	}
 	try{
@@ -124,8 +129,6 @@ function __runScript(data){
 			}
 			showScriptingMsg("Compilation successful.");
 			__sendRecordingHelper(scriptQueue,0);
-
-
 		}
 		else{
 			showScriptingMsg("Error when compiling script. <br />" + parsedData.message );
@@ -137,6 +140,9 @@ function __runScript(data){
 
 }
 
+/**
+* Show message on the message area.
+*/
 function showScriptingMsg(content){
 	$("#script_message").html(content);
 }
