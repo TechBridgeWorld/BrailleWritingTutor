@@ -35,6 +35,9 @@ assets/
 css/
   * All css and scss used for the app.
 
+  libs/
+    * css files used in library files.
+
 scripts/
   * All scripts we use in our app.
 

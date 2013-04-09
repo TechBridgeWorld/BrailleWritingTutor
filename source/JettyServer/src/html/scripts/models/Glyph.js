@@ -40,6 +40,9 @@ $(document).ready(function() {
    *  @param index The index of the button map we are on.
    */
   window.Glyph.prototype.__button_step = function __button_step(cell_prefix, mouseover, index) {
+    // The final call to __button_step will access an index of this.buttons that
+    // is out of range. This is intended, as this is how we determine that this
+    // glyph's send() is complete
     var to_press = this.buttons[index];
 
     // if we're done, handle the ui
