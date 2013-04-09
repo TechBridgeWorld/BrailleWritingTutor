@@ -66,7 +66,7 @@ function __updateScriptsDropdown(data){
 function compileAndRun(){
 	//first grab the script name
 	var scriptName = $('#scripts_select').val();
-	if(scriptName === undefined || scriptName.length==0){
+	if(scriptName === undefined || scriptName.length === 0){
 		showScriptingMsg("No script selected.");
 		return;
 	}
@@ -99,8 +99,9 @@ function __prepareScript(data){
 		if(parsedData.status === "success"){
 			var tempQueue = parsedData.message;
 			var scriptQueue = [];
-			for(var i=0;i<tempQueue.length;i++){
-				var buttonId = "_"+tempQueue[i].button;
+			for(var i=0; i<tempQueue.length; i++){
+				
+				var buttonId = "_" + tempQueue[i].button;
 				var type = tempQueue[i].eventType;
 				var time = tempQueue[i].timeStamp;
 
