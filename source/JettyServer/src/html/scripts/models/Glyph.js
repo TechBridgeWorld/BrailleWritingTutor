@@ -72,11 +72,11 @@ $(document).ready(function() {
     };
 
     // otherwise, try pressing the button
-    window.LOG_INFO("Glyph sending button: " + to_press);
+    window.LOG_INFO("Glyph sending button: " + __reflect(to_press));
     try {
       // press up and down immediately
-      __BUTTON_MAP[cell_prefix + to_press].press_down();
-      __BUTTON_MAP[cell_prefix + to_press].press_up();
+      __BUTTON_MAP[cell_prefix + __reflect(to_press)].press_down();
+      __BUTTON_MAP[cell_prefix + __reflect(to_press)].press_up();
 
       // display this button as being pressed down for a bit
       $('#' + cell_prefix + __reflect(to_press)).addClass('button_glyphd');
