@@ -10,7 +10,7 @@ $(document).ready(function() {
   var __NUM_SLATEGROUPS = 16; // number of slate groups per row
   var __NUM_SLATEROWS = 2;  // number of slate rows
   var __NUM_SLATEDOTS = 6;  // number of dots per slate group
-  var __NUM_SLATEDOTS_LEFT_SIDE = 3; // number of dots in left group
+  var __NUM_SLATEDOTS_RIGHT_SIDE = 3; // number of dots in right group
   var __GLYPH_MAP = {}; // object holding our glyphs
   var __CODE_TO_GLYPH_ID = {}; // object mapping keycodes to glyph IDs
   window.__BUTTON_MAP = {}; // object holding our buttons
@@ -112,12 +112,14 @@ $(document).ready(function() {
           'id': '_slate' + (i + 1) + '_' + (j + 1)
         }).css('position', 'relative');
 
-        if (j < __NUM_SLATEDOTS_LEFT_SIDE) {
-          // if in first __NUM_SLATEDOTS_LEFT_SIDE dots, append to left group
-          $leftgroup.append($slatecell);
-        } else {
-          // otherwise append the right group
+        if (j < __NUM_SLATEDOTS_RIGHT_SIDE) {
+          // if in first __NUM_SLATEDOTS_RIGHT_SIDE dots, append to right group.
+          // the first 3 buttons are appended to the right side due to the mirroring
+          // present when reading vs writing
           $rightgroup.append($slatecell);
+        } else {
+          // otherwise append the left group
+          $leftgroup.append($slatecell);
         };
       };
 
