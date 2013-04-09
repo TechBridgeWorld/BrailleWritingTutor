@@ -38,7 +38,7 @@ public class ControllerUI extends JFrame {
 	public static final String START_BUTTON = "Start Server";
 	public static final String STOP_BUTTON = "Stop Server";
 	public static final String QUIT_BUTTON = "Quit";
-	public static final String LAUNCH = "Launch Emulator";
+	public static final String LAUNCH = "Launch";
 
 	// buttons
 	private JButton quitButton;
@@ -59,7 +59,6 @@ public class ControllerUI extends JFrame {
 		
 	public ControllerUI() {
 		initUI();
-//		logger.info(ClassLoader.getSystemClassLoader().getResource(".").getPath());
 		try {
 			handler = new UIActionHandler();
 			updateStatusArea(getServerStatus());
@@ -101,27 +100,17 @@ public class ControllerUI extends JFrame {
 	
 	private void initLayout(){
 		quitButton = new JButton(QUIT_BUTTON);
-		startButton = new JButton(START_BUTTON);
-		stopButton = new JButton(STOP_BUTTON);
 		launchButton = new JButton(LAUNCH);
 
 		launchButton.setBounds(20, 30, 120, 50);
 		quitButton.setBounds(20, 100, 120, 50);
-		startButton.setBounds(100, 60, 120, 50);
-		stopButton.setBounds(100, 130, 120, 50);
 
-		statusArea = new JTextArea("this is a jtext area\nport: 8888");
+		statusArea = new JTextArea();
 		statusArea.setEditable(false);
 		statusArea.setBounds(220, 30, 150, 50);
 
-		msgArea = new JTextArea("No message.");
-		msgArea.setEditable(false);
-		msgArea.setBounds(300, 180, 200, 100);
-		
 		launchButton.setEnabled(true);
 		
-		startButton.setToolTipText(START_SERVER_TOOLTIP);
-		stopButton.setToolTipText(STOP_SERVER_TOOLTIP);
 		quitButton.setToolTipText(QUIT_TOOLTIP);
 		launchButton.setToolTipText(LAUNCH_TOOLTIP_ON);
 		
