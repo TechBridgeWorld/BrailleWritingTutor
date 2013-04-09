@@ -100,7 +100,7 @@ function __prepareScript(data){
 			var tempQueue = parsedData.message;
 			var scriptQueue = [];
 			for(var i=0; i<tempQueue.length; i++){
-				
+
 				var buttonId = "_" + tempQueue[i].button;
 				var type = tempQueue[i].eventType;
 				var time = tempQueue[i].timeStamp;
@@ -110,27 +110,27 @@ function __prepareScript(data){
 				if(type === "click"){
 					scriptQueue.push({
 						button : btn,
-						eventType : __KEY_DOWN,
+						eventType : __KEY_DOWN_STRING,
 						timeStamp : time
 					});	
 
 					scriptQueue.push({
 						button : btn,
-						eventType : __KEY_UP,
+						eventType : __KEY_UP_STRING,
 						timeStamp : 35
 					});				
 				}
 				else if(type === 'hold'){
 					scriptQueue.push({
 						button : btn,
-						eventType : __KEY_DOWN,
+						eventType : __KEY_DOWN_STRING,
 						timeStamp : time
 					});	
 				}
 				else if(type === 'release'){
 					scriptQueue.push({
 						button : btn,
-						eventType : __KEY_UP,
+						eventType : __KEY_UP_STRING,
 						timeStamp : time
 					});	
 				}
