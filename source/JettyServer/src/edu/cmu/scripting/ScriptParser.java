@@ -23,8 +23,7 @@ import edu.cmu.logger.EmulatorLogger;
 /**
  * This class provides one static method to help parse script
  * with the given name. The result is stored and returned in a 
- * HashMap containing the status of the parsing (error or success) and 
- * the message (error message or JSON String).
+ * JSON String.
  * @author ziw
  *
  */
@@ -46,7 +45,9 @@ public class ScriptParser {
 	private static final int MIN_WAITING_TIME = 50;
 	private static List<String> allButtonNames;
 	
-	//Initialization block. Read all button codes from input mapping.
+	//Initialization block. Read all button codes from input_mapping.csv 
+	//and store them in a map. This is used to check if a String is 
+	//a valid button name later when the parsing begins.
 	static{
 		Logger logger = EmulatorLogger.getEmulatorInfoLogger();
 		allButtonNames = new ArrayList<String>();
