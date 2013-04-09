@@ -7,9 +7,9 @@
  *  @author Zi Wang
  */
 
-var __KEY_DOWN = "Key down";
-var __KEY_UP = "Key up";
-var __KEY_HOLD = "Key hold";
+var __KEY_DOWN_STRING = "Key down";
+var __KEY_UP_STRING  = "Key up";
+var __KEY_HOLD_STRING  = "Key hold";
 var __SAVED_RECORDING_QUEUE =[];
 
 /**
@@ -116,10 +116,10 @@ function __sendRecordingHelper(queue, index){
     }
     var eventType = queue[index].eventType;
     var button = queue[index].button;
-    if(eventType === __KEY_DOWN){
+    if(eventType === __KEY_DOWN_STRING){
       button.press_down();
     }
-    else if(eventType === __KEY_UP){
+    else if(eventType === __KEY_UP_STRING){
       button.press_up();
     }
     else{
@@ -139,6 +139,9 @@ function __sendRecordingHelper(queue, index){
     }, delta);
 }
 
+/**
+* Saved the last recording into __SAVED_RECORDING_QUEUE
+*/
 function __saveRecording(){
   if(recordingQueue === undefined || recordingQueue.length === 0){
   	window.LOG_WARNING("No action recorded. Can't save empty recording queue.");
@@ -159,7 +162,7 @@ function __saveRecording(){
 }
 
 /**
-*
+* Update the html dropdown to show all saved recordings.
 */
 function __updateRecordingDropdown(){
   var dropdown = $("#recording_select");
@@ -183,7 +186,7 @@ function __isValidRecordingQueue(queue){
     var curr = queue[i];
     if(curr.button === undefined ||
       curr.eventType === undefined ||
-      [__KEY_UP,__KEY_DOWN].indexOf(curr.eventType) === -1 ||
+      [__KEY_UP_STRING,__KEY_DOWN_STRING].indexOf(curr.eventType) === -1 ||
       curr.timeStamp === undefined ||
       curr.timeStamp < 0){
       return false;

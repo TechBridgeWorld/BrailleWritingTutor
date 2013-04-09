@@ -57,17 +57,15 @@ public class ScriptLoader {
 	}
 	
 	/**
-	 * Load and parse the script with the given name.
-	 * Return error messages if there are errors or a JSON string
-	 * representing a recording queue.
+	 * Load and compile the script with the given name.
+	 * Return a JSON string representing the result of the compilation. 
+	 * See {@link ScriptParser#parseScript}
 	 * @param scriptName
 	 * @return
 	 */
 	public String loadScript(String scriptName){
 		return ScriptParser.parseScript(SCRIPT_FOLDER_PATH+"/"+scriptName);
 	}	
-	
-	
 	
 }
 

@@ -23,8 +23,7 @@ import edu.cmu.logger.EmulatorLogger;
 /**
  * This class provides one static method to help parse script
  * with the given name. The result is stored and returned in a 
- * HashMap containing the status of the parsing (error or success) and 
- * the message (error message or JSON String).
+ * JSON String.
  * @author ziw
  *
  */
@@ -43,10 +42,12 @@ public class ScriptParser {
 	private static final String HOLD = "hold";
 	private static final String RELEASE = "release";
 	
-	private static final int MIN_WAITING_TIME =50;
+	private static final int MIN_WAITING_TIME = 50;
 	private static List<String> allButtonNames;
 	
-	//Initialization block. Read all button codes from input mapping.
+	//Initialization block. Read all button codes from input_mapping.csv 
+	//and store them in a map. This is used to check if a String is 
+	//a valid button name later when the parsing begins.
 	static{
 		Logger logger = EmulatorLogger.getEmulatorInfoLogger();
 		allButtonNames = new ArrayList<String>();
@@ -56,7 +57,7 @@ public class ScriptParser {
 			String line;
 			while((line = reader.readLine()) != null ){
 				String[] words = line.split(",");
-				if(words.length>0){
+				if(words.length > 0){
 					//trim the leading _ and the quotes
 					String name = words[0].substring(2, words[0].length()-1);
 					if(!name.equals("initialize") && !name.equals("uninitialize")){
@@ -70,7 +71,6 @@ public class ScriptParser {
 		} catch (IOException e) {
 			logger.error("IOException when reading from input_mapping.csv. Fatal. Script parsing may not work.");
 			EmulatorLogger.logException(logger, e);
-
 		}
 		
 	}
@@ -105,6 +105,7 @@ public class ScriptParser {
 				if(line.length()>0 && line.charAt(0) != COMMENT_SIGN){			
 					StringTokenizer st = new StringTokenizer(line, " \t\n");
 					int count = st.countTokens();
+					//each line in the script should contain exactly two tokens
 					if(count<2){
 						errors.add(prepareErrorMessage(lineNumber,"Too few arguments"));
 					}
@@ -170,14 +171,12 @@ public class ScriptParser {
 				}
 				lineNumber ++;
 			}
-			
-			
 		} catch (FileNotFoundException e) {
 			errors.add(scriptName +" file not found.");
 		} catch (IOException e) {
 			errors.add("IOException occurred when reading script " + scriptName);
 		}
-		if(heldDown.size()>0){
+		if(heldDown.size() > 0){
 			StringBuffer sb = new StringBuffer();
 			for(String button : heldDown){
 				sb.append(button+" ");
@@ -186,7 +185,7 @@ public class ScriptParser {
 			errors.add(sb.toString());
 		}
 		
-		if(errors.size()>0){
+		if(errors.size() > 0){
 			StringBuffer sb = new StringBuffer();
 			for(String error : errors){
 				sb.append(error+"<br />");
@@ -194,7 +193,7 @@ public class ScriptParser {
 			result.put(STATUS_KEY, ERROR);
 			result.put(MESSAGE_KEY, sb.toString());
 		}
-		else if(recordingQueue.size()==0){
+		else if(recordingQueue.size() == 0){
 			result.put(STATUS_KEY, ERROR);
 			result.put(MESSAGE_KEY, "Script is empty.");
 		}
@@ -208,7 +207,7 @@ public class ScriptParser {
 	}
 	
 	private static boolean isButtonCommand(String action){
-		return action!=null && (
+		return action != null && (
 					action.equalsIgnoreCase(CLICK)||
 					action.equalsIgnoreCase(HOLD)||
 					action.equalsIgnoreCase(RELEASE)
@@ -216,11 +215,11 @@ public class ScriptParser {
 	}
 	
 	private static boolean isWaitCommand(String action){
-		return action!=null && action.equals(WAIT_COMMAND); 
+		return action != null && action.equals(WAIT_COMMAND); 
 	}
 
 	private static boolean isValidButtonCode(String argument){
-		return argument!=null && allButtonNames.contains(argument);
+		return argument != null && allButtonNames.contains(argument);
 	}
 	
 	private static String prepareErrorMessage(int lineNumber, String message){
