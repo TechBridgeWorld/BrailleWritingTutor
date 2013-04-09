@@ -14,3 +14,6 @@ sandbox/
 
 source/
   * Main source code of the emulator
+
+linux\_specific/
+  * Source code that is only needed on a linux platform

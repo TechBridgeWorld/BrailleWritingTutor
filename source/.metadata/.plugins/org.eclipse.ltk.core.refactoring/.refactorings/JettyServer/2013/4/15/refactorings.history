@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move 1 resources to &apos;BWT_SCRIPTS&apos;" description="Move 1 resources to &apos;BWT_SCRIPTS&apos;" destination="BWT_SCRIPTS" element1="resources/input_mapping.csv" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1365369894656" updateReferences="true"/>
+</session>

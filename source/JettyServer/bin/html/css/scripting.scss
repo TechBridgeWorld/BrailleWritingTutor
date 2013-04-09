@@ -73,6 +73,13 @@
   border-radius: 5px;
 }
 
+#run_script:active {
+  $DARKER_GRAY : rgba(27, 27, 27, 1);
+  $DARKER_GRAY_TRANSPARENT : rgba(27, 27, 27, 0.2);
+  background: $DARKER_GRAY;
+  @include noisey($DARKER_GRAY_TRANSPARENT);
+}
+
 #script_message {
   background-color: black;
   width: 600px;
