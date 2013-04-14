@@ -42,3 +42,7 @@ html {
 
   @include noisey(rgba(222, 222, 222, 1));
 }
+
+a {
+  text-decoration: none;
+}

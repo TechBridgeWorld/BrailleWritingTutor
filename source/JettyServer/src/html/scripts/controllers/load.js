@@ -477,7 +477,7 @@ $(document).ready(function() {
     window.add_info($('#help_tooltips'),
       'Helpful Tooltips',
       'Toggles helpful mouseover tooltips like this one.',
-      's'
+      'se'
     );
 
     window.add_info($('#glyph_toggle'),

@@ -52,3 +52,26 @@ $DARK_GREEN : rgba(35, 125, 4, 0.9);
 .getting_started_box {
   width: 50%;
 }
+
+#getting_started_back {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 10px 15px;
+  color: #fff;
+  display: inline-block;
+  position: fixed;
+  top: 120px;
+  font-size: 14px;
+  opacity: 0.8;
+  transition: all 0.7s;
+  -webkit-transition: all 0.7s;
+  -moz-transition: all 0.7s;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#getting_started_back:hover {
+  opacity: 0.9;
+  transition: all 0.7s;
+  -webkit-transition: all 0.7s;
+  -moz-transition: all 0.7s;
+}
