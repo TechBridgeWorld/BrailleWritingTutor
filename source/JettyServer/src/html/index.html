@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <!-- @file index.html
-     @brief Main page (only page?) for the BWT emulator
+     @brief Main page for the BWT emulator
      @author Lucas Ray (ltray@cmu.edu)
   -->
 <html lang="en">
@@ -15,6 +15,7 @@
   <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:800' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Alfa+Slab+One|Merriweather+Sans' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
 
   <!-- stylesheets -->
   <link type="text/css" href="./css/main.css" rel="stylesheet" />
@@ -84,10 +85,38 @@
 
       <!-- fixed top navigation bar -->
       <div id="top_bar">
-        <div id="_initialize" class="initbutton topbutton tips">handshaking: <p id="handshake_status" class="buttonstatus">OFF</p></div>
+        <div id="_initialize" class="initbutton topbutton notoggle tips">initialize</div>
         <div id="help_tooltips" class="helpbutton topbutton active tips">tooltips: <p id="help_tooltips_status" class="buttonstatus active">ON</p></div>
         <div id="glyph_toggle" class="glyphbutton topbutton tips">glyphs: <p id="glyphs_enabled_status" class="buttonstatus">OFF</p></div>
         <p id="app_title">BWT Emulator</p>
+      </div>
+
+      <!-- getting_started page -->
+      <div id="getting_started">
+        <div id="getting_started_back"></div>
+        <h1 id="getting_started_title">Getting Started</h1>
+        <hr />
+        <div class="left getting_started_box">
+          <h2 id="getting_started_handshaking" class="getting_started_header">Handshaking</h2>
+          <div class="getting_started_content">
+            When the real BWT is plugged in it starts sending 'n's across the wire.
+            It does so until it receives the string "bt", to which it responds by
+            sending "bt" and stopping the stream of 'n's. Turning handshaking ON
+            initiates this process with the emulator. This emulates unplugging
+            the BWT and plugging it back in.
+          </div>
+        </div>
+        <div class="right getting_started_box">
+          <h2 id="getting_started_glyphs" class="getting_started_header">Glyphs</h2>
+          <div class="getting_started_content">
+            When glyphs are ON, hover over a slate and
+            type a letter on your keyboard to press the appropriate
+            cells to the BWT software. Cells are pressed in number order,
+            e.g. typing 'd' presses cells 1, 4, then 5
+            as opposed to 5,1,4 or 4,5,1. A delay of 500 ms is added
+            between presses to avoid overloading the software.
+          </div>
+        </div>
       </div>
 
       <!-- main plugin: the emulator -->
@@ -146,7 +175,7 @@
 
     <br />
     </div>
-    <p id="copyright" class="botbar">Carnegie Mellon University</p>
+    <p id="copyright" class="botbar">Carnegie Mellon University & TechBridgeWorld</p>
     <p id="version" class="botbar">Version 1.0.13</p>
   </div>
 </body>

@@ -40,7 +40,9 @@
   white-space: normal !important; }
 
 .tooltip_link {
-  color: #00ccff; }
+  color: #00ccff;
+  cursor: pointer;
+  display: inline; }
 
 .focusable {
   -webkit-touch-callout: auto;

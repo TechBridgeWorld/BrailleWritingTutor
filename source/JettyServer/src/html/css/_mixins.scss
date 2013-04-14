@@ -49,6 +49,14 @@
   box-shadow:         inset 0 0 3px $THIS_RED;
 }
 
+// creates no shadow
+@mixin no_inner_shadow() {
+  -moz-box-shadow:    inset 0 0 0px #000000;
+  -webkit-box-shadow: inset 0 0 0px #000000;
+  box-shadow:         inset 0 0 0px #000000;
+}
+
+
 // helpers for animations. wraps animation calls for cross-platform
 // compatibility
 @mixin animation-name($name) {

@@ -31,6 +31,8 @@ $(document).ready(function() {
     configure_plugins();
     attach_handlers();
     init_processor();
+    init_dom();
+    add_hashchange();
     add_tooltips();
     load_server();
   };
@@ -60,6 +62,13 @@ $(document).ready(function() {
   var init_processor = function init_processor() {
     window._Processor = new window.Processor();
     window._Processor.run();
+  };
+
+  /** @brief Initializes the DOM. Hides elements that shouldn't be shown.
+   */
+  var init_dom = function init_dom() {
+    window.location.hash = "#";
+    $("#getting_started").hide();
   };
 
   /** @brief Populates the DOM with objects we don't want to hardcode into
@@ -288,7 +297,27 @@ $(document).ready(function() {
 //    }));
 
     attach_toggle_buttons();
+    attach_init();
     attach_glyph_handlers();
+  };
+
+  /** @brief Attaches the init button handler.
+   */
+  var attach_init = function attach_init() {
+    $("#_initialize").on('click', function() {
+      window.LOG_INFO("Sending initialize");
+      $.ajax({
+        url: '/sendBytes.do?code=' + window.input_mapping['_initialize'],
+        type: 'GET',
+        success: function(data) {
+          window.LOG_INFO("initialize succeeded");
+        },
+        error: function(data) {
+          // TODO: handle this better
+          window.LOG_ERROR("initialize failed");
+        },
+      });
+    });
   };
 
   /** @brief Attaches handlers to buttons to send the glyph associated with that letter.
@@ -387,49 +416,7 @@ $(document).ready(function() {
       });
     };
 
-    // handle the init button separately since it doesn't need to
-    // adhere to strange emulator-specific timings
-    var is_handshaking = false;
-    toggle_button_helper($("#_initialize"), is_handshaking,
-      function onTrue() {
-        // send init code to the server
-        window.LOG_INFO("Sending initialize");
-
-        // update DOM to reflect press
-        $('#handshake_status').html('ON').addClass('active');
-        $.ajax({
-          url: '/sendBytes.do?code=' + window.input_mapping['_initialize'],
-          type: 'GET',
-          success: function(data) {
-            window.LOG_INFO("initialize succeeded");
-          },
-          error: function(data) {
-            // TODO: handle this better
-            window.LOG_ERROR("initialize failed");
-          },
-        });
-      },
-      function onFalse() {
-        // otherwise send uninitialize to server
-        window.LOG_INFO("Terminating initialize");
-
-        // update DOM
-        $('#handshake_status').html('OFF').removeClass('active');
-        $.ajax({
-          url: '/sendBytes.do?code=' + window.input_mapping['_uninitialize'],
-          type: 'GET',
-          success: function(data) {
-            window.LOG_INFO("uninitialize succeeded");
-          },
-          error: function(data) {
-            // TODO: handle this better
-            window.LOG_ERROR("uninitialize failed");
-          },
-        });
-      }
-    );
-
-    // handle the help button separately also
+    // handle the help button separately
     var is_helping = true;
     toggle_button_helper($('#help_tooltips'), is_helping,
       function onTrue() {
@@ -477,7 +464,7 @@ $(document).ready(function() {
   window.add_tooltips = function add_tooltips() {
     window.add_info($('#_initialize'),
       'Handshaking',
-      'Toggles the handshaking process. See the \'<a href="#" class="tooltip_link">Getting Started</a>\' tutorial for ' +
+      'Toggles the handshaking process. See the \'<a href="#getting_started" class="tooltip_link">Getting Started</a>\' tutorial for ' +
       'more information.', 'se'
     );
 
@@ -490,15 +477,35 @@ $(document).ready(function() {
     window.add_info($('#help_tooltips'),
       'Helpful Tooltips',
       'Toggles helpful mouseover tooltips like this one.',
-      'se'
+      's'
     );
 
     window.add_info($('#glyph_toggle'),
       'Glyphs',
       'Toggles the use of glyphs. See \'<a href="#" class="tooltip_link">Glyphs</a>\' for' +
       'more information.',
-      'se'
+      's'
     );
+  };
+
+  /** @brief Adds hashchange events to load pages (like getting_started) without opening
+   *         a new tab.
+   */
+  var add_hashchange = function add_hashchange() {
+    console.log('added');
+    window.onhashchange = function() {
+      var cur_hash = window.location.hash;
+
+      if (cur_hash === "#getting_started") {
+        $(".plugin").slideUp();
+        $("#getting_started").slideDown();
+        $("#board").addClass("getting_started");
+      } else if (cur_hash === "") {
+        $("#getting_started").slideUp();
+        $(".plugin").slideDown();
+        $("#board").removeClass("getting_started");
+      };
+    };
   };
 
 

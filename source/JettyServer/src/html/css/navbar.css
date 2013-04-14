@@ -59,6 +59,21 @@
   -webkit-box-shadow: inset 0 0 3px #c80000;
   box-shadow: inset 0 0 3px #c80000; }
 
+.topbutton.notoggle {
+  -moz-box-shadow: inset 0 0 0px #000000;
+  -webkit-box-shadow: inset 0 0 0px #000000;
+  box-shadow: inset 0 0 0px #000000; }
+
+.topbutton.notoggle:hover {
+  -moz-box-shadow: inset 0 0 0px #000000;
+  -webkit-box-shadow: inset 0 0 0px #000000;
+  box-shadow: inset 0 0 0px #000000; }
+
+.initbutton.topbutton.notoggle:active {
+  -moz-box-shadow: inset 0 0 0px #000000;
+  -webkit-box-shadow: inset 0 0 0px #000000;
+  box-shadow: inset 0 0 0px #000000; }
+
 .topbutton.active {
   -moz-box-shadow: inset 0 0 3px #83e82f;
   -webkit-box-shadow: inset 0 0 3px #83e82f;

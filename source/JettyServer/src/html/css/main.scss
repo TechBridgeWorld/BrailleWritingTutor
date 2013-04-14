@@ -23,6 +23,9 @@
 // mixins
 @import "_mixins.scss";
 
+// other pages
+@import "getting_started.css";
+
 * {
   font-family: 'Varela Round', sans-serif;
   -webkit-touch-callout: none;

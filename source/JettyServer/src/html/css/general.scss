@@ -55,6 +55,8 @@ $SOFT_SHADOW_COLOR : rgba(10, 10, 10, 0.6);
 
 .tooltip_link {
   color: rgba(0, 204, 255, 1);
+  cursor: pointer;
+  display: inline;
 }
 
 .focusable {

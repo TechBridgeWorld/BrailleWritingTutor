@@ -46,6 +46,18 @@
   @include red_inner_shadow();
 }
 
+.topbutton.notoggle {
+  @include no_inner_shadow();
+}
+
+.topbutton.notoggle:hover {
+  @include no_inner_shadow();
+}
+
+.initbutton.topbutton.notoggle:active {
+  @include no_inner_shadow();
+}
+
 .topbutton.active {
   @include green_inner_shadow();
 }

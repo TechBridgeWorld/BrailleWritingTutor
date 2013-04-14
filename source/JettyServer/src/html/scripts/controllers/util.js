@@ -159,9 +159,7 @@ $(document).ready(function() {
     // add the tooltip
     $dom_el.powerTip({
       'placement': placement,
-      mouseOnToPopup: true,
-      intentPollInterval: 300,
-      closeDelay: 50
+      mouseOnToPopup: true
     });
     $dom_el.data('powertipjq', $message);
   };

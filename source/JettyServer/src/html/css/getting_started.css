@@ -1,0 +1,39 @@
+/** @file getting_started.scss
+ *  @brief scss styles for our getting started page.
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+#getting_started {
+  font-family: 'Noto Sans', sans-serif;
+  margin-left: 15px;
+  margin-right: 15px;
+  font-size: 20px; }
+
+#getting_started h1 {
+  font-size: 45px; }
+
+#getting_started h2 {
+  font-size: 35px; }
+
+#getting_started hr {
+  color: rgba(20, 20, 20, 0.8);
+  background-color: rgba(20, 20, 20, 0.8);
+  height: 1px; }
+
+#getting_started_title {
+  text-align: center;
+  margin-top: 15px; }
+
+.getting_started_header {
+  color: rgba(35, 125, 4, 0.9); }
+
+.getting_started_content {
+  margin-left: 30px;
+  padding-left: 15px;
+  margin-top: -15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-left: solid thin rgba(20, 20, 20, 0.8); }
+
+.getting_started_box {
+  width: 50%; }
