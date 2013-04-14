@@ -1,15 +1,13 @@
 package edu.cmu.ui;
 
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import org.apache.commons.lang3.SystemUtils;
+import org.slf4j.Logger;
 
 import edu.cmu.controller.AbstractActionHandler;
 import edu.cmu.controller.GenericServlet;
 import edu.cmu.controller.LinuxActionHandler;
 import edu.cmu.controller.WindowsActionHandler;
+import edu.cmu.logger.EmulatorLogger;
 import edu.cmu.server.JettyServer;
 
 /**
@@ -20,12 +18,12 @@ import edu.cmu.server.JettyServer;
  * @author ziw
  *
  */
-public class UIActionHandler implements ActionListener{
+public class UIActionHandler{
 
 	private JettyServer js;
 	private AbstractActionHandler handler;
 	private GenericServlet servlet;
-	
+	private Logger logger = EmulatorLogger.getServerLogger();
 
 	
 	public UIActionHandler() throws Exception{
@@ -40,10 +38,14 @@ public class UIActionHandler implements ActionListener{
 			handler = new LinuxActionHandler();
 		}
 		else{
-//			throw new Exception("Invalid OS. Only support Windows/Linux.");
+			logger.error("Invalid OS. Emulator only supports Windows/Linux.");
+			Exception e = new Exception("Invalid OS. Emulator only supports Windows/Linux.");
+			EmulatorLogger.logException(logger, e);
+			throw e;
+			
 			//TODO  this line is here for debug/dev only because dev environment is Mac OS 
 			//Should throw the exception when shipped.
-			handler = new WindowsActionHandler();
+//			handler = new WindowsActionHandler();
 		}
 		servlet = new GenericServlet(handler);
 		js = new JettyServer(port,servlet);
@@ -69,10 +71,5 @@ public class UIActionHandler implements ActionListener{
 		return js.getPort();
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 }
