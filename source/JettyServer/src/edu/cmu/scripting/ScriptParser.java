@@ -42,7 +42,7 @@ public class ScriptParser {
 	private static final String HOLD = "hold";
 	private static final String RELEASE = "release";
 	
-	private static final int MIN_WAITING_TIME = 50;
+	private static final int MIN_WAITING_TIME = 200;
 	private static List<String> allButtonNames;
 	
 	//Initialization block. Read all button codes from input_mapping.csv 
@@ -69,7 +69,7 @@ public class ScriptParser {
 			logger.error("input_mapping.csv is not found. Fatal. Script parsing may not work.");
 			EmulatorLogger.logException(logger, e);
 		} catch (IOException e) {
-			logger.error("IOException when reading from input_mapping.csv. Fatal. Script parsing may not work.");
+			logger.error("IOException when reading from input_mapping.csv. Fatal. Script parsing will not work.");
 			EmulatorLogger.logException(logger, e);
 		}
 		
@@ -101,8 +101,13 @@ public class ScriptParser {
 			BufferedReader reader = new BufferedReader(new FileReader(scriptName));
 			String line;
 			while((line = reader.readLine()) != null ){
-				line = line.trim();
-				if(line.length()>0 && line.charAt(0) != COMMENT_SIGN){			
+				if(line.length()>0 && line.charAt(0) != COMMENT_SIGN){	
+					int commentIndex = line.indexOf(COMMENT_SIGN);
+					if(commentIndex != -1){
+						line = line.substring(0,commentIndex);
+					}
+					line = line.trim();
+					System.out.println(line);
 					StringTokenizer st = new StringTokenizer(line, " \t\n");
 					int count = st.countTokens();
 					//each line in the script should contain exactly two tokens
@@ -164,9 +169,7 @@ public class ScriptParser {
 						}
 						else{
 							errors.add(prepareErrorMessage(lineNumber, "Unrecognized command: " + action));
-							
 						}
-						
 					}
 				}
 				lineNumber ++;
