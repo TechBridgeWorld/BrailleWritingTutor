@@ -4,12 +4,14 @@
  *  @author Lucas Ray (ltray@cmu.edu)
  */
 
+@import "_mixins.scss";
+
 // variables
 $GRAY : rgba(20, 20, 20, 0.8);
 $GREEN : rgba(44, 145, 4, 0.8);
 $DARK_GREEN : rgba(35, 125, 4, 0.9);
 
-#getting_started {
+#help {
   font-family: 'Noto Sans', sans-serif;
 
   margin-left: 15px;
@@ -17,31 +19,37 @@ $DARK_GREEN : rgba(35, 125, 4, 0.9);
   font-size: 20px;
 }
 
-#getting_started h1 {
+#help h1 {
   font-size: 45px;
 }
 
-#getting_started h2 {
+#help h2 {
   font-size: 35px;
 }
 
-#getting_started hr {
+#help hr {
   color: $GRAY;
   background-color: $GRAY;
   height: 1px;
 }
 
-#getting_started_title {
+.help_title {
   text-align: center;
   margin-top: 15px;
+  margin-bottom: -0px;
 }
 
 .getting_started_header {
   color: $DARK_GREEN;
 }
 
+.getting_started_header_icon {
+  margin-left: 60px;
+  margin-top: -5px;
+}
+
 .getting_started_content {
-  margin-left: 30px;
+  margin-left: 50px;
   padding-left: 15px;
   margin-top: -15px;
   padding-top: 10px;
@@ -61,7 +69,7 @@ $DARK_GREEN : rgba(35, 125, 4, 0.9);
   position: fixed;
   top: 120px;
   font-size: 14px;
-  opacity: 0.8;
+  opacity: 0.7;
   transition: all 0.7s;
   -webkit-transition: all 0.7s;
   -moz-transition: all 0.7s;
@@ -74,4 +82,47 @@ $DARK_GREEN : rgba(35, 125, 4, 0.9);
   transition: all 0.7s;
   -webkit-transition: all 0.7s;
   -moz-transition: all 0.7s;
+}
+
+// animations
+@include keyframes(rotate_back) {
+  0% {
+    @include transform(rotate(0deg));
+  }
+  100% {
+    @include transform(rotate(360deg));
+  }
+}
+
+#getting_started_back.in_help {
+  @include animation-name(rotate_back);
+  @include animation-duration(.5s);
+  @include animation-iteration-count(1);
+  @include animation-timing-function(ease-in-out);
+}
+
+#back_text {
+  display: inline;
+}
+
+.help_topic {
+  color: rgba(165, 0, 250, 1);
+  font-size: 35px;
+  background: rgba(0, 0, 0, 0.65);
+  width: 100%;
+  text-align: right;
+
+  position: relative;
+  left: 20px;
+  padding-right: 20px;
+  padding-left: 40px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.section_title {
+  $WHITE : rgba(222, 222, 222, 0.2);
+  background: rgba(222, 222, 222, 1);
+  @include noisey($WHITE);
+  height: 80px;
 }

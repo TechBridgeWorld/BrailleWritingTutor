@@ -33,7 +33,7 @@
   -moz-border-radius: 5px;
   border-radius: 5px; }
 
-#board.getting_started {
+#board.help {
   -webkit-transition: background 0.2s ease-in-out;
   -moz-transition: background 0.2s ease-in-out;
   -ms-transition: background 0.2s ease-in-out;
