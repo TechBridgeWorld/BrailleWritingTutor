@@ -94,7 +94,7 @@
 
       <!-- help page -->
       <div id="help">
-        <a href="#" id="getting_started_back" class="rounded">←<p id="back_text"> back</p></a>
+        <a href="#" id="getting_started_back" class="rounded">&larr;<p id="back_text"> back</p></a>
         <div class="help_section" id="features_help">
           <div class="dummy_section_title"></div>
           <div class="section_title_wrapper">
@@ -104,15 +104,17 @@
             </div>
           </div>
           <div class="left getting_started_box">
-            <h2 class="getting_started_header">Handshaking</h2>
-            <img src="./assets/init_icon_help.png" class="getting_started_header_icon left"></img>
-            <div class="getting_started_content">
-              When the real BWT is plugged in it starts sending 'n's across the wire.
-              It does so until it receives the string "bt", to which it responds by
-              sending "bt" and stopping the stream of 'n's. Turning handshaking ON
-              initiates this process with the emulator. This emulates unplugging
-              the BWT and plugging it back in.
-            </div>
+            <section id="handshaking_section">
+              <h2 class="getting_started_header">Handshaking</h2>
+              <img src="./assets/init_icon_help.png" class="getting_started_header_icon left"></img>
+              <div class="getting_started_content">
+                When the real BWT is plugged in it starts sending 'n's across the wire.
+                It does so until it receives the string "bt", to which it responds by
+                sending "bt" and stopping the stream of 'n's. Turning handshaking ON
+                initiates this process with the emulator. This emulates unplugging
+                the BWT and plugging it back in.
+              </div>
+            </section>
           </div>
           <div class="right getting_started_box">
             <h2 class="getting_started_header">Glyphs</h2>
@@ -153,27 +155,77 @@
             </div>
           </div>
         </div>
-        <h1 class="help_title">Getting Started</h1>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada vehicula massa, a eleifend diam pharetra vel. Aliquam mattis venenatis nisl, nec vulputate magna condimentum sit amet. Aliquam ut sem justo. Duis varius tellus in massa congue quis adipiscing enim fringilla. Proin vel egestas purus. Nulla ligula lorem, pulvinar ac tristique sit amet, elementum sed diam. Integer a nulla vel erat semper tincidunt. Quisque sed diam leo.
+        <div id="getting_started_guide">
+          <h1 class="help_title" id="getting_started_title">Getting Started</h1>
+          <hr id="getting_started_hr" />
+          <div id="getting_started_body" class="guide_content">
+            <img src="./assets/bwt_hardware.png" class="right guide_picture bigrounded bigshadow"></img>
+            The BWT Emulator virtualizes the behavior of the BWT. The BWT itself
+            is a very simple device. Each button on the device corresponds to
+            a bytecode which is sent from the BWT upon button press. For example,
+            pressing the upper-leftmost button on the device outputs the bytecode
+            "<tt>a n</tt>". The emulator simply produces these bytecodes as the
+            appropriate buttons are pressed.
 
-Aliquam vel nulla ac arcu rhoncus dictum quis id ipsum. Pellentesque nec quam a felis luctus gravida. Mauris semper odio id dolor blandit ornare. Mauris et libero ac odio porta rhoncus quis eget nisl. Curabitur ultrices pretium vulputate. Donec placerat felis mattis turpis euismod porta. Mauris ac vestibulum tortor. Cras interdum gravida sem. In accumsan neque ut enim convallis in accumsan elit blandit. Nunc convallis vestibulum bibendum. Maecenas in tellus nulla. Vestibulum sit amet mi et neque cursus auctor. Nullam eros purus, congue vel sagittis in, molestie id eros. Integer pulvinar fermentum eros vel gravida.
+            The BWT hardware and emulator are divided into two primary sections, the
+            jumbo cell, and the slate cells.
 
-Vivamus tincidunt lorem a orci elementum lobortis sodales enim condimentum. Ut nec tortor eros. Vivamus orci diam, iaculis vel dictum ac, auctor eget eros. Sed elit enim, elementum a tincidunt ac, pulvinar id orci. Nunc ac sapien vel arcu aliquam iaculis eu eget ligula. Sed dignissim odio velit. Cras eu eros erat, vel venenatis nisi. Maecenas tortor mauris, pulvinar nec lobortis id, suscipit in neque. Ut non laoreet dolor. Aliquam erat volutpat. Suspendisse potenti. Praesent quis porta risus. Praesent laoreet, dolor eget aliquet luctus, ante arcu hendrerit elit, vel bibendum nibh urna nec enim. Duis sem eros, gravida sed elementum sed, fermentum a arcu.
+            <div class="getting_started_content noup noborder">
+              <div id="overall_picture_wrapper">
+                <img src="./assets/overall_emulator.png" id="overall_picture" class="rounded shadow center"></img>
+                <p class="soft_text center picture_label">BWT Sections</p>
+              </div>
+            </div>
 
-Vestibulum vel eros purus, sit amet pulvinar quam. Mauris eu aliquam dolor. Etiam at turpis quam, vel aliquam mauris. Nam id ipsum neque. Aenean orci felis, placerat vitae placerat sit amet, posuere sit amet dolor. Nam dignissim ultricies rutrum. In non velit orci, non sollicitudin eros. In nulla tortor, feugiat nec tempus nec, feugiat sit amet odio.
+            <h2 class="getting_started_header">Jumbo Cell</h2>
+            The jumbo cell is the set of 6 large, centered buttons in the middle of
+            the BWT. Each button represents 1 dot position in a braille cell. When
+            reading braille, braille dots are numbered from top to bottom, left to
+            right, like so:
 
-Duis feugiat mauris vel lectus euismod ut porta ante ultrices. Duis viverra posuere sagittis. Aenean gravida purus vitae mauris iaculis id dapibus neque faucibus. Nunc at risus sit amet dolor rutrum iaculis. Vestibulum volutpat volutpat tellus nec consequat. Vestibulum porta risus ac felis commodo vulputate. Vivamus a lorem sed massa facilisis rhoncus non sed purus. Ut iaculis, erat sit amet rutrum facilisis, nibh ipsum tincidunt massa, eget adipiscing risus risus a lectus.
+            <div class="getting_started_content noup noborder">
+              <img src="./assets/braille_reading.png" class="rounded shadow guide_smallpicture center"></img>
+              <p class="soft_text center picture_label">Braille cell when reading</p>
+            </div>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada vehicula massa, a eleifend diam pharetra vel. Aliquam mattis venenatis nisl, nec vulputate magna condimentum sit amet. Aliquam ut sem justo. Duis varius tellus in massa congue quis adipiscing enim fringilla. Proin vel egestas purus. Nulla ligula lorem, pulvinar ac tristique sit amet, elementum sed diam. Integer a nulla vel erat semper tincidunt. Quisque sed diam leo.
+            However, when writing braille, the numbering is mirrored about the
+            y-axis since you push in dots to write, but read using bumps. So,
+            for writing, the cell is labeled like so:
 
-Aliquam vel nulla ac arcu rhoncus dictum quis id ipsum. Pellentesque nec quam a felis luctus gravida. Mauris semper odio id dolor blandit ornare. Mauris et libero ac odio porta rhoncus quis eget nisl. Curabitur ultrices pretium vulputate. Donec placerat felis mattis turpis euismod porta. Mauris ac vestibulum tortor. Cras interdum gravida sem. In accumsan neque ut enim convallis in accumsan elit blandit. Nunc convallis vestibulum bibendum. Maecenas in tellus nulla. Vestibulum sit amet mi et neque cursus auctor. Nullam eros purus, congue vel sagittis in, molestie id eros. Integer pulvinar fermentum eros vel gravida.
+            <div class="getting_started_content noup noborder">
+              <img src="./assets/braille_writing.png" class="rounded shadow guide_smallpicture center"></img>
+              <p class="soft_text center picture_label">Braille cell when writing</p>
+            </div>
 
-Vivamus tincidunt lorem a orci elementum lobortis sodales enim condimentum. Ut nec tortor eros. Vivamus orci diam, iaculis vel dictum ac, auctor eget eros. Sed elit enim, elementum a tincidunt ac, pulvinar id orci. Nunc ac sapien vel arcu aliquam iaculis eu eget ligula. Sed dignissim odio velit. Cras eu eros erat, vel venenatis nisi. Maecenas tortor mauris, pulvinar nec lobortis id, suscipit in neque. Ut non laoreet dolor. Aliquam erat volutpat. Suspendisse potenti. Praesent quis porta risus. Praesent laoreet, dolor eget aliquet luctus, ante arcu hendrerit elit, vel bibendum nibh urna nec enim. Duis sem eros, gravida sed elementum sed, fermentum a arcu.
+            The jumbo cell is the easiest way to begin learning how to write.
+            The buttons are large and can be pressed without the use of a
+            stylus.
 
-Vestibulum vel eros purus, sit amet pulvinar quam. Mauris eu aliquam dolor. Etiam at turpis quam, vel aliquam mauris. Nam id ipsum neque. Aenean orci felis, placerat vitae placerat sit amet, posuere sit amet dolor. Nam dignissim ultricies rutrum. In non velit orci, non sollicitudin eros. In nulla tortor, feugiat nec tempus nec, feugiat sit amet odio.
+            <h2 class="getting_started_header">Slate Cells</h2>
+            Once students become more advanced, they can begin using the
+            slate rows at the bottom of the emulator. These cells can only be pressed
+            with the use of a stylus, to simulate the stylus that would be used when
+            writing on a physical braille slate.
 
-Duis feugiat mauris vel lectus euismod ut porta ante ultrices. Duis viverra posuere sagittis. Aenean gravida purus vitae mauris iaculis id dapibus neque faucibus. Nunc at risus sit amet dolor rutrum iaculis. Vestibulum volutpat volutpat tellus nec consequat. Vestibulum porta risus ac felis commodo vulputate. Vivamus a lorem sed massa facilisis rhoncus non sed purus. Ut iaculis, erat sit amet rutrum facilisis, nibh ipsum tincidunt massa, eget adipiscing risus risus a lectus.
-        <hr />
+            <h2 class="getting_started_header">Navigating the Menu</h2>
+            The BWT software is manipulated via the BWT hardware or emulator. Upon
+            first starting up, the BWT software will look for the BWT hardware or
+            emulator (see <a href="#handshaking_section">handshaking</a> for more
+            information). To begin navigation about the menu, you must first
+            press and hold (via shift-click) one of the two menu buttons, pictured
+            here:
+
+            <div class="getting_started_content noup noborder">
+              <img src="./assets/menu_buttons.png" id="menu_buttons_picture" class="rounded shadow center"></img>
+              <p class="soft_text center picture_label">Menu buttons</p>
+            </div>
+
+            Once holding, you can begin navigation by pressing any of the buttons
+            on the jumbo cell. Once you've selected the menu option you'd like,
+            confirm the selection by pressing the menu button again (i.e. stop
+            holding the menu button, and then press it again).
+          </div>
+        </div>
       </div>
 
       <!-- main plugin: the emulator -->

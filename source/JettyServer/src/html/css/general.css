@@ -18,11 +18,21 @@
   -webkit-box-shadow: 0px 0px 6px 2px #777;
   box-shadow: 0px 0px 6px 2px #777; }
 
+.bigshadow {
+  -moz-box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.9);
+  -webkit-box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.9);
+  box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.9); }
+
 .left {
   float: left; }
 
 .right {
   float: right; }
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center; }
 
 .bordered {
   border: solid thin rgba(0, 0, 0, 0.5); }
@@ -30,6 +40,14 @@
 .rounded {
   border-radius: 10px;
   -moz-border-radius: 10px; }
+
+.bigrounded {
+  border-radius: 15px;
+  -moz-border-radius: 15px; }
+
+.soft_text {
+  color: rgba(119, 119, 119, 0.9);
+  font-size: 17px; }
 
 .tooltip_header {
   font-weight: bold;
@@ -54,3 +72,6 @@
 
 .clickable {
   cursor: pointer; }
+
+tt {
+  font-family: "Courier New", Courier, monospace; }

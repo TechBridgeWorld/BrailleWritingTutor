@@ -33,14 +33,77 @@ $DARK_GREEN : rgba(35, 125, 4, 0.9);
   height: 1px;
 }
 
+#help tt {
+  color: blue;
+}
+
 .help_title {
   text-align: center;
   margin-top: 15px;
   margin-bottom: -0px;
 }
 
+#getting_started_guide {
+  position: relative;
+  top: 50px;
+}
+
+#getting_started_body {
+  margin-top: 5px;
+  margin-bottom: 50px;
+}
+
+.guide_content {
+  margin-left: 50px;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-right: 50px;
+  margin-bottom: 100px;
+}
+
+.guide_picture {
+  width: 250px;
+  height: 250px;
+  margin: 5px;
+}
+
+.guide_smallpicture {
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  display: block;
+}
+
+.guide_smallpicture.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .getting_started_header {
   color: $DARK_GREEN;
+}
+
+#menu_buttons_picture {
+  width: 400px;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-bottom: 5px;
+}
+
+#overall_picture {
+  width: 500px;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-bottom: 5px;
+}
+
+#overall_picture_wrapper {
+  width: 500px;
 }
 
 .getting_started_header_icon {
@@ -55,6 +118,18 @@ $DARK_GREEN : rgba(35, 125, 4, 0.9);
   padding-top: 10px;
   padding-bottom: 10px;
   border-left: solid thin $GRAY;
+}
+
+.getting_started_content.noup {
+  margin-top: 5px;
+}
+
+.getting_started_content.noborder {
+  border: none;
+}
+
+.picture_label {
+  margin-top: -3px;
 }
 
 .getting_started_box {
@@ -75,6 +150,7 @@ $DARK_GREEN : rgba(35, 125, 4, 0.9);
   -moz-transition: all 0.7s;
   cursor: pointer;
   text-decoration: none;
+  z-index: 100;
 }
 
 #getting_started_back:hover {
