@@ -32,6 +32,7 @@ $(document).ready(function() {
     attach_handlers();
     init_processor();
     init_dom();
+    init_help();
     add_hashchange();
     add_tooltips();
     load_server();
@@ -67,8 +68,89 @@ $(document).ready(function() {
   /** @brief Initializes the DOM. Hides elements that shouldn't be shown.
    */
   var init_dom = function init_dom() {
-    window.location.hash = "#";
-    $("#getting_started").hide();
+    window.location.href = "#";
+    $("#help").hide();
+  };
+
+  /** @brief Initializes the help page. Adds any javascript-based events needed.
+   */
+  var init_help = function init_help() {
+    // Make the back button smaller once scrolled into the body of the help page
+    var SCROLL_THRESHOLD = 32;
+
+    $("#board").on('scroll', function(e) {
+      var scroll_top = $("#board").scrollTop();
+      if (scroll_top > SCROLL_THRESHOLD) {
+        $("#back_text").text('');
+        $("#getting_started_back").addClass("in_help");
+      } else if (scroll_top <= SCROLL_THRESHOLD) {
+        $("#back_text").text(' back');
+        $("#getting_started_back").removeClass("in_help");
+      };
+    });
+
+    // make section titles sticky on scroll
+    // since there aren't many sections, just hardcode these. If we were to
+    // add more sections, we would want some way to do this programatically
+//    var HELP_OFFSET = 70;
+//    var STARTED_OFFSET = 200;
+//    $("#board").on('scroll', function(e) {
+//      var scroll_top = $("#board").scrollTop();
+//      if (scroll_top > HELP_OFFSET) {
+//        $("#features_help").find(".section_title_wrapper")
+//          .css('position', 'fixed')
+//          .css('top', '0px')
+//          .css('left', '0px')
+//          .css('right', '0px');
+//        $("#features_help").find(".section_title")
+//          .css('position', 'absolute')
+//          .css('top', '21px')
+//          .css('left', '30px')
+//          .css('right', '30px')
+//          .css('height', '79px');
+//        $("#features_help").find(".help_title")
+//          .css('position', 'relative')
+//          .css('top', '-2px');
+//        $("#features_help").find("hr")
+//          .css('position', 'relative')
+//          .css('top', '-2px');
+//        $("#features_help").find(".dummy_section_title")
+//          .css('height', '80px');
+//      } else if (scroll_top <= HELP_OFFSET) {
+//        $("#features_help").find(".section_title_wrapper")
+//          .css('position', 'static');
+//        $("#features_help").find(".section_title")
+//          .css('position', 'static')
+//          .css('height', '80px');
+//        $("#features_help").find(".dummy_section_title")
+//          .css('height', '0px');
+//        $("#features_help").find("hr")
+//          .css('position', 'static');
+//        $("#features_help").find(".help_title")
+//          .css('position', 'static');
+//      };
+//      if (scroll_top > STARTED_OFFSET) {
+//        $("#features_help").find(".section_title_wrapper")
+//          .css('position', 'relative')
+//          .css('top', '50px')
+//          .css('left', '0px')
+//          .css('right', '0px');
+//        $("#features_help").find(".section_title")
+//          .css('position', 'relative')
+//          .css('height', '80px')
+//          .css('top', STARED_OFFSET + 21)
+//          .css('left', '0px')
+//          .css('right', '0px');
+//        $("#features_help").find(".dummy_section_title")
+//          .css('height', '0px');
+//        $("#features_help").find("hr")
+//          .css('position', 'relative')
+//          .css('top', STARED_OFFSET - 2);
+//        $("#features_help").find(".help_title")
+//          .css('position', 'relative')
+//          .css('top', STARED_OFFSET - 2);
+//      };
+//    });
   };
 
   /** @brief Populates the DOM with objects we don't want to hardcode into
@@ -261,7 +343,7 @@ $(document).ready(function() {
    */
   var attach_handlers = function attach_handlers() {
     // default power tips to enabled
-    window.powerTipsEnabled = true;
+    window.powerTipsEnabled = false;
 
     // mark the focusable objects so we know when to ignore keypress events
     $(".focusable").on('focus', function(e) {
@@ -417,7 +499,7 @@ $(document).ready(function() {
     };
 
     // handle the help button separately
-    var is_helping = true;
+    var is_helping = false;
     toggle_button_helper($('#help_tooltips'), is_helping,
       function onTrue() {
         window.LOG_INFO("Turning help ON.");
@@ -464,7 +546,7 @@ $(document).ready(function() {
   window.add_tooltips = function add_tooltips() {
     window.add_info($('#_initialize'),
       'Handshaking',
-      'Toggles the handshaking process. See the \'<a href="#getting_started" class="tooltip_link">Getting Started</a>\' tutorial for ' +
+      'Begins the handshaking process. See the \'<a href="#help" class="tooltip_link">Help</a>\' tutorial for ' +
       'more information.', 'se'
     );
 
@@ -482,8 +564,14 @@ $(document).ready(function() {
 
     window.add_info($('#glyph_toggle'),
       'Glyphs',
-      'Toggles the use of glyphs. See \'<a href="#" class="tooltip_link">Glyphs</a>\' for' +
-      'more information.',
+      'Toggles the use of glyphs. See \'<a href="#help" class="tooltip_link">Help</a>\' for' +
+      ' more information.',
+      's'
+    );
+
+    window.add_info($('#help_page'),
+      'Help',
+      'Opens the help screen.',
       's'
     );
   };
@@ -492,18 +580,17 @@ $(document).ready(function() {
    *         a new tab.
    */
   var add_hashchange = function add_hashchange() {
-    console.log('added');
     window.onhashchange = function() {
       var cur_hash = window.location.hash;
 
-      if (cur_hash === "#getting_started") {
+      if (cur_hash === "#help") {
         $(".plugin").slideUp();
-        $("#getting_started").slideDown();
-        $("#board").addClass("getting_started");
+        $("#help").slideDown();
+        $("#board").addClass("help");
       } else if (cur_hash === "") {
-        $("#getting_started").slideUp();
+        $("#help").slideUp();
         $(".plugin").slideDown();
-        $("#board").removeClass("getting_started");
+        $("#board").removeClass("help");
       };
     };
   };

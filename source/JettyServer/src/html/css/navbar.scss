@@ -65,7 +65,7 @@
 }
 
 // HACK: to get specificity, probably TODO should redo
-.helpbutton.topbutton.notoggle:active {
+.help_page_button.topbutton.notoggle:active {
   @include no_inner_shadow();
 }
 

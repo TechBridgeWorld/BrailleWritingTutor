@@ -3,37 +3,109 @@
  *
  *  @author Lucas Ray (ltray@cmu.edu)
  */
-#getting_started {
+/** @file _mixins.scss
+ *  @brief Mixins used in other scss files go here
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+#help {
   font-family: 'Noto Sans', sans-serif;
   margin-left: 15px;
   margin-right: 15px;
   font-size: 20px; }
 
-#getting_started h1 {
+#help h1 {
   font-size: 45px; }
 
-#getting_started h2 {
+#help h2 {
   font-size: 35px; }
 
-#getting_started hr {
+#help hr {
   color: rgba(20, 20, 20, 0.8);
   background-color: rgba(20, 20, 20, 0.8);
   height: 1px; }
 
-#getting_started_title {
+#help tt {
+  color: blue; }
+
+.help_title {
   text-align: center;
-  margin-top: 15px; }
+  margin-top: 15px;
+  margin-bottom: 0px; }
+
+#getting_started_guide {
+  position: relative;
+  top: 50px; }
+
+#getting_started_body {
+  margin-top: 5px;
+  margin-bottom: 50px; }
+
+.guide_content {
+  margin-left: 50px;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-right: 50px;
+  margin-bottom: 100px; }
+
+.guide_picture {
+  width: 250px;
+  height: 250px;
+  margin: 5px; }
+
+.guide_smallpicture {
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  display: block; }
+
+.guide_smallpicture.center {
+  margin-left: auto;
+  margin-right: auto; }
 
 .getting_started_header {
   color: rgba(35, 125, 4, 0.9); }
 
+#menu_buttons_picture {
+  width: 400px;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-bottom: 5px; }
+
+#overall_picture {
+  width: 500px;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-bottom: 5px; }
+
+#overall_picture_wrapper {
+  width: 500px; }
+
+.getting_started_header_icon {
+  margin-left: 60px;
+  margin-top: -5px; }
+
 .getting_started_content {
-  margin-left: 30px;
+  margin-left: 50px;
   padding-left: 15px;
   margin-top: -15px;
   padding-top: 10px;
   padding-bottom: 10px;
   border-left: solid thin rgba(20, 20, 20, 0.8); }
+
+.getting_started_content.noup {
+  margin-top: 5px; }
+
+.getting_started_content.noborder {
+  border: none; }
+
+.picture_label {
+  margin-top: -3px; }
 
 .getting_started_box {
   width: 50%; }
@@ -46,15 +118,110 @@
   position: fixed;
   top: 120px;
   font-size: 14px;
-  opacity: 0.8;
+  opacity: 0.7;
   transition: all 0.7s;
   -webkit-transition: all 0.7s;
   -moz-transition: all 0.7s;
   cursor: pointer;
-  text-decoration: none; }
+  text-decoration: none;
+  z-index: 100; }
 
 #getting_started_back:hover {
   opacity: 0.9;
   transition: all 0.7s;
   -webkit-transition: all 0.7s;
   -moz-transition: all 0.7s; }
+
+@-webkit-keyframes rotate_back {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg); }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@-moz-keyframes rotate_back {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg); }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@-ms-keyframes rotate_back {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg); }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@keyframes rotate_back {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg); }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+#getting_started_back.in_help {
+  -webkit-animation-name: rotate_back;
+  -moz-animation-name: rotate_back;
+  -ms-animation-name: rotate_back;
+  animation-name: rotate_back;
+  -webkit-animation-duration: 0.5s;
+  -moz-animation-duration: 0.5s;
+  -ms-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -ms-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  -ms-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out; }
+
+#back_text {
+  display: inline; }
+
+.help_topic {
+  color: #a500fa;
+  font-size: 35px;
+  background: rgba(0, 0, 0, 0.65);
+  width: 100%;
+  text-align: right;
+  position: relative;
+  left: 20px;
+  padding-right: 20px;
+  padding-left: 40px;
+  padding-top: 15px;
+  padding-bottom: 15px; }
+
+.section_title {
+  background: #dedede;
+  background-image: url("../assets/noise.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(222, 222, 222, 0.2)), to(rgba(222, 222, 222, 0.2))), url("../assets/noise.png");
+  background-image: -webkit-linear-gradient(top, rgba(222, 222, 222, 0.2), rgba(222, 222, 222, 0.2)), url("../assets/noise.png");
+  /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, rgba(222, 222, 222, 0.2), rgba(222, 222, 222, 0.2)), url("../assets/noise.png");
+  /* FF3.6+ */
+  background-image: -ms-linear-gradient(top, rgba(222, 222, 222, 0.2), rgba(222, 222, 222, 0.2)), url("../assets/noise.png");
+  /* IE10 */
+  background-image: -o-linear-gradient(top, rgba(222, 222, 222, 0.2), rgba(222, 222, 222, 0.2)), url("../assets/noise.png");
+  /* Opera 11.10+ */
+  background-image: linear-gradient(top, rgba(222, 222, 222, 0.2), rgba(222, 222, 222, 0.2)), url("../assets/noise.png");
+  /* W3C */
+  height: 80px; }

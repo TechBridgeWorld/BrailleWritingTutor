@@ -121,3 +121,9 @@
   @-ms-keyframes $name { @content; }
   @keyframes $name { @content; }
 }
+
+@mixin transform($property) {
+  -webkit-transform: $property;
+      -ms-transform: $property;
+          transform: $property;
+}
