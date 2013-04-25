@@ -25,3 +25,45 @@
 07 Apr 2013 ;17:26:54. INFO [JettyServer.java:52] Server started.
 07 Apr 2013 ;17:27:06. INFO [JettyServer.java:57] Stopping server.
 07 Apr 2013 ;17:27:06. INFO [JettyServer.java:59] Server stopped.
+14 Apr 2013 ;15:34:55. ERROR [UIActionHandler.java:45] Invalid OS. Emulator only supports Windows/Linux.
+14 Apr 2013 ;15:34:55. ERROR [EmulatorLogger.java:55] Exception occurred. Printing stack trace.
+java.lang.Exception: Invalid OS. Emulator only supports Windows/Linux.
+	at edu.cmu.ui.UIActionHandler.<init>(UIActionHandler.java:46) [emulator_linux.jar:na]
+	at edu.cmu.ui.UIActionHandler.<init>(UIActionHandler.java:34) [emulator_linux.jar:na]
+	at edu.cmu.ui.ControllerUI.<init>(ControllerUI.java:73) [emulator_linux.jar:na]
+	at edu.cmu.ui.ControllerUI$5.run(ControllerUI.java:279) [emulator_linux.jar:na]
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:251) [na:1.7.0_04]
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:701) [na:1.7.0_04]
+	at java.awt.EventQueue.access$000(EventQueue.java:102) [na:1.7.0_04]
+	at java.awt.EventQueue$3.run(EventQueue.java:662) [na:1.7.0_04]
+	at java.awt.EventQueue$3.run(EventQueue.java:660) [na:1.7.0_04]
+	at java.security.AccessController.doPrivileged(Native Method) [na:1.7.0_04]
+	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:76) [na:1.7.0_04]
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:671) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:244) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:163) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:151) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:147) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:139) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:97) [na:1.7.0_04]
+14 Apr 2013 ;15:34:55. ERROR [ControllerUI.java:76] Error occured when intializing the server.
+14 Apr 2013 ;15:34:55. ERROR [EmulatorLogger.java:55] Exception occurred. Printing stack trace.
+java.lang.Exception: Invalid OS. Emulator only supports Windows/Linux.
+	at edu.cmu.ui.UIActionHandler.<init>(UIActionHandler.java:46) ~[emulator_linux.jar:na]
+	at edu.cmu.ui.UIActionHandler.<init>(UIActionHandler.java:34) ~[emulator_linux.jar:na]
+	at edu.cmu.ui.ControllerUI.<init>(ControllerUI.java:73) ~[emulator_linux.jar:na]
+	at edu.cmu.ui.ControllerUI$5.run(ControllerUI.java:279) [emulator_linux.jar:na]
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:251) [na:1.7.0_04]
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:701) [na:1.7.0_04]
+	at java.awt.EventQueue.access$000(EventQueue.java:102) [na:1.7.0_04]
+	at java.awt.EventQueue$3.run(EventQueue.java:662) [na:1.7.0_04]
+	at java.awt.EventQueue$3.run(EventQueue.java:660) [na:1.7.0_04]
+	at java.security.AccessController.doPrivileged(Native Method) [na:1.7.0_04]
+	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:76) [na:1.7.0_04]
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:671) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:244) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:163) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:151) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:147) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:139) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:97) [na:1.7.0_04]
