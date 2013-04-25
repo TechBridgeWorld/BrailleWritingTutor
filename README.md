@@ -55,34 +55,51 @@ much of the emulation (bytecode timings, character mappings, etc.)
 
 7.
 
-8.
+8. There are no config files
 
-9.
+9. N/A
 
-10.
+10. Using eclipse:
+ * Create New Java Project
+ * copy all source code under /source/JettyServer/src to the project's source folder
+ * Right click on the project, "Build Path" > "Configure Build Path"
+ * * Under the libraries tab: add external jars, add jar files #TODO: <MAKE SURE THESE ARE SOMEWHERE>
+ * Right click on project, "refresh"
+ * navigate to edu.cmu
 
-11.
+11. The emulator can run on Windows and Linux. Though any browser can connect to
+  the server once it's running.
 
-12.
+12. Our source, and some files that we included are necessary for the project to run,
+    but no additional files are needed.
 
-13.
+13. N/A
 
-14.
+14. N/A
 
-15.
+15. Yes, the emulator generates log files.
 
-16.
+16. Wherever the emulator runs, a folder called BWT_LOGS is created
+    with the logs
 
-17.
+17. No external hardware or mobile device.
 
-18.
+18. Regarding mobile devices and/or external hardware, indicate if any of the generated binaries from item 10 need to be installed on this device and provide instructions on how to install these binaries.
 
-19.
+19. Our Installer installs com0com to use port 1 <-> 7 (1 connected to 7). 
+  However after com0com is
+  installed, it can be configured to use any port you want(see the com0com readme).
+  However, if you change the com port in com0com you will need to edit the source 
+  file windowsActionHandler.java (line 27: COMM_PORT_NAME). Our suggestion is that you
+  let it use 1 <-> 7
 
-20.
+20. Windows: run emulator.jar
+  Linux: sudo ./run.sh
 
-21.
+21. Our project does not use a mobile device.
 
-22.
-
-23.
+22. The timing is handled in javascript. If you scroll or have a lot of other tabs open,
+  sometimes the timing can get messes up. If you are experiencing what you think are
+	timing issues from the BWT Emulator, we suggest you close other tabs and avoid scrolling.
+    
+23. Provide a list of future features/capabilities that you would like to see included in the existing tool.
