@@ -14,7 +14,7 @@ import org.slf4j.Logger;
 import edu.cmu.logger.EmulatorLogger;
 
 /**
- * A wrapper of an embedded Jetty 9.0 server.
+ * A wrapper of an embedded Jetty 9.0 server that runs on default port 8887
  * @author ziw
  *
  */
@@ -60,13 +60,17 @@ public class JettyServer {
 	}
 	
 	private boolean isStarted(){
-		return server.isStarted();
+		return server!=null && server.isStarted();
 	}
 	
 	private boolean isStopped(){
-		return server.isStopped();
+		return  server!=null && server.isStopped();
 	}
 	
+	/**
+	 * Get the status of the server.
+	 * @return 
+	 */
 	public int getServerStatus(){
 		if(isStarted())
 			return RUNNING;
@@ -83,6 +87,11 @@ public class JettyServer {
 		return getServerStatus()==RUNNING? port : -1;
 	}
 	
+	/**
+	 * Initialize the static file handler and add a new instance of GenericServlet to 
+	 * handle non static file requests.
+	 * @throws Exception
+	 */
 	private void initServerHandler() throws Exception{
 		logger.info("Initializing servlet.");
 		HandlerList handlers = new HandlerList();
@@ -92,8 +101,9 @@ public class JettyServer {
         URL htmlPath = JettyServer.class.getClassLoader().getResource("html");
         if(htmlPath == null){
         	//no html folder found
-        	logger.error("No 'html' folder found in jar file. No static files served. Fatal.");
-        	throw new Exception("No 'html' folder found in jar file. No static files served. Fatal.");
+        	String error = "No 'html' folder found in jar file. jar file internal structure brokenn. No static files served. Fatal.";
+        	logger.error(error);
+        	throw new Exception(error);
         }
         resource_handler.setResourceBase(htmlPath.toExternalForm());
         

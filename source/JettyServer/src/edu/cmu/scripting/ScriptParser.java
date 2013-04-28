@@ -2,17 +2,17 @@ package edu.cmu.scripting;
 
 import java.util.List;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
-
+import java.io.InputStreamReader;
 import org.slf4j.Logger;
 
 import com.google.gson.Gson;
@@ -44,16 +44,17 @@ public class ScriptParser {
 	
 	private static final int MIN_WAITING_TIME = 200;
 	private static List<String> allButtonNames;
+	private static final String PATH_TO_MAPPING = "html/assets/input_mapping.csv";
 	
 	//Initialization block. Read all button codes from input_mapping.csv 
-	//and store them in a map. This is used to check if a String is 
-	//a valid button name later when the parsing begins.
+	//and store them in a map. The map is then used to check if a String is 
+	//a valid button name when parsing scripts.
 	static{
 		Logger logger = EmulatorLogger.getEmulatorInfoLogger();
 		allButtonNames = new ArrayList<String>();
-		File inputMapping = new File("./BWT_SCRIPTS/input_mapping.csv");
+		InputStream mapping = ScriptParser.class.getClassLoader().getResourceAsStream(PATH_TO_MAPPING);
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader(inputMapping));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(mapping));
 			String line;
 			while((line = reader.readLine()) != null ){
 				String[] words = line.split(",");
@@ -75,7 +76,7 @@ public class ScriptParser {
 		
 	}
 	
-	
+	private ScriptParser(){}//suppress direct instantiation
 	
 	/**
 	 * Try to parse/compile the script with the given file name.
@@ -231,7 +232,7 @@ public class ScriptParser {
 	
 	
 	/**
-	 * A private class used to temporarily store a frame in a recording queue and 
+	 * A private class used to temporarily store an action in a recording queue and 
 	 * serves as a wrapper for the Gson library to use to generate JSON string.
 	 * @author ziw
 	 *

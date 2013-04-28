@@ -1,5 +1,11 @@
 package edu.cmu.controller;
 
+/**
+ * ActionHandler handles connection and communication with the serial COM port.
+ * This class is invoked by http servlet to talk to the BWT software. 
+ * @author ziw
+ * 
+ */
 public abstract class AbstractActionHandler {
 
 	
@@ -15,7 +21,7 @@ public abstract class AbstractActionHandler {
 
 	
 	/**
-	 * Handle the buttonCode sent from http request.
+	 * Handle the buttonCode sent from http request. Send the code to the BWT software.
 	 * @param buttonCode
 	 */
 	public abstract void handleButtonCode(String buttonCode);

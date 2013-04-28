@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * A class that provides three different loggers for the server and the emulator.  
+ * Logs are saved at PATH_TO_EMULATOR_JAR_FILE/BWT_LOGS
  * @author ziw
  *
  */

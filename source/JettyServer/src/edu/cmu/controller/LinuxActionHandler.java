@@ -6,6 +6,12 @@ import edu.cmu.logger.EmulatorLogger;
 import java.io.*;
 import java.net.*;
 
+
+/**
+ * Action handler for Linux OS
+ * @author Nikhil
+ *
+ */
 public class LinuxActionHandler extends AbstractActionHandler {
 	private Socket com; 
 	private final String host = "localhost";
