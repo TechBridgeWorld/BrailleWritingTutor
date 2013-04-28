@@ -53,8 +53,9 @@ public class ScriptParser {
 		Logger logger = EmulatorLogger.getEmulatorInfoLogger();
 		allButtonNames = new ArrayList<String>();
 		InputStream mapping = ScriptParser.class.getClassLoader().getResourceAsStream(PATH_TO_MAPPING);
+		BufferedReader reader = null;
 		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(mapping));
+			reader = new BufferedReader(new InputStreamReader(mapping));
 			String line;
 			while((line = reader.readLine()) != null ){
 				String[] words = line.split(",");
@@ -66,6 +67,7 @@ public class ScriptParser {
 					}
 				}
 			}
+			reader.close();
 		} catch (FileNotFoundException e) {
 			logger.error("input_mapping.csv is not found. Fatal. Script parsing may not work.");
 			EmulatorLogger.logException(logger, e);
@@ -73,7 +75,6 @@ public class ScriptParser {
 			logger.error("IOException when reading from input_mapping.csv. Fatal. Script parsing will not work.");
 			EmulatorLogger.logException(logger, e);
 		}
-		
 	}
 	
 	private ScriptParser(){}//suppress direct instantiation
@@ -174,6 +175,7 @@ public class ScriptParser {
 					}
 				}
 				lineNumber ++;
+				reader.close();
 			}
 		} catch (FileNotFoundException e) {
 			errors.add(scriptName +" file not found.");

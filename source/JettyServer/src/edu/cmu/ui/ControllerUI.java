@@ -151,6 +151,9 @@ public class ControllerUI extends JFrame {
 					EmulatorLogger.logException(logger, e1);
 				} finally {
 					logger.info("Exiting application");
+					JFrame frame = ((JFrame)SwingUtilities.getRoot((JButton) e.getSource()));
+					frame.setVisible(false);	
+					frame.dispose();
 					System.exit(0);
 				}
 			}

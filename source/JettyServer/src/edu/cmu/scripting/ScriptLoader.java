@@ -61,7 +61,7 @@ public class ScriptLoader {
 			while( (line = reader.readLine())!=null){
 				writer.println(line);
 			}
-			
+			reader.close();
 		} catch (IOException e) {
 			logger.error("IO exception occurred when creating sample script.");
 			EmulatorLogger.logException(logger,e);
