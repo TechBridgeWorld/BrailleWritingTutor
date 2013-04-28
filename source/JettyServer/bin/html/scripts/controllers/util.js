@@ -6,7 +6,8 @@
 
 $(document).ready(function() {
   "use strict";
-  //TODO Setting this to true for dev purpose.
+
+  // TODO Setting this to true for dev purpose.
   window.__DEBUG = true;
 
   /** @brief Logs at the info level.
@@ -52,6 +53,8 @@ $(document).ready(function() {
    *
    *  @param header The header for this alert.
    *  @param message The body of the message.
+   *
+   *  @TODO: make a nicer jquery-popup style alert(), should we ever use it.
    */
   window.app_alert = function app_alert(header, message) {
   };
@@ -156,9 +159,7 @@ $(document).ready(function() {
     // add the tooltip
     $dom_el.powerTip({
       'placement': placement,
-      mouseOnToPopup: true,
-      intentPollInterval: 300,
-      closeDelay: 50
+      mouseOnToPopup: true
     });
     $dom_el.data('powertipjq', $message);
   };

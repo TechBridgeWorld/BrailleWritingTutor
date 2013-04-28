@@ -63,7 +63,7 @@ $(document).ready(function() {
       window._Processor.add_code(this.code, window.Constants.PRESSDOWN_NUM_TO_SEND);
       window._Processor.add_hold(this);
       if(window.recording){
-          appendToRecordingQueue(this,__KEY_DOWN);
+          appendToRecordingQueue(this,__KEY_DOWN_STRING);
       }
     }
 
@@ -84,7 +84,7 @@ $(document).ready(function() {
       window._Processor.remove_hold(this);
       this.$dom_el.removeClass('active');
       if(window.recording){
-          appendToRecordingQueue(this,__KEY_UP);
+          appendToRecordingQueue(this,__KEY_UP_STRING);
       }
     }
 

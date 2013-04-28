@@ -4416,3 +4416,340 @@ gnu.io.NoSuchPortException: null
 07 Apr 2013 ;17:25:31. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
 07 Apr 2013 ;17:25:31. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
 07 Apr 2013 ;17:25:31. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:29. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loadScripts.do
+09 Apr 2013 ;16:04:29. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loading.do
+09 Apr 2013 ;16:04:29. INFO [GenericServlet.java:96] Loading request captured. Intializing TwoWaySerialCom
+09 Apr 2013 ;16:04:29. INFO [WindowsActionHandler.java:107] Initializing TwoWaySerialComm
+09 Apr 2013 ;16:04:29. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/manifest.appcache
+09 Apr 2013 ;16:04:29. ERROR [GenericServlet.java:90] Invalid request. Request is null.
+09 Apr 2013 ;16:04:29. ERROR [GenericServlet.java:101] Exception when initializing TwoWaySerialCom
+09 Apr 2013 ;16:04:29. ERROR [EmulatorLogger.java:55] Exception occurred. Printing stack trace.
+gnu.io.NoSuchPortException: null
+	at gnu.io.CommPortIdentifier.getPortIdentifier(CommPortIdentifier.java:273) ~[nrjavaserial-3.8.8.jar:na]
+	at edu.cmu.controller.TwoWaySerialComm.connect(TwoWaySerialComm.java:37) ~[bin/:na]
+	at edu.cmu.controller.TwoWaySerialComm.<init>(TwoWaySerialComm.java:32) ~[bin/:na]
+	at edu.cmu.controller.WindowsActionHandler.initSerialComm(WindowsActionHandler.java:108) ~[bin/:na]
+	at edu.cmu.controller.GenericServlet.handleInitialLoadingRequest(GenericServlet.java:98) [bin/:na]
+	at edu.cmu.controller.GenericServlet.doGet(GenericServlet.java:55) [bin/:na]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:735) [servlet-api-3.0.jar:na]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:848) [servlet-api-3.0.jar:na]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:671) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:448) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:211) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1070) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:375) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:175) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1004) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:136) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.Server.handle(Server.java:449) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.HttpChannel.run(HttpChannel.java:246) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:265) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.run(AbstractConnection.java:240) [jetty-io-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:589) [jetty-util-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:520) [jetty-util-9.0.0.RC0.jar:9.0.0.RC0]
+	at java.lang.Thread.run(Thread.java:722) [na:1.7.0_04]
+09 Apr 2013 ;16:04:32. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loadScripts.do
+09 Apr 2013 ;16:04:32. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:32. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:32. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:32. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:32. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:32. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:32. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:32. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:32. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:32. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:32. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:32. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:32. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:32. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:32. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:32. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:32. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:32. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:32. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:32. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:32. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:32. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:33. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:33. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:33. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:33. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:33. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:33. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:33. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:33. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:33. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:33. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:33. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:33. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:33. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:33. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:35. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loadScripts.do
+09 Apr 2013 ;16:04:35. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:35. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:35. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:35. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:35. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:35. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:35. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:35. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:35. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:35. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:35. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:35. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:36. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:36. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:36. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:36. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:36. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:36. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:36. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:36. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:36. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:36. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:36. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:36. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:36. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:36. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:36. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:36. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:36. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:36. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:36. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:36. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:36. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:36. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:36. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:04:36. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:04:58. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loadScripts.do
+09 Apr 2013 ;16:04:59. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loading.do
+09 Apr 2013 ;16:04:59. INFO [GenericServlet.java:96] Loading request captured. Intializing TwoWaySerialCom
+09 Apr 2013 ;16:04:59. INFO [WindowsActionHandler.java:107] Initializing TwoWaySerialComm
+09 Apr 2013 ;16:04:59. ERROR [GenericServlet.java:101] Exception when initializing TwoWaySerialCom
+09 Apr 2013 ;16:04:59. ERROR [EmulatorLogger.java:55] Exception occurred. Printing stack trace.
+gnu.io.NoSuchPortException: null
+	at gnu.io.CommPortIdentifier.getPortIdentifier(CommPortIdentifier.java:273) ~[nrjavaserial-3.8.8.jar:na]
+	at edu.cmu.controller.TwoWaySerialComm.connect(TwoWaySerialComm.java:37) ~[bin/:na]
+	at edu.cmu.controller.TwoWaySerialComm.<init>(TwoWaySerialComm.java:32) ~[bin/:na]
+	at edu.cmu.controller.WindowsActionHandler.initSerialComm(WindowsActionHandler.java:108) ~[bin/:na]
+	at edu.cmu.controller.GenericServlet.handleInitialLoadingRequest(GenericServlet.java:98) [bin/:na]
+	at edu.cmu.controller.GenericServlet.doGet(GenericServlet.java:55) [bin/:na]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:735) [servlet-api-3.0.jar:na]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:848) [servlet-api-3.0.jar:na]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:671) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:448) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:211) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1070) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:375) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:175) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1004) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:136) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.Server.handle(Server.java:449) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.HttpChannel.run(HttpChannel.java:246) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:265) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.run(AbstractConnection.java:240) [jetty-io-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:589) [jetty-util-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:520) [jetty-util-9.0.0.RC0.jar:9.0.0.RC0]
+	at java.lang.Thread.run(Thread.java:722) [na:1.7.0_04]
+09 Apr 2013 ;16:04:59. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/manifest.appcache
+09 Apr 2013 ;16:04:59. ERROR [GenericServlet.java:90] Invalid request. Request is null.
+09 Apr 2013 ;16:05:11. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loadScripts.do
+09 Apr 2013 ;16:05:11. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:11. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:11. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:11. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:11. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:11. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:11. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:11. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:11. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:11. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:11. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:11. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:11. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:11. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:11. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:11. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:12. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:12. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:12. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:12. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:12. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:12. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:12. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:12. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:12. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:12. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:12. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:12. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:12. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:12. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:12. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:12. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:12. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:12. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:14. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loadScripts.do
+09 Apr 2013 ;16:05:14. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:14. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:15. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:15. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:15. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:15. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:15. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:15. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:15. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:15. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:15. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:15. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:15. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:15. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:15. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:15. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:15. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:15. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:15. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:15. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:15. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:15. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:15. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:15. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:16. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:16. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:16. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:16. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:16. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:16. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:17. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:17. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:17. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:17. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:17. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:17. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:18. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:18. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:18. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:18. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:18. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:18. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:18. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:18. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:18. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:18. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:18. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:18. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:18. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:18. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:18. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:18. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:18. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:18. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:18. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:18. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:19. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:19. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:19. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:19. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:19. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:19. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:19. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:19. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:19. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:19. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:19. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:19. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:19. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:19. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:19. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:19. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:19. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:19. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:19. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:19. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:20. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:20. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:22. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loadScripts.do
+09 Apr 2013 ;16:05:22. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:22. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:22. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:22. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:22. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:22. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:22. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:22. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:22. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:22. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:23. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:23. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:23. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:23. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:23. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:23. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:23. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:23. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:23. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:23. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:23. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:23. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:23. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:23. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:23. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:23. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:23. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:23. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:23. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:23. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:23. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:23. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:24. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:24. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:24. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:24. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:24. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:24. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:24. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:24. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:24. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:24. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:24. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:24. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+09 Apr 2013 ;16:05:24. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/sendBytes.do
+09 Apr 2013 ;16:05:24. ERROR [WindowsActionHandler.java:49] COM port is not initialized. Can't handle button press.
+14 Apr 2013 ;15:05:05. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loadScripts.do
+14 Apr 2013 ;15:05:05. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/loading.do
+14 Apr 2013 ;15:05:05. INFO [GenericServlet.java:96] Loading request captured. Intializing TwoWaySerialCom
+14 Apr 2013 ;15:05:05. INFO [WindowsActionHandler.java:107] Initializing TwoWaySerialComm
+14 Apr 2013 ;15:05:05. INFO [GenericServlet.java:50] Handling request: http://localhost:8887/manifest.appcache
+14 Apr 2013 ;15:05:05. ERROR [GenericServlet.java:90] Invalid request. Request is null.
+14 Apr 2013 ;15:05:05. ERROR [GenericServlet.java:101] Exception when initializing TwoWaySerialCom
+14 Apr 2013 ;15:05:05. ERROR [EmulatorLogger.java:55] Exception occurred. Printing stack trace.
+gnu.io.NoSuchPortException: null
+	at gnu.io.CommPortIdentifier.getPortIdentifier(CommPortIdentifier.java:273) ~[nrjavaserial-3.8.8.jar:na]
+	at edu.cmu.controller.TwoWaySerialComm.connect(TwoWaySerialComm.java:37) ~[bin/:na]
+	at edu.cmu.controller.TwoWaySerialComm.<init>(TwoWaySerialComm.java:32) ~[bin/:na]
+	at edu.cmu.controller.WindowsActionHandler.initSerialComm(WindowsActionHandler.java:108) ~[bin/:na]
+	at edu.cmu.controller.GenericServlet.handleInitialLoadingRequest(GenericServlet.java:98) [bin/:na]
+	at edu.cmu.controller.GenericServlet.doGet(GenericServlet.java:55) [bin/:na]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:735) [servlet-api-3.0.jar:na]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:848) [servlet-api-3.0.jar:na]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:671) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:448) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:211) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1070) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:375) [jetty-servlet-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:175) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1004) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:136) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.Server.handle(Server.java:449) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.HttpChannel.run(HttpChannel.java:246) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:265) [jetty-server-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.run(AbstractConnection.java:240) [jetty-io-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:589) [jetty-util-9.0.0.RC0.jar:9.0.0.RC0]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:520) [jetty-util-9.0.0.RC0.jar:9.0.0.RC0]
+	at java.lang.Thread.run(Thread.java:722) [na:1.7.0_04]
