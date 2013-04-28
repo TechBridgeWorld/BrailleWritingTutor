@@ -202,3 +202,31 @@ $DARK_GREEN : rgba(35, 125, 4, 0.9);
   @include noisey($WHITE);
   height: 80px;
 }
+
+.question {
+  display: inline;
+  color: red;
+}
+
+.question_body {
+  display: inline;
+  margin-left: 20px;
+}
+
+.answer {
+  display: inline;
+  color: green;
+}
+
+.answer_body {
+  display: inline;
+  margin-left: 20px;
+}
+
+.question_wrapper {
+  margin-bottom: 10px;
+}
+
+.answer_wrapper {
+  margin-top: 10px;
+}

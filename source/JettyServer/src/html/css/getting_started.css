@@ -225,3 +225,25 @@
   background-image: linear-gradient(top, rgba(222, 222, 222, 0.2), rgba(222, 222, 222, 0.2)), url("../assets/noise.png");
   /* W3C */
   height: 80px; }
+
+.question {
+  display: inline;
+  color: red; }
+
+.question_body {
+  display: inline;
+  margin-left: 20px; }
+
+.answer {
+  display: inline;
+  color: green; }
+
+.answer_body {
+  display: inline;
+  margin-left: 20px; }
+
+.question_wrapper {
+  margin-bottom: 10px; }
+
+.answer_wrapper {
+  margin-top: 10px; }
