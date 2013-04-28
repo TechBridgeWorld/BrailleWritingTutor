@@ -84,29 +84,29 @@ function appendToRecordingQueue(button, eventType){
 */
 function sendRecording(){
 
-  	if(recording){
-  		LOG_ERROR("Can't send saved recordings while another recording is going on.");
-  		return;
-  	}
+    if(recording){
+      LOG_ERROR("Can't send saved recordings while another recording is going on.");
+      return;
+    }
     if(__SAVED_RECORDING_QUEUE === undefined){
       LOG_ERROR("Can't find saved recordings. Please try recording again.");
       __SAVED_RECORDING_QUEUE = [];
       return;
     }
 
-  	var recordingIndex = $("#recording_select").val();
-  	if(recordingIndex === undefined || 
+    var recordingIndex = $("#recording_select").val();
+    if(recordingIndex === undefined || 
           recordingIndex >= __SAVED_RECORDING_QUEUE.length){
-  		LOG_ERROR("No such recording");
-  		return;
-  	}
-  	var queue = __SAVED_RECORDING_QUEUE[recordingIndex].queue;
+      LOG_ERROR("No such recording");
+      return;
+    }
+    var queue = __SAVED_RECORDING_QUEUE[recordingIndex].queue;
 
-  	if(!__isValidRecordingQueue(queue)){
-  		LOG_ERROR("Invalid recording: " + __SAVED_RECORDING_QUEUE[recordingIndex].name);
-  		return;
-  	}
-  	__sendRecordingHelper(queue,0);
+    if(!__isValidRecordingQueue(queue)){
+      LOG_ERROR("Invalid recording: " + __SAVED_RECORDING_QUEUE[recordingIndex].name);
+      return;
+    }
+    __sendRecordingHelper(queue,0);
 
 }
 
@@ -146,9 +146,9 @@ function __sendRecordingHelper(queue, index){
 */
 function __saveRecording(){
   if(recordingQueue === undefined || recordingQueue.length === 0){
-  	window.LOG_WARNING("No action recorded. Can't save empty recording queue.");
-  	recordingQueue = [];
-  	return;
+    window.LOG_WARNING("No action recorded. Can't save empty recording queue.");
+    recordingQueue = [];
+    return;
   }
   var name = $("#recording_name").val();
   if(name === undefined || name.trim().length === 0){
@@ -197,8 +197,3 @@ function __isValidRecordingQueue(queue){
   return true;
 
 }
-
-
-
-
-

@@ -16,104 +16,103 @@ import java.io.OutputStream;
  */
 public class TwoWaySerialComm {
 
-	private OutputStream out;
-	private InputStream in;
+  private OutputStream out;
+  private InputStream in;
 
-	public OutputStream getOutputStream(){
-		return out;
-	}
-	
-	public InputStream getInputStream(){
-		return in;
-	}
-	
-	public TwoWaySerialComm(String port) throws Exception {
-		super();
-		this.connect(port);
-	}
+  public OutputStream getOutputStream(){
+    return out;
+  }
 
-	public void connect(String portName) throws Exception {
-		CommPortIdentifier portIdentifier = CommPortIdentifier
-				.getPortIdentifier(portName);
-		if (portIdentifier.isCurrentlyOwned()) {
-			System.out.println("Error: Port is currently in use");
-		} else {
-			CommPort commPort = portIdentifier.open(this.getClass().getName(),
-					2000);
+  public InputStream getInputStream(){
+    return in;
+  }
 
-			if (commPort instanceof SerialPort) {
-				SerialPort serialPort = (SerialPort) commPort;
-				serialPort.setSerialPortParams(57600, SerialPort.DATABITS_8,
-						SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
+  public TwoWaySerialComm(String port) throws Exception {
+    super();
+    this.connect(port);
+  }
 
-				in = serialPort.getInputStream();
-				out = serialPort.getOutputStream();
+  public void connect(String portName) throws Exception {
+    CommPortIdentifier portIdentifier = CommPortIdentifier
+        .getPortIdentifier(portName);
+    if (portIdentifier.isCurrentlyOwned()) {
+      System.out.println("Error: Port is currently in use");
+    } else {
+      CommPort commPort = portIdentifier.open(this.getClass().getName(),
+          2000);
 
-			} else {
-				System.out
-						.println("Error: Only serial ports are handled by this example.");
-			}
-		}
-	}
+      if (commPort instanceof SerialPort) {
+        SerialPort serialPort = (SerialPort) commPort;
+        serialPort.setSerialPortParams(57600, SerialPort.DATABITS_8,
+            SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
 
-	
-	public static class SerialReader implements Runnable {
-		InputStream in;
+        in = serialPort.getInputStream();
+        out = serialPort.getOutputStream();
 
-		public SerialReader(InputStream in) {
-			this.in = in;
-		}
+      } else {
+        System.out
+            .println("Error: Only serial ports are handled by this example.");
+      }
+    }
+  }
 
-		public void run() {
-			byte[] buffer = new byte[1024];
-			int len = -1;
-			try {
-				while ((len = this.in.read(buffer)) > -1) {
-					for (int i = 0; i < len; i++) {
-						System.out.print((int) buffer[i]);
-						System.out.print(" ");
-						if (i == len - 1)
-							System.out.println();
-					}
+  public static class SerialReader implements Runnable {
+    InputStream in;
 
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+    public SerialReader(InputStream in) {
+      this.in = in;
+    }
 
-	public static class SerialWriter implements Runnable {
-		OutputStream out;
+    public void run() {
+      byte[] buffer = new byte[1024];
+      int len = -1;
+      try {
+        while ((len = this.in.read(buffer)) > -1) {
+          for (int i = 0; i < len; i++) {
+            System.out.print((int) buffer[i]);
+            System.out.print(" ");
+            if (i == len - 1)
+              System.out.println();
+          }
 
-		public SerialWriter(OutputStream out) {
-			this.out = out;
-		}
+        }
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+  }
 
-		public void run() {
-			try {
-				System.out.print("n");
-				for (int i = 0; i < 50; i++) {
-					this.out.write('n');
-					this.out.write('n');
-					this.out.write('n');
-					this.out.write('n');
-					this.out.write('n');
-					this.out.write('n');
-					this.out.write('n');
-					this.out.write('n');
+  public static class SerialWriter implements Runnable {
+    OutputStream out;
 
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-				System.out.print("sending n");
+    public SerialWriter(OutputStream out) {
+      this.out = out;
+    }
 
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+    public void run() {
+      try {
+        System.out.print("n");
+        for (int i = 0; i < 50; i++) {
+          this.out.write('n');
+          this.out.write('n');
+          this.out.write('n');
+          this.out.write('n');
+          this.out.write('n');
+          this.out.write('n');
+          this.out.write('n');
+          this.out.write('n');
+
+          try {
+            Thread.sleep(100);
+          } catch (InterruptedException e) {
+            e.printStackTrace();
+          }
+        }
+        System.out.print("sending n");
+
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+  }
 }

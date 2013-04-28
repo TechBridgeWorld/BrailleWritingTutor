@@ -372,6 +372,7 @@ $(document).ready(function() {
 
     // ENGLISH
     // add each of the english letters as glyphs
+    // TODO: readme
     var english_alphabet = "abcdefghijklmnopqrstuvwxyz".split('');
     english_alphabet.map(function(el) {
       attach_letter(el.charCodeAt(0), el);
