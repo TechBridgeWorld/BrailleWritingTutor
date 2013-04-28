@@ -1,6 +1,0 @@
-#BWT Scripts
-#This is comment
-click jumbo_1
-click jumbo_2
-wait 150
-hold_down slate1_1

@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <!-- @file index.html
-     @brief Main page (only page?) for the BWT emulator
+     @brief Main page for the BWT emulator
      @author Lucas Ray (ltray@cmu.edu)
   -->
 <html lang="en">
@@ -15,6 +15,7 @@
   <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:800' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Alfa+Slab+One|Merriweather+Sans' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
 
   <!-- stylesheets -->
   <link type="text/css" href="./css/main.css" rel="stylesheet" />
@@ -84,10 +85,147 @@
 
       <!-- fixed top navigation bar -->
       <div id="top_bar">
-        <div id="_initialize" class="initbutton topbutton tips">handshaking: <p id="handshake_status" class="buttonstatus">OFF</p></div>
-        <div id="help_tooltips" class="helpbutton topbutton active tips">tooltips: <p id="help_tooltips_status" class="buttonstatus active">ON</p></div>
+        <div id="_initialize" class="initbutton topbutton notoggle tips"><p id="init_icon"></p></div>
+        <div id="help_tooltips" class="helpbutton topbutton tips">tooltips: <p id="help_tooltips_status" class="buttonstatus">OFF</p></div>
         <div id="glyph_toggle" class="glyphbutton topbutton tips">glyphs: <p id="glyphs_enabled_status" class="buttonstatus">OFF</p></div>
+        <a href="#help" id="help_page" class="help_page_button topbutton notoggle tips">help</a>
         <p id="app_title">BWT Emulator</p>
+      </div>
+
+      <!-- help page -->
+      <div id="help">
+        <a href="#" id="getting_started_back" class="rounded">&larr;<p id="back_text"> back</p></a>
+        <div class="help_section" id="features_help">
+          <div class="dummy_section_title"></div>
+          <div class="section_title_wrapper">
+            <div class="section_title">
+              <h1 class="help_title">Features</h1>
+              <hr />
+            </div>
+          </div>
+          <div class="left getting_started_box">
+            <section id="handshaking_section">
+              <h2 class="getting_started_header">Handshaking</h2>
+              <img src="./assets/init_icon_help.png" class="getting_started_header_icon left"></img>
+              <div class="getting_started_content">
+                When the real BWT is plugged in it starts sending 'n's across the wire.
+                It does so until it receives the string "bt", to which it responds by
+                sending "bt" and stopping the stream of 'n's. Turning handshaking ON
+                initiates this process with the emulator. This emulates unplugging
+                the BWT and plugging it back in.
+              </div>
+            </section>
+          </div>
+          <div class="right getting_started_box">
+            <h2 class="getting_started_header">Glyphs</h2>
+            <img src="./assets/glyph_help.png" class="getting_started_header_icon left"></img>
+            <div class="getting_started_content">
+              When glyphs are ON, hover over a slate and
+              type a letter on your keyboard to press the appropriate
+              cells to the BWT software. Cells are pressed in number order,
+              e.g. typing 'd' presses cells 1, 4, then 5
+              as opposed to 5,1,4 or 4,5,1. A delay of 500 ms is added
+              between presses to avoid overloading the software.
+            </div>
+          </div>
+          <div class="left getting_started_box">
+            <h2 class="getting_started_header">Recording</h2>
+            <img src="./assets/record_icon.png" class="getting_started_header_icon left"></img>
+            <div class="getting_started_content">
+              To begin recording a sequence of inputs, press the record button
+              (pictured here). Recordings log input on the emulator (timing and
+              duration of button presses), and stores it locally so you can play
+              it back. Enter a name in the "Recording Name" text box if you want
+              to name the current recording. You can play back any recording by
+              selecting the recording you want to replay in the "Saved Recordings"
+              dropdown, and then pressing "Play".
+            </div>
+          </div>
+          <div class="right getting_started_box">
+            <h2 class="getting_started_header">Scripting</h2>
+            <img src="./assets/scripting_icon.png" class="getting_started_header_icon left"></img>
+            <div class="getting_started_content">
+              Scripting allows you to write <tt>.bwt</tt> scripts and save them
+              in the BWT_SCRIPTS directory for playback during emulation. If you
+              add a script to the BWT_SCRIPTS directory, you can load it into the
+              emulator by pressing the refresh button (pictured here). All scripts
+              are loaded into the emulator on startup. You can then run scripts by
+              selecting the script you'd like to run from the "Saved Scripts"
+              dropdown, and then pressing "Run".
+            </div>
+          </div>
+        </div>
+        <div id="getting_started_guide">
+          <h1 class="help_title" id="getting_started_title">Getting Started</h1>
+          <hr id="getting_started_hr" />
+          <div id="getting_started_body" class="guide_content">
+            <img src="./assets/bwt_hardware.png" class="right guide_picture bigrounded bigshadow"></img>
+            The BWT Emulator virtualizes the behavior of the BWT. The BWT itself
+            is a very simple device. Each button on the device corresponds to
+            a bytecode which is sent from the BWT upon button press. For example,
+            pressing the upper-leftmost button on the device outputs the bytecode
+            "<tt>a n</tt>". The emulator simply produces these bytecodes as the
+            appropriate buttons are pressed.
+
+            The BWT hardware and emulator are divided into two primary sections, the
+            jumbo cell, and the slate cells.
+
+            <div class="getting_started_content noup noborder">
+              <div id="overall_picture_wrapper">
+                <img src="./assets/overall_emulator.png" id="overall_picture" class="rounded shadow center"></img>
+                <p class="soft_text center picture_label">BWT Sections</p>
+              </div>
+            </div>
+
+            <h2 class="getting_started_header">Jumbo Cell</h2>
+            The jumbo cell is the set of 6 large, centered buttons in the middle of
+            the BWT. Each button represents 1 dot position in a braille cell. When
+            reading braille, braille dots are numbered from top to bottom, left to
+            right, like so:
+
+            <div class="getting_started_content noup noborder">
+              <img src="./assets/braille_reading.png" class="rounded shadow guide_smallpicture center"></img>
+              <p class="soft_text center picture_label">Braille cell when reading</p>
+            </div>
+
+            However, when writing braille, the numbering is mirrored about the
+            y-axis since you push in dots to write, but read using bumps. So,
+            for writing, the cell is labeled like so:
+
+            <div class="getting_started_content noup noborder">
+              <img src="./assets/braille_writing.png" class="rounded shadow guide_smallpicture center"></img>
+              <p class="soft_text center picture_label">Braille cell when writing</p>
+            </div>
+
+            The jumbo cell is the easiest way to begin learning how to write.
+            The buttons are large and can be pressed without the use of a
+            stylus.
+
+            <h2 class="getting_started_header">Slate Cells</h2>
+            Once students become more advanced, they can begin using the
+            slate rows at the bottom of the emulator. These cells can only be pressed
+            with the use of a stylus, to simulate the stylus that would be used when
+            writing on a physical braille slate.
+
+            <h2 class="getting_started_header">Navigating the Menu</h2>
+            The BWT software is manipulated via the BWT hardware or emulator. Upon
+            first starting up, the BWT software will look for the BWT hardware or
+            emulator (see <a href="#handshaking_section">handshaking</a> for more
+            information). To begin navigation about the menu, you must first
+            press and hold (via shift-click) one of the two menu buttons, pictured
+            here:
+
+            <div class="getting_started_content noup noborder">
+              <img src="./assets/menu_buttons.png" id="menu_buttons_picture" class="rounded shadow center"></img>
+              <p class="soft_text center picture_label">Menu buttons</p>
+            </div>
+
+            Once holding, you can begin navigation by pressing any of the buttons
+            on the jumbo cell. Once you've selected the menu option you'd like,
+            confirm the selection by pressing the menu button again (i.e. stop
+            holding the menu button, and then press it again).
+          </div>
+        </div>
       </div>
 
       <!-- main plugin: the emulator -->
@@ -99,14 +237,14 @@
             <div class="jumbobutton shadow button" id="_right"></div>
             <div id="jumboslate">
               <div class="left">
-                <div class="jumbobutton button shadow" id="_jumbo1"></div>
-                <div class="jumbobutton button shadow" id="_jumbo2"></div>
-                <div class="jumbobutton button shadow" id="_jumbo3"></div>
-              </div>
-              <div class="right">
                 <div class="jumbobutton button shadow" id="_jumbo4"></div>
                 <div class="jumbobutton button shadow" id="_jumbo5"></div>
                 <div class="jumbobutton button shadow" id="_jumbo6"></div>
+              </div>
+              <div class="right">
+                <div class="jumbobutton button shadow" id="_jumbo1"></div>
+                <div class="jumbobutton button shadow" id="_jumbo2"></div>
+                <div class="jumbobutton button shadow" id="_jumbo3"></div>
               </div>
             </div>
           </div>
@@ -122,7 +260,7 @@
       <div id="recording_plugin" class="plugin active">
         <div class="label">Recorder</div>
         <div class="content">
-          <input type="button" id="recording_toggle" class="rounded"></input>
+          <input type="button" id="recording_toggle" class="rounded clickable"></input>
           <input type="text" id="recording_name" class="focusable" value=""/>
           <p id="recording_name_helper" class="record_label">Recording Name</p>
           <select id="recording_select"></select>
@@ -135,19 +273,19 @@
       <div id="scripting_plugin" class="plugin active">
         <div class="label">Scripting</div>
         <div class="content">
-          <input type="button" id="load_scripts" class="rounded"></input>
+          <input type="button" id="load_scripts" class="rounded clickable"></input>
           <select id="scripts_select"></select>
           <p id="scripts_select_helper" class="script_label">Saved Scripts</p>
           <div id="run_script">Run</div>
           <div id="script_message" class="rounded"></div>
-          <p id="script_message_helper" class="script_label">Error Log</p>
+          <p id="script_message_helper" class="script_label">Message Log</p>
         </div>
       </div>
 
     <br />
     </div>
-    <p id="copyright" class="botbar">Carnegie Mellon University</p>
-    <p id="version" class="botbar">Version 1.0.12</p>
+    <p id="copyright" class="botbar">Carnegie Mellon University & TechBridgeWorld</p>
+    <p id="version" class="botbar">Version 1.0.14</p>
   </div>
 </body>
 </html>

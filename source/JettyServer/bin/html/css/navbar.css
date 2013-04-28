@@ -12,7 +12,8 @@
   overflow: scroll;
   position: static;
   width: auto;
-  height: 70px;
+  height: auto;
+  padding-bottom: 10px;
   background: #3c5d47;
   background-image: url("../assets/noise.png");
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(60, 93, 71, 0.2)), to(rgba(60, 93, 71, 0.2))), url("../assets/noise.png");
@@ -57,6 +58,39 @@
   -moz-box-shadow: inset 0 0 3px #c80000;
   -webkit-box-shadow: inset 0 0 3px #c80000;
   box-shadow: inset 0 0 3px #c80000; }
+
+.topbutton.notoggle {
+  -moz-box-shadow: inset 0 0 0px #000000;
+  -webkit-box-shadow: inset 0 0 0px #000000;
+  box-shadow: inset 0 0 0px #000000; }
+
+.topbutton.notoggle:hover {
+  -moz-box-shadow: inset 0 0 0px #000000;
+  -webkit-box-shadow: inset 0 0 0px #000000;
+  box-shadow: inset 0 0 0px #000000; }
+
+.initbutton.topbutton.notoggle:active {
+  -moz-box-shadow: inset 0 0 0px #000000;
+  -webkit-box-shadow: inset 0 0 0px #000000;
+  box-shadow: inset 0 0 0px #000000; }
+
+.initbutton {
+  width: 22px;
+  height: 22px; }
+
+.help_page_button.topbutton.notoggle:active {
+  -moz-box-shadow: inset 0 0 0px #000000;
+  -webkit-box-shadow: inset 0 0 0px #000000;
+  box-shadow: inset 0 0 0px #000000; }
+
+#init_icon {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  top: -22px;
+  left: -2px;
+  background: url("../assets/plug.png") no-repeat;
+  background-size: contain; }
 
 .topbutton.active {
   -moz-box-shadow: inset 0 0 3px #83e82f;
@@ -146,6 +180,7 @@
 
 #app_title {
   position: absolute;
+  overflow: hidden;
   height: 50px;
   right: 40px;
   top: -33px;
@@ -158,4 +193,5 @@
   #app_title {
     position: absolute;
     left: 500px;
-    top: -33px; } }
+    top: -33px;
+    right: 0px; } }

@@ -42,29 +42,54 @@
 <part id="2"/>
 <part id="3"/>
 <part id="4"/>
+<part id="5"/>
+<part id="6"/>
+<part id="7"/>
+<part id="8"/>
+<part id="9"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GenericServlet.java" partName="GenericServlet.java" path="/Users/ziw/Desktop/ChromeDownloads/mymm/Dropbox/15239/BWTEmulator/source/JettyServer/src/edu/cmu/controller/GenericServlet.java" title="GenericServlet.java" tooltip="JettyServer/src/edu/cmu/controller/GenericServlet.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/JettyServer/src/edu/cmu/controller/GenericServlet.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4241" selectionTopPixel="1394"/>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ControllerUI.java" partName="ControllerUI.java" path="/Users/ziw/Desktop/ChromeDownloads/mymm/Dropbox/15239/BWTEmulator/source/JettyServer/src/edu/cmu/ui/ControllerUI.java" title="ControllerUI.java" tooltip="JettyServer/src/edu/cmu/ui/ControllerUI.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/JettyServer/src/edu/cmu/ui/ControllerUI.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4482" selectionTopPixel="2115"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ScriptParser.java" partName="ScriptParser.java" path="/Users/ziw/Desktop/ChromeDownloads/mymm/Dropbox/15239/BWTEmulator/source/JettyServer/src/edu/cmu/scripting/ScriptParser.java" title="ScriptParser.java" tooltip="JettyServer/src/edu/cmu/scripting/ScriptParser.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/JettyServer/src/edu/cmu/scripting/ScriptParser.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="7836" selectionTopPixel="15"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ScriptLoader.java" partName="ScriptLoader.java" path="/Users/ziw/Desktop/ChromeDownloads/mymm/Dropbox/15239/BWTEmulator/source/JettyServer/src/edu/cmu/scripting/ScriptLoader.java" title="ScriptLoader.java" tooltip="JettyServer/src/edu/cmu/scripting/ScriptLoader.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/JettyServer/src/edu/cmu/scripting/ScriptLoader.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1262" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1965" selectionTopPixel="745"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GenericServlet.java" partName="GenericServlet.java" path="/Users/ziw/Desktop/ChromeDownloads/mymm/Dropbox/15239/BWTEmulator/source/JettyServer/src/edu/cmu/controller/GenericServlet.java" title="GenericServlet.java" tooltip="JettyServer/src/edu/cmu/controller/GenericServlet.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/JettyServer/src/edu/cmu/controller/GenericServlet.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1201" selectionTopPixel="54"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AbstractActionHandler.java" partName="AbstractActionHandler.java" path="/Users/ziw/Desktop/ChromeDownloads/mymm/Dropbox/15239/BWTEmulator/source/JettyServer/src/edu/cmu/controller/AbstractActionHandler.java" title="AbstractActionHandler.java" tooltip="JettyServer/src/edu/cmu/controller/AbstractActionHandler.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/JettyServer/src/edu/cmu/controller/AbstractActionHandler.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="797" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="WindowsActionHandler.java" partName="WindowsActionHandler.java" path="/Users/ziw/Desktop/ChromeDownloads/mymm/Dropbox/15239/BWTEmulator/source/JettyServer/src/edu/cmu/controller/WindowsActionHandler.java" title="WindowsActionHandler.java" tooltip="JettyServer/src/edu/cmu/controller/WindowsActionHandler.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/JettyServer/src/edu/cmu/controller/WindowsActionHandler.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="10" selectionOffset="3459" selectionTopPixel="652"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="519" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UIActionHandler.java" partName="UIActionHandler.java" path="/Users/ziw/Desktop/ChromeDownloads/mymm/Dropbox/15239/BWTEmulator/source/JettyServer/src/edu/cmu/ui/UIActionHandler.java" title="UIActionHandler.java" tooltip="JettyServer/src/edu/cmu/ui/UIActionHandler.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/JettyServer/src/edu/cmu/ui/UIActionHandler.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1236" selectionTopPixel="191"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="LinuxActionHandler.java" partName="LinuxActionHandler.java" path="/Users/ziw/Desktop/ChromeDownloads/mymm/Dropbox/15239/BWTEmulator/source/JettyServer/src/edu/cmu/controller/LinuxActionHandler.java" title="LinuxActionHandler.java" tooltip="JettyServer/src/edu/cmu/controller/LinuxActionHandler.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/JettyServer/src/edu/cmu/controller/LinuxActionHandler.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="184" selectionTopPixel="0"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ControllerUI.java" partName="ControllerUI.java" path="/Users/ziw/Desktop/ChromeDownloads/mymm/Dropbox/15239/BWTEmulator/source/JettyServer/src/edu/cmu/ui/ControllerUI.java" title="ControllerUI.java" tooltip="JettyServer/src/edu/cmu/ui/ControllerUI.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/JettyServer/src/edu/cmu/ui/ControllerUI.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1886" selectionTopPixel="488"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TwoWaySerialComm.java" partName="TwoWaySerialComm.java" path="/Users/ziw/Desktop/ChromeDownloads/mymm/Dropbox/15239/BWTEmulator/source/JettyServer/src/edu/cmu/controller/TwoWaySerialComm.java" title="TwoWaySerialComm.java" tooltip="JettyServer/src/edu/cmu/controller/TwoWaySerialComm.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/JettyServer/src/edu/cmu/controller/TwoWaySerialComm.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="976" selectionTopPixel="129"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EmulatorLogger.java" partName="EmulatorLogger.java" path="/Users/ziw/Desktop/ChromeDownloads/mymm/Dropbox/15239/BWTEmulator/source/JettyServer/src/edu/cmu/logger/EmulatorLogger.java" title="EmulatorLogger.java" tooltip="JettyServer/src/edu/cmu/logger/EmulatorLogger.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/JettyServer/src/edu/cmu/logger/EmulatorLogger.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="217" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JettyServer.java" partName="JettyServer.java" path="/Users/ziw/Desktop/ChromeDownloads/mymm/Dropbox/15239/BWTEmulator/source/JettyServer/src/edu/cmu/server/JettyServer.java" title="JettyServer.java" tooltip="JettyServer/src/edu/cmu/server/JettyServer.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/JettyServer/src/edu/cmu/server/JettyServer.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1011" selectionTopPixel="1094"/>
 </editor>
 </editors>
 <views>
@@ -185,7 +210,7 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.21473685" ratioLeft="306" ratioRight="1119" relationship="2" relative="topLeft"/>
+<info part="org.eclipse.ui.editorss" ratio="0.2568421" ratioLeft="366" ratioRight="1059" relationship="2" relative="topLeft"/>
 <info folder="true" part="bottomRight" ratio="0.6998536" ratioLeft="478" ratioRight="205" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.AllMarkersView" label="Markers"/>
@@ -229,168 +254,172 @@
 <navigationHistory>
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/JettyServer/src/edu/cmu/scripting/ScriptParser.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/JettyServer/src/edu/cmu/controller/GenericServlet.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/JettyServer/src/edu/cmu/scripting/ScriptLoader.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/JettyServer/src/edu/cmu/ui/ControllerUI.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/JettyServer/src/edu/cmu/controller/LinuxActionHandler.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/JettyServer/src/edu/cmu/controller/WindowsActionHandler.java"/>
-<editor factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" org.eclipse.jdt.ui.ClassFileIdentifier="=JettyServer/\/Users\/ziw\/Downloads\/google-gson-2.2.2 2\/gson-2.2.2.jar&lt;com.google.gson(ExclusionStrategy.class"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/JettyServer/src/edu/cmu/scripting/ScriptLoader.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/JettyServer/src/edu/cmu/controller/WindowsActionHandler.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/JettyServer/src/edu/cmu/controller/LinuxActionHandler.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/JettyServer/src/edu/cmu/ui/ControllerUI.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/JettyServer/src/edu/cmu/controller/GenericServlet.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/JettyServer/src/edu/cmu/scripting/ScriptParser.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/JettyServer/src/edu/cmu/ui/UIActionHandler.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/JettyServer/src/edu/cmu/ui/ControllerUI.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/JettyServer/src/edu/cmu/controller/GenericServlet.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/JettyServer/src/html/scripts/controllers/scriptsLoader.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/JettyServer/src/edu/cmu/controller/AbstractActionHandler.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/JettyServer/src/edu/cmu/controller/WindowsActionHandler.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/JettyServer/src/edu/cmu/controller/LinuxActionHandler.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/JettyServer/src/edu/cmu/controller/TwoWaySerialComm.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/JettyServer/src/edu/cmu/logger/EmulatorLogger.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/JettyServer/src/edu/cmu/server/JettyServer.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/JettyServer/resources/logback.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/JettyServer/BWT_LOGS/server.log"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/JettyServer/resources/README.md"/>
 </editors>
-<item historyLabel="GenericServlet.java" index="1">
-<position info="not_deleted" x="4241" y="0"/>
+<item historyLabel="ScriptLoader.java" index="2">
+<position info="not_deleted" x="3055" y="6"/>
 </item>
-<item historyLabel="LinuxActionHandler.java" index="4">
+<item historyLabel="ControllerUI.java" index="1">
+<position info="not_deleted" x="690" y="0"/>
+</item>
+<item historyLabel="ScriptParser.java" index="0">
+<position info="not_deleted" x="2527" y="31"/>
+</item>
+<item historyLabel="ScriptLoader.java" index="2">
+<position info="not_deleted" x="3055" y="6"/>
+</item>
+<item historyLabel="ScriptParser.java" index="3">
+<position info="not_deleted" x="8090" y="0"/>
+</item>
+<item historyLabel="UIActionHandler.java" index="4">
+<position info="not_deleted" x="1269" y="0"/>
+</item>
+<item historyLabel="ScriptParser.java" index="3">
+<position info="not_deleted" x="8090" y="0"/>
+</item>
+<item historyLabel="ControllerUI.java" index="5">
+<position info="not_deleted" x="6019" y="0"/>
+</item>
+<item historyLabel="UIActionHandler.java" index="4">
+<position info="not_deleted" x="1651" y="0"/>
+</item>
+<item historyLabel="ControllerUI.java" index="5">
+<position info="not_deleted" x="4136" y="0"/>
+</item>
+<item historyLabel="UIActionHandler.java" index="4">
+<position info="not_deleted" x="1651" y="0"/>
+</item>
+<item historyLabel="GenericServlet.java" index="6">
+<position info="not_deleted" x="3039" y="0"/>
+</item>
+<item historyLabel="scriptsLoader.js" index="7">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="GenericServlet.java" index="6">
+<position info="not_deleted" x="1201" y="0"/>
+</item>
+<item historyLabel="AbstractActionHandler.java" index="8">
+<position info="not_deleted" x="206" y="0"/>
+</item>
+<item historyLabel="WindowsActionHandler.java" index="9">
+<position info="not_deleted" x="526" y="0"/>
+</item>
+<item historyLabel="AbstractActionHandler.java" index="8">
+<position info="not_deleted" x="206" y="0"/>
+</item>
+<item historyLabel="WindowsActionHandler.java" index="9">
+<position info="not_deleted" x="464" y="62"/>
+</item>
+<item historyLabel="LinuxActionHandler.java" index="10">
+<position info="not_deleted" x="184" y="0"/>
+</item>
+<item historyLabel="AbstractActionHandler.java" index="8">
+<position info="not_deleted" x="797" y="0"/>
+</item>
+<item historyLabel="LinuxActionHandler.java" index="10">
+<position info="not_deleted" x="184" y="0"/>
+</item>
+<item historyLabel="WindowsActionHandler.java" index="9">
+<position info="not_deleted" x="519" y="0"/>
+</item>
+<item historyLabel="GenericServlet.java" index="6">
+<position info="not_deleted" x="1201" y="0"/>
+</item>
+<item historyLabel="AbstractActionHandler.java" index="8">
+<position info="not_deleted" x="797" y="0"/>
+</item>
+<item historyLabel="GenericServlet.java" index="6">
+<position info="not_deleted" x="1201" y="0"/>
+</item>
+<item historyLabel="TwoWaySerialComm.java" index="11">
+<position info="not_deleted" x="2612" y="0"/>
+</item>
+<item historyLabel="EmulatorLogger.java" index="12">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="TwoWaySerialComm.java" index="11">
+<position info="not_deleted" x="976" y="0"/>
+</item>
+<item historyLabel="WindowsActionHandler.java" index="9">
+<position info="not_deleted" x="519" y="0"/>
+</item>
+<item historyLabel="LinuxActionHandler.java" index="10">
+<position info="not_deleted" x="184" y="0"/>
+</item>
+<item historyLabel="WindowsActionHandler.java" index="9">
+<position info="not_deleted" x="519" y="0"/>
+</item>
+<item historyLabel="LinuxActionHandler.java" index="10">
+<position info="not_deleted" x="184" y="0"/>
+</item>
+<item historyLabel="GenericServlet.java" index="6">
+<position info="not_deleted" x="1201" y="0"/>
+</item>
+<item historyLabel="AbstractActionHandler.java" index="8">
+<position info="not_deleted" x="797" y="0"/>
+</item>
+<item historyLabel="WindowsActionHandler.java" index="9">
+<position info="not_deleted" x="519" y="0"/>
+</item>
+<item historyLabel="LinuxActionHandler.java" index="10">
+<position info="not_deleted" x="184" y="0"/>
+</item>
+<item historyLabel="WindowsActionHandler.java" index="9">
+<position info="not_deleted" x="519" y="0"/>
+</item>
+<item historyLabel="EmulatorLogger.java" index="12">
+<position info="not_deleted" x="217" y="0"/>
+</item>
+<item historyLabel="JettyServer.java" index="13">
+<position info="not_deleted" x="2310" y="0"/>
+</item>
+<item historyLabel="logback.xml" index="14">
 <position/>
 </item>
-<item historyLabel="GenericServlet.java" index="1">
-<position info="not_deleted" x="4241" y="0"/>
+<item historyLabel="JettyServer.java" index="13">
+<position info="not_deleted" x="2310" y="0"/>
 </item>
-<item historyLabel="ScriptParser.java" index="0">
-<position info="not_deleted" x="7372" y="9"/>
+<item historyLabel="server.log" index="15">
+<position info="not_deleted" x="147786" y="0"/>
 </item>
-<item historyLabel="ScriptLoader.java" index="2">
-<position/>
+<item historyLabel="JettyServer.java" index="13">
+<position info="not_deleted" x="3297" y="0"/>
 </item>
-<item historyLabel="ScriptParser.java" index="0">
-<position info="not_deleted" x="7636" y="0"/>
+<item historyLabel="UIActionHandler.java" index="4">
+<position info="not_deleted" x="894" y="0"/>
 </item>
-<item historyLabel="LinuxActionHandler.java" index="4">
+<item historyLabel="JettyServer.java" index="13">
+<position info="not_deleted" x="1851" y="0"/>
+</item>
+<item historyLabel="README.md" index="16">
+<position info="not_deleted" x="378" y="0"/>
+</item>
+<item historyLabel="logback.xml" index="14">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="WindowsActionHandler.java" index="5">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="README.md" index="16">
+<position info="not_deleted" x="377" y="0"/>
 </item>
-<item historyLabel="LinuxActionHandler.java" index="4">
-<position info="not_deleted" x="1315" y="0"/>
+<item historyLabel="JettyServer.java" index="13">
+<position info="not_deleted" x="1011" y="0"/>
 </item>
-<item historyLabel="WindowsActionHandler.java" index="5">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="LinuxActionHandler.java" index="4">
-<position info="not_deleted" x="209" y="0"/>
-</item>
-<item historyLabel="WindowsActionHandler.java" index="5">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="ScriptParser.java" index="0">
-<position info="not_deleted" x="7636" y="0"/>
-</item>
-<item historyLabel="ScriptLoader.java" index="2">
-<position info="not_deleted" x="80" y="0"/>
-</item>
-<item historyLabel="ScriptParser.java" index="0">
-<position info="not_deleted" x="7636" y="0"/>
-</item>
-<item historyLabel="ScriptLoader.java" index="2">
-<position info="not_deleted" x="79" y="0"/>
-</item>
-<item historyLabel="ScriptParser.java" index="0">
-<position info="not_deleted" x="6420" y="0"/>
-</item>
-<item historyLabel="ScriptLoader.java" index="2">
-<position info="not_deleted" x="79" y="0"/>
-</item>
-<item historyLabel="ScriptParser.java" index="0">
-<position/>
-</item>
-<item historyLabel="ControllerUI.java" index="3">
-<position info="not_deleted" x="4428" y="0"/>
-</item>
-<item historyLabel="ScriptLoader.java" index="2">
-<position info="not_deleted" x="505" y="0"/>
-</item>
-<item historyLabel="ControllerUI.java" index="3">
-<position info="not_deleted" x="4428" y="0"/>
-</item>
-<item historyLabel="ScriptLoader.java" index="2">
-<position info="not_deleted" x="505" y="0"/>
-</item>
-<item historyLabel="ControllerUI.java" index="3">
-<position info="not_deleted" x="4428" y="0"/>
-</item>
-<item historyLabel="ScriptLoader.java" index="2">
-<position info="not_deleted" x="819" y="0"/>
-</item>
-<item historyLabel="ScriptParser.java" index="0">
-<position/>
-</item>
-<item historyLabel="ExclusionStrategy.class" index="6">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="ScriptParser.java" index="0">
-<position info="not_deleted" x="1512" y="0"/>
-</item>
-<item historyLabel="ScriptLoader.java" index="2">
-<position info="not_deleted" x="367" y="13"/>
-</item>
-<item historyLabel="ScriptParser.java" index="0">
-<position info="not_deleted" x="7548" y="0"/>
-</item>
-<item historyLabel="ScriptLoader.java" index="7">
-<position info="not_deleted" x="367" y="13"/>
-</item>
-<item historyLabel="ScriptLoader.java" index="7">
-<position info="not_deleted" x="300" y="12"/>
-</item>
-<item historyLabel="ScriptParser.java" index="0">
-<position info="not_deleted" x="7548" y="0"/>
-</item>
-<item historyLabel="WindowsActionHandler.java" index="8">
-<position info="not_deleted" x="4987" y="0"/>
-</item>
-<item historyLabel="LinuxActionHandler.java" index="9">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="WindowsActionHandler.java" index="8">
-<position info="not_deleted" x="4987" y="0"/>
-</item>
-<item historyLabel="LinuxActionHandler.java" index="9">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="WindowsActionHandler.java" index="8">
-<position info="not_deleted" x="3459" y="10"/>
-</item>
-<item historyLabel="LinuxActionHandler.java" index="9">
-<position info="not_deleted" x="822" y="0"/>
-</item>
-<item historyLabel="WindowsActionHandler.java" index="8">
-<position info="not_deleted" x="3459" y="10"/>
-</item>
-<item historyLabel="ScriptLoader.java" index="7">
-<position info="not_deleted" x="1262" y="0"/>
-</item>
-<item historyLabel="ScriptParser.java" index="0">
-<position info="not_deleted" x="7548" y="0"/>
-</item>
-<item historyLabel="ScriptLoader.java" index="7">
-<position info="not_deleted" x="1262" y="0"/>
-</item>
-<item historyLabel="ControllerUI.java" index="10">
-<position info="not_deleted" x="4428" y="0"/>
-</item>
-<item historyLabel="ScriptLoader.java" index="7">
-<position info="not_deleted" x="1262" y="0"/>
-</item>
-<item historyLabel="GenericServlet.java" index="11">
-<position info="not_deleted" x="4241" y="0"/>
-</item>
-<item historyLabel="UIActionHandler.java" index="12">
-<position info="not_deleted" x="1236" y="0"/>
-</item>
-<item historyLabel="ControllerUI.java" index="10">
-<position info="not_deleted" x="1886" y="0"/>
-</item>
-<item historyLabel="UIActionHandler.java" index="12">
-<position info="not_deleted" x="1236" y="0"/>
-</item>
-<item active="true" historyLabel="ControllerUI.java" index="10">
-<position info="not_deleted" x="1886" y="0"/>
+<item active="true" historyLabel="ControllerUI.java" index="5">
+<position info="not_deleted" x="4136" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -410,11 +439,26 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ControllerUI.java" tooltip="JettyServer/src/edu/cmu/ui/ControllerUI.java">
-<persistable path="/JettyServer/src/edu/cmu/ui/ControllerUI.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="logback.xml" tooltip="JettyServer/resources/logback.xml">
+<persistable path="/JettyServer/resources/logback.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UIActionHandler.java" tooltip="JettyServer/src/edu/cmu/ui/UIActionHandler.java">
-<persistable path="/JettyServer/src/edu/cmu/ui/UIActionHandler.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="README.md" tooltip="JettyServer/resources/README.md">
+<persistable path="/JettyServer/resources/README.md"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="test1.bwt" tooltip="JettyServer/BWT_SCRIPTS/test1.bwt">
+<persistable path="/JettyServer/BWT_SCRIPTS/test1.bwt"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="server.log" tooltip="JettyServer/BWT_LOGS/server.log">
+<persistable path="/JettyServer/BWT_LOGS/server.log"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JettyServer.java" tooltip="JettyServer/src/edu/cmu/server/JettyServer.java">
+<persistable path="/JettyServer/src/edu/cmu/server/JettyServer.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EmulatorLogger.java" tooltip="JettyServer/src/edu/cmu/logger/EmulatorLogger.java">
+<persistable path="/JettyServer/src/edu/cmu/logger/EmulatorLogger.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TwoWaySerialComm.java" tooltip="JettyServer/src/edu/cmu/controller/TwoWaySerialComm.java">
+<persistable path="/JettyServer/src/edu/cmu/controller/TwoWaySerialComm.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="LinuxActionHandler.java" tooltip="JettyServer/src/edu/cmu/controller/LinuxActionHandler.java">
 <persistable path="/JettyServer/src/edu/cmu/controller/LinuxActionHandler.java"/>
@@ -422,38 +466,23 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="WindowsActionHandler.java" tooltip="JettyServer/src/edu/cmu/controller/WindowsActionHandler.java">
 <persistable path="/JettyServer/src/edu/cmu/controller/WindowsActionHandler.java"/>
 </file>
-<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="ExclusionStrategy.class" tooltip="com.google.gson.ExclusionStrategy">
-<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=JettyServer/\/Users\/ziw\/Downloads\/google-gson-2.2.2 2\/gson-2.2.2.jar&lt;com.google.gson(ExclusionStrategy.class"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AbstractActionHandler.java" tooltip="JettyServer/src/edu/cmu/controller/AbstractActionHandler.java">
 <persistable path="/JettyServer/src/edu/cmu/controller/AbstractActionHandler.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ScriptWriter.java" tooltip="JettyServer/src/edu/cmu/scripting/ScriptWriter.java">
-<persistable path="/JettyServer/src/edu/cmu/scripting/ScriptWriter.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="scriptsLoader.js" tooltip="JettyServer/src/html/scripts/controllers/scriptsLoader.js">
+<persistable path="/JettyServer/src/html/scripts/controllers/scriptsLoader.js"/>
 </file>
-<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="String.class" tooltip="java.lang.String">
-<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=JettyServer/\/Library\/Java\/JavaVirtualMachines\/1.7.0.jdk\/Contents\/Home\/jre\/lib\/rt.jar&lt;java.lang(String.class"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UIActionHandler.java" tooltip="JettyServer/src/edu/cmu/ui/UIActionHandler.java">
+<persistable path="/JettyServer/src/edu/cmu/ui/UIActionHandler.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="a.bwt" tooltip="JettyServer/scripts/a.bwt">
-<persistable path="/JettyServer/scripts/a.bwt"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GenericServlet.java" tooltip="JettyServer/src/edu/cmu/controller/GenericServlet.java">
+<persistable path="/JettyServer/src/edu/cmu/controller/GenericServlet.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ScriptParser.java" tooltip="JettyServer/src/edu/cmu/scripting/ScriptParser.java">
-<persistable path="/JettyServer/src/edu/cmu/scripting/ScriptParser.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="sample_script.bwt" tooltip="JettyServer/BWT_SCRIPTS/sample_script.bwt">
+<persistable path="/JettyServer/BWT_SCRIPTS/sample_script.bwt"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="server.log" tooltip="JettyServer/server.log">
-<persistable path="/JettyServer/server.log"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="emulator_info.log" tooltip="JettyServer/emulator_info.log">
-<persistable path="/JettyServer/emulator_info.log"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="logback.xml" tooltip="JettyServer/resources/logback.xml">
-<persistable path="/JettyServer/resources/logback.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ScriptLoader.java" tooltip="JettyServer/src/edu/cmu/scripting/ScriptLoader.java">
-<persistable path="/JettyServer/src/edu/cmu/scripting/ScriptLoader.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="index.html" tooltip="JettyServer/src/html/index.html">
-<persistable path="/JettyServer/src/html/index.html"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="emulator_info.log" tooltip="JettyServer/BWT_LOGS/emulator_info.log">
+<persistable path="/JettyServer/BWT_LOGS/emulator_info.log"/>
 </file>
 </mruList>
 </workbench>

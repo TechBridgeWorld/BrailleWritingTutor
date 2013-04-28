@@ -1,34 +1,57 @@
 #BWT Emulator Sample Script
 
-# '#' is for comment line
+# '#' is for comments
 
 # Brief Instruction 
-# each line should contain excatly two strings
+# each line should contain exactly two strings
 # one 'action' and one 'argument'
 # action is one of {wait, click, hold, release}
-# argument should be a positive int for wait action or 
-# a button name for the other three actions.
-# everything is case insensitive
 
-click jumbo1
-wait 100
-click jumbo2
+# If action is wait, the argument should be a positive integer 
+# indicating the wait time in milliseconds.
+# If action is click, hold or release, the argument should 
+# be a button name.
+
+# Button name should follow the following naming convention
+# left - the jumbo button on the left
+# right - the jumbo button o the right
+# jumbo[n] - the nth jumbo button. n from 1 to 6
+# slate[x]_[y] - the yth button on the xth slate. y from 1 to 6, x from 1 to 32
+
+
+
+# If there are two or more consecutive button actions (i.e. click, click)
+# without a wait in between, the compiler would insert a 200 ms wait time automatically
+# to prevent clicking/holding multiple buttons too quickly.
+
+# Everything is case insensitive.
+
+# See the following script for example 
+
+click jumbo1 #click the first jumbo
+wait 150 
+click jumbo2 #click the second jumbo
 wait 150
 
 #These two lines are omitted when compiled 
-#because slate1_1 is not held down
+#because slate1_1 has never been held down so it can't be released
 #This will not trigger an error in compilation
-#release slate1_1
-#release slate1_1
+release slate1_1
+release slate1_1
 
+#Hold down two slate buttons
 hold slate1_2
 wait 100
 hold slate1_3
 wait 500
+
+#release one 
 release slate1_2
 wait 500
 
 # if we are done here, the script won't 
-# compile becasuse slate1_3 is never released
+# compile because slate1_3 is never released
 # so...
 release slate1_3
+
+

@@ -28,6 +28,13 @@ $GREEN : rgba(64, 127, 80, 0.2);
   border-radius: 5px;
 }
 
+#board.help {
+  @include transition(background, .2s, ease-in-out);
+  $WHITE : rgba(222, 222, 222, 0.2);
+  background: rgba(222, 222, 222, 1);
+  @include noisey($WHITE);
+}
+
 #top_bar {
   position: relative;
   height: 80px;
