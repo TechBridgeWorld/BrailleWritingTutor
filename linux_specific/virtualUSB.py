@@ -30,8 +30,11 @@ def master_write(fd, msg):
         
 #non blocking read
 def nbread(fd, length, timeout):
+    #select.select checks if an i/o operation can
+    #be performed on fd
     ret = select.select([fd], [], [], timeout)
     if(len(ret[0]) > 0 ): 
+        #there is something to read
         if type(fd) is int:        
             response = os.read(fd, length)
             return response
@@ -48,24 +51,28 @@ def deletePath(path):
     os.remove(path);
 
 def closeSocket(sock):
-        print "closing ", sock
-        sock.shutdown(socket.SHUT_RDWR);
-        sock.close();
+    print "closing ", sock
+    sock.shutdown(socket.SHUT_RDWR);
+    sock.close();
 
 #main
 def main():
     #open pseudo-terminal using pty module because it is more stable
     master_fd, slave_fd = pty.openpty();
 
-    #link it to /dev/ttyUSB0 and change permissions so BWT software
-    #can access it
+    #link it to a /dev/ttyUSB port that is available and change
+    #permissions so BWT software can access it
     paths = ["/dev/ttyUSB1", "/dev/ttyUSB2", "/dev/ttyUSB3", "/dev/ttyUSB4", "/dev/ttyUSB5", "/dev/ttyUSB6", "/dev/ttyUSB7", ]
     for serialPath in paths:
         try:
+            #symlink the pseudoterminal slave to /dev/ttyUSBN
             os.symlink(os.ttyname(slave_fd), serialPath);
+            #change permissions and group so that btbt software
+            #can access it
             os.fchmod(slave_fd, 0660);
             gid = grp.getgrnam("dialout").gr_gid;
             os.chown(serialPath, -1, gid);
+            #register the exit handler to remove /dev/ttyUSBN
             atexit.register(deletePath, serialPath)
             print "emulator connected to ", serialPath
             break;
@@ -73,13 +80,20 @@ def main():
             print serialPath + " already exists, trying the next one..." 
 
     #open a socket
-    HOST = ''
+    HOST = '' #localhost
     PORT = 8081
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+    #set a timeout on the socket so that if the server disconnects
+    #during handshake we can still exit gracefully
     s.settimeout(0.01);
     s.bind((HOST, PORT))
     s.listen(1)
+
+    #register exit handler to close the socket
     atexit.register(closeSocket, s);
+
+    #connect in a while loop because of the timeout
     conn = None;
     while(conn is None):
         try:
@@ -87,38 +101,34 @@ def main():
         except socket.timeout as e:
             continue
 
-    #register exit handler
+    #register exit handler to close this socket
     atexit.register(closeSocket, conn)
     print "Connected to ", addr
     print "in write loop"
 
     while(True):
-      #listen for byte code - block here
-      bytecode = conn.recv(16)
-      if(bytecode==''):  #client has disconnected
-        exit()
-      print "bytecode=", bytecode
-      if(bytecode == "_init"):
-        ret = handshake(master_fd, conn)
-        print "handshake complete"
-        conn.send(chr(ret))
-        continue
+        #listen for byte code - block here
+        bytecode = conn.recv(16)
+        if(bytecode == ''):  #client has disconnected
+            exit()
+        print "bytecode=", bytecode
+        if(bytecode == "_init"):
+            ret = handshake(master_fd, conn)
+            print "handshake complete"
+            conn.send(chr(ret))
+            continue
 
-      if(bytecode == "quit"):
-        exit()
-        
-      #TODO implement this.  For now just catch it to not crash btbt
-      if(bytecode == "uninit"):
-        continue
+        if(bytecode == "quit"):
+            exit()
 
-      #send bytecode
-      master_write(master_fd, bytecode)
-      time.sleep(0.1);
+        #send bytecode
+        master_write(master_fd, bytecode)
+        time.sleep(0.1);
 
-      #non blocking read
-      response = nbread(master_fd, 10, 0.001)
-      if response is not "":
-        print "hardware response=",response
+        #non blocking read
+        response = nbread(master_fd, 10, 0.001)
+        if response is not "":
+            print "hardware response=",response
 
 
 if __name__ == "__main__":
