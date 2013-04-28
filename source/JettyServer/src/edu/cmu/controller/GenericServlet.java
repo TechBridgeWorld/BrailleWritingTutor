@@ -138,8 +138,8 @@ public class GenericServlet extends HttpServlet {
 	
 	/**
 	 * This method handles /loadScripts.do.
-	 * It will call ScriptLoader or ScriptParser according to the parameter.
-	 * After the loading/parsing send back a json string to be parsed by the front end.
+	 * It will call ScriptLoader to load and/or parse the given script and
+	 * send back a json string to be parsed by the front end.
 	 * @param request
 	 * @param response
 	 */

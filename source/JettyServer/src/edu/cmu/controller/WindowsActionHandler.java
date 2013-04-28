@@ -1,14 +1,9 @@
 package edu.cmu.controller;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+
 
 import org.slf4j.Logger;
 
@@ -18,13 +13,13 @@ import edu.cmu.logger.EmulatorLogger;
 /**
  * A handler class that handles connection with the serial COM port.
  * 
- * @author ziw
+ * @author Nikhil
  * 
  */
 public class WindowsActionHandler extends AbstractActionHandler{
 	private TwoWaySerialComm com;
 	
-	private static final String COM_PROT_NAME = "COM7";
+	private static final String COM_PORT_NAME = "COM7";
 	
 	//a flag that marks if the emulator is trying a handshake.
 	private boolean handshaking;
@@ -32,11 +27,18 @@ public class WindowsActionHandler extends AbstractActionHandler{
 	private Logger logger = EmulatorLogger.getEmulatorInfoLogger();
 	private Logger debugLogger = EmulatorLogger.getEmulatorDebugLogger();
 	
+	private byte[] writeBuffer;
+	private int nWrite;
 	
+	private Thread writer;
+
 	public WindowsActionHandler() {
 		// Do any initialization here.
 		// constructor is called as soon as the server starts
 		handshaking = false;
+		writer = new Thread(new SerialWriter());
+		writer.start();
+
 	}
 
 	@Override
@@ -50,8 +52,8 @@ public class WindowsActionHandler extends AbstractActionHandler{
 			return;
 		}
 
-		// TODO using indexOf() for now because of the implementation of the front end
-		if (buttonCode.indexOf("init") != -1) {
+
+		if (buttonCode.equals("init")) {
 			handShake();
 			return;
 		}
@@ -60,19 +62,17 @@ public class WindowsActionHandler extends AbstractActionHandler{
 		try {
 			decodedName = URLDecoder.decode(buttonCode, "UTF-8");
 			logger.info("Decoded button code: " + decodedName);
-			com.getOutputStream().write(decodedName.getBytes());
+			
+			writeBuffer = decodedName.getBytes();
+			nWrite = decodedName.getBytes().length;
+			writer.interrupt();
 			
 			debugLogger.debug("Button code send: " + buttonCode);
 			debugLogger.debug("Decoded code    : " + decodedName);
-			
-		} catch (UnsupportedEncodingException e) {
+		} catch (IOException e) {
 			logger.error("Unable to decode the button code: " + buttonCode);
 			EmulatorLogger.logException(logger, e);
-		} catch (IOException e) {
-			logger.error("IOException when writing to com.out");
-			EmulatorLogger.logException(logger, e);
-		}
-
+		} 
 	}
 
 	private void handShake() {
@@ -105,7 +105,7 @@ public class WindowsActionHandler extends AbstractActionHandler{
 			return;
 		}
 		logger.info("Initializing TwoWaySerialComm");
-		com = new TwoWaySerialComm(COM_PROT_NAME);// this line takes a while on some computers
+		com = new TwoWaySerialComm(COM_PORT_NAME);// this line takes a while on some computers
 		logger.info("TwoWaySerialComm initialized");
 	}
 
@@ -118,25 +118,44 @@ public class WindowsActionHandler extends AbstractActionHandler{
 	 * @throws ExecutionException 
 	 */
 	public void initialize() throws IOException, InterruptedException, ExecutionException {
-		ExecutorService executor = Executors.newCachedThreadPool();
-		Future<?> reader = executor.submit(new SerialReader(com
-				.getInputStream()));
-		executor.submit(new SerialWriter(com.getOutputStream()));
-		reader.get(); // block until reader is done
-		executor.shutdownNow(); // kill writer
-		while (!executor.isTerminated()); // block until writer is killed
-		com.getOutputStream().write("bt".getBytes());
-		logger.info("Wrote 'bt'. Hand shaken.");
+		Thread reader = new Thread(new SerialReader());
+		reader.start();
+		while(reader.isAlive()){
+			writeBuffer = "nnnn".getBytes();
+			nWrite = 4;
+			writer.interrupt();
+			Thread.sleep(100);
+		}
+		writeBuffer="bt".getBytes();
+		nWrite = 2;
+		writer.interrupt();
+		
 
 	}
 
-	private static class SerialReader implements Runnable {
-		InputStream in;
+	private class SerialWriter implements Runnable{
 
-		public SerialReader(InputStream in) {
-			this.in = in;
+		@Override
+		public void run() {
+			while(true){
+				try {
+					Thread.sleep(10000);
+				} catch (InterruptedException e) {
+					try {
+						com.getOutputStream().write(writeBuffer, 0, nWrite);
+					} catch (IOException e1) {
+						logger.error("IOException when writing to serial port emulator");
+						EmulatorLogger.logException(logger, e);
+					}
+				}
+			}
 		}
+		
+	}
+	
+	private class SerialReader implements Runnable{
 
+		@Override
 		public void run() {
 			byte[] buffer = new byte[1024];
 			byte[] miniBuffer = new byte[2]; // buffer for the incoming bytes
@@ -145,7 +164,7 @@ public class WindowsActionHandler extends AbstractActionHandler{
 			int len = -1;
 			boolean done = false;
 			try {
-				while (((len = this.in.read(buffer)) > -1) && (done == false)) {
+				while (((len = com.getInputStream().read(buffer)) > -1) && (done == false)) {
 					for (int i = 0; i < len; i++) {
 						miniBuffer[0] = miniBuffer[1];
 						miniBuffer[1] = buffer[i];
@@ -157,39 +176,14 @@ public class WindowsActionHandler extends AbstractActionHandler{
 
 				}
 			} catch (IOException e) {
-				e.printStackTrace();
+				logger.error("IOException when reading from serial port emulator");
+				EmulatorLogger.logException(logger, e);
 			}
-		}
-
+			}
+		
+		
 	}
+
 	
-	private static class SerialWriter implements Runnable {
-		OutputStream out;
-
-		public SerialWriter(OutputStream out) {
-			this.out = out;
-		}
-
-		public void run() {
-			while (true) {
-
-				try {
-
-					this.out.write('n');
-					this.out.write('n');
-					this.out.write('n');
-					this.out.write('n');
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					return;
-				}
-			}
-		}
-	}
 
 }
