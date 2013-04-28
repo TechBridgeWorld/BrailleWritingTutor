@@ -1,16 +1,8 @@
 import pty, termios, os, grp, time, select, socket, atexit
 
-
-
-
 def handshake(fd, conn):
-    quitCheck = ""
     resp = ""
     while(True):
-        quitcheck = nbread(conn, 10, 0.001)
-        if(quitCheck == "stop_init"):
-            return 0
-
         master_write(fd, "n")
         time.sleep(0.1)
         resp += nbread(fd, 2, 0.001)
@@ -19,7 +11,18 @@ def handshake(fd, conn):
         if "bt" in resp:
             master_write(fd, "bt") 
             return 1 
+        #TODO This case is here because sometimes the 
+        #     the write is not spit back to the master
+        #     in which case master_write() swallows up
+        #     the 'b'
+        if "t" in resp or "b" in resp:
+            master_write(fd, "bt")
+            return 1
         
+#for some reason, when writing to a master, the output
+#gets spit back to the master for reading 
+#TODO find out why this happens and find a more robust
+#     solution
 def master_write(fd, msg):
     os.write(fd, msg)
     nbread(fd, len(msg), 0.001)
@@ -41,10 +44,11 @@ def nbread(fd, length, timeout):
     
 #exit handlers
 def deletePath(path):
-    print "quitting..."
+    print "deleting ", path
     os.remove(path);
 
 def closeSocket(sock):
+        print "closing ", sock
         sock.shutdown(socket.SHUT_RDWR);
         sock.close();
 
@@ -55,7 +59,7 @@ def main():
 
     #link it to /dev/ttyUSB0 and change permissions so BWT software
     #can access it
-    paths = ["/dev/ttyUSB0", "/dev/ttyUSB1", "/dev/ttyUSB2", "/dev/ttyUSB3", "/dev/ttyUSB4", "/dev/ttyUSB5", "/dev/ttyUSB6", "/dev/ttyUSB7", ]
+    paths = ["/dev/ttyUSB1", "/dev/ttyUSB2", "/dev/ttyUSB3", "/dev/ttyUSB4", "/dev/ttyUSB5", "/dev/ttyUSB6", "/dev/ttyUSB7", ]
     for serialPath in paths:
         try:
             os.symlink(os.ttyname(slave_fd), serialPath);
@@ -72,9 +76,16 @@ def main():
     HOST = ''
     PORT = 8081
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.settimeout(0.01);
     s.bind((HOST, PORT))
     s.listen(1)
-    conn, addr = s.accept()
+    atexit.register(closeSocket, s);
+    conn = None;
+    while(conn is None):
+        try:
+            conn, addr = s.accept()
+        except socket.timeout as e:
+            continue
 
     #register exit handler
     atexit.register(closeSocket, conn)
