@@ -80,9 +80,9 @@ repository.
 
 10. To build and develop the project using Eclipse: 
   * Only the following eclipse versions have been tested
-    -Eclipse Classic. Version: 4.2.2
-    -Eclipse IDE for Java Developers. Version: Juno Service Release 1
-    -Eclipse IDE for Java EE Developers. Version: Indigo Service Release 2
+    <p>-Eclipse Classic. Version: 4.2.2</p>
+    <p>-Eclipse IDE for Java Developers. Version: Juno Service Release 1</p>
+    <p>-Eclipse IDE for Java EE Developers. Version: Indigo Service Release 2</p>
   * Download <tt>/bin/archives/emulator.zip</tt> from repository
   * Download <tt>/bin/archives/libs.zip</tt> from repository
   * Extract <tt>libs.zip</tt>
