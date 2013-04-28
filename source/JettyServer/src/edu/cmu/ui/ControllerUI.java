@@ -25,7 +25,7 @@ import javax.swing.event.HyperlinkListener;
 import org.slf4j.Logger;
 
 import edu.cmu.logger.EmulatorLogger;
-//import edu.cmu.scripting.ScriptLoader;
+import edu.cmu.scripting.ScriptLoader;
 import edu.cmu.server.JettyServer;
 
 /**
@@ -68,6 +68,8 @@ public class ControllerUI extends JFrame {
 		
 	public ControllerUI() {
 		messages = new HashMap<Date,String>();
+		ScriptLoader.checkAndCreateFolder();
+		ScriptLoader.createSampleScript();
 		initUI();
 		try {
 			handler = new UIActionHandler();
@@ -142,11 +144,13 @@ public class ControllerUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				//try to stop the server before quit the program.
 				try {
-					handler.stopServer();
+					if(handler != null)
+						handler.stopServer();
 				} catch (Exception e1) {
 					logger.error("Error when stopping the server when quitButton is clicked");
 					EmulatorLogger.logException(logger, e1);
 				} finally {
+					logger.info("Exiting application");
 					System.exit(0);
 				}
 			}
@@ -292,5 +296,5 @@ public class ControllerUI extends JFrame {
 				sg.setVisible(true);
 			}
 		});
-	}
+	}	
 }

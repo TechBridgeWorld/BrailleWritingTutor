@@ -42,10 +42,6 @@ public class UIActionHandler{
 			Exception e = new Exception("Invalid OS. Emulator only supports Windows/Linux.");
 			EmulatorLogger.logException(logger, e);
 			throw e;
-			
-			//TODO  this line is here for debug/dev only because dev environment is Mac OS 
-			//Should throw the exception when shipped.
-//			handler = new WindowsActionHandler();
 		}
 		servlet = new GenericServlet(handler);
 		js = new JettyServer(port,servlet);
