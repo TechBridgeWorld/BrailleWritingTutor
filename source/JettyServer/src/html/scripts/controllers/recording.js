@@ -26,11 +26,13 @@ function __registerButtons(){
     if(window.recording){
       prevTimeStamp = undefined;
       sendButton.attr('disabled', 'disabled');
+      window.recording_alert = window.sustained_app_alert('Recording');
     }
     else{
       sendButton.removeAttr('disabled');
       __saveRecording();
       __updateRecordingDropdown();
+      window.recording_alert();
     }
 
   });

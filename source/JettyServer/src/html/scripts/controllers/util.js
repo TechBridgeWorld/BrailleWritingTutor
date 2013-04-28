@@ -101,7 +101,7 @@ $(document).ready(function() {
     var $alert_el = $("#alert");
 
     // add the alert details
-    $alert_header.text(header + ": ");
+    $alert_header.text(header);
     $alert_body.text(message);
     $alert_el.addClass("active");
     $alert_el.removeClass("unactive");

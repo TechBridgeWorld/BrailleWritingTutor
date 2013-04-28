@@ -88,69 +88,6 @@ $(document).ready(function() {
         $("#getting_started_back").removeClass("in_help");
       };
     });
-
-    // make section titles sticky on scroll
-    // since there aren't many sections, just hardcode these. If we were to
-    // add more sections, we would want some way to do this programatically
-//    var HELP_OFFSET = 70;
-//    var STARTED_OFFSET = 200;
-//    $("#board").on('scroll', function(e) {
-//      var scroll_top = $("#board").scrollTop();
-//      if (scroll_top > HELP_OFFSET) {
-//        $("#features_help").find(".section_title_wrapper")
-//          .css('position', 'fixed')
-//          .css('top', '0px')
-//          .css('left', '0px')
-//          .css('right', '0px');
-//        $("#features_help").find(".section_title")
-//          .css('position', 'absolute')
-//          .css('top', '21px')
-//          .css('left', '30px')
-//          .css('right', '30px')
-//          .css('height', '79px');
-//        $("#features_help").find(".help_title")
-//          .css('position', 'relative')
-//          .css('top', '-2px');
-//        $("#features_help").find("hr")
-//          .css('position', 'relative')
-//          .css('top', '-2px');
-//        $("#features_help").find(".dummy_section_title")
-//          .css('height', '80px');
-//      } else if (scroll_top <= HELP_OFFSET) {
-//        $("#features_help").find(".section_title_wrapper")
-//          .css('position', 'static');
-//        $("#features_help").find(".section_title")
-//          .css('position', 'static')
-//          .css('height', '80px');
-//        $("#features_help").find(".dummy_section_title")
-//          .css('height', '0px');
-//        $("#features_help").find("hr")
-//          .css('position', 'static');
-//        $("#features_help").find(".help_title")
-//          .css('position', 'static');
-//      };
-//      if (scroll_top > STARTED_OFFSET) {
-//        $("#features_help").find(".section_title_wrapper")
-//          .css('position', 'relative')
-//          .css('top', '50px')
-//          .css('left', '0px')
-//          .css('right', '0px');
-//        $("#features_help").find(".section_title")
-//          .css('position', 'relative')
-//          .css('height', '80px')
-//          .css('top', STARED_OFFSET + 21)
-//          .css('left', '0px')
-//          .css('right', '0px');
-//        $("#features_help").find(".dummy_section_title")
-//          .css('height', '0px');
-//        $("#features_help").find("hr")
-//          .css('position', 'relative')
-//          .css('top', STARED_OFFSET - 2);
-//        $("#features_help").find(".help_title")
-//          .css('position', 'relative')
-//          .css('top', STARED_OFFSET - 2);
-//      };
-//    });
   };
 
   /** @brief Populates the DOM with objects we don't want to hardcode into
@@ -267,7 +204,6 @@ $(document).ready(function() {
 
         // toggle the content from hidden to shown on click
         $el.find('.content').slideToggle();
-//        window.timed_app_alert("Critical", "Some stuff", 2000);
 
         if ($el.hasClass('minimized')) {
           // if currently minimized, maximize it
@@ -357,26 +293,6 @@ $(document).ready(function() {
     $(".button").each(function(ind, el) {
       add_button($(el));
     });
-
-// @TODO: Get this working
-//    // Add mouseover handler for the jumbocell for our glyphs. See Glyph.js
-//    // for more info
-//    $("#jumboslate").on('mouseover', (function(e) {
-//      e.preventDefault();
-//      e.stopPropagation();
-//
-//      // clear current mouseover if any
-//      if (window.__GLYPHS_ENABLED === true) {
-//        if (window.cur_mouseover !== undefined) {
-//          window.cur_mouseover.removeClass('mouseover');
-//        };
-//        window.cur_mouseover = undefined;
-//
-//        // set the cur_mouseover to this slategroup
-//        window.cur_mouseover = this;
-//        window.cur_mouseover.addClass('mouseover');
-//      };
-//    }));
 
     attach_toggle_buttons();
     attach_init();
