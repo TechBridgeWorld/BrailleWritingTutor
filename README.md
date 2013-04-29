@@ -95,7 +95,7 @@ repository.
   * Right click 'JettyServer' project and go to Build Path -> Configure Build Path
   * Go to 'Libraries' tab, click 'Add External JARs'
   * Select all .jar files extracted from <tt>libs.zip</tt>, click OK and wait eclipse to build the workspace
-  * Nagivate to package <tt>edu.cmu.ui</tt> and run <tt>ControllerUI.java</tt> as 'Java Application'
+  * Nagivate to package <tt>edu.cmu.ui</tt> (JettyServer -> src > edu.cmu.ui)and run <tt>ControllerUI.java</tt> as 'Java Application'
   * Right click 'JettyServer' project and click Refresh to make sure eclipse project explorer shows the most up-to-date log files, which are saved under <tt>/BWT_LOGS</tt>
 
 
