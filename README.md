@@ -98,6 +98,11 @@ repository.
   * Nagivate to package <tt>edu.cmu.ui</tt> (JettyServer -> src > edu.cmu.ui)and run <tt>ControllerUI.java</tt> as 'Java Application'
   * Right click 'JettyServer' project and click Refresh to make sure eclipse project explorer shows the most up-to-date log files, which are saved under <tt>/BWT_LOGS</tt>
 
+  To build and develop the project using other java IDE
+  * Import all source files under <tt>/source/JettyServer/src</tt> and <tt>/source/JettyServer/resources</tt>
+  * Make suer all .jar files in <tt>libs.zip</tt> are in the project's build path
+  * Add <tt>/source/JettyServer/resources</tt> as a class folder so logback can get its configuration file
+  * Run <tt>ControllerUI.java</tt> under package <tt>edu.cmu.ui</tt>
 
 11. The emulator can run on Windows and Linux, though any browser can connect to
   the server once it's running.
@@ -109,7 +114,7 @@ repository.
 
 14. N/A
 
-15. Yes, the emulator generates log files.
+15. Yes, the emulator generates log files. The configuration of logging is defined by <tt>/source/JettyServer/src/resources/logback.xml</tt>. Loggers are exposed to java server through <tt>/source/JettyServer/src/edu/cmu/logger/EmulatorLogger.java</tt>
 
 16. Wherever the emulator runs, a folder called <tt>BWT_LOGS</tt> is created
     at the top level, and contains the logs.
