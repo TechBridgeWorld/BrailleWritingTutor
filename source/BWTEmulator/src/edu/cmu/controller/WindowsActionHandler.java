@@ -113,7 +113,7 @@ public class WindowsActionHandler extends AbstractActionHandler{
    * @throws InterruptedException
    * @throws ExecutionException
    */
-  public void initialize() throws IOException, InterruptedException, ExecutionException {
+  public void initialize() throws IOException, ExecutionException {
     Thread reader = new Thread(new SerialReader());
     reader.start();
     writeBuffer = "n".getBytes();
@@ -121,8 +121,13 @@ public class WindowsActionHandler extends AbstractActionHandler{
     // The reader dies after it receives a "bt" from the software
     // While the reader has not received a "bt" continue to send n's
     while(reader.isAlive()){
-      writer.interrupt();
-      Thread.sleep(100);
+    	writer.interrupt();
+		try {
+			Thread.sleep(100);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			logger.info("Main thread awakened during handshake");
+		}
     }
     //Respond with another "bt"
     writeBuffer="bt".getBytes();
