@@ -91,18 +91,18 @@ repository.
   * Select General -> Existing Projects into Workspace
   * Choose 'Select archive file' and click 'browse'
   * Select<tt>emulator.zip</tt> just downloaded
-  * Under 'Projects', make sure 'JettyServer (JettyServer)' is checked. Click 'Finish'
+  * Under 'Projects', make sure 'BWTEmulator (BWTEmulator)' is checked. Click 'Finish'
   * Wait for eclipse to build the workspace
-  * Right click 'JettyServer' project and go to Build Path -> Configure Build Path
+  * Right click 'BWTEmulator' project and go to Build Path -> Configure Build Path
   * Go to 'Libraries' tab, click 'Add External JARs'
   * Select all .jar files extracted from <tt>libs.zip</tt>, click OK and wait eclipse to build the workspace
-  * Nagivate to package <tt>edu.cmu.ui</tt> (JettyServer -> src > edu.cmu.ui)and run <tt>ControllerUI.java</tt> as 'Java Application'
-  * Right click 'JettyServer' project and click Refresh to make sure eclipse project explorer shows the most up-to-date log files, which are saved under <tt>/BWT_LOGS</tt>
+  * Nagivate to package <tt>edu.cmu.ui</tt> (BWTEmulator -> src > edu.cmu.ui)and run <tt>ControllerUI.java</tt> as 'Java Application'
+  * Right click 'BWTEmulator' project and click Refresh to make sure eclipse project explorer shows the most up-to-date log files, which are saved under <tt>/BWT_LOGS</tt>
 
   To build and develop the project using other java IDE
-  * Import all source files under <tt>/source/JettyServer/src</tt> and <tt>/source/JettyServer/resources</tt>
+  * Import all source files under <tt>/source/BWTEmulator/src</tt> and <tt>/source/BWTEmulator/resources</tt>
   * Make sure all .jar files in <tt>libs.zip</tt> are in the project's build path
-  * Add <tt>/source/JettyServer/resources</tt> as a class folder so logback can get its configuration file
+  * Add <tt>/source/BWTEmulator/resources</tt> as a class folder so logback can get its configuration file
   * Run <tt>ControllerUI.java</tt> under package <tt>edu.cmu.ui</tt>
 
 11. The emulator can run on Windows and Linux, though any browser can connect to
@@ -115,7 +115,7 @@ repository.
 
 14. N/A
 
-15. Yes, the emulator generates log files. The configuration of logging is defined by <tt>/source/JettyServer/src/resources/logback.xml</tt>. Loggers are exposed to java server through <tt>/source/JettyServer/src/edu/cmu/logger/EmulatorLogger.java</tt>
+15. Yes, the emulator generates log files. The configuration of logging is defined by <tt>/source/BWTEmulator/resources/logback.xml</tt>. Loggers are exposed to java server through <tt>/source/BWTEmulator/src/edu/cmu/logger/EmulatorLogger.java</tt>
 
 16. Wherever the emulator runs, a folder called <tt>BWT_LOGS</tt> is created
     at the top level, and contains the logs.
@@ -128,7 +128,7 @@ repository.
   However after com0com is
   installed, it can be configured to use any port you want (see below).
   If you change the com port in com0com you will need to edit the source 
-  file windowsActionHandler.java (line 27: COMM_PORT_NAME). Our suggestion is that you
+  file windowsActionHandler.java (line 27: COM_PORT_NAME). Our suggestion is that you
   let it use 1 <-> 7.
 
   <h3>Brief introduction to com0com commands:</h3>
@@ -147,10 +147,20 @@ repository.
 
 21. Our project does not use a mobile device.
 
-22. The timing is handled in javascript. If you scroll or have a lot of other tabs open,
-  sometimes the timing can get messed up. If you are experiencing what you think are
-  timing issues from the BWT Emulator, we suggest you close other tabs and avoid scrolling. The timing
-  logic should eventually be run from the Java server to better guarantee specific timings.
+22.
+<ul>
+  <li>
+    The timing is handled in javascript. If you scroll or have a lot of other tabs open,
+    sometimes the timing can get messed up. If you are experiencing what you think are
+    timing issues from the BWT Emulator, we suggest you close other tabs and avoid scrolling.
+    Much of the timing logic should eventually be run from the Java server to better
+    guarantee specific timings.
+  </li>
+  <li>
+    Running the <tt>btbt</tt> software in Windows sometimes crashes when using glyphs and running without the
+    <tt>--nodebounce</tt> flag. Running the software with <tt>--nodebounce</tt> fixes this issue.
+  </li>
+</ul>
     
 23. As noted in 22, we would like to see the timing logic handled by the Java server, and not
   by the javascript frontend.
