@@ -85,10 +85,8 @@ public class WindowsActionHandler extends AbstractActionHandler{
       } catch (Exception e) {
         logger.error("Error occured when handshaking. ");
         EmulatorLogger.logException(logger, e);
-      } finally {
-        handshaking = false;// handshake done either way.
-        logger.info("Server is open to accept handshake again.");
-      }
+        handshaking = false;
+      } 
     } else {
       // another handshaking in process.
       logger.info("Init request caught " +
@@ -127,6 +125,7 @@ public class WindowsActionHandler extends AbstractActionHandler{
     writeBuffer="bt".getBytes();
     nWrite = 2;
     writer.interrupt();
+    handshaking = false;
   }
 
   private class SerialWriter implements Runnable{
