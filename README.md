@@ -51,6 +51,7 @@ choosing.
 
 4. To compile, you will need:
   * Java SDK 1.7
+  * Eclipse IDE (Recommended, see 10.)
 
 5. The following external libraries are required to build the emulator. Note
 that all required libraries and external softwares are included in the
@@ -100,7 +101,7 @@ repository.
 
   To build and develop the project using other java IDE
   * Import all source files under <tt>/source/JettyServer/src</tt> and <tt>/source/JettyServer/resources</tt>
-  * Make suer all .jar files in <tt>libs.zip</tt> are in the project's build path
+  * Make sure all .jar files in <tt>libs.zip</tt> are in the project's build path
   * Add <tt>/source/JettyServer/resources</tt> as a class folder so logback can get its configuration file
   * Run <tt>ControllerUI.java</tt> under package <tt>edu.cmu.ui</tt>
 
