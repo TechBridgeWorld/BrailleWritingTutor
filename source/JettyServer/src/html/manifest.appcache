@@ -1,0 +1,24 @@
+-CACHE MANIFEST
+-# version 7
+-# @file cache.manifest
+-# @brief The cache manifest for our app.
+-#
+-# @TODO(ltray): For now, don't cache anything so we can test. Maybe change this?
+-# @author Lucas Ray (ltray@cmu.edu)
+-
+-CACHE:
+-/assets/favicon.ico
+-/assets/offline_error.jpg
+-/css/offline.css
+-/offline.html
+-
+-NETWORK:
+-# for chrome and safari (see http://appcachefacts.info/)
+-*
+-# for firefox
+-http://*
+-https://*
+-
+-FALLBACK:
+-/ /offline.html
+-/index.html /offline.html
