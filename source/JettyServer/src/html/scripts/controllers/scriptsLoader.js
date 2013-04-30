@@ -37,8 +37,8 @@ function loadAllScripts () {
     },
     error : function(error){
       showScriptingMsg("Errors occurred in retrieving all scripts listing.<br />");
-      window.LOG_ERROR("Errors occurred in retrieving all scripts listing.");
-      window.LOG_ERROR(error);
+      window.__bwt.LOG_ERROR("Errors occurred in retrieving all scripts listing.");
+      window.__bwt.LOG_ERROR(error);
     }
   });
 }
@@ -55,7 +55,7 @@ function __updateScriptsDropdown(data){
     dropdown.html(options);
   }
   catch(err){
-    window.LOG_WARNING("Unable to parse the JSON string. Can't update scripts list.");
+    window.__bwt.LOG_WARNING("Unable to parse the JSON string. Can't update scripts list.");
   }
 }
 
@@ -66,7 +66,7 @@ function __updateScriptsDropdown(data){
 function compileAndRun(){
   //first grab the script name
   var scriptName = $('#scripts_select').val();
-  if(scriptName === undefined || scriptName.length === 0){
+  if(scriptName === undefined || scriptName === null || scriptName.length === 0){
     showScriptingMsg("No script selected.");
     return;
   }
@@ -78,8 +78,8 @@ function compileAndRun(){
     },
     error : function(error){
       showScriptingMsg("Error occurred when connecting to the server to compile the script.");
-      window.LOG_ERROR("Error occurred when connecting to the server to compile the script.");
-      window.LOG_ERROR(error);
+      window.__bwt.LOG_ERROR("Error occurred when connecting to the server to compile the script.");
+      window.__bwt.LOG_ERROR(error);
     }
   });
 
@@ -91,7 +91,7 @@ function compileAndRun(){
 */
 function __prepareScript(data){
   if(data === undefined){
-    window.LOG_WARNING("Empty script sent from server.");
+    window.__bwt.LOG_WARNING("Empty script sent from server.");
     return;
   }
   try{
@@ -143,7 +143,7 @@ function __prepareScript(data){
     }
   }
   catch(error){
-    window.LOG_ERROR("Error when preparing the script. Unable to parse.");
+    window.__bwt.LOG_ERROR("Error when preparing the script. Unable to parse.");
     showScriptingMsg("Error when preparing the script. Unable to parse.");
   }
 

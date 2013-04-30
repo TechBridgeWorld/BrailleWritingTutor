@@ -13,18 +13,18 @@ $(document).ready(function() {
   var __NUM_SLATEDOTS_RIGHT_SIDE = 3; // number of dots in right group
   var __GLYPH_MAP = {}; // object holding our glyphs
   var __CODE_TO_GLYPH_ID = {}; // object mapping keycodes to glyph IDs
-  window.__BUTTON_MAP = {}; // object holding our buttons
-  window.cur_mouseover = undefined;
+  window.__bwt.__BUTTON_MAP = {}; // object holding our buttons
+  window.__bwt.cur_mouseover = undefined;
 
   // initialize glyphs to off
-  window.__GLYPHS_ENABLED = false;
+  window.__bwt.__GLYPHS_ENABLED = false;
 
   /** @brief Main method for load.
    */
   var main = function main() {
     // show the loading screen while loading
-    window.show_loading();
-    window.hide_alert();
+    window.__bwt.show_loading();
+    window.__bwt.hide_alert();
     initializeRecording();
     initializeScripting();
     populate_dom();
@@ -48,12 +48,12 @@ $(document).ready(function() {
       url: '/loading.do',
       type: 'GET',
       success: function(data) {
-        window.hide_loading();
+        window.__bwt.hide_loading();
       },
       error: function(data) {
         // TODO: handle this
-        window.LOG_WARNING("Cannot load server");
-        window.hide_loading();
+        window.__bwt.LOG_WARNING("Cannot load server");
+        window.__bwt.hide_loading();
       }
     });
   };
@@ -61,8 +61,8 @@ $(document).ready(function() {
   /** @brief Initializes the main processor.
    */
   var init_processor = function init_processor() {
-    window._Processor = new window.Processor();
-    window._Processor.run();
+    window.__bwt._Processor = new window.__bwt.Processor();
+    window.__bwt._Processor.run();
   };
 
   /** @brief Initializes the DOM. Hides elements that shouldn't be shown.
@@ -113,15 +113,15 @@ $(document).ready(function() {
         e.stopPropagation();
 
         // clear current mouseover if any
-        if (window.__GLYPHS_ENABLED === true) {
-          if (window.cur_mouseover !== undefined) {
-            window.cur_mouseover.removeClass('mouseover');
+        if (window.__bwt.__GLYPHS_ENABLED === true) {
+          if (window.__bwt.cur_mouseover !== undefined) {
+            window.__bwt.cur_mouseover.removeClass('mouseover');
           };
-          window.cur_mouseover = undefined;
+          window.__bwt.cur_mouseover = undefined;
 
           // set the cur_mouseover to this slategroup
-          window.cur_mouseover = this;
-          window.cur_mouseover.addClass('mouseover');
+          window.__bwt.cur_mouseover = this;
+          window.__bwt.cur_mouseover.addClass('mouseover');
         };
       }).bind($slategroup));
 
@@ -179,11 +179,11 @@ $(document).ready(function() {
       e.preventDefault();
       e.stopPropagation();
 
-      if (window.__GLYPHS_ENABLED === true) {
-        if (window.cur_mouseover !== undefined) {
-          window.cur_mouseover.removeClass('mouseover');
+      if (window.__bwt.__GLYPHS_ENABLED === true) {
+        if (window.__bwt.cur_mouseover !== undefined) {
+          window.__bwt.cur_mouseover.removeClass('mouseover');
         };
-        window.cur_mouseover = undefined;
+        window.__bwt.cur_mouseover = undefined;
       };
     });
   };
@@ -236,19 +236,19 @@ $(document).ready(function() {
     var button_id = $dom_el.attr('id');
 
     // find the code from our mapping
-    var code = window.input_mapping[button_id];
+    var code = window.__bwt.input_mapping[button_id];
     if (code === undefined) {
-      window.LOG_ERROR("Cannot load button " + button_id);
+      window.__bwt.LOG_ERROR("Cannot load button " + button_id);
     };
 
     // Generally shouldn't be adding same button twice, but it's okay to do so.
     // Just overwrites previous button with new one.
-    if (__BUTTON_MAP[button_id] !== undefined) {
-      window.LOG_WARNING("Adding button \"" + button_id + "\" twice");
+    if (window.__bwt.__BUTTON_MAP[button_id] !== undefined) {
+      window.__bwt.LOG_WARNING("Adding button \"" + button_id + "\" twice");
     };
 
     // Add this button to our button map
-    __BUTTON_MAP[button_id] = new Button({
+    window.__bwt.__BUTTON_MAP[button_id] = new window.__bwt.Button({
       'code': code,
       'dom_el': $dom_el
     });
@@ -260,10 +260,10 @@ $(document).ready(function() {
 
       if (e.shiftKey === true) {
         // if shift is being held, consider this click a hold
-        __BUTTON_MAP[button_id].hold_down();
+        window.__bwt.__BUTTON_MAP[button_id].hold_down();
       } else {
         // otherwise, consider it a press
-        __BUTTON_MAP[button_id].press_down();
+        window.__bwt.__BUTTON_MAP[button_id].press_down();
       };
     });
 
@@ -271,7 +271,7 @@ $(document).ready(function() {
     $dom_el.on('mouseup', function(e) {
       e.preventDefault();
       e.stopPropagation();
-      __BUTTON_MAP[button_id].press_up();
+      window.__bwt.__BUTTON_MAP[button_id].press_up();
     });
   };
 
@@ -279,14 +279,14 @@ $(document).ready(function() {
    */
   var attach_handlers = function attach_handlers() {
     // default power tips to enabled
-    window.powerTipsEnabled = false;
+    window.__bwt.powerTipsEnabled = false;
 
     // mark the focusable objects so we know when to ignore keypress events
     $(".focusable").on('focus', function(e) {
-      window.__focusable = true;
+      window.__bwt.__focusable = true;
     });
     $(".focusable").on('blur', function(e) {
-      window.__focusable = false;
+      window.__bwt.__focusable = false;
     });
 
     // add buttons
@@ -303,16 +303,16 @@ $(document).ready(function() {
    */
   var attach_init = function attach_init() {
     $("#_initialize").on('click', function() {
-      window.LOG_INFO("Sending initialize");
+      window.__bwt.LOG_INFO("Sending initialize");
       $.ajax({
-        url: '/sendBytes.do?code=' + window.input_mapping['_initialize'],
+        url: '/sendBytes.do?code=' + window.__bwt.input_mapping['_initialize'],
         type: 'GET',
         success: function(data) {
-          window.LOG_INFO("initialize succeeded");
+          window.__bwt.LOG_INFO("initialize succeeded");
         },
         error: function(data) {
           // TODO: handle this better
-          window.LOG_ERROR("initialize failed");
+          window.__bwt.LOG_ERROR("initialize failed");
         },
       });
     });
@@ -323,10 +323,10 @@ $(document).ready(function() {
   var attach_glyph_handlers = function attach_glyph_handlers() {
     // first, create glyphs for each of the letters in glyph_mapping
     var i;
-    for (i in window.glyph_mapping) {
-      var this_glyph = new window.Glyph({
+    for (i in window.__bwt.glyph_mapping) {
+      var this_glyph = new window.__bwt.Glyph({
         'id': i,
-        'code': window.glyph_mapping[i]
+        'code': window.__bwt.glyph_mapping[i]
       });
 
       __GLYPH_MAP[i] = this_glyph;
@@ -336,7 +336,7 @@ $(document).ready(function() {
     // presses rather than per-letter handlers
     $(window).on('keypress', function(e) {
       // if focused on an input, ignore this handler
-      if (window.__focusable === true) {
+      if (window.__bwt.__focusable === true) {
         return;
       };
 
@@ -344,15 +344,15 @@ $(document).ready(function() {
       e.stopPropagation();
 
       // only update if glyphs are enabled
-      if (window.__GLYPHS_ENABLED === true) {
+      if (window.__bwt.__GLYPHS_ENABLED === true) {
         var key_code = e.keyCode || e.which;
         try {
           var this_glyph = __GLYPH_MAP[__CODE_TO_GLYPH_ID[key_code]];
-          this_glyph.send(window.cur_mouseover);
+          this_glyph.send(window.__bwt.cur_mouseover);
         } catch(err) {
           // Only throws if the key press isn't registered as a glyph button, so
           // just ignore it
-          window.LOG_INFO("Button isn't registered to a glyph. If it is " +
+          window.__bwt.LOG_INFO("Button isn't registered to a glyph. If it is " +
                           "supposed to be, something is wrong: " + key_code);
           return;
         };
@@ -419,74 +419,74 @@ $(document).ready(function() {
     var is_helping = false;
     toggle_button_helper($('#help_tooltips'), is_helping,
       function onTrue() {
-        window.LOG_INFO("Turning help ON.");
+        window.__bwt.LOG_INFO("Turning help ON.");
 
         // update DOM
         $('#help_tooltips_status').html('ON').addClass('active');
 
         // show powertip
-        window.powerTipsEnabled = true;
+        window.__bwt.powerTipsEnabled = true;
       },
       function onFalse() {
-        window.LOG_INFO("Turning help OFF.");
+        window.__bwt.LOG_INFO("Turning help OFF.");
 
         // update DOM
         $('#help_tooltips_status').html('OFF').removeClass('active');
 
         // hide tips
-        window.powerTipsEnabled = false;
+        window.__bwt.powerTipsEnabled = false;
       }
     );
 
     // toggle button to enable glyphs
-    toggle_button_helper($('#glyph_toggle'), window.__GLYPHS_ENABLED,
+    toggle_button_helper($('#glyph_toggle'), window.__bwt.__GLYPHS_ENABLED,
       function onTrue() {
-        window.LOG_INFO("Turning glyphs ON.");
+        window.__bwt.LOG_INFO("Turning glyphs ON.");
 
         // update DOM
         $('#glyphs_enabled_status').html('ON').addClass('active');
-        window.__GLYPHS_ENABLED = true;
+        window.__bwt.__GLYPHS_ENABLED = true;
       },
       function onFalse() {
-        window.LOG_INFO(window.__GLYPHS_ENABLED);
-        window.LOG_INFO("Turning glyphs OFF.");
+        window.__bwt.LOG_INFO(window.__bwt.__GLYPHS_ENABLED);
+        window.__bwt.LOG_INFO("Turning glyphs OFF.");
 
         // update DOM
         $('#glyphs_enabled_status').html('OFF').removeClass('active');
-        window.__GLYPHS_ENABLED = false;
+        window.__bwt.__GLYPHS_ENABLED = false;
       }
     );
   };
 
   /** @brief Adds tooltips to items people may need help with.
    */
-  window.add_tooltips = function add_tooltips() {
-    window.add_info($('#_initialize'),
+  var add_tooltips = function add_tooltips() {
+    window.__bwt.add_info($('#_initialize'),
       'Handshaking',
       'Begins the handshaking process. See the \'<a href="#help" class="tooltip_link">Help</a>\' tutorial for ' +
       'more information.', 'se'
     );
 
-    window.add_info($('.minimizer'),
+    window.__bwt.add_info($('.minimizer'),
       'Maximize/Minimize',
       'Minimize or maximize this plugin.',
       'w'
     );
 
-    window.add_info($('#help_tooltips'),
+    window.__bwt.add_info($('#help_tooltips'),
       'Helpful Tooltips',
       'Toggles helpful mouseover tooltips like this one.',
       'se'
     );
 
-    window.add_info($('#glyph_toggle'),
+    window.__bwt.add_info($('#glyph_toggle'),
       'Glyphs',
       'Toggles the use of glyphs. See \'<a href="#help" class="tooltip_link">Help</a>\' for' +
       ' more information.',
       's'
     );
 
-    window.add_info($('#help_page'),
+    window.__bwt.add_info($('#help_page'),
       'Help',
       'Opens the help screen.',
       's'

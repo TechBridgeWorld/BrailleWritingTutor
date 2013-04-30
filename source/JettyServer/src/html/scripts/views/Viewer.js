@@ -8,21 +8,21 @@ $(document).ready(function() {
 
   /** @brief Shows the loading screen.
    */
-  window.show_loading = function show_loading() {
+  window.__bwt.show_loading = function show_loading() {
     $("#main").hide();
     $("#loading").show();
   };
 
   /** @brief Hides the loading screen.
    */
-  window.hide_loading = function hide_loading() {
+  window.__bwt.hide_loading = function hide_loading() {
     $("#loading").hide();
     $("#main").show();
   };
 
   /** @brief Hides the alert div.
    */
-  window.hide_alert = function hide_alert() {
+  window.__bwt.hide_alert = function hide_alert() {
     $("#alert").hide();
   };
 });
