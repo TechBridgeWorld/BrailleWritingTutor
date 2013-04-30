@@ -1,0 +1,42 @@
+/** @file board.scss
+ *  @brief scss file defining styles for our overall board
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+
+// mixins
+@import "_mixins.scss";
+
+// constants
+$CIRCUITURL : "../assets/circuit.jpg";
+$NOISE : "../assets/noise.png";
+$GREEN : rgba(64, 127, 80, 0.2);
+
+#board {
+  position: absolute;
+  overflow: auto;
+  top: 20px;
+  left: 15px;
+  right: 15px;
+  bottom: 20px;
+  margin-bottom: 20px;
+  background: rgba(84, 157, 110, 1);
+  @include noisey($GREEN);
+  border: solid thin rgba(0, 0, 0, .5);
+
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+#board.help {
+  @include transition(background, .2s, ease-in-out);
+  $WHITE : rgba(222, 222, 222, 0.2);
+  background: rgba(222, 222, 222, 1);
+  @include noisey($WHITE);
+}
+
+#top_bar {
+  position: relative;
+  height: 80px;
+  width: 100%;
+}

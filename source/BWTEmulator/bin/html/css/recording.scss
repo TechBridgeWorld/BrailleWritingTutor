@@ -1,0 +1,117 @@
+/** @file recording.scss
+ *  @brief scss file defining the styles for our recording plugin.
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+
+// mixins
+@import "_mixins.scss";
+
+// animations
+@include keyframes(record_toggle) {
+  0% {
+    background: url("../assets/recording_on.png") no-repeat;
+    background-size: contain;
+  }
+
+  100% {
+    background: url("../assets/recording_off.png") no-repeat;
+    background-size: contain;
+  }
+}
+
+#recording_plugin .content {
+  height: 150px;
+}
+
+#recording_toggle {
+  background: url("../assets/recording_off.png") no-repeat;
+  background-size: contain;
+  width: 50px;
+  height: 50px;
+
+  position: absolute;
+  left: 30px;
+  top: 90px;
+}
+
+#recording_toggle.active {
+  @include animation-name(record_toggle);
+  @include animation-duration(1s);
+  @include animation-iteration-count(infinite);
+}
+
+#recording_toggle:active {
+  background: url("../assets/record_button_down_off.png") no-repeat;
+  background-size: contain;
+}
+
+#recording_toggle.active:active {
+  background: url("../assets/record_button_down_on.png") no-repeat;
+  background-size: contain;
+}
+
+#recording_name {
+  position: absolute;
+  left: 95px;
+  top: 90px;
+  height: 15px;
+}
+
+#recording_name_helper {
+  position: absolute;
+  left: 95px;
+  top: 95px;
+}
+
+.record_label {
+  $DARK_GREEN : rgba(45, 84, 59, 0.8);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  color: $DARK_GREEN;
+}
+
+#recording_select {
+  position: absolute;
+  left: 255px;
+  top: 90px;
+  height: 15px;
+  width: 145px;
+}
+
+#recording_select_helper {
+  position: absolute;
+  left: 255px;
+  top: 95px;
+}
+
+#send_recording {
+  position: absolute;
+  left: 420px;
+  top: 85px;
+  height: 30px;
+  width: 130px;
+  text-align: center;
+
+  $DARK_GRAY : rgba(46, 46, 46, 1);
+  $DARK_GRAY_TRANSPARENT : rgba(46, 46, 46, 0.2);
+  padding: 5px;
+  background: $DARK_GRAY;
+  @include noisey($DARK_GRAY_TRANSPARENT);
+  cursor: pointer;
+  border: solid thin rgba(10, 10, 10, 0.4);
+  padding-top: 10px;
+
+  font-size: 18px;
+  color: rgba(230, 230, 230, 1);
+
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+#send_recording:active {
+  $DARKER_GRAY : rgba(27, 27, 27, 1);
+  $DARKER_GRAY_TRANSPARENT : rgba(27, 27, 27, 0.2);
+  background: $DARKER_GRAY;
+  @include noisey($DARKER_GRAY_TRANSPARENT);
+}

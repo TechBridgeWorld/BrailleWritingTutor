@@ -1,0 +1,52 @@
+@import url(buttons.css);
+@import url(board.css);
+@import url(general.css);
+@import url(loading.css);
+@import url(bot_bar.css);
+@import url(plugin.css);
+@import url(alert.css);
+@import url(navbar.css);
+@import url(recording.css);
+@import url(scripting.css);
+@import url(getting_started.css);
+/** @file main.scss
+ *  @brief Main scss file for our app.
+ *
+ *  All css/scss files should be written in separate files and aggregated here.
+ *  e.g. After writing "splashscreen.scss", include it here via:
+ *  @import "splashscreen.css";
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+/** @file _mixins.scss
+ *  @brief Mixins used in other scss files go here
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+* {
+  font-family: 'Varela Round', sans-serif;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: moz-none;
+  -ms-user-select: none;
+  user-select: none; }
+
+html {
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/noise.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#dedede), to(#dedede)), url("../assets/noise.png");
+  background-image: -webkit-linear-gradient(top, #dedede, #dedede), url("../assets/noise.png");
+  /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, #dedede, #dedede), url("../assets/noise.png");
+  /* FF3.6+ */
+  background-image: -ms-linear-gradient(top, #dedede, #dedede), url("../assets/noise.png");
+  /* IE10 */
+  background-image: -o-linear-gradient(top, #dedede, #dedede), url("../assets/noise.png");
+  /* Opera 11.10+ */
+  background-image: linear-gradient(top, #dedede, #dedede), url("../assets/noise.png");
+  /* W3C */ }
+
+a {
+  text-decoration: none; }
