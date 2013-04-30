@@ -116,9 +116,9 @@ public class WindowsActionHandler extends AbstractActionHandler{
   public void initialize() throws IOException, InterruptedException, ExecutionException {
     Thread reader = new Thread(new SerialReader());
     reader.start();
+    writeBuffer = "n".getBytes();
+    nWrite = 1;
     while(reader.isAlive()){
-      writeBuffer = "nnnn".getBytes();
-      nWrite = 4;
       writer.interrupt();
       Thread.sleep(100);
     }
