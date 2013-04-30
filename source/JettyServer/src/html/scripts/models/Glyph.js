@@ -23,7 +23,7 @@ $(document).ready(function() {
    *           -code: comma-separated list of buttons to be pressed for this
    *                  glyph (e.g. "1,2" for "b", or "3,1,5" for "o")
    */
-  window.Glyph = function Glyph(options) {
+  window.__bwt.Glyph = function Glyph(options) {
     this.id = options.id;
 
     // parse options.code
@@ -37,7 +37,7 @@ $(document).ready(function() {
           return this_int;
         }).sort();
     } catch(err) {
-      window.LOG_ERROR("Invalid glyph: " + this);
+      window.__bwt.LOG_ERROR("Invalid glyph: " + this);
     };
   };
 
@@ -48,7 +48,7 @@ $(document).ready(function() {
    *  @param mouseover Current mouseover slate at time of glyph press.
    *  @param index The index of the button map we are on.
    */
-  window.Glyph.prototype.__button_step = function __button_step(cell_prefix, mouseover, index) {
+  window.__bwt.Glyph.prototype.__button_step = function __button_step(cell_prefix, mouseover, index) {
     // The final call to __button_step will access an index of this.buttons that
     // is out of range. This is intended, as this is how we determine that this
     // glyph's send() is complete
@@ -67,38 +67,38 @@ $(document).ready(function() {
           $('#' + cur_mousecell + __reflect(el)).removeClass('button_glyphd');
           (mouseover).find('.glyph_display').removeClass('active').html('');
         });
-      }).bind(mouseover), window.Constants.LENGTH_GLYPH_VISIBLE);
+      }).bind(mouseover), window.__bwt.Constants.LENGTH_GLYPH_VISIBLE);
       return;
     };
 
     // otherwise, try pressing the button
-    window.LOG_INFO("Glyph sending button: " + __reflect(to_press));
+    window.__bwt.LOG_INFO("Glyph sending button: " + __reflect(to_press));
     try {
       // press up and down immediately
-      __BUTTON_MAP[cell_prefix + __reflect(to_press)].press_down();
-      __BUTTON_MAP[cell_prefix + __reflect(to_press)].press_up();
+      window.__bwt.__BUTTON_MAP[cell_prefix + __reflect(to_press)].press_down();
+      window.__bwt.__BUTTON_MAP[cell_prefix + __reflect(to_press)].press_up();
 
       // display this button as being pressed down for a bit
       $('#' + cell_prefix + __reflect(to_press)).addClass('button_glyphd');
 
     } catch(err) {
-      window.LOG_ERROR("Cannot find button for glyph: " + this);
+      window.__bwt.LOG_ERROR("Cannot find button for glyph: " + this);
     };
 
     // wait and then call self on new button set
     setTimeout((function() {
       this.__button_step(cell_prefix, mouseover, index + 1);
-    }).bind(this), window.Constants.TIME_BETWEEN_GLYPH_BUTTONS);
+    }).bind(this), window.__bwt.Constants.TIME_BETWEEN_GLYPH_BUTTONS);
   };
 
   /** @brief Sends this glyph to the server as a series of button presses in
    *         rapid succession.
    */
-  window.Glyph.prototype.send = function send() {
+  window.__bwt.Glyph.prototype.send = function send() {
     // For now, only register glyph presses when mousing over a slate
-    if (window.cur_mouseover !== undefined) {
-      var cur_mouseover = window.cur_mouseover; // save locally in case cur_mouseover changes
-      var cell_prefix = "_slate" + window.cur_mouseover.attr('groupnumber') + "_";
+    if (window.__bwt.cur_mouseover !== undefined) {
+      var cur_mouseover = window.__bwt.cur_mouseover; // save locally in case cur_mouseover changes
+      var cell_prefix = "_slate" + window.__bwt.cur_mouseover.attr('groupnumber') + "_";
 
       // clear the currently pressed keys
       var i;
@@ -115,7 +115,7 @@ $(document).ready(function() {
 
     /** @brief toString method for glyphs.
      */
-    window.Glyph.prototype.toString = function toString() {
+    window.__bwt.Glyph.prototype.toString = function toString() {
       return "Glyph {id : \"" + this.id + "\", code : \"" + this.buttons + "\"}";
     };
   };

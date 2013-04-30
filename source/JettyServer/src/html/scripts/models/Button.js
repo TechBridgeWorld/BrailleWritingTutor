@@ -31,7 +31,7 @@ $(document).ready(function() {
    *           -code: Byte code for the request (e.g. "b n")
    *           -$dom_el: The DOM element representing this button
    */
-  window.Button = function Button(options) {
+  window.__bwt.Button = function Button(options) {
     // the software expects 3 button presses when you click on slate cells, so
     // triple the bytecode
     this.code = options.code;
@@ -47,7 +47,7 @@ $(document).ready(function() {
   /** @brief Represents a button press down. On press down, send the byte code
    *         3 times.
    */
-  window.Button.prototype.press_down = function press_down() {
+  window.__bwt.Button.prototype.press_down = function press_down() {
     var prev_status = this.__holding;
 
     // if we never received the press_up event, that means the user dragged the
@@ -60,9 +60,9 @@ $(document).ready(function() {
     // if not holding down, start holding
     if (this.__holding === false) {
       this.$dom_el.addClass('active');
-      window._Processor.add_code(this.code, window.Constants.PRESSDOWN_NUM_TO_SEND);
-      window._Processor.add_hold(this);
-      if(window.recording){
+      window.__bwt._Processor.add_code(this.code, window.__bwt.Constants.PRESSDOWN_NUM_TO_SEND);
+      window.__bwt._Processor.add_hold(this);
+      if(window.__bwt.recording){
           appendToRecordingQueue(this,__KEY_DOWN_STRING);
       }
     }
@@ -76,14 +76,14 @@ $(document).ready(function() {
   /** @brief Represents a button press up. Removes the button from the holdings
    *         queue.
    */
-  window.Button.prototype.press_up = function press_up() {
+  window.__bwt.Button.prototype.press_up = function press_up() {
     // mark that we received the up event
     this.received_up = true;
     if (this.__holding === false) {
       // remove the hold on press_up
-      window._Processor.remove_hold(this);
+      window.__bwt._Processor.remove_hold(this);
       this.$dom_el.removeClass('active');
-      if(window.recording){
+      if(window.__bwt.recording){
           appendToRecordingQueue(this,__KEY_UP_STRING);
       }
     }
@@ -94,7 +94,7 @@ $(document).ready(function() {
   /** @brief Represents a button hold. Same as button press but press_up has
    *         no effect.
    */
-  window.Button.prototype.hold_down = function hold_down() {
+  window.__bwt.Button.prototype.hold_down = function hold_down() {
     var prev_status = this.press_down();
     this.__holding = !prev_status;
   };

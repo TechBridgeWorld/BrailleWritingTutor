@@ -6,18 +6,18 @@
 $(document).ready(function() {
   "use strict";
 
-  window.Constants = function Constants() {};
+  window.__bwt.Constants = function Constants() {};
 
   // Constants go here
   // Timer related constants
-  window.Constants.QUEUE_TIMER_RATE = 100;
-  window.Constants.PROCESSOR_TIMER_RATE = 50;
-  window.Constants.PROCESSOR_HOLDINGS_TIMER_RATE = 100;
-  window.Constants.TIME_BETWEEN_GLYPH_BUTTONS = 500; // this number obtained through trial
+  window.__bwt.Constants.QUEUE_TIMER_RATE = 100;
+  window.__bwt.Constants.PROCESSOR_TIMER_RATE = 50;
+  window.__bwt.Constants.PROCESSOR_HOLDINGS_TIMER_RATE = 100;
+  window.__bwt.Constants.TIME_BETWEEN_GLYPH_BUTTONS = 500; // this number obtained through trial
 
   // Bytecode related constants
-  window.Constants.PRESSDOWN_NUM_TO_SEND = 3;
+  window.__bwt.Constants.PRESSDOWN_NUM_TO_SEND = 3;
 
   // UI constants
-  window.Constants.LENGTH_GLYPH_VISIBLE = 1000;
+  window.__bwt.Constants.LENGTH_GLYPH_VISIBLE = 1000;
 });

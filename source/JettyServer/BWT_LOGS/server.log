@@ -1,109 +1,86 @@
-28 Mar 2013 ;17:38:55. INFO [JettyServer.java:44] Initializing server. Port: 8887
-28 Mar 2013 ;17:38:55. INFO [JettyServer.java:87] Initializing servlet.
-28 Mar 2013 ;17:38:55. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
-28 Mar 2013 ;17:44:17. INFO [JettyServer.java:44] Initializing server. Port: 8887
-28 Mar 2013 ;17:44:17. INFO [JettyServer.java:87] Initializing servlet.
-28 Mar 2013 ;17:44:17. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
-28 Mar 2013 ;17:44:18. INFO [JettyServer.java:57] Stopping server.
-28 Mar 2013 ;17:44:18. INFO [JettyServer.java:59] Server stopped.
-28 Mar 2013 ;17:44:21. INFO [JettyServer.java:44] Initializing server. Port: 8887
-28 Mar 2013 ;17:44:21. INFO [JettyServer.java:87] Initializing servlet.
-28 Mar 2013 ;17:44:21. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
-28 Mar 2013 ;17:44:22. INFO [JettyServer.java:57] Stopping server.
-28 Mar 2013 ;17:44:22. INFO [JettyServer.java:59] Server stopped.
-06 Apr 2013 ;17:09:30. INFO [JettyServer.java:44] Initializing server. Port: 8887
-06 Apr 2013 ;17:09:30. INFO [JettyServer.java:87] Initializing servlet.
-06 Apr 2013 ;17:09:31. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
-06 Apr 2013 ;17:09:32. INFO [JettyServer.java:50] Starting server.
-06 Apr 2013 ;17:09:33. INFO [JettyServer.java:52] Server started.
-06 Apr 2013 ;17:10:35. INFO [JettyServer.java:44] Initializing server. Port: 8887
-06 Apr 2013 ;17:10:35. INFO [JettyServer.java:87] Initializing servlet.
-06 Apr 2013 ;17:10:35. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
-06 Apr 2013 ;17:10:36. INFO [JettyServer.java:50] Starting server.
-06 Apr 2013 ;17:10:36. INFO [JettyServer.java:52] Server started.
-06 Apr 2013 ;17:11:09. INFO [JettyServer.java:57] Stopping server.
-06 Apr 2013 ;17:11:09. INFO [JettyServer.java:59] Server stopped.
-06 Apr 2013 ;17:22:28. INFO [JettyServer.java:44] Initializing server. Port: 8887
-06 Apr 2013 ;17:22:28. INFO [JettyServer.java:87] Initializing servlet.
-06 Apr 2013 ;17:22:28. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
-06 Apr 2013 ;17:22:29. INFO [JettyServer.java:50] Starting server.
-06 Apr 2013 ;17:22:29. INFO [JettyServer.java:52] Server started.
-06 Apr 2013 ;17:25:07. INFO [JettyServer.java:57] Stopping server.
-06 Apr 2013 ;17:25:07. INFO [JettyServer.java:59] Server stopped.
-06 Apr 2013 ;17:27:49. INFO [JettyServer.java:44] Initializing server. Port: 8887
-06 Apr 2013 ;17:27:49. INFO [JettyServer.java:87] Initializing servlet.
-06 Apr 2013 ;17:27:49. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
-06 Apr 2013 ;17:27:50. INFO [JettyServer.java:50] Starting server.
-06 Apr 2013 ;17:27:50. INFO [JettyServer.java:52] Server started.
-06 Apr 2013 ;17:31:43. INFO [JettyServer.java:44] Initializing server. Port: 8887
-06 Apr 2013 ;17:31:43. INFO [JettyServer.java:87] Initializing servlet.
-06 Apr 2013 ;17:31:44. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
-06 Apr 2013 ;17:31:44. INFO [JettyServer.java:50] Starting server.
-06 Apr 2013 ;17:31:45. INFO [JettyServer.java:52] Server started.
-06 Apr 2013 ;17:33:29. INFO [JettyServer.java:44] Initializing server. Port: 8887
-06 Apr 2013 ;17:33:29. INFO [JettyServer.java:87] Initializing servlet.
-06 Apr 2013 ;17:33:30. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
-06 Apr 2013 ;17:33:30. INFO [JettyServer.java:50] Starting server.
-06 Apr 2013 ;17:33:30. INFO [JettyServer.java:52] Server started.
-06 Apr 2013 ;17:34:05. INFO [JettyServer.java:44] Initializing server. Port: 8887
-06 Apr 2013 ;17:34:05. INFO [JettyServer.java:87] Initializing servlet.
-06 Apr 2013 ;17:34:05. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
-06 Apr 2013 ;17:34:05. INFO [JettyServer.java:50] Starting server.
-06 Apr 2013 ;17:34:05. INFO [JettyServer.java:52] Server started.
-06 Apr 2013 ;17:51:22. INFO [JettyServer.java:44] Initializing server. Port: 8887
-06 Apr 2013 ;17:51:22. INFO [JettyServer.java:87] Initializing servlet.
-06 Apr 2013 ;17:51:22. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
-06 Apr 2013 ;17:51:22. INFO [JettyServer.java:50] Starting server.
-06 Apr 2013 ;17:51:22. INFO [JettyServer.java:52] Server started.
-07 Apr 2013 ;13:42:06. INFO [JettyServer.java:44] Initializing server. Port: 8887
-07 Apr 2013 ;13:42:06. INFO [JettyServer.java:87] Initializing servlet.
-07 Apr 2013 ;13:42:06. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
-07 Apr 2013 ;13:42:07. INFO [JettyServer.java:50] Starting server.
-07 Apr 2013 ;13:42:07. INFO [JettyServer.java:52] Server started.
-07 Apr 2013 ;13:45:20. INFO [JettyServer.java:57] Stopping server.
-07 Apr 2013 ;13:45:20. INFO [JettyServer.java:59] Server stopped.
-07 Apr 2013 ;13:47:45. INFO [JettyServer.java:44] Initializing server. Port: 8887
-07 Apr 2013 ;13:47:45. INFO [JettyServer.java:87] Initializing servlet.
-07 Apr 2013 ;13:47:45. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
-07 Apr 2013 ;13:47:46. INFO [JettyServer.java:50] Starting server.
-07 Apr 2013 ;13:47:46. INFO [JettyServer.java:52] Server started.
-07 Apr 2013 ;15:21:49. INFO [JettyServer.java:44] Initializing server. Port: 8887
-07 Apr 2013 ;15:21:49. INFO [JettyServer.java:87] Initializing servlet.
-07 Apr 2013 ;15:21:49. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
-07 Apr 2013 ;15:22:16. INFO [JettyServer.java:44] Initializing server. Port: 8887
-07 Apr 2013 ;15:22:16. INFO [JettyServer.java:87] Initializing servlet.
-07 Apr 2013 ;15:22:16. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
-07 Apr 2013 ;15:22:17. INFO [JettyServer.java:50] Starting server.
-07 Apr 2013 ;15:22:17. INFO [JettyServer.java:52] Server started.
-07 Apr 2013 ;15:23:02. INFO [JettyServer.java:44] Initializing server. Port: 8887
-07 Apr 2013 ;15:23:02. INFO [JettyServer.java:87] Initializing servlet.
-07 Apr 2013 ;15:23:02. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
-07 Apr 2013 ;15:23:03. INFO [JettyServer.java:50] Starting server.
-07 Apr 2013 ;15:23:03. INFO [JettyServer.java:52] Server started.
-07 Apr 2013 ;15:48:56. INFO [JettyServer.java:44] Initializing server. Port: 8887
-07 Apr 2013 ;15:48:56. INFO [JettyServer.java:87] Initializing servlet.
-07 Apr 2013 ;15:48:57. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
-07 Apr 2013 ;15:48:58. INFO [JettyServer.java:50] Starting server.
-07 Apr 2013 ;15:48:58. INFO [JettyServer.java:52] Server started.
-07 Apr 2013 ;15:51:24. INFO [JettyServer.java:44] Initializing server. Port: 8887
-07 Apr 2013 ;15:51:24. INFO [JettyServer.java:87] Initializing servlet.
-07 Apr 2013 ;15:51:24. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
-07 Apr 2013 ;15:51:24. INFO [JettyServer.java:50] Starting server.
-07 Apr 2013 ;15:51:24. INFO [JettyServer.java:52] Server started.
-07 Apr 2013 ;15:52:53. INFO [JettyServer.java:57] Stopping server.
-07 Apr 2013 ;15:52:53. INFO [JettyServer.java:59] Server stopped.
-07 Apr 2013 ;17:14:54. INFO [JettyServer.java:44] Initializing server. Port: 8887
-07 Apr 2013 ;17:14:54. INFO [JettyServer.java:87] Initializing servlet.
-07 Apr 2013 ;17:14:54. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
-07 Apr 2013 ;17:14:55. INFO [JettyServer.java:50] Starting server.
-07 Apr 2013 ;17:14:55. INFO [JettyServer.java:52] Server started.
-07 Apr 2013 ;17:25:17. INFO [JettyServer.java:44] Initializing server. Port: 8887
-07 Apr 2013 ;17:25:17. INFO [JettyServer.java:87] Initializing servlet.
-07 Apr 2013 ;17:25:17. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
-07 Apr 2013 ;17:25:18. INFO [JettyServer.java:50] Starting server.
-07 Apr 2013 ;17:25:18. INFO [JettyServer.java:52] Server started.
-08 Apr 2013 ;17:42:14. INFO [JettyServer.java:44] Initializing server. Port: 8887
-08 Apr 2013 ;17:42:14. INFO [JettyServer.java:87] Initializing servlet.
-08 Apr 2013 ;17:42:15. INFO [JettyServer.java:46] Server and servlet initialized. Ready for JettyServer#startServer()
-08 Apr 2013 ;17:42:19. INFO [JettyServer.java:57] Stopping server.
-08 Apr 2013 ;17:42:19. INFO [JettyServer.java:59] Server stopped.
+28 Apr 2013 ;17:54:39. ERROR [UIActionHandler.java:41] Invalid OS. Emulator only supports Windows/Linux.
+28 Apr 2013 ;17:54:39. ERROR [EmulatorLogger.java:56] Exception occurred. Printing stack trace.
+java.lang.Exception: Invalid OS. Emulator only supports Windows/Linux.
+	at edu.cmu.ui.UIActionHandler.<init>(UIActionHandler.java:42) [bin/:na]
+	at edu.cmu.ui.UIActionHandler.<init>(UIActionHandler.java:30) [bin/:na]
+	at edu.cmu.ui.ControllerUI.<init>(ControllerUI.java:75) [bin/:na]
+	at edu.cmu.ui.ControllerUI$5.run(ControllerUI.java:298) [bin/:na]
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:251) [na:1.7.0_04]
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:701) [na:1.7.0_04]
+	at java.awt.EventQueue.access$000(EventQueue.java:102) [na:1.7.0_04]
+	at java.awt.EventQueue$3.run(EventQueue.java:662) [na:1.7.0_04]
+	at java.awt.EventQueue$3.run(EventQueue.java:660) [na:1.7.0_04]
+	at java.security.AccessController.doPrivileged(Native Method) [na:1.7.0_04]
+	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:76) [na:1.7.0_04]
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:671) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:244) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:163) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:151) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:147) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:139) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:97) [na:1.7.0_04]
+28 Apr 2013 ;17:54:39. ERROR [ControllerUI.java:78] Error occured when intializing the server.
+28 Apr 2013 ;17:54:39. ERROR [EmulatorLogger.java:56] Exception occurred. Printing stack trace.
+java.lang.Exception: Invalid OS. Emulator only supports Windows/Linux.
+	at edu.cmu.ui.UIActionHandler.<init>(UIActionHandler.java:42) ~[bin/:na]
+	at edu.cmu.ui.UIActionHandler.<init>(UIActionHandler.java:30) ~[bin/:na]
+	at edu.cmu.ui.ControllerUI.<init>(ControllerUI.java:75) ~[bin/:na]
+	at edu.cmu.ui.ControllerUI$5.run(ControllerUI.java:298) [bin/:na]
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:251) [na:1.7.0_04]
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:701) [na:1.7.0_04]
+	at java.awt.EventQueue.access$000(EventQueue.java:102) [na:1.7.0_04]
+	at java.awt.EventQueue$3.run(EventQueue.java:662) [na:1.7.0_04]
+	at java.awt.EventQueue$3.run(EventQueue.java:660) [na:1.7.0_04]
+	at java.security.AccessController.doPrivileged(Native Method) [na:1.7.0_04]
+	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:76) [na:1.7.0_04]
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:671) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:244) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:163) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:151) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:147) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:139) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:97) [na:1.7.0_04]
+28 Apr 2013 ;17:54:41. INFO [ControllerUI.java:153] Exiting application
+28 Apr 2013 ;18:31:19. ERROR [UIActionHandler.java:40] Invalid OS. Emulator only supports Windows/Linux.
+28 Apr 2013 ;18:31:19. ERROR [EmulatorLogger.java:56] Exception occurred. Printing stack trace.
+java.lang.Exception: Invalid OS. Emulator only supports Windows/Linux.
+	at edu.cmu.ui.UIActionHandler.<init>(UIActionHandler.java:41) [bin/:na]
+	at edu.cmu.ui.UIActionHandler.<init>(UIActionHandler.java:29) [bin/:na]
+	at edu.cmu.ui.ControllerUI.<init>(ControllerUI.java:76) [bin/:na]
+	at edu.cmu.ui.ControllerUI$5.run(ControllerUI.java:289) [bin/:na]
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:251) [na:1.7.0_04]
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:701) [na:1.7.0_04]
+	at java.awt.EventQueue.access$000(EventQueue.java:102) [na:1.7.0_04]
+	at java.awt.EventQueue$3.run(EventQueue.java:662) [na:1.7.0_04]
+	at java.awt.EventQueue$3.run(EventQueue.java:660) [na:1.7.0_04]
+	at java.security.AccessController.doPrivileged(Native Method) [na:1.7.0_04]
+	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:76) [na:1.7.0_04]
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:671) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:244) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:163) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:151) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:147) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:139) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:97) [na:1.7.0_04]
+28 Apr 2013 ;18:31:19. ERROR [ControllerUI.java:79] Error occured when intializing the server.
+28 Apr 2013 ;18:31:19. ERROR [EmulatorLogger.java:56] Exception occurred. Printing stack trace.
+java.lang.Exception: Invalid OS. Emulator only supports Windows/Linux.
+	at edu.cmu.ui.UIActionHandler.<init>(UIActionHandler.java:41) ~[bin/:na]
+	at edu.cmu.ui.UIActionHandler.<init>(UIActionHandler.java:29) ~[bin/:na]
+	at edu.cmu.ui.ControllerUI.<init>(ControllerUI.java:76) ~[bin/:na]
+	at edu.cmu.ui.ControllerUI$5.run(ControllerUI.java:289) [bin/:na]
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:251) [na:1.7.0_04]
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:701) [na:1.7.0_04]
+	at java.awt.EventQueue.access$000(EventQueue.java:102) [na:1.7.0_04]
+	at java.awt.EventQueue$3.run(EventQueue.java:662) [na:1.7.0_04]
+	at java.awt.EventQueue$3.run(EventQueue.java:660) [na:1.7.0_04]
+	at java.security.AccessController.doPrivileged(Native Method) [na:1.7.0_04]
+	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:76) [na:1.7.0_04]
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:671) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:244) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:163) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:151) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:147) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:139) [na:1.7.0_04]
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:97) [na:1.7.0_04]
+28 Apr 2013 ;18:31:22. INFO [ControllerUI.java:148] Exiting application

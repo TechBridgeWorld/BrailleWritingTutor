@@ -10,7 +10,7 @@ $(document).ready(function() {
   var __NUM_SLATEGROUPS = 16; // number of slate groups per row
   var __NUM_SLATEROWS = 2;  // number of slate rows
   var __NUM_SLATEDOTS = 6;  // number of dots per slate group
-  var __NUM_SLATEDOTS_LEFT = 3; // number of dots in left group
+  var __NUM_SLATEDOTS_RIGHT_SIDE = 3; // number of dots in right group
   var __GLYPH_MAP = {}; // object holding our glyphs
   var __CODE_TO_GLYPH_ID = {}; // object mapping keycodes to glyph IDs
   window.__BUTTON_MAP = {}; // object holding our buttons
@@ -27,11 +27,13 @@ $(document).ready(function() {
     window.hide_alert();
     initializeRecording();
     initializeScripting();
-    patch();
     populate_dom();
     configure_plugins();
     attach_handlers();
     init_processor();
+    init_dom();
+    init_help();
+    add_hashchange();
     add_tooltips();
     load_server();
   };
@@ -61,6 +63,31 @@ $(document).ready(function() {
   var init_processor = function init_processor() {
     window._Processor = new window.Processor();
     window._Processor.run();
+  };
+
+  /** @brief Initializes the DOM. Hides elements that shouldn't be shown.
+   */
+  var init_dom = function init_dom() {
+    window.location.href = "#";
+    $("#help").hide();
+  };
+
+  /** @brief Initializes the help page. Adds any javascript-based events needed.
+   */
+  var init_help = function init_help() {
+    // Make the back button smaller once scrolled into the body of the help page
+    var SCROLL_THRESHOLD = 32;
+
+    $("#board").on('scroll', function(e) {
+      var scroll_top = $("#board").scrollTop();
+      if (scroll_top > SCROLL_THRESHOLD) {
+        $("#back_text").text('');
+        $("#getting_started_back").addClass("in_help");
+      } else if (scroll_top <= SCROLL_THRESHOLD) {
+        $("#back_text").text(' back');
+        $("#getting_started_back").removeClass("in_help");
+      };
+    });
   };
 
   /** @brief Populates the DOM with objects we don't want to hardcode into
@@ -113,12 +140,14 @@ $(document).ready(function() {
           'id': '_slate' + (i + 1) + '_' + (j + 1)
         }).css('position', 'relative');
 
-        if (j < __NUM_SLATEDOTS_LEFT) {
-          // if in first __NUM_SLATEDOTS_LEFT dots, append to left group
-          $leftgroup.append($slatecell);
-        } else {
-          // otherwise append the right group
+        if (j < __NUM_SLATEDOTS_RIGHT_SIDE) {
+          // if in first __NUM_SLATEDOTS_RIGHT_SIDE dots, append to right group.
+          // the first 3 buttons are appended to the right side due to the mirroring
+          // present when reading vs writing
           $rightgroup.append($slatecell);
+        } else {
+          // otherwise append the left group
+          $leftgroup.append($slatecell);
         };
       };
 
@@ -175,7 +204,6 @@ $(document).ready(function() {
 
         // toggle the content from hidden to shown on click
         $el.find('.content').slideToggle();
-//        window.timed_app_alert("Critical", "Some stuff", 2000);
 
         if ($el.hasClass('minimized')) {
           // if currently minimized, maximize it
@@ -251,7 +279,7 @@ $(document).ready(function() {
    */
   var attach_handlers = function attach_handlers() {
     // default power tips to enabled
-    window.powerTipsEnabled = true;
+    window.powerTipsEnabled = false;
 
     // mark the focusable objects so we know when to ignore keypress events
     $(".focusable").on('focus', function(e) {
@@ -266,28 +294,28 @@ $(document).ready(function() {
       add_button($(el));
     });
 
-// @TODO: Get this working
-//    // Add mouseover handler for the jumbocell for our glyphs. See Glyph.js
-//    // for more info
-//    $("#jumboslate").on('mouseover', (function(e) {
-//      e.preventDefault();
-//      e.stopPropagation();
-//
-//      // clear current mouseover if any
-//      if (window.__GLYPHS_ENABLED === true) {
-//        if (window.cur_mouseover !== undefined) {
-//          window.cur_mouseover.removeClass('mouseover');
-//        };
-//        window.cur_mouseover = undefined;
-//
-//        // set the cur_mouseover to this slategroup
-//        window.cur_mouseover = this;
-//        window.cur_mouseover.addClass('mouseover');
-//      };
-//    }));
-
     attach_toggle_buttons();
+    attach_init();
     attach_glyph_handlers();
+  };
+
+  /** @brief Attaches the init button handler.
+   */
+  var attach_init = function attach_init() {
+    $("#_initialize").on('click', function() {
+      window.LOG_INFO("Sending initialize");
+      $.ajax({
+        url: '/sendBytes.do?code=' + window.input_mapping['_initialize'],
+        type: 'GET',
+        success: function(data) {
+          window.LOG_INFO("initialize succeeded");
+        },
+        error: function(data) {
+          // TODO: handle this better
+          window.LOG_ERROR("initialize failed");
+        },
+      });
+    });
   };
 
   /** @brief Attaches handlers to buttons to send the glyph associated with that letter.
@@ -324,6 +352,8 @@ $(document).ready(function() {
         } catch(err) {
           // Only throws if the key press isn't registered as a glyph button, so
           // just ignore it
+          window.LOG_INFO("Button isn't registered to a glyph. If it is " +
+                          "supposed to be, something is wrong: " + key_code);
           return;
         };
       };
@@ -342,6 +372,7 @@ $(document).ready(function() {
 
     // ENGLISH
     // add each of the english letters as glyphs
+    // TODO: readme
     var english_alphabet = "abcdefghijklmnopqrstuvwxyz".split('');
     english_alphabet.map(function(el) {
       attach_letter(el.charCodeAt(0), el);
@@ -384,50 +415,8 @@ $(document).ready(function() {
       });
     };
 
-    // handle the init button separately since it doesn't need to
-    // adhere to strange emulator-specific timings
-    var is_handshaking = false;
-    toggle_button_helper($("#_initialize"), is_handshaking,
-      function onTrue() {
-        // send init code to the server
-        window.LOG_INFO("Sending initialize");
-
-        // update DOM to reflect press
-        $('#handshake_status').html('ON').addClass('active');
-        $.ajax({
-          url: '/sendBytes.do?code=' + window.input_mapping['_initialize'],
-          type: 'GET',
-          success: function(data) {
-            window.LOG_INFO("initialize succeeded");
-          },
-          error: function(data) {
-            // TODO: handle this better
-            window.LOG_ERROR("initialize failed");
-          },
-        });
-      },
-      function onFalse() {
-        // otherwise send uninitialize to server
-        window.LOG_INFO("Terminating initialize");
-
-        // update DOM
-        $('#handshake_status').html('OFF').removeClass('active');
-        $.ajax({
-          url: '/sendBytes.do?code=' + window.input_mapping['_uninitialize'],
-          type: 'GET',
-          success: function(data) {
-            window.LOG_INFO("uninitialize succeeded");
-          },
-          error: function(data) {
-            // TODO: handle this better
-            window.LOG_ERROR("uninitialize failed");
-          },
-        });
-      }
-    );
-
-    // handle the help button separately also
-    var is_helping = true;
+    // handle the help button separately
+    var is_helping = false;
     toggle_button_helper($('#help_tooltips'), is_helping,
       function onTrue() {
         window.LOG_INFO("Turning help ON.");
@@ -469,17 +458,12 @@ $(document).ready(function() {
     );
   };
 
-  /** @brief Patches functions for our app (e.g. bind if running on iOS)
-   */
-  var patch = function patch() {
-  };
-
   /** @brief Adds tooltips to items people may need help with.
    */
   window.add_tooltips = function add_tooltips() {
     window.add_info($('#_initialize'),
       'Handshaking',
-      'Toggles the handshaking process. See the \'<a href="#" class="tooltip_link">Getting Started</a>\' tutorial for ' +
+      'Begins the handshaking process. See the \'<a href="#help" class="tooltip_link">Help</a>\' tutorial for ' +
       'more information.', 'se'
     );
 
@@ -497,10 +481,35 @@ $(document).ready(function() {
 
     window.add_info($('#glyph_toggle'),
       'Glyphs',
-      'Toggles the use of glyphs. See \'<a href="#" class="tooltip_link">Glyphs</a>\' for' +
-      'more information.',
-      'se'
+      'Toggles the use of glyphs. See \'<a href="#help" class="tooltip_link">Help</a>\' for' +
+      ' more information.',
+      's'
     );
+
+    window.add_info($('#help_page'),
+      'Help',
+      'Opens the help screen.',
+      's'
+    );
+  };
+
+  /** @brief Adds hashchange events to load pages (like getting_started) without opening
+   *         a new tab.
+   */
+  var add_hashchange = function add_hashchange() {
+    window.onhashchange = function() {
+      var cur_hash = window.location.hash;
+
+      if (cur_hash === "#help") {
+        $(".plugin").slideUp();
+        $("#help").slideDown();
+        $("#board").addClass("help");
+      } else if (cur_hash === "") {
+        $("#help").slideUp();
+        $(".plugin").slideDown();
+        $("#board").removeClass("help");
+      };
+    };
   };
 
 

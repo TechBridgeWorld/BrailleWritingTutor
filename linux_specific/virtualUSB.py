@@ -9,42 +9,42 @@ def handshake(fd, conn):
         if resp is not "":
             print "resp=",resp
         if "bt" in resp:
-            master_write(fd, "bt") 
-            return 1 
-        #TODO This case is here because sometimes the 
+            master_write(fd, "bt")
+            return 1
+        #TODO This case is here because sometimes the
         #     the write is not spit back to the master
         #     in which case master_write() swallows up
         #     the 'b'
         if "t" in resp or "b" in resp:
             master_write(fd, "bt")
             return 1
-        
+
 #for some reason, when writing to a master, the output
-#gets spit back to the master for reading 
+#gets spit back to the master for reading
 #TODO find out why this happens and find a more robust
 #     solution
 def master_write(fd, msg):
     os.write(fd, msg)
     nbread(fd, len(msg), 0.001)
-        
-        
+
+
 #non blocking read
 def nbread(fd, length, timeout):
     #select.select checks if an i/o operation can
     #be performed on fd
     ret = select.select([fd], [], [], timeout)
-    if(len(ret[0]) > 0 ): 
+    if(len(ret[0]) > 0 ):
         #there is something to read
-        if type(fd) is int:        
+        if type(fd) is int:
             response = os.read(fd, length)
             return response
         if type(fd) is socket._socketobject:
             response = fd.recv(length)
             return response
     else:
-        return "" 
-  
-    
+        return ""
+
+
 #exit handlers
 def deletePath(path):
     print "deleting ", path
@@ -77,7 +77,7 @@ def main():
             print "emulator connected to ", serialPath
             break;
         except OSError as e:
-            print serialPath + " already exists, trying the next one..." 
+            print serialPath + " already exists, trying the next one..."
 
     #open a socket
     HOST = '' #localhost

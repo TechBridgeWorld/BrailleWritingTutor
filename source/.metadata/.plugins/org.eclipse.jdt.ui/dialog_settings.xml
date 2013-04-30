@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<item value="/Users/ziw/Downloads/google-gson-2.2.2 2" key="org.eclipse.jdt.ui.lastextjar"/>
+	<item value="/Users/ziw/Downloads/jetty-distribution-9.0.0.RC0/lib" key="org.eclipse.jdt.ui.lastextjar"/>
 	<section name="OptionalMessageDialog.hide.">
 		<item value="false" key="RunnableJar.export.ipwarning"/>
 		<item value="true" key="org.eclipse.jdt.ui.typecomment.deprecated"/>

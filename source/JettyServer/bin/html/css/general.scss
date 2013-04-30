@@ -26,12 +26,24 @@ $SOFT_SHADOW_COLOR : rgba(10, 10, 10, 0.6);
   box-shadow:         0px 0px 6px 2px #777;
 }
 
+.bigshadow {
+  -moz-box-shadow:    0px 0px 20px 2px rgba(0, 0, 0, 0.9);
+  -webkit-box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.9);
+  box-shadow:         0px 0px 20px 2px rgba(0, 0, 0, 0.9);
+}
+
 .left {
   float: left;
 }
 
 .right {
   float: right;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .bordered {
@@ -41,6 +53,16 @@ $SOFT_SHADOW_COLOR : rgba(10, 10, 10, 0.6);
 .rounded {
   border-radius: 10px;
   -moz-border-radius: 10px;
+}
+
+.bigrounded {
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+}
+
+.soft_text {
+  color: rgba(119, 119, 119, 0.9);
+  font-size: 17px;
 }
 
 .tooltip_header {
@@ -55,6 +77,8 @@ $SOFT_SHADOW_COLOR : rgba(10, 10, 10, 0.6);
 
 .tooltip_link {
   color: rgba(0, 204, 255, 1);
+  cursor: pointer;
+  display: inline;
 }
 
 .focusable {
@@ -64,4 +88,12 @@ $SOFT_SHADOW_COLOR : rgba(10, 10, 10, 0.6);
        -moz-user-select: auto;
         -ms-user-select: auto;
             user-select: auto;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+tt {
+  font-family: "Courier New", Courier, monospace;
 }

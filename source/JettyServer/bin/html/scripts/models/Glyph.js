@@ -6,6 +6,15 @@
 $(document).ready(function() {
   "use strict";
 
+  /** @brief Helper function used to reflect cell numbers (to help fix issues
+   *         caused by reading vs writing).
+   *
+   *  @param index The index we want to reflect.
+   */
+  var __reflect = function __reflect(index) {
+    return (((index + 2) % 6) + 1);
+  };
+
   /** @brief Constructor for a glyph.
    *
    *  @param options Options for this glyph. These include:
@@ -40,6 +49,9 @@ $(document).ready(function() {
    *  @param index The index of the button map we are on.
    */
   window.Glyph.prototype.__button_step = function __button_step(cell_prefix, mouseover, index) {
+    // The final call to __button_step will access an index of this.buttons that
+    // is out of range. This is intended, as this is how we determine that this
+    // glyph's send() is complete
     var to_press = this.buttons[index];
 
     // if we're done, handle the ui
@@ -52,7 +64,7 @@ $(document).ready(function() {
       setTimeout((function() {
         this.removeClass('glyphd');
         self.buttons.map(function(el) {
-          $('#' + cur_mousecell + el).removeClass('button_glyphd');
+          $('#' + cur_mousecell + __reflect(el)).removeClass('button_glyphd');
           (mouseover).find('.glyph_display').removeClass('active').html('');
         });
       }).bind(mouseover), window.Constants.LENGTH_GLYPH_VISIBLE);
@@ -60,14 +72,14 @@ $(document).ready(function() {
     };
 
     // otherwise, try pressing the button
-    window.LOG_INFO("Glyph sending button: " + to_press);
+    window.LOG_INFO("Glyph sending button: " + __reflect(to_press));
     try {
       // press up and down immediately
-      __BUTTON_MAP[cell_prefix + to_press].press_down();
-      __BUTTON_MAP[cell_prefix + to_press].press_up();
+      __BUTTON_MAP[cell_prefix + __reflect(to_press)].press_down();
+      __BUTTON_MAP[cell_prefix + __reflect(to_press)].press_up();
 
       // display this button as being pressed down for a bit
-      $('#' + cell_prefix + to_press).addClass('button_glyphd');
+      $('#' + cell_prefix + __reflect(to_press)).addClass('button_glyphd');
 
     } catch(err) {
       window.LOG_ERROR("Cannot find button for glyph: " + this);
@@ -92,7 +104,7 @@ $(document).ready(function() {
       var i;
       // @TODO: there is probably a more elegant way to do this
       for (i in [1, 2, 3, 4, 5, 6]) {
-        $('#' + cell_prefix + i).removeClass('button_glyphd');
+        $('#' + cell_prefix + __reflect(i)).removeClass('button_glyphd');
       };
 
       // Press each button. Buttons cannot be pressed simultaneously, so we

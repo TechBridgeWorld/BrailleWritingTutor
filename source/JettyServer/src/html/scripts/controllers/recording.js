@@ -21,18 +21,18 @@ function __registerButtons(){
   var sendButton = $("#send_recording");
 
   toggleButton.on('click',function(e){
-    window.recording = !window.recording;
+    window.__bwt.recording = !window.__bwt.recording;
     $("#recording_toggle").toggleClass("active");
-    if(window.recording){
-      prevTimeStamp = undefined;
+    if(window.__bwt.recording){
+      window.__bwt.prevTimeStamp = undefined;
       sendButton.attr('disabled', 'disabled');
-      window.recording_alert = window.sustained_app_alert('Recording');
+      window.__bwt.recording_alert = window.__bwt.sustained_app_alert('Recording');
     }
     else{
       sendButton.removeAttr('disabled');
       __saveRecording();
       __updateRecordingDropdown();
-      window.recording_alert();
+      window.__bwt.recording_alert();
     }
 
   });
@@ -46,9 +46,9 @@ function __registerButtons(){
 * Initialize the recording plugin. Called by load.js#main()
 */
 function initializeRecording(){
-    window.recording = false;
-    window.recordingQueue = [];
-    window.prevTimeStamp = undefined;
+    window.__bwt.recording = false;
+    window.__bwt.recordingQueue = [];
+    window.__bwt.prevTimeStamp = undefined;
     __registerButtons();
     __updateRecordingDropdown();
 
@@ -59,20 +59,20 @@ function initializeRecording(){
 */
 function appendToRecordingQueue(button, eventType){
     if(button === undefined ||eventType === undefined){
-      window.LOG_WARNING("Invalid key press. Can't add to recording queue.");
+      window.__bwt.LOG_WARNING("Invalid key press. Can't add to recording queue.");
       return;
     }
     var delta;
     var curr = new Date();
-    if(prevTimeStamp == undefined){
+    if(window.__bwt.prevTimeStamp == undefined){
       delta = 0;
     }
     else{
-      delta = curr.getTime() - prevTimeStamp;
+      delta = curr.getTime() - window.__bwt.prevTimeStamp;
     }
-    prevTimeStamp = curr.getTime();
+    window.__bwt.prevTimeStamp = curr.getTime();
 
-    recordingQueue.push({
+    window.__bwt.recordingQueue.push({
       button : button,
       timeStamp : delta,
       eventType : eventType
@@ -84,29 +84,29 @@ function appendToRecordingQueue(button, eventType){
 */
 function sendRecording(){
 
-  	if(recording){
-  		LOG_ERROR("Can't send saved recordings while another recording is going on.");
-  		return;
-  	}
+    if(window.__bwt.recording){
+      LOG_ERROR("Can't send saved recordings while another recording is going on.");
+      return;
+    }
     if(__SAVED_RECORDING_QUEUE === undefined){
       LOG_ERROR("Can't find saved recordings. Please try recording again.");
       __SAVED_RECORDING_QUEUE = [];
       return;
     }
 
-  	var recordingIndex = $("#recording_select").val();
-  	if(recordingIndex === undefined || 
+    var recordingIndex = $("#recording_select").val();
+    if(recordingIndex === undefined || 
           recordingIndex >= __SAVED_RECORDING_QUEUE.length){
-  		LOG_ERROR("No such recording");
-  		return;
-  	}
-  	var queue = __SAVED_RECORDING_QUEUE[recordingIndex].queue;
+      LOG_ERROR("No such recording");
+      return;
+    }
+    var queue = __SAVED_RECORDING_QUEUE[recordingIndex].queue;
 
-  	if(!__isValidRecordingQueue(queue)){
-  		LOG_ERROR("Invalid recording: " + __SAVED_RECORDING_QUEUE[recordingIndex].name);
-  		return;
-  	}
-  	__sendRecordingHelper(queue,0);
+    if(!__isValidRecordingQueue(queue)){
+      LOG_ERROR("Invalid recording: " + __SAVED_RECORDING_QUEUE[recordingIndex].name);
+      return;
+    }
+    __sendRecordingHelper(queue,0);
 
 }
 
@@ -145,21 +145,21 @@ function __sendRecordingHelper(queue, index){
 * Saved the last recording into __SAVED_RECORDING_QUEUE
 */
 function __saveRecording(){
-  if(recordingQueue === undefined || recordingQueue.length === 0){
-  	window.LOG_WARNING("No action recorded. Can't save empty recording queue.");
-  	recordingQueue = [];
-  	return;
+  if(window.__bwt.recordingQueue === undefined || window.__bwt.recordingQueue.length === 0){
+    window.__bwt.LOG_WARNING("No action recorded. Can't save empty recording queue.");
+    window.__bwt.recordingQueue = [];
+    return;
   }
   var name = $("#recording_name").val();
   if(name === undefined || name.trim().length === 0){
     name = "Recording " + (__SAVED_RECORDING_QUEUE.length+1);
   }
   __SAVED_RECORDING_QUEUE.push({
-    queue : recordingQueue,
+    queue : window.__bwt.recordingQueue,
     name  : name.trim()
   });
-  prevTimeStamp = undefined;
-  recordingQueue = [];
+  window.__bwt.prevTimeStamp = undefined;
+  window.__bwt.recordingQueue = [];
   $("#recording_name").val("");
 }
 
@@ -197,8 +197,3 @@ function __isValidRecordingQueue(queue){
   return true;
 
 }
-
-
-
-
-

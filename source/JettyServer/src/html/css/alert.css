@@ -28,7 +28,14 @@
   background-image: linear-gradient(top, rgba(250, 72, 72, 0.2), rgba(250, 72, 72, 0.2)), url("../assets/noise.png");
   /* W3C */
   color: white;
-  text-align: center; }
+  text-align: center;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -ms-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+  pointer-events: none; }
 
 #alert_header {
   font-size: 20px;
@@ -36,3 +43,11 @@
 
 #alert_body {
   font-size: 16px; }
+
+#alert:hover {
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -ms-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0.2; }
