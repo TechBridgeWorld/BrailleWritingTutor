@@ -138,8 +138,27 @@ repository.
     <tt>install - -</tt> : install com0com software.
   
     <tt>install PortName=COM1 PortName=COM7</tt> : create a virtual com port pair using COM1 and COM7.
+    
+    <tt>change CNCA0 EmuBr=yes<tt> : set port A0 to emulate the baud rate.
+    
+    <tt>change CNCB0 EmuOvverun=yes<tt> : set port A0 to enable buffer overrun.
   
     <tt>remove 0</tt> : removes the COM port pair with ID 0. Use <tt>list</tt> to see COM port pair IDs.
+    
+  <h3>To set up com0com for the BWTEmulator:<h3>
+  You need to install the com0com software and then create the initial com port pair. This
+  may take a long time (1-2 minutes).  This is done with the following two commands:
+    <tt>install - -<tt>
+    <tt>install PortName=COM1 PortName=COM7<tt>
+    
+  Next we need to emulate the baude rate and enable buffer overrun.
+  Assuming this com port pair was created under CNCA1 and CNCB1, the following four commands should 
+  take care of this:
+    <tt>change CNCA1 EmuBr=yes<tt>
+    <tt>change CNCA1 EmuOverrun=yes<tt>
+    <tt>change CNCB1 EmuBr=yes<tt>
+    <tt>change CNCB1 EmuOverrun=yes<tt>
+         
 
 20. On Windows: Run <tt>emulator.jar</tt>
 
