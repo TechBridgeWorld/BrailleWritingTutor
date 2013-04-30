@@ -62,7 +62,12 @@ public class WindowsActionHandler extends AbstractActionHandler{
 		try {
 			decodedName = URLDecoder.decode(buttonCode, "UTF-8");
 			logger.info("Decoded button code: " + decodedName);
-			
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			writeBuffer = decodedName.getBytes();
 			nWrite = decodedName.getBytes().length;
 			writer.interrupt();
