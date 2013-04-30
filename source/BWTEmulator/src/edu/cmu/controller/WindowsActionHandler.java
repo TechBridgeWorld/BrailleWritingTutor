@@ -106,8 +106,8 @@ public class WindowsActionHandler extends AbstractActionHandler{
   }
 
   /**
-   * Initialize the emulator. Start sending n's through the COM port to the
-   * BWT software
+   * Do the handshake between the emulator and the BWT software. 
+   * Start sending n's through the COM port to the BWT software
    *
    * @throws IOException
    * @throws InterruptedException
@@ -118,16 +118,25 @@ public class WindowsActionHandler extends AbstractActionHandler{
     reader.start();
     writeBuffer = "n".getBytes();
     nWrite = 1;
+    // The reader dies after it receives a "bt" from the software
+    // While the reader has not received a "bt" continue to send n's
     while(reader.isAlive()){
       writer.interrupt();
       Thread.sleep(100);
     }
+    //Respond with another "bt"
     writeBuffer="bt".getBytes();
     nWrite = 2;
     writer.interrupt();
+    //Handhsake is complete
     handshaking = false;
   }
 
+  /*
+   * SerialWriter's default state is to sleep.  Only when something is ready
+   * to be written does the parent thread interrupt the writer thread, which then
+   * writes everything in the buffer.  
+   */
   private class SerialWriter implements Runnable{
     @Override
     public void run() {
@@ -146,6 +155,12 @@ public class WindowsActionHandler extends AbstractActionHandler{
     }
   }
 
+  /*
+   * SerialReader thread is created at the beginning of the handshake.  Until a "bt"
+   * is received from the software, the SerialReader continuously reads from the virtual
+   * COM port.  Once it receives a "bt" it dies, and the main thread then sends a "bt"
+   * completing the handshake.
+   */
   private class SerialReader implements Runnable{
     @Override
     public void run() {
