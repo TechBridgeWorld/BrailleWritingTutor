@@ -367,7 +367,7 @@
 			}
 
       // ADDED (lucasray): don't show if window.powerTipsEnabled == false
-      if (window.powerTipsEnabled == false) {
+      if (window.__bwt.powerTipsEnabled == false) {
         return;
       }
 

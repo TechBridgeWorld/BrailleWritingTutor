@@ -8,15 +8,15 @@ $(document).ready(function() {
   "use strict";
 
   // TODO Setting this to true for dev purpose.
-  window.__DEBUG = true;
+  window.__bwt.__DEBUG = true;
 
   /** @brief Logs at the info level.
    *
    *  @param message The body of the message.
    */
-  window.LOG_INFO = function LOG_INFO(message) {
+  window.__bwt.LOG_INFO = function LOG_INFO(message) {
     // only log info messages if __DEBUG is on
-    if (window.__DEBUG === true) {
+    if (window.__bwt.__DEBUG === true) {
       console.log("Info: " + message);
     };
   };
@@ -25,7 +25,7 @@ $(document).ready(function() {
    *
    *  @param message The body of the message.
    */
-  window.LOG_WARNING = function LOG_WARNING(message) {
+  window.__bwt.LOG_WARNING = function LOG_WARNING(message) {
     // by default, log all warnings
     console.log("Warning: " + message);
   };
@@ -34,7 +34,7 @@ $(document).ready(function() {
    *
    *  @param message The body of the message.
    */
-  window.LOG_ERROR = function LOG_ERROR(message) {
+  window.__bwt.LOG_ERROR = function LOG_ERROR(message) {
     // throw errors
     throw "Error: " + message;
   };
@@ -43,9 +43,9 @@ $(document).ready(function() {
    *
    *  @param message The body of the message.
    */
-  window.LOG_CRITICAL = function LOG_CRITICAL(message) {
+  window.__bwt.LOG_CRITICAL = function LOG_CRITICAL(message) {
     // throw criticals and alert user with an alert
-    window.app_alert("Critical Error", message);
+    window.__bwt.app_alert("Critical Error", message);
     throw "Critical: " + message;
   };
 
@@ -56,7 +56,7 @@ $(document).ready(function() {
    *
    *  @TODO: make a nicer jquery-popup style alert(), should we ever use it.
    */
-  window.app_alert = function app_alert(header, message) {
+  window.__bwt.app_alert = function app_alert(header, message) {
   };
 
   /** @brief Confirmation dialog with yes/no options.
@@ -68,7 +68,7 @@ $(document).ready(function() {
    *  @param on_confirm Callback to be called on confirm.
    *  @param on_deny Callback to be called on deny.
    */
-  window.app_confirm = function app_confirm(header, message, confirm_dialog, deny_dialog, on_confirm, on_deny) {
+  window.__bwt.app_confirm = function app_confirm(header, message, confirm_dialog, deny_dialog, on_confirm, on_deny) {
     // fill in the modal heading and body
     $("#modal_heading").html(header);
     $("#modal_content").html(message);
@@ -95,7 +95,7 @@ $(document).ready(function() {
    *  @param header The header for this alert.
    *  @param message The body of the message.
    */
-  window.sustained_app_alert = function sustained_app_alert(header, message) {
+  window.__bwt.sustained_app_alert = function sustained_app_alert(header, message) {
     var $alert_header = $("#alert_header");
     var $alert_body = $("#alert_body");
     var $alert_el = $("#alert");
@@ -123,9 +123,9 @@ $(document).ready(function() {
    *  @param message The body of the message.
    *  @param duration The duration of the alert.
    */
-  window.timed_app_alert = function timed_app_alert(header, message, duration) {
+  window.__bwt.timed_app_alert = function timed_app_alert(header, message, duration) {
     // create a sustained app alert
-    var callback = window.sustained_app_alert(header, message);
+    var callback = window.__bwt.sustained_app_alert(header, message);
 
     // kill the sustained app alert after the specified duration
     setTimeout(function() {
@@ -141,7 +141,7 @@ $(document).ready(function() {
    *  @param body Body of the message.
    *  @param placement Placement position for this tooltip.
    */
-  window.add_info = function add_info($dom_el, header, body, placement) {
+  window.__bwt.add_info = function add_info($dom_el, header, body, placement) {
     var $message = $('<div>', {
       class: 'tooltip_message'
     });

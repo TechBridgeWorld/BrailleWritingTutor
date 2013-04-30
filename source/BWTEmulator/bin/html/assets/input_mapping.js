@@ -4,7 +4,7 @@
  *  @author Lucas Ray (ltray@cmu.edu)
  */
 
-window.input_mapping =
+window.__bwt.input_mapping =
 {
   "_initialize" : "init",
   "_uninitialize" : "uninit",

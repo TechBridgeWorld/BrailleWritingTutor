@@ -4,7 +4,7 @@
  *  @author Lucas Ray (ltray)
  */
 
-window.glyph_mapping =
+window.__bwt.glyph_mapping =
 {
   // english characters
   "a": "4",
