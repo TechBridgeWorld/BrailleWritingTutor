@@ -1,0 +1,376 @@
+28 Apr 2013 ;15:50:40. INFO [ScriptLoader.java:40] Script folder doesn't exist. Creating the folder now.
+28 Apr 2013 ;15:50:40. INFO [ScriptLoader.java:54] Creating sample script
+28 Apr 2013 ;15:50:51. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/loadScripts.do
+28 Apr 2013 ;15:50:51. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/manifest.appcache
+28 Apr 2013 ;15:50:51. ERROR [GenericServlet.java:86] Invalid request.
+28 Apr 2013 ;15:50:51. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/loading.do
+28 Apr 2013 ;15:50:51. INFO [GenericServlet.java:102] Loading request captured. Intializing TwoWaySerialCom
+28 Apr 2013 ;15:50:51. INFO [WindowsActionHandler.java:107] Initializing TwoWaySerialComm
+28 Apr 2013 ;15:51:01. INFO [WindowsActionHandler.java:109] TwoWaySerialComm initialized
+28 Apr 2013 ;15:51:03. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:51:03. INFO [WindowsActionHandler.java:83] Init caught. Start sending n's
+28 Apr 2013 ;15:51:03. INFO [WindowsActionHandler.java:84] Server is blocking any further handshake until this one is done.
+28 Apr 2013 ;15:51:07. INFO [ScriptLoader.java:51] sample_script.bwt already exists. Skip creating sample script.
+28 Apr 2013 ;15:51:17. INFO [WindowsActionHandler.java:91] Server is open to accept handshake again.
+28 Apr 2013 ;15:51:20. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:51:20. INFO [WindowsActionHandler.java:64] Decoded button code: b n
+28 Apr 2013 ;15:51:20. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:51:20. INFO [WindowsActionHandler.java:64] Decoded button code: b n
+28 Apr 2013 ;15:51:20. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:51:20. INFO [WindowsActionHandler.java:64] Decoded button code: b n
+28 Apr 2013 ;15:51:26. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:51:26. INFO [WindowsActionHandler.java:64] Decoded button code: 1 1 n
+28 Apr 2013 ;15:51:26. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:51:26. INFO [WindowsActionHandler.java:64] Decoded button code: 1 1 n
+28 Apr 2013 ;15:51:26. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:51:26. INFO [WindowsActionHandler.java:64] Decoded button code: 1 1 n
+28 Apr 2013 ;15:51:26. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:51:26. INFO [WindowsActionHandler.java:64] Decoded button code: 1 4 n
+28 Apr 2013 ;15:51:27. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:51:27. INFO [WindowsActionHandler.java:64] Decoded button code: 1 4 n
+28 Apr 2013 ;15:51:27. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:51:27. INFO [WindowsActionHandler.java:64] Decoded button code: 1 4 n
+28 Apr 2013 ;15:51:27. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:51:27. INFO [WindowsActionHandler.java:64] Decoded button code: 1 5 n
+28 Apr 2013 ;15:51:27. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:51:27. INFO [WindowsActionHandler.java:64] Decoded button code: 1 5 n
+28 Apr 2013 ;15:51:27. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:51:27. INFO [WindowsActionHandler.java:64] Decoded button code: 1 5 n
+28 Apr 2013 ;15:51:27. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:51:27. INFO [WindowsActionHandler.java:64] Decoded button code: 1 6 n
+28 Apr 2013 ;15:51:28. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:51:28. INFO [WindowsActionHandler.java:64] Decoded button code: 1 6 n
+28 Apr 2013 ;15:51:28. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:51:28. INFO [WindowsActionHandler.java:64] Decoded button code: 1 6 n
+28 Apr 2013 ;15:52:07. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:07. INFO [WindowsActionHandler.java:83] Init caught. Start sending n's
+28 Apr 2013 ;15:52:07. INFO [WindowsActionHandler.java:84] Server is blocking any further handshake until this one is done.
+28 Apr 2013 ;15:52:10. INFO [WindowsActionHandler.java:91] Server is open to accept handshake again.
+28 Apr 2013 ;15:52:12. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:12. INFO [WindowsActionHandler.java:64] Decoded button code: b nb n
+28 Apr 2013 ;15:52:12. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:12. INFO [WindowsActionHandler.java:64] Decoded button code: b n
+28 Apr 2013 ;15:52:12. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:12. INFO [WindowsActionHandler.java:64] Decoded button code: b n
+28 Apr 2013 ;15:52:13. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:13. INFO [WindowsActionHandler.java:64] Decoded button code: a n
+28 Apr 2013 ;15:52:14. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:14. INFO [WindowsActionHandler.java:64] Decoded button code: a n
+28 Apr 2013 ;15:52:14. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:14. INFO [WindowsActionHandler.java:64] Decoded button code: a n
+28 Apr 2013 ;15:52:14. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:14. INFO [WindowsActionHandler.java:64] Decoded button code: a n
+28 Apr 2013 ;15:52:28. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:28. INFO [WindowsActionHandler.java:64] Decoded button code: 1 1 n
+28 Apr 2013 ;15:52:28. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:28. INFO [WindowsActionHandler.java:64] Decoded button code: 1 1 n
+28 Apr 2013 ;15:52:28. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:28. INFO [WindowsActionHandler.java:64] Decoded button code: 1 1 n
+28 Apr 2013 ;15:52:29. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:29. INFO [WindowsActionHandler.java:64] Decoded button code: 1 4 n
+28 Apr 2013 ;15:52:29. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:29. INFO [WindowsActionHandler.java:64] Decoded button code: 1 4 n
+28 Apr 2013 ;15:52:29. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:29. INFO [WindowsActionHandler.java:64] Decoded button code: 1 4 n
+28 Apr 2013 ;15:52:29. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:29. INFO [WindowsActionHandler.java:64] Decoded button code: 1 5 n
+28 Apr 2013 ;15:52:29. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:29. INFO [WindowsActionHandler.java:64] Decoded button code: 1 5 n
+28 Apr 2013 ;15:52:30. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:30. INFO [WindowsActionHandler.java:64] Decoded button code: 1 5 n
+28 Apr 2013 ;15:52:30. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:30. INFO [WindowsActionHandler.java:64] Decoded button code: 1 6 n
+28 Apr 2013 ;15:52:30. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:30. INFO [WindowsActionHandler.java:64] Decoded button code: 1 6 n
+28 Apr 2013 ;15:52:30. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:30. INFO [WindowsActionHandler.java:64] Decoded button code: 1 6 n
+28 Apr 2013 ;15:52:33. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:33. INFO [WindowsActionHandler.java:64] Decoded button code: 2 1 n
+28 Apr 2013 ;15:52:33. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:33. INFO [WindowsActionHandler.java:64] Decoded button code: 2 1 n
+28 Apr 2013 ;15:52:33. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:33. INFO [WindowsActionHandler.java:64] Decoded button code: 2 1 n
+28 Apr 2013 ;15:52:34. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:34. INFO [WindowsActionHandler.java:64] Decoded button code: 2 5 n
+28 Apr 2013 ;15:52:34. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:34. INFO [WindowsActionHandler.java:64] Decoded button code: 2 5 n
+28 Apr 2013 ;15:52:34. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:34. INFO [WindowsActionHandler.java:64] Decoded button code: 2 5 n
+28 Apr 2013 ;15:52:36. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:36. INFO [WindowsActionHandler.java:64] Decoded button code: 3 1 n
+28 Apr 2013 ;15:52:36. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:36. INFO [WindowsActionHandler.java:64] Decoded button code: 3 1 n
+28 Apr 2013 ;15:52:36. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:36. INFO [WindowsActionHandler.java:64] Decoded button code: 3 1 n
+28 Apr 2013 ;15:52:37. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:37. INFO [WindowsActionHandler.java:64] Decoded button code: 3 2 n
+28 Apr 2013 ;15:52:37. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:37. INFO [WindowsActionHandler.java:64] Decoded button code: 3 2 n
+28 Apr 2013 ;15:52:37. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:37. INFO [WindowsActionHandler.java:64] Decoded button code: 3 2 n
+28 Apr 2013 ;15:52:38. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:38. INFO [WindowsActionHandler.java:64] Decoded button code: 3 4 n
+28 Apr 2013 ;15:52:38. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:38. INFO [WindowsActionHandler.java:64] Decoded button code: 3 4 n
+28 Apr 2013 ;15:52:38. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:38. INFO [WindowsActionHandler.java:64] Decoded button code: 3 4 n
+28 Apr 2013 ;15:52:39. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:39. INFO [WindowsActionHandler.java:64] Decoded button code: 3 5 n
+28 Apr 2013 ;15:52:39. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:39. INFO [WindowsActionHandler.java:64] Decoded button code: 3 5 n
+28 Apr 2013 ;15:52:39. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:39. INFO [WindowsActionHandler.java:64] Decoded button code: 3 5 n
+28 Apr 2013 ;15:52:41. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:41. INFO [WindowsActionHandler.java:64] Decoded button code: a n
+28 Apr 2013 ;15:52:41. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:41. INFO [WindowsActionHandler.java:64] Decoded button code: a n
+28 Apr 2013 ;15:52:41. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:41. INFO [WindowsActionHandler.java:64] Decoded button code: a n
+28 Apr 2013 ;15:52:42. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:42. INFO [WindowsActionHandler.java:64] Decoded button code: a n
+28 Apr 2013 ;15:52:53. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:53. INFO [WindowsActionHandler.java:64] Decoded button code: 1 4 n
+28 Apr 2013 ;15:52:53. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:53. INFO [WindowsActionHandler.java:64] Decoded button code: 1 4 n
+28 Apr 2013 ;15:52:53. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:53. INFO [WindowsActionHandler.java:64] Decoded button code: 1 4 n
+28 Apr 2013 ;15:52:53. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:53. INFO [WindowsActionHandler.java:64] Decoded button code: 1 5 n
+28 Apr 2013 ;15:52:53. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:53. INFO [WindowsActionHandler.java:64] Decoded button code: 1 5 n
+28 Apr 2013 ;15:52:54. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:52:54. INFO [WindowsActionHandler.java:64] Decoded button code: 1 5 n
+28 Apr 2013 ;15:53:04. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:04. INFO [WindowsActionHandler.java:64] Decoded button code: 2 2 n
+28 Apr 2013 ;15:53:04. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:04. INFO [WindowsActionHandler.java:64] Decoded button code: 2 2 n
+28 Apr 2013 ;15:53:04. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:04. INFO [WindowsActionHandler.java:64] Decoded button code: 2 2 n
+28 Apr 2013 ;15:53:04. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:04. INFO [WindowsActionHandler.java:64] Decoded button code: 2 4 n
+28 Apr 2013 ;15:53:05. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:05. INFO [WindowsActionHandler.java:64] Decoded button code: 2 4 n
+28 Apr 2013 ;15:53:05. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:05. INFO [WindowsActionHandler.java:64] Decoded button code: 2 4 n
+28 Apr 2013 ;15:53:07. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:07. INFO [WindowsActionHandler.java:64] Decoded button code: 3 2 n
+28 Apr 2013 ;15:53:07. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:07. INFO [WindowsActionHandler.java:64] Decoded button code: 3 2 n
+28 Apr 2013 ;15:53:07. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:07. INFO [WindowsActionHandler.java:64] Decoded button code: 3 2 n
+28 Apr 2013 ;15:53:07. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:07. INFO [WindowsActionHandler.java:64] Decoded button code: 3 4 n
+28 Apr 2013 ;15:53:08. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:08. INFO [WindowsActionHandler.java:64] Decoded button code: 3 4 n
+28 Apr 2013 ;15:53:08. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:08. INFO [WindowsActionHandler.java:64] Decoded button code: 3 4 n
+28 Apr 2013 ;15:53:10. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:10. INFO [WindowsActionHandler.java:64] Decoded button code: a n
+28 Apr 2013 ;15:53:11. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:11. INFO [WindowsActionHandler.java:64] Decoded button code: a na n
+28 Apr 2013 ;15:53:11. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:11. INFO [WindowsActionHandler.java:64] Decoded button code: a n
+28 Apr 2013 ;15:53:20. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:20. INFO [WindowsActionHandler.java:64] Decoded button code: 1 1 n
+28 Apr 2013 ;15:53:20. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:20. INFO [WindowsActionHandler.java:64] Decoded button code: 1 1 n
+28 Apr 2013 ;15:53:20. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:20. INFO [WindowsActionHandler.java:64] Decoded button code: 1 1 n
+28 Apr 2013 ;15:53:21. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:21. INFO [WindowsActionHandler.java:64] Decoded button code: 1 4 n
+28 Apr 2013 ;15:53:21. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:21. INFO [WindowsActionHandler.java:64] Decoded button code: 1 4 n
+28 Apr 2013 ;15:53:21. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:21. INFO [WindowsActionHandler.java:64] Decoded button code: 1 4 n
+28 Apr 2013 ;15:53:22. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:22. INFO [WindowsActionHandler.java:64] Decoded button code: 1 5 n
+28 Apr 2013 ;15:53:22. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:22. INFO [WindowsActionHandler.java:64] Decoded button code: 1 5 n
+28 Apr 2013 ;15:53:22. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:22. INFO [WindowsActionHandler.java:64] Decoded button code: 1 5 n
+28 Apr 2013 ;15:53:22. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:22. INFO [WindowsActionHandler.java:64] Decoded button code: 1 6 n
+28 Apr 2013 ;15:53:22. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:22. INFO [WindowsActionHandler.java:64] Decoded button code: 1 6 n
+28 Apr 2013 ;15:53:23. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:23. INFO [WindowsActionHandler.java:64] Decoded button code: 1 6 n
+28 Apr 2013 ;15:53:25. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:25. INFO [WindowsActionHandler.java:64] Decoded button code: 2 1 n
+28 Apr 2013 ;15:53:25. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:25. INFO [WindowsActionHandler.java:64] Decoded button code: 2 1 n
+28 Apr 2013 ;15:53:25. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:25. INFO [WindowsActionHandler.java:64] Decoded button code: 2 1 n
+28 Apr 2013 ;15:53:25. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:25. INFO [WindowsActionHandler.java:64] Decoded button code: 2 5 n
+28 Apr 2013 ;15:53:26. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:26. INFO [WindowsActionHandler.java:64] Decoded button code: 2 5 n
+28 Apr 2013 ;15:53:26. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:26. INFO [WindowsActionHandler.java:64] Decoded button code: 2 5 n
+28 Apr 2013 ;15:53:28. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:28. INFO [WindowsActionHandler.java:64] Decoded button code: 3 1 n
+28 Apr 2013 ;15:53:28. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:28. INFO [WindowsActionHandler.java:64] Decoded button code: 3 1 n
+28 Apr 2013 ;15:53:28. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:28. INFO [WindowsActionHandler.java:64] Decoded button code: 3 1 n
+28 Apr 2013 ;15:53:29. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:29. INFO [WindowsActionHandler.java:64] Decoded button code: 3 2 n
+28 Apr 2013 ;15:53:29. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:29. INFO [WindowsActionHandler.java:64] Decoded button code: 3 2 n
+28 Apr 2013 ;15:53:29. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:29. INFO [WindowsActionHandler.java:64] Decoded button code: 3 2 n
+28 Apr 2013 ;15:53:30. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:30. INFO [WindowsActionHandler.java:64] Decoded button code: 3 4 n
+28 Apr 2013 ;15:53:30. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:30. INFO [WindowsActionHandler.java:64] Decoded button code: 3 4 n
+28 Apr 2013 ;15:53:30. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:30. INFO [WindowsActionHandler.java:64] Decoded button code: 3 4 n
+28 Apr 2013 ;15:53:30. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:30. INFO [WindowsActionHandler.java:64] Decoded button code: 3 5 n
+28 Apr 2013 ;15:53:30. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:30. INFO [WindowsActionHandler.java:64] Decoded button code: 3 5 n
+28 Apr 2013 ;15:53:31. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+28 Apr 2013 ;15:53:31. INFO [WindowsActionHandler.java:64] Decoded button code: 3 5 n
+29 Apr 2013 ;19:36:47. INFO [ScriptLoader.java:51] sample_script.bwt already exists. Skip creating sample script.
+29 Apr 2013 ;19:36:54. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/loadScripts.do
+29 Apr 2013 ;19:36:54. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/loading.do
+29 Apr 2013 ;19:36:54. INFO [GenericServlet.java:102] Loading request captured. Intializing TwoWaySerialCom
+29 Apr 2013 ;19:36:54. INFO [WindowsActionHandler.java:107] Initializing TwoWaySerialComm
+29 Apr 2013 ;19:36:54. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/assets/init_icon_help.png
+29 Apr 2013 ;19:36:54. ERROR [GenericServlet.java:86] Invalid request.
+29 Apr 2013 ;19:36:54. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/assets/glyph_help.png
+29 Apr 2013 ;19:36:54. ERROR [GenericServlet.java:86] Invalid request.
+29 Apr 2013 ;19:36:54. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/assets/scripting_icon.png
+29 Apr 2013 ;19:36:54. ERROR [GenericServlet.java:86] Invalid request.
+29 Apr 2013 ;19:36:54. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/assets/record_icon.png
+29 Apr 2013 ;19:36:54. ERROR [GenericServlet.java:86] Invalid request.
+29 Apr 2013 ;19:36:54. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/assets/braille_writing.png
+29 Apr 2013 ;19:36:54. ERROR [GenericServlet.java:86] Invalid request.
+29 Apr 2013 ;19:36:54. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/assets/braille_reading.png
+29 Apr 2013 ;19:36:54. ERROR [GenericServlet.java:86] Invalid request.
+29 Apr 2013 ;19:36:54. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/assets/overall_emulator.png
+29 Apr 2013 ;19:36:54. ERROR [GenericServlet.java:86] Invalid request.
+29 Apr 2013 ;19:36:54. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/assets/bwt_hardware.png
+29 Apr 2013 ;19:36:54. ERROR [GenericServlet.java:86] Invalid request.
+29 Apr 2013 ;19:36:54. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/assets/menu_buttons.png
+29 Apr 2013 ;19:36:54. ERROR [GenericServlet.java:86] Invalid request.
+29 Apr 2013 ;19:36:54. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/manifest.appcache
+29 Apr 2013 ;19:36:54. ERROR [GenericServlet.java:86] Invalid request.
+29 Apr 2013 ;19:37:05. INFO [WindowsActionHandler.java:109] TwoWaySerialComm initialized
+29 Apr 2013 ;19:37:21. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:37:21. INFO [WindowsActionHandler.java:83] Init caught. Start sending n's
+29 Apr 2013 ;19:37:21. INFO [WindowsActionHandler.java:84] Server is blocking any further handshake until this one is done.
+29 Apr 2013 ;19:37:27. INFO [WindowsActionHandler.java:91] Server is open to accept handshake again.
+29 Apr 2013 ;19:37:29. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:37:29. INFO [WindowsActionHandler.java:64] Decoded button code: b n
+29 Apr 2013 ;19:37:29. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:37:29. INFO [WindowsActionHandler.java:64] Decoded button code: b n
+29 Apr 2013 ;19:37:31. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:37:31. INFO [WindowsActionHandler.java:64] Decoded button code: a n
+29 Apr 2013 ;19:37:31. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:37:31. INFO [WindowsActionHandler.java:64] Decoded button code: a n
+29 Apr 2013 ;19:37:31. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:37:31. INFO [WindowsActionHandler.java:64] Decoded button code: a n
+29 Apr 2013 ;19:37:31. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:37:31. INFO [WindowsActionHandler.java:64] Decoded button code: a n
+29 Apr 2013 ;19:37:31. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:37:31. INFO [WindowsActionHandler.java:64] Decoded button code: a n
+29 Apr 2013 ;19:37:33. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:37:33. INFO [WindowsActionHandler.java:64] Decoded button code: a n
+29 Apr 2013 ;19:37:33. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:37:33. INFO [WindowsActionHandler.java:64] Decoded button code: a na n
+29 Apr 2013 ;19:37:33. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:37:33. INFO [WindowsActionHandler.java:64] Decoded button code: a n
+29 Apr 2013 ;19:37:41. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:37:41. INFO [WindowsActionHandler.java:64] Decoded button code: 1 1 n
+29 Apr 2013 ;19:37:41. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:37:41. INFO [WindowsActionHandler.java:64] Decoded button code: 1 1 n
+29 Apr 2013 ;19:37:41. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:37:41. INFO [WindowsActionHandler.java:64] Decoded button code: 1 1 n
+29 Apr 2013 ;19:37:41. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:37:41. INFO [WindowsActionHandler.java:64] Decoded button code: 1 4 n
+29 Apr 2013 ;19:37:42. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:37:42. INFO [WindowsActionHandler.java:64] Decoded button code: 1 4 n
+29 Apr 2013 ;19:37:42. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:37:42. INFO [WindowsActionHandler.java:64] Decoded button code: 1 4 n
+29 Apr 2013 ;19:37:42. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:37:42. INFO [WindowsActionHandler.java:64] Decoded button code: 1 5 n
+29 Apr 2013 ;19:37:42. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:37:42. INFO [WindowsActionHandler.java:64] Decoded button code: 1 5 n
+29 Apr 2013 ;19:37:42. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:37:42. INFO [WindowsActionHandler.java:64] Decoded button code: 1 5 n
+29 Apr 2013 ;19:37:42. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:37:42. INFO [WindowsActionHandler.java:64] Decoded button code: 1 6 n
+29 Apr 2013 ;19:37:43. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:37:43. INFO [WindowsActionHandler.java:64] Decoded button code: 1 6 n
+29 Apr 2013 ;19:37:43. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:37:43. INFO [WindowsActionHandler.java:64] Decoded button code: 1 6 n
+29 Apr 2013 ;19:40:17. INFO [ScriptLoader.java:51] sample_script.bwt already exists. Skip creating sample script.
+29 Apr 2013 ;19:40:20. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/loadScripts.do
+29 Apr 2013 ;19:40:20. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/loading.do
+29 Apr 2013 ;19:40:20. INFO [GenericServlet.java:102] Loading request captured. Intializing TwoWaySerialCom
+29 Apr 2013 ;19:40:20. INFO [WindowsActionHandler.java:107] Initializing TwoWaySerialComm
+29 Apr 2013 ;19:40:20. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/assets/scripting_icon.png
+29 Apr 2013 ;19:40:20. ERROR [GenericServlet.java:86] Invalid request.
+29 Apr 2013 ;19:40:20. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/assets/init_icon_help.png
+29 Apr 2013 ;19:40:20. ERROR [GenericServlet.java:86] Invalid request.
+29 Apr 2013 ;19:40:20. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/assets/bwt_hardware.png
+29 Apr 2013 ;19:40:20. ERROR [GenericServlet.java:86] Invalid request.
+29 Apr 2013 ;19:40:20. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/assets/record_icon.png
+29 Apr 2013 ;19:40:20. ERROR [GenericServlet.java:86] Invalid request.
+29 Apr 2013 ;19:40:20. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/assets/glyph_help.png
+29 Apr 2013 ;19:40:20. ERROR [GenericServlet.java:86] Invalid request.
+29 Apr 2013 ;19:40:20. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/assets/braille_reading.png
+29 Apr 2013 ;19:40:20. ERROR [GenericServlet.java:86] Invalid request.
+29 Apr 2013 ;19:40:20. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/assets/braille_writing.png
+29 Apr 2013 ;19:40:20. ERROR [GenericServlet.java:86] Invalid request.
+29 Apr 2013 ;19:40:20. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/assets/menu_buttons.png
+29 Apr 2013 ;19:40:20. ERROR [GenericServlet.java:86] Invalid request.
+29 Apr 2013 ;19:40:20. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/manifest.appcache
+29 Apr 2013 ;19:40:20. ERROR [GenericServlet.java:86] Invalid request.
+29 Apr 2013 ;19:40:20. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/assets/overall_emulator.png
+29 Apr 2013 ;19:40:20. ERROR [GenericServlet.java:86] Invalid request.
+29 Apr 2013 ;19:40:31. INFO [WindowsActionHandler.java:109] TwoWaySerialComm initialized
+29 Apr 2013 ;19:40:33. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:40:33. INFO [WindowsActionHandler.java:83] Init caught. Start sending n's
+29 Apr 2013 ;19:40:33. INFO [WindowsActionHandler.java:84] Server is blocking any further handshake until this one is done.
+29 Apr 2013 ;19:40:37. INFO [WindowsActionHandler.java:91] Server is open to accept handshake again.
+29 Apr 2013 ;19:41:04. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:41:04. INFO [WindowsActionHandler.java:83] Init caught. Start sending n's
+29 Apr 2013 ;19:41:04. INFO [WindowsActionHandler.java:84] Server is blocking any further handshake until this one is done.
+29 Apr 2013 ;19:41:08. INFO [WindowsActionHandler.java:91] Server is open to accept handshake again.
+29 Apr 2013 ;19:41:11. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:41:11. INFO [WindowsActionHandler.java:64] Decoded button code: b n
+29 Apr 2013 ;19:41:11. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:41:11. INFO [WindowsActionHandler.java:64] Decoded button code: b n
+29 Apr 2013 ;19:41:11. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:41:11. INFO [WindowsActionHandler.java:64] Decoded button code: b n
+29 Apr 2013 ;19:41:13. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:41:13. INFO [WindowsActionHandler.java:64] Decoded button code: a na n
+29 Apr 2013 ;19:41:13. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:41:13. INFO [WindowsActionHandler.java:64] Decoded button code: a n
+29 Apr 2013 ;19:41:13. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:41:13. INFO [WindowsActionHandler.java:64] Decoded button code: a n
+29 Apr 2013 ;19:41:23. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:41:23. INFO [WindowsActionHandler.java:64] Decoded button code: 1 1 n
+29 Apr 2013 ;19:41:24. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:41:24. INFO [WindowsActionHandler.java:64] Decoded button code: 1 1 n
+29 Apr 2013 ;19:41:24. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:41:24. INFO [WindowsActionHandler.java:64] Decoded button code: 1 1 n
+29 Apr 2013 ;19:41:24. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:41:24. INFO [WindowsActionHandler.java:64] Decoded button code: 1 4 n
+29 Apr 2013 ;19:41:24. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:41:24. INFO [WindowsActionHandler.java:64] Decoded button code: 1 4 n
+29 Apr 2013 ;19:41:24. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:41:24. INFO [WindowsActionHandler.java:64] Decoded button code: 1 4 n
+29 Apr 2013 ;19:41:24. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:41:24. INFO [WindowsActionHandler.java:64] Decoded button code: 1 5 n
+29 Apr 2013 ;19:41:25. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:41:25. INFO [WindowsActionHandler.java:64] Decoded button code: 1 5 n
+29 Apr 2013 ;19:41:25. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:41:25. INFO [WindowsActionHandler.java:64] Decoded button code: 1 5 n
+29 Apr 2013 ;19:41:25. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:41:25. INFO [WindowsActionHandler.java:64] Decoded button code: 1 6 n
+29 Apr 2013 ;19:41:25. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:41:25. INFO [WindowsActionHandler.java:64] Decoded button code: 1 6 n
+29 Apr 2013 ;19:41:25. INFO [GenericServlet.java:47] Handling request: http://localhost:8887/sendBytes.do
+29 Apr 2013 ;19:41:25. INFO [WindowsActionHandler.java:64] Decoded button code: 1 6 n
