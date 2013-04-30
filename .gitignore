@@ -6,3 +6,5 @@ source/BWTEmulator/.settings/
 source/BWTEmulator/.classpath
 source/BWTEmulator/.project
 source/BWTEmulator/BWT_LOGS/*
+bin/BWT_LOGS/*
+bin/BWT_SCRIPTS/*
