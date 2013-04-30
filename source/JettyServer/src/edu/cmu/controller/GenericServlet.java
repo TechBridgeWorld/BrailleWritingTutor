@@ -57,9 +57,6 @@ public class GenericServlet extends HttpServlet {
     else if(requestURL.endsWith(SEND_BYTES_REQUEST)){
       handleButtonRequest(request, response);
     }
-    else{
-      handleError(request,response);
-    }
 
   }
 
