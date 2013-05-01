@@ -105,7 +105,7 @@ function __prepareScript(data){
         var type = tempQueue[i].eventType;
         var time = tempQueue[i].timeStamp;
 
-        var btn = __BUTTON_MAP[buttonId];
+        var btn = window.__bwt.__BUTTON_MAP[buttonId];
 
         if(type === "click"){
           scriptQueue.push({
