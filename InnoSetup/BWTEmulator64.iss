@@ -13,7 +13,7 @@ DefaultGroupName=BWTEmulator
 Compression=zip
 SolidCompression=yes
 OutputDir=C:/Users/dswen/My Documents/Documents/School/15/239/
-
+                                                                                                        
 [Dirs]
 Name: "{app}\com0com"; Permissions: users-readexec
 
@@ -30,6 +30,10 @@ Name: "{group}\BWT Emulator"; Filename: "{app}\emulator.jar"
 
 [Run]
 Filename: "{app}\com0com\setupc.exe"; Parameters: "install PortName=COM1 PortName=COM7"
+Filename: "{app}\com0com\setupc.exe"; Parameters: "change CNCA0 EmuBr=yes"    
+Filename: "{app}\com0com\setupc.exe"; Parameters: "change CNCA0 EmuOverrun=yes"
+Filename: "{app}\com0com\setupc.exe"; Parameters: "change CNCB0 EmuBr=yes"
+Filename: "{app}\com0com\setupc.exe"; Parameters: "change CNCB0 EmuOverrun=yes"
 
 [UninstallRun]
 Filename: "{app}\com0com\setupc.exe"; Parameters: "uninstall"
