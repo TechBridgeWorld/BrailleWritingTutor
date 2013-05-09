@@ -190,15 +190,20 @@ repository.
     On Linux, you might get an "Address already in use" error when trying to bind a socket to a port. This
     happens because the previous time the emulator ran, it crashed badly and did not close the socket connection.
     To resolve this do the following:
-      1. Type `ps -aux | grep pytho` in a command prompt
-      2. This will show a list of processes on your computer running python. One of them is running from
-        bin/virtualUSB.py.
-      3. Kill this process by entering `sudo kill <pid>` where <pid> is the process ID of bin/virtualUSB.py
-      
+    <ol>
+      <li>Type `ps -aux | grep python` in a command prompt</li>
+    
+      <li>This will show a list of processes on your computer running python. One of them is running from
+        bin/virtualUSB.py.</li>
+    
+      <li>Kill this process by entering `sudo kill PID` where PID is the process ID of bin/virtualUSB.py</li>
+    </ol>
     Usually when a crash like this happens, the emulator doesn't remove the /dev/ttyUSB* serial port that it 
     creates.  You should delete it manually.  
-      1. Enter `ls -l /dev/ttyUSB*` where ttyUSB* is the USB port that was created by the emulator.
-      2. If this file shows up as a broken simlink, delete it by entering `sudo rm /dev/ttyUSB*`
+    <ol>
+      <li>Enter `ls -l /dev/ttyUSB*` where ttyUSB* is the USB port that was created by the emulator.</li>
+      <li>If this file shows up as a broken simlink, delete it by entering `sudo rm /dev/ttyUSB*`</li>
+    </ol>
   </li>
   
 </ul>
