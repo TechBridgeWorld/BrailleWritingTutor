@@ -69,9 +69,9 @@ def main():
             os.symlink(os.ttyname(slave_fd), serialPath);
             #change permissions and group so that btbt software
             #can access it
-            os.fchmod(slave_fd, 0660);
-            gid = grp.getgrnam("dialout").gr_gid;
-            os.chown(serialPath, -1, gid);
+            os.fchmod(slave_fd, 0666);
+            #gid = grp.getgrnam("dialout").gr_gid;
+            #os.chown(serialPath, -1, gid);
             #register the exit handler to remove /dev/ttyUSBN
             atexit.register(deletePath, serialPath)
             print "emulator connected to ", serialPath
