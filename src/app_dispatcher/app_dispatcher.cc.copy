@@ -1,0 +1,806 @@
+/*
+ * app_dispatcher.cc
+ *
+ *  Created on: Nov 30, 2008
+ *      Author: imran
+ *  Updated in 2010 & 2011 by Ameer
+ */
+
+#include <cassert>
+#include <fstream>
+#include <boost/algorithm/string.hpp>
+#include "app_dispatcher.h"
+
+#include "dot_scaffold/dot_scaffold.h"
+#include "learn_dots/learn_dots.h"
+#include "dot_practice/dot_practice.h"
+#include "learn_letters/learn_letters.h"
+#include "learn_numbers/learn_numbers.h"
+#include "number_scaffold/number_scaffold.h"
+#include "letter_scaffold/letter_scaffold.h"
+#include "letter_practice/letter_practice.h"
+#include "domino/domino_game.h"
+#include "hangman/hangman.h"
+#include "animal/animal.h"
+
+
+using namespace BrailleTutorNS;
+
+void ApplicationDispatcher::operator()(std::deque<IOEvent> &events)
+{
+  while( !events.empty() )
+  {
+    IOEvent e = events.front();
+    events.pop_front();
+
+    //Check if the event is for scrolling thru the list of applications
+    if (isScrollEvent(e))
+    {
+      scroll(e);
+      return;
+    }
+
+    //Check if the user has finished scrolling by selecting his app, and thus wants to start it
+    if( isSwitchAppEvent(e) )
+    {
+      delete current_app;//stop the running app (calls the destructor)
+      current_app = switchApp(e);//make the switch
+      return;
+    }
+
+    if(switching_modes != SCROLL_ON) //it is a normal event, so just pass it to whatever app is currently running
+    {
+      if( current_app != NULL )
+        current_app->processEvent(e);
+    }
+  }
+}
+
+/*
+ *  If Button 0 is down and the user presses a button, we're mode switching
+ */
+bool ApplicationDispatcher::isScrollEvent(const IOEvent& e)
+{
+  //Check if someone is trying to retun back to scrolling mode.
+  if (switching_modes == SCROLL_OFF && e.type == IOEvent::BUTTON_DOWN && e.button == 0)
+  {
+    switching_modes = BZERO_DOWN;
+  }
+
+  //Check if someone released Button0
+  if(switching_modes == BZERO_DOWN && e.type == IOEvent::BUTTON_UP && e.button == 0)
+  {
+    switching_modes = SCROLL_OFF;
+  }
+
+  //Check if we are in scrolling mode
+  if(switching_modes == SCROLL_ON && e.type == IOEvent::BUTTON_DOWN)
+  {
+    //We are already in scrolling mode, so hitting Button0 again does not indicate a scroll event
+    if (e.button == 0)
+      return false;
+    return true;
+  }
+
+  //A user tries to return back to scrolling mode by holding down Button0, and then pressing another button
+  if(switching_modes == BZERO_DOWN && e.type == IOEvent::BUTTON_DOWN && e.button != 0)
+  {
+    switching_modes = SCROLL_ON;
+    return true;
+  }
+
+  return false;
+}
+
+bool ApplicationDispatcher::isSwitchAppEvent(const IOEvent& e)
+{
+  return switching_modes == SCROLL_ON && e.type == IOEvent::BUTTON_DOWN && e.button == 0;
+}
+
+
+/*
+ * This function handles scrolling through the modes 
+ */
+void ApplicationDispatcher::scroll(const IOEvent& e)
+{
+	assert(SCROLL_ON && "scroll() called while not in scrolling state");
+	
+	//Scrolling Right?
+	if(e.button >= 1 && e.button <= 3)
+	{
+	current_mode = current_mode == FREE_PLAY ? ANIMAL_OTHER : (modes) (current_mode - 1);
+	}
+	
+	//Scrolling Left?
+	else if(e.button >= 4 && e.button <= 6)
+	{
+	current_mode = current_mode == ANIMAL_OTHER ? FREE_PLAY : (modes) (current_mode + 1);
+	}
+	
+	/* TODO: Move config file reading code to higher level in the program (ie closer to top-level main).  
+	*  We currently use a bool so as only to read once, simple and works fine
+	*/
+	// read config file to determine language mode
+	if(!cfg_file_processed)
+		processConfigFile();
+	
+	//Inform the user which mode he has currently selected
+	if(language_mode==EN_AR)
+		playSelectedModeInEnglishArabic();
+	else if(language_mode==EN_FR)
+		playSelectedModeInEnglishFrench();
+	else if(language_mode==EN_SWH)
+		playSelectedModeInEnglishKiswahili();
+	else if(language_mode==EN2_AR2)
+		playSelectedModeInEnglish2Arabic2();
+
+}
+
+/*
+ * This function determines which app to switch to, and then makes the switch by instantiating a class of the
+ * determined app.
+ */
+IBTApp* ApplicationDispatcher::switchApp(const IOEvent& e)
+{
+	assert(switching_modes==SCROLL_ON && "switchApp() while not in scrolling state");
+	
+	//The fact that we are in this function means that the user has made his
+	//choice by selecting an application. So we disable scrolling
+	switching_modes = SCROLL_OFF;
+
+	/* TODO: Move config file reading code to higher level in the program (ie closer to top-level main).  
+	*  We currently use a bool so as only to read once, simple and works fine
+	*/
+	// read config file to determine language mode
+	if(!cfg_file_processed)
+		processConfigFile();
+
+	if(language_mode==EN_AR)
+		return switchAppEnglishArabic();
+	else if(language_mode==EN_FR)
+		return switchAppEnglishFrench();
+	else if(language_mode==EN_SWH)
+		return switchAppEnglishKiswahili();
+	else if(language_mode==EN2_AR2)
+		return switchAppEnglish2Arabic2();
+}
+
+IBTApp* ApplicationDispatcher::switchAppEnglishArabic() const
+{
+	std::cout << "Dispatcher switchAppEnglishArabic" << std::endl;
+	
+  switch( current_mode )
+  {
+  case FREE_PLAY:
+    return new EnglishDotScaffold(iep);
+  case FREE_NUMBERS:
+    return new EnglishNumberScaffold(iep);
+  case LEARN_DOTS:
+    return new EnglishLearnDots(iep);
+  case DOT_PRACTICE:
+    return new EnglishDotPractice(iep);
+  case LEARN_LETTERS:
+    return new EnglishLearnLetters(iep);
+  case LEARN_NUMBERS:
+    return new EnglishLearnNumbers(iep);
+  case LETTER_PRACTICE:
+    return new EnglishLetterPractice(iep);
+  case FREE_SPELLING:
+    return new EnglishLetterScaffold(iep);
+  case DOMINOS:
+    return new EnglishDominoGame(iep);
+  case HANGMAN:
+    return new EnglishHangman(iep);
+  case ANIMAL:
+    return new EnglishAnimal(iep);
+  case FREE_PLAY_OTHER:
+    return new ArabicDotScaffold(iep);
+  case FREE_NUMBERS_OTHER:
+    return new ArabicNumberScaffold(iep);
+  case LEARN_DOTS_OTHER:
+    return new ArabicLearnDots(iep);
+  case DOT_PRACTICE_OTHER:
+    return new ArabicDotPractice(iep);
+  case LEARN_LETTERS_OTHER:
+    return new ArabicLearnLetters(iep);
+  case LEARN_NUMBERS_OTHER:
+    return new ArabicLearnNumbers(iep);
+  case LETTER_PRACTICE_OTHER:
+    return new ArabicLetterPractice(iep);
+  case FREE_SPELLING_OTHER:
+    return new ArabicLetterScaffold(iep);
+  case DOMINOS_OTHER:
+    return new ArabicDominoGame(iep);
+  case HANGMAN_OTHER:
+    return new ArabicHangman(iep);
+  case ANIMAL_OTHER:
+    return new ArabicAnimal(iep);
+  }
+}
+
+/*
+ * Modes for unmirrored English and unmirrored Arabic, referred to as English2 and Arabic2
+ */ 
+IBTApp* ApplicationDispatcher::switchAppEnglish2Arabic2() const
+{
+	std::cout << "switchAppEnglish2Arabic2" << std::endl;
+	
+  switch( current_mode )
+  {
+  case FREE_PLAY:
+    return new English2DotScaffold(iep);
+  case FREE_NUMBERS:
+    return new English2NumberScaffold(iep);
+  case LEARN_DOTS:
+    return new English2LearnDots(iep);
+  case DOT_PRACTICE:
+    return new English2DotPractice(iep);
+  case LEARN_LETTERS:
+    return new English2LearnLetters(iep);
+  case LEARN_NUMBERS:
+    return new English2LearnNumbers(iep);
+  case LETTER_PRACTICE:
+    return new English2LetterPractice(iep);
+  case FREE_SPELLING:
+    return new English2LetterScaffold(iep);
+  case DOMINOS:
+    return new English2DominoGame(iep);
+  case HANGMAN:
+    return new English2Hangman(iep);
+  case ANIMAL:
+    return new English2Animal(iep);
+  case FREE_PLAY_OTHER:
+    return new Arabic2DotScaffold(iep);
+  case FREE_NUMBERS_OTHER:
+    return new Arabic2NumberScaffold(iep);
+  case LEARN_DOTS_OTHER:
+    return new Arabic2LearnDots(iep);
+  case DOT_PRACTICE_OTHER:
+    return new Arabic2DotPractice(iep);
+  case LEARN_LETTERS_OTHER:
+    return new Arabic2LearnLetters(iep);
+  case LEARN_NUMBERS_OTHER:
+    return new Arabic2LearnNumbers(iep);
+  case LETTER_PRACTICE_OTHER:
+    return new Arabic2LetterPractice(iep);
+  case FREE_SPELLING_OTHER:
+    return new Arabic2LetterScaffold(iep);
+  case DOMINOS_OTHER:
+    return new Arabic2DominoGame(iep);
+  case HANGMAN_OTHER:
+    return new Arabic2Hangman(iep);
+  case ANIMAL_OTHER:
+    return new Arabic2Animal(iep);
+  }
+}
+
+
+void ApplicationDispatcher::playSelectedModeInEnglishArabic() const
+{
+  switch( current_mode )
+  {
+  case FREE_PLAY:
+    teach.say("free play.wav");
+    printf("Selecting English Dot Scaffold\n");
+    break;
+  case FREE_NUMBERS:
+    numbers.say("free_number_practice.wav");
+    printf("Selecting English Number Scaffold\n");
+    break;
+  case LEARN_DOTS:
+    teach.say("learn dots.wav");
+    printf("Selecting English Learn Dots\n");
+    break;
+  case DOT_PRACTICE:
+    teach.say("dot practice.wav");
+    printf("Selecting English Dot Practice\n");
+    break;
+  case LEARN_LETTERS:
+    teach.say("learn letters.wav");
+    printf("Selecting English Learn Letters\n");
+    break;
+  case LEARN_NUMBERS:
+    numbers.say("learn_numbers.wav");
+    printf("Selecting English Learn Numbers\n");
+    break;
+  case LETTER_PRACTICE:
+    teach.say("letter practice.wav");
+    printf("Selecting English Letter Practice\n");
+    break;
+  case FREE_SPELLING:
+    teach.say("free spelling.wav");
+    printf("Selecting English Free Spelling\n");
+    break;
+  case DOMINOS:
+    teach.say("dominos.wav");
+    printf("Selecting English Dominos\n");
+    break;
+  case HANGMAN:
+    teach.say("hangman.wav");
+    printf("Selecting English Hangman\n");
+    break;
+  case ANIMAL:
+    teach.say("animal game.wav");
+    printf("Selecting English Animal Game\n");
+    break;
+  case FREE_PLAY_OTHER:
+    teach.say("free play_arabic.wav");
+    printf("Selecting Arabic Dot Scaffold\n");
+    break;
+  case FREE_NUMBERS_OTHER:
+    numbers.say("free_number_practice_arabic.wav");
+    printf("Selecting Arabic Number Scaffold\n");
+    break;
+  case LEARN_DOTS_OTHER:
+    teach.say("learn dots_arabic.wav");
+    printf("Selecting Arabic Learn Dots\n");
+    break;
+  case DOT_PRACTICE_OTHER:
+    teach.say("dot practice_arabic.wav");
+    printf("Selecting Arabic Dot Practice\n");
+    break;
+  case LEARN_LETTERS_OTHER:
+    teach.say("learn letters_arabic.wav");
+    printf("Selecting Arabic Learn Letters\n");
+    break;
+  case LEARN_NUMBERS_OTHER:
+    numbers.say("learn_numbers_arabic.wav");
+    printf("Selecting Arabic Learn Numbers\n");
+    break;
+  case LETTER_PRACTICE_OTHER:
+    teach.say("letter practice_arabic.wav");
+    printf("Selecting Arabic Letter Practice\n");
+    break;
+  case FREE_SPELLING_OTHER:
+    teach.say("free spelling_arabic.wav");
+    printf("Selecting Arabic Free Spelling\n");
+    break;
+  case DOMINOS_OTHER:
+    teach.say("dominos_arabic.wav");
+    printf("Selecting Arabic Dominos\n");
+    break;
+  case HANGMAN_OTHER:
+    teach.say("hangman_arabic.wav");
+    printf("Selecting Arabic Hangman\n");
+    break;
+  case ANIMAL_OTHER:
+    teach.say("animal game_arabic.wav");
+    printf("Selecting Arabic Animal Game\n");
+    break;
+  }
+}
+
+
+void ApplicationDispatcher::playSelectedModeInEnglish2Arabic2() const
+{
+  switch( current_mode )
+  {
+  case FREE_PLAY:
+    teach.say("free play.wav");
+    printf("Selecting English2 Dot Scaffold\n");
+    break;
+  case FREE_NUMBERS:
+    numbers.say("free_number_practice.wav");
+    printf("Selecting English2 Number Scaffold\n");
+    break;
+  case LEARN_DOTS:
+    teach.say("learn dots.wav");
+    printf("Selecting English2 Learn Dots\n");
+    break;
+  case DOT_PRACTICE:
+    teach.say("dot practice.wav");
+    printf("Selecting English2 Dot Practice\n");
+    break;
+  case LEARN_LETTERS:
+    teach.say("learn letters.wav");
+    printf("Selecting English2 Learn Letters\n");
+    break;
+  case LEARN_NUMBERS:
+    numbers.say("learn_numbers.wav");
+    printf("Selecting English2 Learn Numbers\n");
+    break;
+  case LETTER_PRACTICE:
+    teach.say("letter practice.wav");
+    printf("Selecting English2 Letter Practice\n");
+    break;
+  case FREE_SPELLING:
+    teach.say("free spelling.wav");
+    printf("Selecting English2 Free Spelling\n");
+    break;
+  case DOMINOS:
+    teach.say("dominos.wav");
+    printf("Selecting English2 Dominos\n");
+    break;
+  case HANGMAN:
+    teach.say("hangman.wav");
+    printf("Selecting English2 Hangman\n");
+    break;
+  case ANIMAL:
+    teach.say("animal game.wav");
+    printf("Selecting English2 Animal Game\n");
+    break;
+  case FREE_PLAY_OTHER:
+    teach.say("free play_arabic.wav");
+    printf("Selecting Arabic2 Dot Scaffold\n");
+    break;
+  case FREE_NUMBERS_OTHER:
+    numbers.say("free_number_practice_arabic.wav");
+    printf("Selecting Arabic2 Number Scaffold\n");
+    break;
+  case LEARN_DOTS_OTHER:
+    teach.say("learn dots_arabic.wav");
+    printf("Selecting Arabic2 Learn Dots\n");
+    break;
+  case DOT_PRACTICE_OTHER:
+    teach.say("dot practice_arabic.wav");
+    printf("Selecting Arabic2 Dot Practice\n");
+    break;
+  case LEARN_LETTERS_OTHER:
+    teach.say("learn letters_arabic.wav");
+    printf("Selecting Arabic2 Learn Letters\n");
+    break;
+  case LEARN_NUMBERS_OTHER:
+    numbers.say("learn_numbers_arabic.wav");
+    printf("Selecting Arabic2 Learn Numbers\n");
+    break;
+  case LETTER_PRACTICE_OTHER:
+    teach.say("letter practice_arabic.wav");
+    printf("Selecting Arabic2 Letter Practice\n");
+    break;
+  case FREE_SPELLING_OTHER:
+    teach.say("free spelling_arabic.wav");
+    printf("Selecting Arabic2 Free Spelling\n");
+    break;
+  case DOMINOS_OTHER:
+    teach.say("dominos_arabic.wav");
+    printf("Selecting Arabic2 Dominos\n");
+    break;
+  case HANGMAN_OTHER:
+    teach.say("hangman_arabic.wav");
+    printf("Selecting Arabic2 Hangman\n");
+    break;
+  case ANIMAL_OTHER:
+    teach.say("animal game_arabic.wav");
+    printf("Selecting Arabic2 Animal Game\n");
+    break;
+  }
+}
+
+
+IBTApp* ApplicationDispatcher::switchAppEnglishFrench() const
+{
+  switch( current_mode )
+  {
+  case FREE_PLAY:
+    return new EnglishDotScaffold(iep);
+  case FREE_NUMBERS:
+    return new EnglishNumberScaffold(iep);
+  case LEARN_DOTS:
+    return new EnglishLearnDots(iep);
+  case DOT_PRACTICE:
+    return new EnglishDotPractice(iep);
+  case LEARN_LETTERS:
+    return new EnglishLearnLetters(iep);
+  case LEARN_NUMBERS:
+    return new EnglishLearnNumbers(iep);
+  case LETTER_PRACTICE:
+    return new EnglishLetterPractice(iep);
+  case FREE_SPELLING:
+    return new EnglishLetterScaffold(iep);
+  case DOMINOS:
+    return new EnglishDominoGame(iep);
+  case HANGMAN:
+    return new EnglishHangman(iep);
+  case ANIMAL:
+    return new EnglishAnimal(iep);
+  case FREE_PLAY_OTHER:
+    return new FrenchDotScaffold(iep);
+  case FREE_NUMBERS_OTHER:
+    return new FrenchNumberScaffold(iep);
+  case LEARN_DOTS_OTHER:
+    return new FrenchLearnDots(iep);
+  case DOT_PRACTICE_OTHER:
+    return new FrenchDotPractice(iep);
+  case LEARN_LETTERS_OTHER:
+    return new FrenchLearnLetters(iep);
+  case LEARN_NUMBERS_OTHER:
+    return new FrenchLearnNumbers(iep);
+  case LETTER_PRACTICE_OTHER:
+    return new FrenchLetterPractice(iep);
+  case FREE_SPELLING_OTHER:
+    return new FrenchLetterScaffold(iep);
+  case DOMINOS_OTHER:
+    return new FrenchDominoGame(iep);
+  case HANGMAN_OTHER:
+    return new FrenchHangman(iep);
+  case ANIMAL_OTHER:
+    return new FrenchAnimal(iep);
+  }
+}
+
+void ApplicationDispatcher::playSelectedModeInEnglishFrench() const
+{
+  switch( current_mode )
+  {
+  case FREE_PLAY:
+    teach.say("free play.wav");
+    printf("Selecting English Dot Scaffold\n");
+    break;
+  case FREE_NUMBERS:
+    numbers.say("free_number_practice.wav");
+    printf("Selecting English Number Scaffold\n");
+    break;
+  case LEARN_DOTS:
+    teach.say("learn dots.wav");
+    printf("Selecting English Learn Dots\n");
+    break;
+  case DOT_PRACTICE:
+    teach.say("dot practice.wav");
+    printf("Selecting English Dot Practice\n");
+    break;
+  case LEARN_LETTERS:
+    teach.say("learn letters.wav");
+    printf("Selecting English Learn Letters\n");
+    break;
+  case LEARN_NUMBERS:
+    numbers.say("learn_numbers.wav");
+    printf("Selecting English Learn Numbers\n");
+    break;
+  case LETTER_PRACTICE:
+    teach.say("letter practice.wav");
+    printf("Selecting English Letter Practice\n");
+    break;
+  case FREE_SPELLING:
+    teach.say("free spelling.wav");
+    printf("Selecting English Free Spelling\n");
+    break;
+  case DOMINOS:
+    teach.say("dominos.wav");
+    printf("Selecting English Dominos\n");
+    break;
+  case HANGMAN:
+    teach.say("hangman.wav");
+    printf("Selecting English Hangman\n");
+    break;
+  case ANIMAL:
+    teach.say("animal game.wav");
+    printf("Selecting English Animal Game\n");
+    break;
+  case FREE_PLAY_OTHER:
+    teach.say("free play_french.wav");
+    printf("Selecting French Dot Scaffold\n");
+    break;
+  case FREE_NUMBERS_OTHER:
+    numbers.say("free_number_practice_french.wav");
+    printf("Selecting French Number Scaffold\n");
+    break;
+  case LEARN_DOTS_OTHER:
+    teach.say("learn dots_french.wav");
+    printf("Selecting French Learn Dots\n");
+    break;
+  case DOT_PRACTICE_OTHER:
+    teach.say("dot practice_french.wav");
+    printf("Selecting French Dot Practice\n");
+    break;
+  case LEARN_LETTERS_OTHER:
+    teach.say("learn letters_french.wav");
+    printf("Selecting French Learn Letters\n");
+    break;
+  case LEARN_NUMBERS_OTHER:
+    numbers.say("learn_numbers_french.wav");
+    printf("Selecting French Learn Numbers\n");
+    break;
+  case LETTER_PRACTICE_OTHER:
+    teach.say("letter practice_french.wav");
+    printf("Selecting French Letter Practice\n");
+    break;
+  case FREE_SPELLING_OTHER:
+    teach.say("free spelling_french.wav");
+    printf("Selecting French Free Spelling\n");
+    break;
+  case DOMINOS_OTHER:
+    teach.say("dominos_french.wav");
+    printf("Selecting French Dominos\n");
+    break;
+  case HANGMAN_OTHER:
+    teach.say("hangman_french.wav");
+    printf("Selecting French Hangman\n");
+    break;
+  case ANIMAL_OTHER:
+    teach.say("animal game_french.wav");
+    printf("Selecting French Animal Game\n");
+    break;
+  }
+}
+
+IBTApp* ApplicationDispatcher::switchAppEnglishKiswahili() const
+{
+  switch( current_mode )
+  {
+  case FREE_PLAY:
+    return new EnglishDotScaffold(iep);
+  case FREE_NUMBERS:
+    return new EnglishNumberScaffold(iep);
+  case LEARN_DOTS:
+    return new EnglishLearnDots(iep);
+  case DOT_PRACTICE:
+    return new EnglishDotPractice(iep);
+  case LEARN_LETTERS:
+    return new EnglishLearnLetters(iep);
+  case LEARN_NUMBERS:
+    return new EnglishLearnNumbers(iep);
+  case LETTER_PRACTICE:
+    return new EnglishLetterPractice(iep);
+  case FREE_SPELLING:
+    return new EnglishLetterScaffold(iep);
+  case DOMINOS:
+    return new EnglishDominoGame(iep);
+  case HANGMAN:
+    return new EnglishHangman(iep);
+  case ANIMAL:
+    return new EnglishAnimal(iep);
+  case FREE_PLAY_OTHER:
+    return new KiswahiliDotScaffold(iep);
+  case FREE_NUMBERS_OTHER:
+    return new KiswahiliNumberScaffold(iep);
+  case LEARN_DOTS_OTHER:
+    return new KiswahiliLearnDots(iep);
+  case DOT_PRACTICE_OTHER:
+    return new KiswahiliDotPractice(iep);
+  case LEARN_LETTERS_OTHER:
+    return new KiswahiliLearnLetters(iep);
+  case LEARN_NUMBERS_OTHER:
+    return new KiswahiliLearnNumbers(iep);
+  case LETTER_PRACTICE_OTHER:
+    return new KiswahiliLetterPractice(iep);
+  case FREE_SPELLING_OTHER:
+    return new KiswahiliLetterScaffold(iep);
+  case DOMINOS_OTHER:
+    return new KiswahiliDominoGame(iep);
+  case HANGMAN_OTHER:
+    return new KiswahiliHangman(iep);
+  case ANIMAL_OTHER:
+    return new KiswahiliAnimal(iep);
+  }
+}
+
+void ApplicationDispatcher::playSelectedModeInEnglishKiswahili() const
+{
+  switch( current_mode )
+  {
+  case FREE_PLAY:
+    teach.say("free play.wav");
+    printf("Selecting English Dot Scaffold\n");
+    break;
+  case FREE_NUMBERS:
+    numbers.say("free_number_practice.wav");
+    printf("Selecting English Number Scaffold\n");
+    break;
+  case LEARN_DOTS:
+    teach.say("learn dots.wav");
+    printf("Selecting English Learn Dots\n");
+    break;
+  case DOT_PRACTICE:
+    teach.say("dot practice.wav");
+    printf("Selecting English Dot Practice\n");
+    break;
+  case LEARN_LETTERS:
+    teach.say("learn letters.wav");
+    printf("Selecting English Learn Letters\n");
+    break;
+  case LEARN_NUMBERS:
+    numbers.say("learn_numbers.wav");
+    printf("Selecting English Learn Numbers\n");
+    break;
+  case LETTER_PRACTICE:
+    teach.say("letter practice.wav");
+    printf("Selecting English Letter Practice\n");
+    break;
+  case FREE_SPELLING:
+    teach.say("free spelling.wav");
+    printf("Selecting English Free Spelling\n");
+    break;
+  case DOMINOS:
+    teach.say("dominos.wav");
+    printf("Selecting English Dominos\n");
+    break;
+  case HANGMAN:
+    teach.say("hangman.wav");
+    printf("Selecting English Hangman\n");
+    break;
+  case ANIMAL:
+    teach.say("animal game.wav");
+    printf("Selecting English Animal Game\n");
+    break;
+  case FREE_PLAY_OTHER:
+    teach.say("free play_kiswahili.wav");
+    printf("Selecting Kiswahili Dot Scaffold\n");
+    break;
+  case FREE_NUMBERS_OTHER:
+    numbers.say("free_number_practice_kiswahili.wav");
+    printf("Selecting Kiswahili Number Scaffold\n");
+    break;
+  case LEARN_DOTS_OTHER:
+    teach.say("learn dots_kiswahili.wav");
+    printf("Selecting Kiswahili Learn Dots\n");
+    break;
+  case DOT_PRACTICE_OTHER:
+    teach.say("dot practice_kiswahili.wav");
+    printf("Selecting Kiswahili Dot Practice\n");
+    break;
+  case LEARN_LETTERS_OTHER:
+    teach.say("learn letters_kiswahili.wav");
+    printf("Selecting Kiswahili Learn Letters\n");
+    break;
+  case LEARN_NUMBERS_OTHER:
+    numbers.say("learn_numbers_kiswahili.wav");
+    printf("Selecting Kiswahili Learn Numbers\n");
+    break;
+  case LETTER_PRACTICE_OTHER:
+    teach.say("letter practice_kiswahili.wav");
+    printf("Selecting Kiswahili Letter Practice\n");
+    break;
+  case FREE_SPELLING_OTHER:
+    teach.say("free spelling_kiswahili.wav");
+    printf("Selecting Kiswahili Free Spelling\n");
+    break;
+  case DOMINOS_OTHER:
+    teach.say("dominos_kiswahili.wav");
+    printf("Selecting Kiswahili Dominos\n");
+    break;
+  case HANGMAN_OTHER:
+    teach.say("hangman_kiswahili.wav");
+    printf("Selecting Kiswahili Hangman\n");
+    break;
+  case ANIMAL_OTHER:
+    teach.say("animal game_kiswahili.wav");
+    printf("Selecting Kiswahili Animal Game\n");
+    break;
+  }
+}
+
+
+/* TODO: Move config file reading code to higher level in the program (ie closer to top-level main).  
+*  We currently use a bool so as only to read once, simple and works fine
+*/
+// reads config file and set's language mode.
+void ApplicationDispatcher::processConfigFile()
+{
+	bool cfg_file_ok=false; //assume config file non-existant or corrupted, update status after reading
+	std::string str;
+	std::vector<std::string> strs;
+	std::ifstream cfgfile;
+	
+	std::cout << "reading config file..." << std::endl;
+	cfgfile.open("./config/modes.cfg");
+	
+	while(getline(cfgfile, str))
+	{	
+		if(str.substr(0,1) != "#")
+		{
+			boost::split(strs, str, boost::is_any_of("="));
+			
+			// check the config file line is valid and pointing to lang mode
+			if(strs.size()==2 && strs[0]=="language_mode")
+			{
+				if(strs[1]=="en_ar") language_mode=EN_AR;
+				else if(strs[1]=="en_fr") language_mode=EN_FR;
+				else if(strs[1]=="en_swh") language_mode=EN_SWH;
+				else if(strs[1]=="en2_ar2") language_mode=EN2_AR2;
+				
+				cfg_file_ok = true; //we've encountered a correct var setting, set file status to OK
+				std::cout << "config file line: " << strs[0] << " " << strs[1] << std::endl;
+				std::cout << "language_mode set: " << language_mode << std::endl;
+			}
+		}
+	}
+	
+	cfgfile.close();
+	cfg_file_processed=true;
+	
+	if(cfg_file_ok==false)
+	{	std::cout << "Warning:  Config file does not exist or does not specify default language.  Defaulting to en_ar" << std::endl;
+		language_mode=EN_AR;
+	}	
+	
+}	

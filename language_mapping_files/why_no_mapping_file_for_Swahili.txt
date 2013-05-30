@@ -1,0 +1,2 @@
+There is no language mapping file for Swahili because the Swahili language uses
+English alphabets. tada!
