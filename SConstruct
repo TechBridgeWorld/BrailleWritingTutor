@@ -108,7 +108,7 @@ btEnv = env.Clone()
 BT_SOURCES = Glob("src/BrailleTutor-0.7.1/lib/*.cc",strings=True)+Glob("src/BrailleTutor-0.7.1/extras/*.cc",strings=True)
 
 # Overrides
-btEnv["LIBS"].extend(["boost_thread"]) if isLinux() else btEnv["LIBS"].extend(["boost_system-mgw46-mt-1_53", "boost_system-mgw46-mt-1_53"])
+btEnv["LIBS"].extend(["boost_thread"]) if isLinux() else btEnv["LIBS"].extend(["boost_system-mgw47-mt-1_53", "boost_system-mgw47-mt-1_53"])
 
 btEnv["CPPPATH"].extend([BOOST_HEADERS,"src/BrailleTutor-0.7.1/include","src/BrailleTutor-0.7.1/extras"])
 #
@@ -180,7 +180,7 @@ finalEnv["CPPPATH"].extend([BOOST_HEADERS])
 finalEnv["LIBPATH"].extend([BOOST_LIB,SDL_LIB])
 finalEnv["LIBS"].extend(["SDL","SDL_mixer"])
 
-finalEnv["LIBS"].extend(["boost_thread"]) if isLinux() else finalEnv["LIBS"].extend(["boost_thread-mgw46-mt-1_53", "boost_system-mgw46-mt-1_53"])
+finalEnv["LIBS"].extend(["boost_thread"]) if isLinux() else finalEnv["LIBS"].extend(["boost_thread-mgw47-mt-1_53", "boost_system-mgw47-mt-1_53"])
 
 #
 
