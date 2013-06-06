@@ -137,7 +137,7 @@ struct FunctorIOEventDecoder {
 	  // Add in timeout. First we need to know the xtime for when the
 	  // timeout happents
 	  boost::xtime time_end;
-	  boost::xtime_get(&time_end, boost::TIME_UTC_);
+	  boost::xtime_get(&time_end, boost::TIME_UTC_);	// Changed by Gary Giger since TIME_UTC does not exist in boost 1.53.0 and was replaced with TIME_UTC_
 	  time_end.sec += glyph_delay.secs;
 	  const unsigned int nsecs = glyph_delay.msecs * 1000000;
 	  time_end.nsec += nsecs % 1000000000;

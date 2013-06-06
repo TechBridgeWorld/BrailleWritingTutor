@@ -15,6 +15,7 @@
 #include "common/language_utils.h"
 //maps the actual names of the animals in a foreign (ie,non-native) language to their english names
   typedef std::map<std::string,std::string> ForeignLanguage2EnglishMap;
+  
 class Animal : public IBTApp
 {
 public:

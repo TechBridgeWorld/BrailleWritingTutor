@@ -10,9 +10,27 @@ if isLinux():
   SDL_HEADERS = "/usr/include/SDL"
   SDL_LIB = "/usr/lib"
 else:
+  # Gary: Original paths when I downloaded the code from AFS
+  #BOOST_HEADERS = "C:/Program Files/boost/boost_1_34_1" # path to your Boost installation
+  #BOOST_HEADERS = "C:/boost/boost_1_34_1" # path to your Boost installation
 
+  # Path of the built boost libraries on my machine JimmyOlsen Boost version 1_53_0
+  # After building Boost it said to inlcude these paths in my project if using 1.53.0
+  #BOOST_HEADERS = "C:/boost/boost_1_53_0"
+
+  # Path of the built boost libraries on my machine JimmyOlsen Boost version 1_49_0
+  # After building Boost it said to inlcude these paths in my project if using 1.49.0
+  #BOOST_HEADERS = "C:/boost/boost_1_49_0"
   BOOST_HEADERS = "C:/boost/boost_1_53_0"
-  BOOST_LIB      = "./externals.win/boost/lib"
+
+  # User previously, but did not work 
+  #BOOST_LIB     = "C:\Program Files (x86)\boost\boost_1_53_0\stage\lib"
+  #BOOST_LIB     = "C:\Program Files (x86)\boost\boost_1_49_0\stage\lib"
+
+  BOOST_LIB      = "./externals.win/boost/lib"	# I copied the binary thread library that I built into this directory
+
+  #BOOST_HEADERS = "C:/boost/boost_1_53_0" #path to your Boost installation
+  #BOOST_HEADERS = "./externals.win/boost/include" #path to your Boost installation
 
   SDL_HEADERS = "./externals.win/SDL/include" #Note: Make sure you have SDL_mixer.h here. Recall that SDL_Mixer is a separate project so you have to get it separately
   SDL_LIB = "./externals.win/SDL/lib"
@@ -108,7 +126,10 @@ btEnv = env.Clone()
 BT_SOURCES = Glob("src/BrailleTutor-0.7.1/lib/*.cc",strings=True)+Glob("src/BrailleTutor-0.7.1/extras/*.cc",strings=True)
 
 # Overrides
-btEnv["LIBS"].extend(["boost_thread"]) if isLinux() else btEnv["LIBS"].extend(["boost_system-mgw46-mt-1_53", "boost_system-mgw46-mt-1_53"])
+#btEnv["LIBS"].extend(["boost_thread"])
+#btEnv["LIBS"].extend(["boost_thread"]) if isLinux() else btEnv["LIBS"].extend(["boost_thread-mgw34-mt-1_34_1"])
+#btEnv["LIBS"].extend(["boost_thread"]) if isLinux() else btEnv["LIBS"].extend(["boost_thread-mgw46-mt-1_49"])
+btEnv["LIBS"].extend(["boost_thread"]) if isLinux() else btEnv["LIBS"].extend(["boost_thread-mgw47-mt-1_53", "libboost_system-mgw47-mt-1_53"])
 
 btEnv["CPPPATH"].extend([BOOST_HEADERS,"src/BrailleTutor-0.7.1/include","src/BrailleTutor-0.7.1/extras"])
 #
@@ -169,7 +190,7 @@ adEnv.Alias("ad",AD_LIB)
 # Command: scons
 #************************************************
 finalEnv = commonEnv.Clone() #Note: Clone()ing from commonEnv
-SRC_DIRS=[".","dot_scaffold","dot_practice","domino","learn_dots","letter_practice","learn_letters","letter_scaffold","animal","hangman","learn_numbers","number_scaffold"]
+SRC_DIRS=[".","dot_scaffold","household","dot_practice","domino","learn_dots","letter_practice","learn_letters","letter_scaffold","animal","hangman","learn_numbers","number_scaffold"]
 SRCS = []
 
 for dir in SRC_DIRS:
@@ -180,9 +201,9 @@ finalEnv["CPPPATH"].extend([BOOST_HEADERS])
 finalEnv["LIBPATH"].extend([BOOST_LIB,SDL_LIB])
 finalEnv["LIBS"].extend(["SDL","SDL_mixer"])
 
-finalEnv["LIBS"].extend(["boost_thread"]) if isLinux() else finalEnv["LIBS"].extend(["boost_thread-mgw46-mt-1_53", "boost_system-mgw46-mt-1_53"])
-
-#
+#finalEnv["LIBS"].extend(["boost_thread"]) if isLinux() else finalEnv["LIBS"].extend(["boost_thread-mgw34-mt-1_34_1"])
+#finalEnv["LIBS"].extend(["boost_thread"]) if isLinux() else finalEnv["LIBS"].extend(["boost_thread-mgw46-mt-1_49"])	# Changed by Gary since I am trying to use boost 1.49.0
+finalEnv["LIBS"].extend(["boost_thread"]) if isLinux() else finalEnv["LIBS"].extend(["boost_thread-mgw47-mt-1_53", "boost_system-mgw47-mt-1_53"])	# Changed by Gary since I am trying to use boost 1.53.0
 
 # This is the main executable
 FINAL_EXECUTABLE = finalEnv.Program(target="btbt",source=SRCS+VOICE_OBJ+COMMON_LIB+AD_LIB)

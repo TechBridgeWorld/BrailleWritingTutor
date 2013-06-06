@@ -80,7 +80,7 @@ void TimeInterval::sleep() const
 {
   // First get the time right now
   boost::xtime time_begin;
-  boost::xtime_get(&time_begin, boost::TIME_UTC_);
+  boost::xtime_get(&time_begin, boost::TIME_UTC_);	// Gary: Changed from TIME_UTC to TIME_UTC_ in 1.53.0
 
   // Now set up the dummy mutex and condition variable, then grab mutex
   boost::mutex			dummy_mutex;

@@ -16,6 +16,7 @@
 #include "common/utilities.h"
 #include "common/IBTApp.h"
 
+
 struct ApplicationDispatcher : public IOEventHandler
 {
   enum modes {
@@ -30,6 +31,7 @@ struct ApplicationDispatcher : public IOEventHandler
     DOMINOS_ENGLISH,
     HANGMAN_ENGLISH,
     ANIMAL_GAME_ENGLISH,
+	HOUSEHOLD_GAME_ENGLISH,
     FREE_PLAY_ARABIC,
     FREE_SPELLING_ARABIC,
     FREE_NUMBERS_ARABIC,

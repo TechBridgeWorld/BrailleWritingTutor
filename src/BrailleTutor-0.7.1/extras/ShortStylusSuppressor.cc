@@ -102,7 +102,7 @@ struct FunctorTimeout {
   {
     // First get the time right now
     boost::xtime later;
-    boost::xtime_get(&later, boost::TIME_UTC_);
+    boost::xtime_get(&later, boost::TIME_UTC_);	// Gary: TIME_UTC to TIME_UTC_
     // Then add an interval. NB: This is exactly three weeks! Don't
     // let a program using this run for more than three weeks!
     later.sec += 1814400;
