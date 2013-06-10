@@ -8,8 +8,13 @@
 #include <windows.h>
 #include <math.h>
 
-int math_mode = 0;/* default for now */
-int choose_mode = 1; 
+#define MAX_DIGITS 3
+
+int math_mode = SUBTRACTION;/* default for now */
+int choose_mode = 0; 
+static int digit_position = 0;
+static int digit_array[MAX_DIGITS];
+static int num_digits = 0;
 
  Arithmetic::Arithmetic(IOEventParser& my_iep, 
  		const std::string& path_to_mapping_file, SoundsUtil* my_su, bool f) :
@@ -23,8 +28,7 @@ int choose_mode = 1;
   boost::thread t(processEvent);
   t.join();
  */
-  Fact_new();
-  
+  Fact_new();  
 }
   
 
@@ -58,6 +62,7 @@ void Arithmetic::Fact_new()
   int result = 100;
   int num1, num2;
   while(result >= 10 || result < 0){
+    printf("result %d\n", result);
   	num1 = (int) rand() % 10; 
   	num2 = (int) rand() % 10;
     if (math_mode == ADDITION) {
@@ -70,17 +75,33 @@ void Arithmetic::Fact_new()
         result = num1 * num2;
     }
     
+    
   }
   current_sequence = '\0';
-  /* THIS IS TEMPORARY TO ENSURE A SINGLE DIGIT ANSWER */
-
-  target_sequence = convertToDotSequence(IBTApp::getCurrentCharset(), result);
+  
   dots1 = convertToDotSequence(IBTApp::getCurrentCharset(), num1);
   dots2 = convertToDotSequence(IBTApp::getCurrentCharset(), num2);
   std::cout<<"question is "<<num1 << " and " << num2 <<std::endl;
   std::cout<<"desired result is:"<<result<<std::endl;
   printf("%d\n",result);
+  /* populate the digit array with the digits from the result */
+  result = 21;
+  getDigits(result);
   sayArithmeticQuestion(dots1, dots2);
+}
+
+void Arithmetic::getDigits(int num) 
+{
+  int digit, i;
+  num_digits = (int) log10(num) + 1;
+  printf("num digits %d", num_digits);
+  for (i = 0; i < num_digits; i++) {\
+    digit = num % 10;
+    num /= 10;
+    digit_array[MAX_DIGITS - i - 1] = digit;
+    printf(" digit %d", digit);
+  }
+  printf("\n");
 }
 
 void Arithmetic::sayArithmeticQuestion(const DotSequence& d1, 
@@ -110,13 +131,24 @@ void Arithmetic::sayArithmeticQuestion(const DotSequence& d1,
   su->sayNumber(getTeacherVoice(), n2, false);
 }
 
-/*TOD: enhance for multidigit answers. used with place holders in the number*/
+/*TODO: enhance for multidigit answers. used with place holders in the number*/
 void Arithmetic::AP_attempt(unsigned char dot)
 {
 	su->sayNumber(getStudentVoice(), dot, nomirror);
+  printf("got here\n");
+  static int strt = MAX_DIGITS - num_digits; // where to start in array
+  i = 0;
+  for (i = 0; i<MAX_DIGITS; i++){
 
+    printf("index %d is %d\n",i, digit_array[i]);
+  }
+  printf("digit pos %d\n", digit_position);
+  current_target = digit_array[strt + digit_position];
+  printf("current target %d", current_target);
+  target_sequence = convertToDotSequence(IBTApp::getCurrentCharset(),
+                                         current_target);
   //Check if user hit the right dot (ie, the dot exists in the target sequence)
-  printf("target sequence is %d\n", target_sequence);
+  
   if( my_dot_mask(dot) & target_sequence )
   {
     current_sequence = current_sequence | my_dot_mask(dot); //add the dot to the current on-going sequence
@@ -124,7 +156,16 @@ void Arithmetic::AP_attempt(unsigned char dot)
     if( current_sequence == target_sequence )
     {
       su->saySound(getTeacherVoice(), "good");
-      Fact_new();
+      if (digit_position >= num_digits - 1){ //hanve reached the end of the #
+        printf("digits %d num digits %d\n", digit_position, num_digits);
+        digit_position = 0; // reset it
+        Fact_new(); /* ideally repeat the question and answer here */
+      } 
+      else {
+        digit_position++;
+        current_sequence = 0;
+        printf("incrememting\n");
+      }
       return;
     }
   }

@@ -27,6 +27,7 @@ private:
   void AP_attempt(unsigned char);
   void sayArithmeticQuestion(const DotSequence& d1, 
   								const DotSequence& d2) const;
+  void getDigits(int);
 
 private:
   SoundsUtil* su;
@@ -39,8 +40,10 @@ private:
   int num1;
   int num2;
   int result; 
+  int digit, i, current_target;
   DotSequence dots1;
   DotSequence dots2;
+ 
 };
 
 
