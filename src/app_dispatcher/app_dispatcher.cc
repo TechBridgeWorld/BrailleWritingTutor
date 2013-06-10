@@ -25,6 +25,7 @@
 #include "hangman/hangman.h"
 #include "animal/animal.h"
 #include "household/household.h"
+#include "arithmetic_practice/arithmetic.h"
 
 
 using namespace BrailleTutorNS;
@@ -222,8 +223,10 @@ void ApplicationDispatcher::processConfigFile()
             modes_list.push_back(HANGMAN_ENGLISH);
           } else if (mode_str == "ANIMAL_GAME_ENGLISH") {
             modes_list.push_back(ANIMAL_GAME_ENGLISH);
-		  } else if (mode_str == "HOUSEHOLD_GAME_ENGLISH") {
-			modes_list.push_back(HOUSEHOLD_GAME_ENGLISH);
+		      } else if (mode_str == "HOUSEHOLD_GAME_ENGLISH") {
+			       modes_list.push_back(HOUSEHOLD_GAME_ENGLISH);
+          } else if (mode_str == "ARITHMETIC_PRACTICE_ENGLISH") {
+            modes_list.push_back(ARITHMETIC_PRACTICE_ENGLISH);
           } else if (mode_str == "FREE_PLAY_ARABIC") {
             modes_list.push_back(FREE_PLAY_ARABIC);
           } else if (mode_str == "FREE_SPELLING_ARABIC") {
@@ -330,7 +333,8 @@ void ApplicationDispatcher::processConfigFile()
     modes_list.push_back(LETTER_PRACTICE_ENGLISH);
     modes_list.push_back(HANGMAN_ENGLISH);
     modes_list.push_back(ANIMAL_GAME_ENGLISH);
-	modes_list.push_back(HOUSEHOLD_GAME_ENGLISH);
+    modes_list.push_back(ARITHMETIC_PRACTICE_ENGLISH);
+	  modes_list.push_back(HOUSEHOLD_GAME_ENGLISH);
   }
 }	
 
@@ -362,7 +366,9 @@ IBTApp* ApplicationDispatcher::switchToSelectedMode() const {
   case ANIMAL_GAME_ENGLISH:
     return new EnglishAnimal(iep);
   case HOUSEHOLD_GAME_ENGLISH:
-	return new EnglishHousehold(iep); 
+	 return new EnglishHousehold(iep); 
+  case ARITHMETIC_PRACTICE_ENGLISH:
+    return new EnglishArithmeticPractice(iep);
   case FREE_PLAY_ARABIC:
     return new ArabicDotScaffold(iep);
   case FREE_NUMBERS_ARABIC:
@@ -483,9 +489,13 @@ void ApplicationDispatcher::playSelectedMode() const
     printf("Selecting English Animal Game\n");
     break;
   case HOUSEHOLD_GAME_ENGLISH:
-	teach.say("good.wav");
-	printf("Selecting English Household Game\n");
-	break;
+	  teach.say("good.wav"); //TODO change this
+	  printf("Selecting English Household Game\n");
+	  break;
+  case ARITHMETIC_PRACTICE_ENGLISH:
+    teach.say("no.wav"); //TODO CHANGE THIS
+    printf("Selecting English Maths pracice\n");
+    break;
   case FREE_PLAY_ARABIC:
     teach.say("free play_arabic.wav");
     printf("Selecting Arabic Dot Scaffold\n");

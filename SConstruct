@@ -190,7 +190,7 @@ adEnv.Alias("ad",AD_LIB)
 # Command: scons
 #************************************************
 finalEnv = commonEnv.Clone() #Note: Clone()ing from commonEnv
-SRC_DIRS=[".","dot_scaffold","household","dot_practice","domino","learn_dots","letter_practice","learn_letters","letter_scaffold","animal","hangman","learn_numbers","number_scaffold"]
+SRC_DIRS=[".","dot_scaffold","household", "arithmetic_practice", "dot_practice","domino","learn_dots","letter_practice","learn_letters","letter_scaffold","animal","hangman","learn_numbers","number_scaffold"]
 SRCS = []
 
 for dir in SRC_DIRS:
