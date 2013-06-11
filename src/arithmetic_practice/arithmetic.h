@@ -61,7 +61,4 @@ public:
 /* put in the rest here */
 
 
-
-
-
 #endif /* ARITHMETIC_H_ */

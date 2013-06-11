@@ -3,18 +3,22 @@
  * June 2013
  */
 
+ /* TODO: DIFFICULTY LEVEL ENTRY AS WELL */
+
 #include "arithmetic.h"
 #include "Dots.h"
-#include <windows.h>
 #include <math.h>
 
-#define MAX_DIGITS 3
+#define MAX_DIGITS 4 /* maximum digits that an answer can have */
 
-int math_mode = SUBTRACTION;/* default for now */
-int choose_mode = 0; 
+int math_mode;/* default for now */
+static int choose_mode = 1;  /* mode needs to be chose first */
 static int digit_position = 0;
 static int digit_array[MAX_DIGITS];
 static int num_digits = 0;
+static int difficulty_level = 2; /* how many digits the answer can be */
+
+
 
  Arithmetic::Arithmetic(IOEventParser& my_iep, 
  		const std::string& path_to_mapping_file, SoundsUtil* my_su, bool f) :
@@ -23,11 +27,6 @@ static int num_digits = 0;
 {
   //su->saySound(math_s, "arithmetic_practice");
   printf("starting practice\n");
- /*  printf("press button 1 for addition, 2 for subtraction, 3 for multiplication\n");
-  
-  boost::thread t(processEvent);
-  t.join();
- */
   Fact_new();  
 }
   
@@ -37,17 +36,35 @@ Arithmetic::~Arithmetic()
   delete su;
 }
 
-/* TODO figure out how to get different modes entered initially */
+
 void Arithmetic::processEvent(IOEvent& e)
 {
 	//std::cout << "processEvent" << std::endl;
   if( e.type == IOEvent::BUTTON_DOWN && e.button == 0 )
     return;
   if (e.type == IOEvent::BUTTON_DOWN && choose_mode == 1) {
-    //need to interpret it as mode switching
+    /* need to interpret it as mode switching */
     printf("dot is %d\n", e.button);
-    math_mode = e.button;
-    choose_mode = 0;
+    if (e.button == 4) {
+      math_mode = ADDITION;
+      choose_mode = 0;
+      Fact_new();
+    }
+    else if (e.button == 5) {
+      math_mode = SUBTRACTION;
+      choose_mode = 0;
+      Fact_new();
+    }
+    else if (e.button == 6) {
+      math_mode = MULTIPLICATION;
+      choose_mode = 0;
+      Fact_new();
+    }
+    else {
+        printf("malformed input, please select buttons 1, 2, or 3\n");
+    }
+    /* turn it off and "restart" the activity */
+    
   }
   else if( e.type == IOEvent::STYLUS_DOWN || e.type == IOEvent::BUTTON_DOWN )
   {
@@ -57,45 +74,57 @@ void Arithmetic::processEvent(IOEvent& e)
 
 void Arithmetic::Fact_new()
 {
-  printf("called fact new\n");
-  //generate a random number between 0 to 9
-  int result = 100;
-  int num1, num2;
-  while(result >= 10 || result < 0){
-    printf("result %d\n", result);
-  	num1 = (int) rand() % 10; 
-  	num2 = (int) rand() % 10;
-    if (math_mode == ADDITION) {
-  	   result = num1 + num2;
+  /* this is the default behavior of fact_new */
+  if (!choose_mode) {
+    printf("called fact new\n");
+    //generate a random number between 0 to 9
+    int result = -1; // ensures too small to start
+    int num1, num2;
+    int max = pow(10, difficulty_level);
+    while(result >= max || result < 0){
+      printf("result %d mode %d\n", result, math_mode);
+    	num1 = (int) rand() % max; 
+    	num2 = (int) rand() % max;
+      if (math_mode == ADDITION) {
+    	   result = num1 + num2;
+      }
+      else if (math_mode == SUBTRACTION) {
+         result = num1 - num2;
+      }
+      else if (math_mode == MULTIPLICATION) {
+          result = num1 * num2;
+      }
     }
-    else if (math_mode == SUBTRACTION) {
-       result = num1 - num2;
-    }
-    else if (math_mode == MULTIPLICATION) {
-        result = num1 * num2;
-    }
+    current_sequence = '\0';
     
-    
+    dots1 = convertToDotSequence(IBTApp::getCurrentCharset(), num1);
+    dots2 = convertToDotSequence(IBTApp::getCurrentCharset(), num2);
+    std::cout<<"question is "<<num1 << " and " << num2 <<std::endl;
+    std::cout<<"desired result is:"<<result<<std::endl;
+    printf("%d\n",result);
+    /* populate the digit array with the digits from the result */
+    getDigits(result);
+    sayArithmeticQuestion(dots1, dots2);
   }
-  current_sequence = '\0';
-  
-  dots1 = convertToDotSequence(IBTApp::getCurrentCharset(), num1);
-  dots2 = convertToDotSequence(IBTApp::getCurrentCharset(), num2);
-  std::cout<<"question is "<<num1 << " and " << num2 <<std::endl;
-  std::cout<<"desired result is:"<<result<<std::endl;
-  printf("%d\n",result);
-  /* populate the digit array with the digits from the result */
-  result = 21;
-  getDigits(result);
-  sayArithmeticQuestion(dots1, dots2);
+
+  /* this is not default behavior and is to allow the user to select modes */
+  else {
+    /* TODO: have SL record things for this explaining */
+    
+    printf("please enter math mode:\n \
+            press button 1 for addition, \n \ 
+            press button 2 for subtraction, \n \
+            press button 3 for multiplication\n");
+  }
+
 }
 
 void Arithmetic::getDigits(int num) 
 {
   int digit, i;
-  num_digits = (int) log10(num) + 1;
+  num_digits = (num == 0) ? (1) : ((int) log10(num) + 1);
   printf("num digits %d", num_digits);
-  for (i = 0; i < num_digits; i++) {\
+  for (i = 0; i < num_digits; i++) {
     digit = num % 10;
     num /= 10;
     digit_array[MAX_DIGITS - i - 1] = digit;
@@ -115,7 +144,11 @@ void Arithmetic::sayArithmeticQuestion(const DotSequence& d1,
   n2 = atoi(((std::string) charset[d2]).c_str());
   su->saySound(math_s, "please_write_the_number_that_is_equal_to");
   /* sandwich the sounds together */
+
+
+  /* TODO: put in looping here */
   su->sayNumber(getTeacherVoice(), n1, false); //flip is false regardless of mirrored or unmirrored
+  
   if (math_mode == ADDITION) {
   	 su->saySound(getTeacherVoice(), "plus");
   }
@@ -131,7 +164,6 @@ void Arithmetic::sayArithmeticQuestion(const DotSequence& d1,
   su->sayNumber(getTeacherVoice(), n2, false);
 }
 
-/*TODO: enhance for multidigit answers. used with place holders in the number*/
 void Arithmetic::AP_attempt(unsigned char dot)
 {
 	su->sayNumber(getStudentVoice(), dot, nomirror);
