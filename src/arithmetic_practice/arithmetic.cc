@@ -9,15 +9,16 @@
 #include "Dots.h"
 #include <math.h>
 
-#define MAX_DIGITS 4 /* maximum digits that an answer can have */
+
 
 int math_mode;/* default for now */
 static int choose_mode = 1;  /* mode needs to be chose first */
 static int digit_position = 0;
-static int digit_array[MAX_DIGITS];
 static int num_digits = 0;
-static int difficulty_level = 2; /* how many digits the answer can be */
+static int difficulty_level = 1; /* how many digits the answer can be */
 
+/* TODO: figure out if difficulty should be changable from menu or
+as students get more advanced */
 
 
  Arithmetic::Arithmetic(IOEventParser& my_iep, 
@@ -27,6 +28,7 @@ static int difficulty_level = 2; /* how many digits the answer can be */
 {
   //su->saySound(math_s, "arithmetic_practice");
   printf("starting practice\n");
+  srand(time(0)); // initializing the random seed
   Fact_new();  
 }
   
@@ -74,6 +76,9 @@ void Arithmetic::processEvent(IOEvent& e)
 
 void Arithmetic::Fact_new()
 {
+  clearArray(num1_array);
+  clearArray(response_array);
+  clearArray(num2_array);
   /* this is the default behavior of fact_new */
   if (!choose_mode) {
     printf("called fact new\n");
@@ -92,7 +97,7 @@ void Arithmetic::Fact_new()
          result = num1 - num2;
       }
       else if (math_mode == MULTIPLICATION) {
-          result = num1 * num2;
+         result = num1 * num2;
       }
     }
     current_sequence = '\0';
@@ -102,9 +107,12 @@ void Arithmetic::Fact_new()
     std::cout<<"question is "<<num1 << " and " << num2 <<std::endl;
     std::cout<<"desired result is:"<<result<<std::endl;
     printf("%d\n",result);
-    /* populate the digit array with the digits from the result */
-    getDigits(result);
-    sayArithmeticQuestion(dots1, dots2);
+    /* populate the digit array with the digits from the result and nums */
+    getDigits(result, response_array);
+    getDigits(num1, num1_array);
+    getDigits(num2, num2_array);
+    num_digits = (result == 0) ? (1) : ((int) log10(result) + 1);
+    sayArithmeticQuestion();
   }
 
   /* this is not default behavior and is to allow the user to select modes */
@@ -112,19 +120,26 @@ void Arithmetic::Fact_new()
     /* TODO: have SL record things for this explaining */
     
     printf("please enter math mode:\n \
-            press button 1 for addition, \n \ 
+            press button 1 for addition, \n \
             press button 2 for subtraction, \n \
             press button 3 for multiplication\n");
   }
 
 }
 
-void Arithmetic::getDigits(int num) 
+void Arithmetic::clearArray(int *a)
+{
+  int i;
+  for (i = 0; i < MAX_DIGITS; i++){
+    a[i] = -1;
+  }
+}
+void Arithmetic::getDigits(int num, int *digit_array)
 {
   int digit, i;
-  num_digits = (num == 0) ? (1) : ((int) log10(num) + 1);
-  printf("num digits %d", num_digits);
-  for (i = 0; i < num_digits; i++) {
+  int len = (num == 0) ? (1) : ((int) log10(num) + 1); // local use
+  printf("num digits %d", len);
+  for (i = 0; i < len; i++) {
     digit = num % 10;
     num /= 10;
     digit_array[MAX_DIGITS - i - 1] = digit;
@@ -133,21 +148,22 @@ void Arithmetic::getDigits(int num)
   printf("\n");
 }
 
-void Arithmetic::sayArithmeticQuestion(const DotSequence& d1, 
-									   const DotSequence& d2) const
+void Arithmetic::sayArithmeticQuestion()
 {
   std::cout << "sayArithmeticQuestion" << std::endl;
   
   static const Charset& charset = IBTApp::getCurrentCharset();
-  int n1,n2;
+ /*
   n1 = atoi(((std::string) charset[d1]).c_str()); //get the number
   n2 = atoi(((std::string) charset[d2]).c_str());
+  */
   su->saySound(math_s, "please_write_the_number_that_is_equal_to");
   /* sandwich the sounds together */
 
 
   /* TODO: put in looping here */
-  su->sayNumber(getTeacherVoice(), n1, false); //flip is false regardless of mirrored or unmirrored
+  say_multidigit(num1_array);
+  //su->sayNumber(getTeacherVoice(), n1, false); //flip is false regardless of mirrored or unmirrored
   
   if (math_mode == ADDITION) {
   	 su->saySound(getTeacherVoice(), "plus");
@@ -161,21 +177,37 @@ void Arithmetic::sayArithmeticQuestion(const DotSequence& d1,
   else if (math_mode == DIVISION) {
   	 su->saySound(getTeacherVoice(), "divided_by");
   }
-  su->sayNumber(getTeacherVoice(), n2, false);
+  say_multidigit(num2_array);
+}
+
+/* Splits the number into digits and says it by digit */
+/* need to have global arrays that are passed by reference to 
+ * the get digit function */ 
+
+/* TODO: need to pass in how many digits */
+void Arithmetic::say_multidigit(int *a)
+{
+  int i;
+  for (i = 0; i < MAX_DIGITS; i++){
+    if (a[i] != -1){
+      printf("saying %d\n",a[i]);
+      su->sayNumber(getStudentVoice(), a[i], false);
+    }
+  }
 }
 
 void Arithmetic::AP_attempt(unsigned char dot)
 {
 	su->sayNumber(getStudentVoice(), dot, nomirror);
   printf("got here\n");
-  static int strt = MAX_DIGITS - num_digits; // where to start in array
+  int strt = MAX_DIGITS - num_digits; // where to start in array
   i = 0;
   for (i = 0; i<MAX_DIGITS; i++){
 
-    printf("index %d is %d\n",i, digit_array[i]);
+    printf("index %d is %d\n",i, response_array[i]);
   }
   printf("digit pos %d\n", digit_position);
-  current_target = digit_array[strt + digit_position];
+  current_target = response_array[strt + digit_position];
   printf("current target %d", current_target);
   target_sequence = convertToDotSequence(IBTApp::getCurrentCharset(),
                                          current_target);

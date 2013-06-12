@@ -12,6 +12,7 @@
 #define SUBTRACTION 2
 #define MULTIPLICATION 3
 #define DIVISION 4
+#define MAX_DIGITS 6
 
 class Arithmetic : public IBTApp
 {
@@ -25,11 +26,11 @@ public:
 private:
   void Fact_new();
   void AP_attempt(unsigned char);
-  void sayArithmeticQuestion(const DotSequence& d1, 
-  								const DotSequence& d2) const;
-  void getDigits(int);
+  void sayArithmeticQuestion();
+  void getDigits(int, int*);
+  void say_multidigit(int*);
+  void clearArray(int*);
 
-private:
   SoundsUtil* su;
   const Voice math_s;
   bool nomirror;
@@ -43,6 +44,9 @@ private:
   int digit, i, current_target;
   DotSequence dots1;
   DotSequence dots2;
+  int response_array[MAX_DIGITS];
+  int num1_array[MAX_DIGITS];
+  int num2_array[MAX_DIGITS];
  
 };
 
