@@ -15,8 +15,7 @@ int math_mode;/* default for now */
 static int choose_mode = 1;  /* mode needs to be chose first */
 static int digit_position = 0;
 static int num_digits = 0;
-static int difficulty_level = 1; /* how many digits the answer can be */
-
+static int difficulty_level = 2; /* how many digits the answer can be */
 /* TODO: figure out if difficulty should be changable from menu or
 as students get more advanced */
 
@@ -42,7 +41,8 @@ Arithmetic::~Arithmetic()
 void Arithmetic::processEvent(IOEvent& e)
 {
 	//std::cout << "processEvent" << std::endl;
-  if( e.type == IOEvent::BUTTON_DOWN && e.button == 0 )
+  if( e.type == IOEvent::BUTTON_DOWN && e.button == 0 && choose_mode == 0)
+    //choose_mode = 1; // for next time
     return;
   if (e.type == IOEvent::BUTTON_DOWN && choose_mode == 1) {
     /* need to interpret it as mode switching */
@@ -166,16 +166,16 @@ void Arithmetic::sayArithmeticQuestion()
   //su->sayNumber(getTeacherVoice(), n1, false); //flip is false regardless of mirrored or unmirrored
   
   if (math_mode == ADDITION) {
-  	 su->saySound(getTeacherVoice(), "plus");
+  	 su->saySound(math_s, "plus");
   }
   else if (math_mode == SUBTRACTION) {
-  	 su->saySound(getTeacherVoice(), "minus");
+  	 su->saySound(math_s, "minus");
   }
   else if (math_mode == MULTIPLICATION) {
-  	 su->saySound(getTeacherVoice(), "times");
+  	 su->saySound(math_s, "into");
   }
   else if (math_mode == DIVISION) {
-  	 su->saySound(getTeacherVoice(), "divided_by");
+  	 su->saySound(math_s, "divided_by");
   }
   say_multidigit(num2_array);
 }
@@ -188,10 +188,13 @@ void Arithmetic::sayArithmeticQuestion()
 void Arithmetic::say_multidigit(int *a)
 {
   int i;
+  char buf[5]; // sl_? + \0
   for (i = 0; i < MAX_DIGITS; i++){
     if (a[i] != -1){
       printf("saying %d\n",a[i]);
-      su->sayNumber(getStudentVoice(), a[i], false);
+      sprintf(buf, "sl_%d", a[i]);
+      printf("buf is %s\n",buf);
+      su->saySound(getTeacherVoice(), buf);
     }
   }
 }
