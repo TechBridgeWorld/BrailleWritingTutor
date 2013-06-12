@@ -26,7 +26,7 @@ public:
 private:
   void Fact_new();
   void AP_attempt(unsigned char);
-  void sayArithmeticQuestion();
+  void sayArithmeticQuestion(bool);
   void getDigits(int, int*);
   void say_multidigit(int*);
   void clearArray(int*);

@@ -15,7 +15,7 @@ int math_mode;/* default for now */
 static int choose_mode = 1;  /* mode needs to be chose first */
 static int digit_position = 0;
 static int num_digits = 0;
-static int difficulty_level = 2; /* how many digits the answer can be */
+static int difficulty_level = 3; /* how many digits the answer can be */
 /* TODO: figure out if difficulty should be changable from menu or
 as students get more advanced */
 
@@ -87,7 +87,7 @@ void Arithmetic::Fact_new()
     int num1, num2;
     int max = pow(10, difficulty_level);
     while(result >= max || result < 0){
-      printf("result %d mode %d\n", result, math_mode);
+      
     	num1 = (int) rand() % max; 
     	num2 = (int) rand() % max;
       if (math_mode == ADDITION) {
@@ -112,13 +112,13 @@ void Arithmetic::Fact_new()
     getDigits(num1, num1_array);
     getDigits(num2, num2_array);
     num_digits = (result == 0) ? (1) : ((int) log10(result) + 1);
-    sayArithmeticQuestion();
+    sayArithmeticQuestion(false); // don't say answer yet
   }
 
   /* this is not default behavior and is to allow the user to select modes */
   else {
     /* TODO: have SL record things for this explaining */
-    
+    su->saySound(math_s, "maths_instructions");
     printf("please enter math mode:\n \
             press button 1 for addition, \n \
             press button 2 for subtraction, \n \
@@ -148,7 +148,7 @@ void Arithmetic::getDigits(int num, int *digit_array)
   printf("\n");
 }
 
-void Arithmetic::sayArithmeticQuestion()
+void Arithmetic::sayArithmeticQuestion(bool say_answer)
 {
   std::cout << "sayArithmeticQuestion" << std::endl;
   
@@ -156,8 +156,12 @@ void Arithmetic::sayArithmeticQuestion()
  /*
   n1 = atoi(((std::string) charset[d1]).c_str()); //get the number
   n2 = atoi(((std::string) charset[d2]).c_str());
+
+
   */
-  su->saySound(math_s, "please_write_the_number_that_is_equal_to");
+  if (!say_answer) {
+    su->saySound(math_s, "please_write_the_number_that_is_equal_to");
+  }
   /* sandwich the sounds together */
 
 
@@ -178,23 +182,53 @@ void Arithmetic::sayArithmeticQuestion()
   	 su->saySound(math_s, "divided_by");
   }
   say_multidigit(num2_array);
+  if (say_answer){
+      su->saySound(math_s, "equals");
+      say_multidigit(response_array);
+  }
 }
 
 /* Splits the number into digits and says it by digit */
 /* need to have global arrays that are passed by reference to 
  * the get digit function */ 
 
-/* TODO: need to pass in how many digits */
+/* TODO: need to be able to handle numbers like 117 */
 void Arithmetic::say_multidigit(int *a)
 {
-  int i;
-  char buf[5]; // sl_? + \0
+  int i, n;
+  char buf[50]; // 
   for (i = 0; i < MAX_DIGITS; i++){
-    if (a[i] != -1){
-      printf("saying %d\n",a[i]);
-      sprintf(buf, "sl_%d", a[i]);
-      printf("buf is %s\n",buf);
-      su->saySound(getTeacherVoice(), buf);
+    if (a[i] != -1 && a[i] != 0){ // case on i
+      switch (MAX_DIGITS - i) {
+        case 1: 
+          printf("ones place %d\n", a[i]);
+          sprintf(buf,"sl_%d", a[i]);
+          su->saySound(math_s, buf);
+          break;
+        case 2:
+          printf("tens place %d\n", a[i]);
+          if (a[i] == 1) {
+            /* then special case */
+            n = 10 + a[i+1]; // get next digit
+            sprintf(buf, "sl_%d", n);
+            su->saySound(math_s, buf);
+            return;
+          }
+          else{
+            sprintf(buf,"sl_10_%d",a[i]);
+            su->saySound(math_s, buf);
+          } 
+          break;
+        case 3: 
+          printf("hundreds place %d\n", a[i]);
+          sprintf(buf,"sl_%d", a[i]);
+          su->saySound(math_s, buf);
+          su->saySound(math_s, "hundred");
+          break;
+        default:
+          break;
+      }
+      
     }
   }
 }
@@ -205,10 +239,7 @@ void Arithmetic::AP_attempt(unsigned char dot)
   printf("got here\n");
   int strt = MAX_DIGITS - num_digits; // where to start in array
   i = 0;
-  for (i = 0; i<MAX_DIGITS; i++){
-
-    printf("index %d is %d\n",i, response_array[i]);
-  }
+ 
   printf("digit pos %d\n", digit_position);
   current_target = response_array[strt + digit_position];
   printf("current target %d", current_target);
@@ -222,13 +253,16 @@ void Arithmetic::AP_attempt(unsigned char dot)
     //are we done?
     if( current_sequence == target_sequence )
     {
-      su->saySound(getTeacherVoice(), "good");
+      
       if (digit_position >= num_digits - 1){ //hanve reached the end of the #
         printf("digits %d num digits %d\n", digit_position, num_digits);
         digit_position = 0; // reset it
+        su->saySound(getTeacherVoice(), "good");
+        sayArithmeticQuestion(true);
         Fact_new(); /* ideally repeat the question and answer here */
       } 
       else {
+        su->saySound(math_s, "good_next"); //asks for next digit
         digit_position++;
         current_sequence = 0;
         printf("incrememting\n");

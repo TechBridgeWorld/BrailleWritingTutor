@@ -493,7 +493,7 @@ void ApplicationDispatcher::playSelectedMode() const
 	  printf("Selecting English Household Game\n");
 	  break;
   case ARITHMETIC_PRACTICE_ENGLISH:
-    teach.say("arithmetic_practice.wav"); 
+    teach.say("maths_practice.wav"); 
     printf("Selecting English Maths pracice\n");
     break;
   case FREE_PLAY_ARABIC:
