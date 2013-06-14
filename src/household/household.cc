@@ -2,13 +2,13 @@
  * household.cc
  * adapted from animal.cc may 2013
  *      Author: Madeleine Clute
- *      Multi-lingual enhancements: Imran
  */
 
 #include <assert.h>
 #include <boost/assign/list_of.hpp>
 #include "household.h"
 
+static time_t last_event_time = time(0);
 
 Household::Household(IOEventParser& my_iep, const std::string& path_to_mapping_file, SoundsUtil* my_su, const std::vector<std::string> my_alph, const ForeignLanguage2EnglishMap sw, const ForeignLanguage2EnglishMap mw, const ForeignLanguage2EnglishMap lw, bool f) :
   IBTApp(my_iep, path_to_mapping_file), iep(my_iep), su(my_su), alphabet(my_alph), short_sounds(sw), med_sounds(mw), long_sounds(lw),
@@ -47,10 +47,11 @@ void Household::processEvent(IOEvent& e)
       firsttime = false;
       return;//skip
     }
-    else
+    else if (!(time(0) == last_event_time))
     {
       su->sayLetter(getStudentVoice(), (std::string) e.letter);
       AL_attempt((std::string) e.letter);
+      last_event_time = time(0);
     }
   }
 }
@@ -117,7 +118,7 @@ void Household::AL_new()
   word_pos = 0;
   //Asound += ".wav";
   std::cout << "		(DEBUG)Animal sound:" << word << std::endl;
-  su->saySound(getTeacherVoice(), "please write the animal2"); // change to something related to animals
+  su->saySound(getTeacherVoice(), "please_write_the_object"); 
   su->saySound(getTeacherVoice(), householdNameToSound(word));
 }
 

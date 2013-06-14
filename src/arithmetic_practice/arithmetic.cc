@@ -10,7 +10,6 @@
 #include <math.h>
 
 
-
 int math_mode;/* default for now */
 static int choose_mode = 1;  /* mode needs to be chose first */
 static int digit_position = 0;
@@ -19,6 +18,9 @@ static int difficulty_level = 3; /* how many digits the answer can be */
 /* TODO: figure out if difficulty should be changable from menu or
 as students get more advanced */
 
+/* experiment to block the backlog of key presses */
+
+static time_t last_pressed_time = time(0);
 
  Arithmetic::Arithmetic(IOEventParser& my_iep, 
  		const std::string& path_to_mapping_file, SoundsUtil* my_su, bool f) :
@@ -68,9 +70,16 @@ void Arithmetic::processEvent(IOEvent& e)
     /* turn it off and "restart" the activity */
     
   }
-  else if( e.type == IOEvent::STYLUS_DOWN || e.type == IOEvent::BUTTON_DOWN )
+  else if( e.type == IOEvent::STYLUS_DOWN || 
+          e.type == IOEvent::BUTTON_DOWN  && 
+          ((time(0) - last_pressed_time) >= 1))
   {
+    last_pressed_time = time(0);
     AP_attempt(getDot(e));
+    
+  }
+  else if(time(0) == last_pressed_time){ // most likely a jammed button
+    printf("caught something\n");
   }
 }
 
@@ -150,25 +159,15 @@ void Arithmetic::getDigits(int num, int *digit_array)
 
 void Arithmetic::sayArithmeticQuestion(bool say_answer)
 {
-  std::cout << "sayArithmeticQuestion" << std::endl;
   
+  std::cout << "sayArithmeticQuestion" << std::endl;
   static const Charset& charset = IBTApp::getCurrentCharset();
- /*
-  n1 = atoi(((std::string) charset[d1]).c_str()); //get the number
-  n2 = atoi(((std::string) charset[d2]).c_str());
-
-
-  */
   if (!say_answer) {
     su->saySound(math_s, "please_write_the_number_that_is_equal_to");
   }
   /* sandwich the sounds together */
-
-
-  /* TODO: put in looping here */
-  say_multidigit(num1_array);
-  //su->sayNumber(getTeacherVoice(), n1, false); //flip is false regardless of mirrored or unmirrored
-  
+  say_multidigit(num1_array); // say first number
+ 
   if (math_mode == ADDITION) {
   	 su->saySound(math_s, "plus");
   }
@@ -181,11 +180,14 @@ void Arithmetic::sayArithmeticQuestion(bool say_answer)
   else if (math_mode == DIVISION) {
   	 su->saySound(math_s, "divided_by");
   }
-  say_multidigit(num2_array);
+  
+  say_multidigit(num2_array); // say second number
+  
   if (say_answer){
       su->saySound(math_s, "equals");
       say_multidigit(response_array);
   }
+  
 }
 
 /* Splits the number into digits and says it by digit */
@@ -257,7 +259,7 @@ void Arithmetic::AP_attempt(unsigned char dot)
       if (digit_position >= num_digits - 1){ //hanve reached the end of the #
         printf("digits %d num digits %d\n", digit_position, num_digits);
         digit_position = 0; // reset it
-        su->saySound(getTeacherVoice(), "good");
+        su->saySound(getTeacherVoice(), "tada"); // plays a nice sound
         sayArithmeticQuestion(true);
         Fact_new(); /* ideally repeat the question and answer here */
       } 

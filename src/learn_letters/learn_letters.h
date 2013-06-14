@@ -157,4 +157,20 @@ private:
   const std::vector<std::string> createGroup4Letters() const;
 };
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+class HindiLearnLetters : public LearnLetters
+{
+public:
+  explicit HindiLearnLetters(IOEventParser&);
+  ~HindiLearnLetters()
+  {
+  }
+private:
+  const std::vector<std::string> createAlphabet() const;
+  const std::vector<std::string> createGroup0Letters() const;
+  const std::vector<std::string> createGroup1Letters() const;
+  const std::vector<std::string> createGroup2Letters() const;
+  const std::vector<std::string> createGroup3Letters() const;
+  const std::vector<std::string> createGroup4Letters() const;
+};
+//
 #endif /* LEARN_LETTERS_H_ */

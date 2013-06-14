@@ -489,7 +489,7 @@ void ApplicationDispatcher::playSelectedMode() const
     printf("Selecting English Animal Game\n");
     break;
   case HOUSEHOLD_GAME_ENGLISH:
-	  teach.say("good.wav"); //TODO change this
+	  teach.say("everyday_noises.wav"); 
 	  printf("Selecting English Household Game\n");
 	  break;
   case ARITHMETIC_PRACTICE_ENGLISH:
