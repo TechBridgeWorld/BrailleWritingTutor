@@ -44,6 +44,26 @@ public:
   void saySound(const Voice&, const std::string&) const ;
 };
 
+class Hindi2SoundsUtil : public SoundsUtil
+{
+public:
+  explicit Hindi2SoundsUtil()
+  {
+  }
+  virtual ~Hindi2SoundsUtil()
+  {
+  }
+  void sayNumber(const Voice&, int, bool) const ;
+  void sayLetter(const Voice&, const std::string&) const ;
+  void sayLetterSequence(const Voice&, const std::string&) const ;
+  void sayDotSequence(const Voice&, DotSequence d) const;
+  void saySound(const Voice&, const std::string&) const ;
+  private:
+  typedef std::map<std::string, std::string> Hindi2LettersToSoundFilesMap;
+  static const Hindi2SoundsUtil::Hindi2LettersToSoundFilesMap Hindi2_letter_map;
+};
+
+
 class ArabicSoundsUtil : public SoundsUtil
 {
 public:

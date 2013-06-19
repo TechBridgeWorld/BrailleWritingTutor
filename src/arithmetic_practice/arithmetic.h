@@ -13,6 +13,7 @@
 #define MULTIPLICATION 3
 #define DIVISION 4
 #define MAX_DIGITS 6
+#define MATH_FLAG 0b00100111 // the symbol proceeding the numbers
 
 class Arithmetic : public IBTApp
 {

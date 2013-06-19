@@ -28,7 +28,7 @@ void ArabicSoundsUtil::sayLetter(const Voice &v, const std::string& letter) cons
     std::cerr << "Ignoring. sayLetter() was expecting a single letter, but received more." << std::endl;
     return;
   }
-
+  
   ArabicLettersToSoundFilesMap::const_iterator iter = arabic_letter_map.find(letter);
   if( iter == arabic_letter_map.end() ) //this arabic letter does not have a corresponding mapping file (or maybe its not a valid arabic letter to begin with hence it doesnt have a mapping file)
   {

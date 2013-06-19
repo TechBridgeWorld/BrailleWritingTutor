@@ -12,7 +12,7 @@ static time_t last_event_time = time(0);
 
 Household::Household(IOEventParser& my_iep, const std::string& path_to_mapping_file, SoundsUtil* my_su, const std::vector<std::string> my_alph, const ForeignLanguage2EnglishMap sw, const ForeignLanguage2EnglishMap mw, const ForeignLanguage2EnglishMap lw, bool f) :
   IBTApp(my_iep, path_to_mapping_file), iep(my_iep), su(my_su), alphabet(my_alph), short_sounds(sw), med_sounds(mw), long_sounds(lw),
-      letter_skill(alphabet.size()), firsttime(true), turncount(0), word(""), target_letter(""), word_pos(0), word_length(0), nomirror(f)
+      letter_skill(alphabet.size()), firsttime(false), turncount(0), word(""), target_letter(""), word_pos(0), word_length(0), nomirror(f)
 {
   for(int i = 0; i < alphabet.size(); i++)
   {
@@ -219,8 +219,8 @@ void Household::AL_attempt(std::string i)
       //std::cout << "    (DEBUG)Now at turn:" << turncount << std::endl;
       if( turncount < 3 )
       {
-        su->saySound(getTeacherVoice(), "please write the animal2");
-        su->saySound(getTeacherVoice(), householdNameToSound(word));
+        //su->saySound(getTeacherVoice(), "please write the animal2");
+        //su->saySound(getTeacherVoice(), householdNameToSound(word));
         //std::cout << "    (DEBUG)Got the letter wrong at turn" << turncount << std::endl;
       }
       else

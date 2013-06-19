@@ -82,6 +82,8 @@ void LearnLetters::LL_new()
     if( letter_skill[target_index].estimate() < .1 )
     {
       target_sequence = charset[GlyphMapping((std::string) alphabet[target_index])];
+      printf("target sequnce is %d\n", target_sequence);
+      std::cout << alphabet[target_index] << std::endl;
       teaching_letter = true;
       break;
     }
@@ -121,6 +123,8 @@ void LearnLetters::LL_new()
   }
 
   GlyphMapping g = charset[target_sequence];
+  printf("size of mapping is %d\n", sizeof(g));
+ // printf("type of mapping is %s\n", (char*) typeof(g));
   su->sayLetter(getTeacherVoice(), (std::string) g);
 
   if( teaching_letter )
@@ -405,3 +409,80 @@ const std::vector<std::string> Arabic2LearnLetters::createGroup4Letters() const
   return boost::assign::list_of("ن")("ه")("و")("ي");
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Hindi2LearnLetters::Hindi2LearnLetters(IOEventParser& my_iep) :
+      LearnLetters(my_iep, "./language_mapping_files/devanagari_mapping.txt", new Hindi2SoundsUtil, createAlphabet(), createGroup0Letters(), createGroup1Letters(), createGroup2Letters(), createGroup3Letters(), createGroup4Letters(), true)
+{
+
+}
+
+const std::vector<std::string> Hindi2LearnLetters::createAlphabet() const
+{
+  return boost::assign::list_of ("अ")
+                                  ("आ")
+                                  ("इ")
+                                  ("ई")
+                                  ("उ")
+                                  ("ऊ")
+                                  ("ए")
+                                  ("ऐ")
+                                  ("ओ")
+                                  ("औ")
+                                  ("क")
+                                  ("ख")
+                                  ("ग")
+                                  ("घ")
+                                  ("च")
+                                  ("छ")
+                                  ("ज")
+                                  ("झ")
+                                  ("ट")
+                                  ("ठ")
+                                  ("ड")
+                                  ("ढ")
+                                  ("ण")
+                                  ("त")
+                                  ("थ")
+                                  ("द")
+                                  ("ध")
+                                  ("न")
+                                  ("प")
+                                  ("फ")
+                                  ("ब")
+                                  ("भ")
+                                  ("म")
+                                  ("य")
+                                  ("र")
+                                  ("ल")
+                                  ("व")
+                                  ("श")
+                                  ("ष")
+                                  ("स")
+                                  ("ह");
+}
+
+const std::vector<std::string> Hindi2LearnLetters::createGroup0Letters() const
+{
+  return boost::assign::list_of ("अ")("आ")("इ")("ई")("उ")("ऊ")("ए")("ऐ");
+}
+
+const std::vector<std::string> Hindi2LearnLetters::createGroup1Letters() const
+{
+  return boost::assign::list_of ("ओ")("औ")("क")("ख")("ग")("घ")("च")("छ");
+}
+
+const std::vector<std::string> Hindi2LearnLetters::createGroup2Letters() const
+{
+  return boost::assign::list_of ("ज")("झ")("ट")("ठ")("ड")("ढ")("ण")("त")("थ");
+} //31
+
+const std::vector<std::string> Hindi2LearnLetters::createGroup3Letters() const
+{
+  return boost::assign::list_of ("द")("ध")("न")("प")("फ")("ब")("भ")("म")("य")("र")   ;
+}
+//
+const std::vector<std::string> Hindi2LearnLetters::createGroup4Letters() const
+{
+  return boost::assign::list_of  ("ल")("व")("श")("ष")("स")("ह");
+}
+//43

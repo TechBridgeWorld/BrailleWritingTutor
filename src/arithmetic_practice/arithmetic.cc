@@ -12,15 +12,18 @@
 
 int math_mode;/* default for now */
 static int choose_mode = 1;  /* mode needs to be chose first */
+static int choose_difficulty = 1; /* can selct difficutly and move up */
 static int digit_position = 0;
 static int num_digits = 0;
-static int difficulty_level = 3; /* how many digits the answer can be */
+static int difficulty_level = 2; /* how many digits the answer can be */
+static int number_sign = 1; /* need to to type the # sign */
 /* TODO: figure out if difficulty should be changable from menu or
 as students get more advanced */
 
 /* experiment to block the backlog of key presses */
 
 static time_t last_pressed_time = time(0);
+static int last_button = 0; //default
 
  Arithmetic::Arithmetic(IOEventParser& my_iep, 
  		const std::string& path_to_mapping_file, SoundsUtil* my_su, bool f) :
@@ -43,9 +46,11 @@ Arithmetic::~Arithmetic()
 void Arithmetic::processEvent(IOEvent& e)
 {
 	//std::cout << "processEvent" << std::endl;
-  if( e.type == IOEvent::BUTTON_DOWN && e.button == 0 && choose_mode == 0)
+  if( e.type == IOEvent::BUTTON_DOWN && e.button == 0 && choose_mode == 0){
     //choose_mode = 1; // for next time
+    sayArithmeticQuestion(false); // repeat question
     return;
+  }
   if (e.type == IOEvent::BUTTON_DOWN && choose_mode == 1) {
     /* need to interpret it as mode switching */
     printf("dot is %d\n", e.button);
@@ -78,7 +83,7 @@ void Arithmetic::processEvent(IOEvent& e)
     AP_attempt(getDot(e));
     
   }
-  else if(time(0) == last_pressed_time){ // most likely a jammed button
+  else if(time(0) == last_pressed_time && e.button == last_button){ // most likely a jammed button
     printf("caught something\n");
   }
 }
@@ -198,9 +203,10 @@ void Arithmetic::sayArithmeticQuestion(bool say_answer)
 void Arithmetic::say_multidigit(int *a)
 {
   int i, n;
+  bool multidigit = false; // to know to say 0 if it on its own
   char buf[50]; // 
   for (i = 0; i < MAX_DIGITS; i++){
-    if (a[i] != -1 && a[i] != 0){ // case on i
+    if (a[i] != -1 && (a[i] != 0 || !multidigit)){ /* checking for how to say #'s */
       switch (MAX_DIGITS - i) {
         case 1: 
           printf("ones place %d\n", a[i]);
@@ -209,6 +215,7 @@ void Arithmetic::say_multidigit(int *a)
           break;
         case 2:
           printf("tens place %d\n", a[i]);
+          multidigit = true;
           if (a[i] == 1) {
             /* then special case */
             n = 10 + a[i+1]; // get next digit
@@ -217,6 +224,7 @@ void Arithmetic::say_multidigit(int *a)
             return;
           }
           else{
+            multidigit = true;
             sprintf(buf,"sl_10_%d",a[i]);
             su->saySound(math_s, buf);
           } 
@@ -237,18 +245,25 @@ void Arithmetic::say_multidigit(int *a)
 
 void Arithmetic::AP_attempt(unsigned char dot)
 {
+
 	su->sayNumber(getStudentVoice(), dot, nomirror);
   printf("got here\n");
   int strt = MAX_DIGITS - num_digits; // where to start in array
   i = 0;
- 
   printf("digit pos %d\n", digit_position);
+
   current_target = response_array[strt + digit_position];
+
   printf("current target %d", current_target);
-  target_sequence = convertToDotSequence(IBTApp::getCurrentCharset(),
-                                         current_target);
+  if (!number_sign){
+    target_sequence = convertToDotSequence(IBTApp::getCurrentCharset(),
+                                          current_target);
+  }
+  else {
+    target_sequence = MATH_FLAG;
+  }
   //Check if user hit the right dot (ie, the dot exists in the target sequence)
-  
+  printf("target sequence is %d\n", target_sequence);
   if( my_dot_mask(dot) & target_sequence )
   {
     current_sequence = current_sequence | my_dot_mask(dot); //add the dot to the current on-going sequence
@@ -256,18 +271,26 @@ void Arithmetic::AP_attempt(unsigned char dot)
     if( current_sequence == target_sequence )
     {
       
-      if (digit_position >= num_digits - 1){ //hanve reached the end of the #
+      if ((digit_position >= num_digits - 1) && !number_sign){ //hanve reached the end of the #
         printf("digits %d num digits %d\n", digit_position, num_digits);
         digit_position = 0; // reset it
         su->saySound(getTeacherVoice(), "tada"); // plays a nice sound
         sayArithmeticQuestion(true);
+        number_sign = 1; // set it back for next time
         Fact_new(); /* ideally repeat the question and answer here */
       } 
       else {
+        // TODO: add capabilities to say number
+      
         su->saySound(math_s, "good_next"); //asks for next digit
-        digit_position++;
+        if (number_sign == 0){
+          digit_position++;
+          printf("incrememting\n");
+        }
         current_sequence = 0;
-        printf("incrememting\n");
+        number_sign = !number_sign;
+        printf("number sign is no %d\n", number_sign);
+        
       }
       return;
     }
@@ -277,6 +300,7 @@ void Arithmetic::AP_attempt(unsigned char dot)
     su->saySound(getTeacherVoice(), "no");
    // sayArithmeticQuestion(num1,num2); TODO inmplement ques repeat
   }
+
 }
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

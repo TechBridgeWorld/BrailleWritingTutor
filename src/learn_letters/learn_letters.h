@@ -157,11 +157,11 @@ private:
   const std::vector<std::string> createGroup4Letters() const;
 };
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-class HindiLearnLetters : public LearnLetters
+class Hindi2LearnLetters : public LearnLetters
 {
 public:
-  explicit HindiLearnLetters(IOEventParser&);
-  ~HindiLearnLetters()
+  explicit Hindi2LearnLetters(IOEventParser&);
+  ~Hindi2LearnLetters()
   {
   }
 private:
