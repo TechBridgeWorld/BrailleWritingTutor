@@ -10,13 +10,16 @@
 #include <math.h>
 
 
+#define CORR_THRES 5 // for now
+
 int math_mode;/* default for now */
 static int choose_mode = 1;  /* mode needs to be chose first */
-static int choose_difficulty = 1; /* can selct difficutly and move up */
+static int choose_difficulty = 0; /* can selct difficutly and move up */
 static int digit_position = 0;
 static int num_digits = 0;
 static int difficulty_level = 2; /* how many digits the answer can be */
 static int number_sign = 1; /* need to to type the # sign */
+static int num_correct = 0;
 /* TODO: figure out if difficulty should be changable from menu or
 as students get more advanced */
 
@@ -57,23 +60,39 @@ void Arithmetic::processEvent(IOEvent& e)
     if (e.button == 4) {
       math_mode = ADDITION;
       choose_mode = 0;
+      choose_difficulty = 1;
       Fact_new();
     }
     else if (e.button == 5) {
       math_mode = SUBTRACTION;
       choose_mode = 0;
+      choose_difficulty = 1;
       Fact_new();
     }
     else if (e.button == 6) {
       math_mode = MULTIPLICATION;
       choose_mode = 0;
+      choose_difficulty = 1;
       Fact_new();
     }
     else {
         printf("malformed input, please select buttons 1, 2, or 3\n");
     }
+  }
     /* turn it off and "restart" the activity */
-    
+  else if (e.type == IOEvent::BUTTON_DOWN && choose_difficulty == 1) {
+    if (e.button == 4){
+      difficulty_level = 1;
+    }
+    else if (e.button == 5){
+      difficulty_level = 2;
+    }
+    else if (e.button == 6){
+      difficulty_level = 3;
+    }
+    printf("difficulty chosen\n");
+    choose_difficulty = 0;
+    Fact_new();
   }
   else if( e.type == IOEvent::STYLUS_DOWN || 
           e.type == IOEvent::BUTTON_DOWN  && 
@@ -94,7 +113,7 @@ void Arithmetic::Fact_new()
   clearArray(response_array);
   clearArray(num2_array);
   /* this is the default behavior of fact_new */
-  if (!choose_mode) {
+  if (!choose_mode && !choose_difficulty) {
     printf("called fact new\n");
     //generate a random number between 0 to 9
     int result = -1; // ensures too small to start
@@ -129,15 +148,20 @@ void Arithmetic::Fact_new()
     sayArithmeticQuestion(false); // don't say answer yet
   }
 
+
   /* this is not default behavior and is to allow the user to select modes */
-  else {
-    /* TODO: have SL record things for this explaining */
+  else if (choose_mode) {
     su->saySound(math_s, "maths_instructions");
     printf("please enter math mode:\n \
             press button 1 for addition, \n \
             press button 2 for subtraction, \n \
             press button 3 for multiplication\n");
   }
+  else if (choose_difficulty) {
+    // TODO: have SL record difficulty things
+    printf("please select difficulty level 1-3 \n \
+          difficulty will increment every %d correct answers\n", CORR_THRES);
+  } 
 
 }
 
@@ -247,7 +271,6 @@ void Arithmetic::AP_attempt(unsigned char dot)
 {
 
 	su->sayNumber(getStudentVoice(), dot, nomirror);
-  printf("got here\n");
   int strt = MAX_DIGITS - num_digits; // where to start in array
   i = 0;
   printf("digit pos %d\n", digit_position);
@@ -275,8 +298,15 @@ void Arithmetic::AP_attempt(unsigned char dot)
         printf("digits %d num digits %d\n", digit_position, num_digits);
         digit_position = 0; // reset it
         su->saySound(getTeacherVoice(), "tada"); // plays a nice sound
+        num_correct++;
         sayArithmeticQuestion(true);
         number_sign = 1; // set it back for next time
+        if (num_correct == CORR_THRES){
+          if (difficulty_level < 3){
+            difficulty_level++;
+            num_correct = 0; // reset
+          }
+        }
         Fact_new(); /* ideally repeat the question and answer here */
       } 
       else {

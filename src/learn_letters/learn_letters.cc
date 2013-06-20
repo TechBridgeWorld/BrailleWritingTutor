@@ -73,7 +73,7 @@ void LearnLetters::LL_new()
 
   target_group = (group_skill(0) < .9 ? 0 : group_skill(1) < .9 ? 1 : group_skill(2) < .9 ? 2 : group_skill(3) < .9 ? 3 : group_skill(4) < .9 ? 4
       : rand() % 5);
-
+  printf("target group is %d\n", target_group);
   //look at each letter in group in turn
   bool teaching_letter = false;
   for(int i = 0; i < getGroupSize(target_group); i++)
@@ -372,7 +372,7 @@ const std::vector<std::string> English2LearnLetters::createGroup4Letters() const
   return boost::assign::list_of("U")("V")("W")("X")("Y")("Z");
 }
 
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//+++++++++++++++++++++++++++++++mir+++++++++++++++++++++++++++++++++++++
 Arabic2LearnLetters::Arabic2LearnLetters(IOEventParser& my_iep) :
       LearnLetters(my_iep, "./language_mapping_files/arabic_mapping_nomirror.txt", new Arabic2SoundsUtil, createAlphabet(), createGroup0Letters(), createGroup1Letters(), createGroup2Letters(), createGroup3Letters(), createGroup4Letters(), true)
 {
@@ -464,6 +464,7 @@ const std::vector<std::string> Hindi2LearnLetters::createAlphabet() const
 const std::vector<std::string> Hindi2LearnLetters::createGroup0Letters() const
 {
   return boost::assign::list_of ("अ")("आ")("इ")("ई")("उ")("ऊ")("ए")("ऐ");
+  
 }
 
 const std::vector<std::string> Hindi2LearnLetters::createGroup1Letters() const

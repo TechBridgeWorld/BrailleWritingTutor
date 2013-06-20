@@ -13,9 +13,9 @@
 const Hindi2SoundsUtil::Hindi2LettersToSoundFilesMap
     Hindi2SoundsUtil::Hindi2_letter_map =
         boost::assign::map_list_of("अ", "HIN_A.wav")
-                                  ("आ", "HIN_A_.wav")
+                                  ("आ", "HIN__A.wav")
                                   ("इ", "HIN_I.wav")
-                                  ("ई", "HIN_I_.wav")
+                                  ("ई", "HIN__I.wav") 
                                   ("उ", "HIN_U.wav")
                                   ("ऊ", "HIN_U_.wav")
                                   ("ए", "HIN_E.wav")
@@ -57,10 +57,30 @@ const Hindi2SoundsUtil::Hindi2LettersToSoundFilesMap
 void Hindi2SoundsUtil::sayNumber(const Voice &v, int number, bool flip) const
 { 
   /* ENGLISH NUMBERS FOR NOW */
-  char sound[] = "?.wav";  
-  sprintf(sound, "%d.wav", number);
+  char sound[] = "?.wav";
+  flip = false; // temp
+  if(flip)
+  { 
+    if(number==1){
+      sprintf(sound, "%d.wav", 4);
+    }else if(number==2){
+      sprintf(sound, "%d.wav", 5);
+    }else if(number==3){
+      sprintf(sound, "%d.wav", 6);
+    }else if(number==4){  
+      sprintf(sound, "%d.wav", 1);
+    }else if(number==5){
+      sprintf(sound, "%d.wav", 2);
+    }else{
+      sprintf(sound, "%d.wav", 3);
+    }
+  }
+  else
+    sprintf(sound, "%d.wav", number);
+    
   v.say(sound);
 }
+
 
 
 void Hindi2SoundsUtil::sayLetter(const Voice &v, const std::string& letter) const
@@ -98,7 +118,7 @@ void Hindi2SoundsUtil::sayLetterSequence(const Voice &v, const std::string& word
 	std::string::const_iterator iter = word.begin();
   while( iter != word.end() )
   {
-    std::string hindi_letter(iter, iter + 3); //All Arabic characters encoded in UTF8 are 2 bytes
+    std::string hindi_letter(iter, iter + 3); //All hindi utf chars are 3 bytes
     sayLetter(v, hindi_letter);
     iter = iter + 3;
   }
@@ -106,44 +126,44 @@ void Hindi2SoundsUtil::sayLetterSequence(const Voice &v, const std::string& word
 
 void Hindi2SoundsUtil::sayDotSequence(const Voice &v, DotSequence d) const
 {
-	bool sortedSequence[6] = {false,false,false,false,false,false};
+  
+   bool sortedSequence[6] = {false,false,false,false,false,false};
   
   try
   {
-     
      // save activated dots so we can speak them in proper order later.
-          
+             
     // this goes from bottom to top, starting on left column then right column. ie dots 321654
-    for(int i = 5; i >= 0; i--)
+    for(int i = 5; i >= 0; i--) {
       if( d & BrailleTutorNS::dot_mask(i) )
       {
-		//TODO: Cleanup with math
-		if(i==0)
-		  sortedSequence[3]=true;
-		else if(i==1)
-		  sortedSequence[4]=true;
-		else if(i==2)
-		  sortedSequence[5]=true;
-		else if(i==3)
-		  sortedSequence[0]=true;
-		else if(i==4)
-		  sortedSequence[1]=true;
-		else if(i==5)
-		  sortedSequence[2]=true;
-	  }
-        
+        /*
+        if(i==0)
+          sortedSequence[3]=true;
+        else if(i==1)
+          sortedSequence[4]=true;
+        else if(i==2)
+          sortedSequence[5]=true;
+        else if(i==3)
+          sortedSequence[0]=true;
+        else if(i==4)
+          sortedSequence[1]=true;
+        else if(i==5)
+          sortedSequence[2]=true;
+        }
+        */
+        sortedSequence[i] = true;
+       } 
+      }
         //std::cout << "speaking sorted sequence" << std::endl;
     for(int i = 0; i <= 5; i++)
         if(sortedSequence[i])
-          sayNumber(v, i+1, false); //+1 because while speaking, the dots range from 1 to 6
-           
-        
+          sayNumber(v, i+1, false); //+1 because while speaking, the dots range from 1 to 6 
   }
   catch (std::string& e)
   {
     std::cout << "Exception occured, sound file not found in map:" << e << std::endl;
   }
-  
 }
 
 void Hindi2SoundsUtil::saySound(const Voice& v, const std::string& sound) const

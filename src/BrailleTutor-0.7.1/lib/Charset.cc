@@ -67,7 +67,7 @@ static unsigned int local_utf8_decode_char(const uint8_t *str_utf8,
     ch_32 = (((uint32_t) str_utf8[0] & 0x0000000fu) << 12) |
 	    (((uint32_t) str_utf8[1] & 0x0000003fu) <<  6) |
 	     ((uint32_t) str_utf8[2] & 0x0000003fu);
-	printf("hello from returning 3\n");
+	
     return 3;
   }
 
@@ -141,7 +141,7 @@ static unsigned int local_utf8_decode(const uint8_t *str_utf8,uint32_t* &str_32)
   local_strcpy(str_32, scratch);
 
   delete[] scratch;
-  printf("strlen is %d\n", my_strlen);
+  
   return my_strlen;
 }
 
