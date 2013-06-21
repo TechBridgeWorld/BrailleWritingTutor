@@ -56,7 +56,6 @@ void Arithmetic::processEvent(IOEvent& e)
   }
   if (e.type == IOEvent::BUTTON_DOWN && choose_mode == 1) {
     /* need to interpret it as mode switching */
-    printf("dot is %d\n", e.button);
     if (e.button == 4) {
       math_mode = ADDITION;
       choose_mode = 0;
@@ -104,6 +103,7 @@ void Arithmetic::processEvent(IOEvent& e)
   }
   else if(time(0) == last_pressed_time && e.button == last_button){ // most likely a jammed button
     printf("caught something\n");
+    return; 
   }
 }
 

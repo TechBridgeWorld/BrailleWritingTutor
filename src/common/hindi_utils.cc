@@ -17,7 +17,7 @@ const Hindi2SoundsUtil::Hindi2LettersToSoundFilesMap
                                   ("इ", "HIN_I.wav")
                                   ("ई", "HIN__I.wav") 
                                   ("उ", "HIN_U.wav")
-                                  ("ऊ", "HIN_U_.wav")
+                                  ("ऊ", "HIN__U.wav")
                                   ("ए", "HIN_E.wav")
                                   ("ऐ", "HIN_AI.wav")
                                   ("ओ", "HIN_O.wav")

@@ -8,6 +8,9 @@
 #include <boost/assign/list_of.hpp>
 #include "learn_letters.h"
 
+ static time_t time_last_pressed = time(0); 
+ static int last_button_pressed = 0;
+
 //ugly constructor, sorry (I am trying to change as little of the old code as possible)
 LearnLetters::LearnLetters(IOEventParser& my_iep, const std::string& path_to_mapping_file, SoundsUtil* my_su, const std::vector<std::string> my_alph, const std::vector<
     std::string> g0, const std::vector<std::string> g1, const std::vector<std::string> g2, const std::vector<std::string> g3, const std::vector<
@@ -45,8 +48,18 @@ void LearnLetters::processEvent(IOEvent& e)
 
   if( e.type == IOEvent::STYLUS_DOWN || e.type == IOEvent::BUTTON_DOWN )
   {
-	su->sayNumber(getStudentVoice(), getDot(e), nomirror);
-    LL_attempt(getDot(e));
+    if (time(0) != time_last_pressed || last_button_pressed != e.button){
+	     printf("pushed button %d\n", e.button);
+       last_button_pressed = e.button;
+       time_last_pressed = time(0);
+       su->sayNumber(getStudentVoice(), getDot(e), nomirror);
+        LL_attempt(getDot(e));
+    }
+    else{
+      //iep.flushGlyph(); // would be good to do here?
+      printf("DEBUG ignorning \n");
+      return; // ignore
+    }
   }
 }
 

@@ -30,6 +30,7 @@ Animal::Animal(IOEventParser& my_iep, const std::string& path_to_mapping_file, S
 
 void Animal::processEvent(IOEvent& e)
 {
+  printf("animal process event called\n");
   //Whenever the user hits Button0 we immediately want the LETTER event to be generated so that he doesnt have to wait for the timeout
   if( e.type == IOEvent::BUTTON && e.button == 0 )
   {
@@ -39,7 +40,7 @@ void Animal::processEvent(IOEvent& e)
 
   if( e.type == IOEvent::CELL_LETTER || e.type == IOEvent::BUTTON_LETTER )
   {
-    printEvent(e);
+    //printEvent(e);
     //Upon entering this mode, we dont want any pending LETTER events to interfere. So we skip the first LETTER event.
     if( firsttime )//Check if this is the first letter event, if so, we skip it
     {

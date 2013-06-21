@@ -7,7 +7,7 @@
 
 #define FRACTION_MODE 0 // boolean value indicating fractions mode
 
- // will be set to one of the four following
+ 
 #define ADDITION 1
 #define SUBTRACTION 2
 #define MULTIPLICATION 3

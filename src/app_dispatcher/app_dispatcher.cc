@@ -501,7 +501,7 @@ void ApplicationDispatcher::playSelectedMode() const
     printf("Selecting English Maths pracice\n");
     break;
   case LEARN_LETTERS_HINDI:
-      teach.say("try.wav"); //TODO change this
+      teach.say("learn_letters_hindi.wav"); //TODO change this
       printf("Selecting Hindi Learn Letters\n");
       break;
   case FREE_PLAY_ARABIC:
