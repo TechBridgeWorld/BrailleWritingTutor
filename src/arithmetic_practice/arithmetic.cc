@@ -35,6 +35,8 @@ static int last_button = 0; //default
 {
   //su->saySound(math_s, "arithmetic_practice");
   printf("starting practice\n");
+  su->saySound(math_s, "instructions_1");
+  su->saySound(math_s, "press_select");
   srand(time(0)); // initializing the random seed
   Fact_new();  
 }
@@ -51,8 +53,13 @@ void Arithmetic::processEvent(IOEvent& e)
 	//std::cout << "processEvent" << std::endl;
   if( e.type == IOEvent::BUTTON_DOWN && e.button == 0 && choose_mode == 0){
     //choose_mode = 1; // for next time
-    sayArithmeticQuestion(false); // repeat question
+    // repeat question
+    //choose_mode = 1;
+
     return;
+  }
+  else if (IOEvent::BUTTON_DOWN && e.button == 0 && choose_mode == 0){
+     sayArithmeticQuestion(false);
   }
   if (e.type == IOEvent::BUTTON_DOWN && choose_mode == 1) {
     /* need to interpret it as mode switching */
@@ -60,17 +67,20 @@ void Arithmetic::processEvent(IOEvent& e)
       math_mode = ADDITION;
       choose_mode = 0;
       choose_difficulty = 1;
+      su->saySound(math_s, "sl_1");
       Fact_new();
     }
     else if (e.button == 5) {
       math_mode = SUBTRACTION;
       choose_mode = 0;
       choose_difficulty = 1;
+      su->saySound(math_s, "sl_2");
       Fact_new();
     }
     else if (e.button == 6) {
       math_mode = MULTIPLICATION;
       choose_mode = 0;
+      su->saySound(math_s, "sl_3");
       choose_difficulty = 1;
       Fact_new();
     }
@@ -82,8 +92,10 @@ void Arithmetic::processEvent(IOEvent& e)
   else if (e.type == IOEvent::BUTTON_DOWN && choose_difficulty == 1) {
     if (e.button == 4){
       difficulty_level = 1;
+      su->saySound(math_s, "sl_1");
     }
     else if (e.button == 5){
+      su->saySound(math_s, "sl_2");
       difficulty_level = 2;
     }
     else if (e.button == 6){
@@ -91,6 +103,8 @@ void Arithmetic::processEvent(IOEvent& e)
     }
     printf("difficulty chosen\n");
     choose_difficulty = 0;
+    su->saySound(math_s, "instructions_2");
+    su->saySound(math_s, "sl_3");
     Fact_new();
   }
   else if( e.type == IOEvent::STYLUS_DOWN || 
@@ -158,7 +172,8 @@ void Arithmetic::Fact_new()
             press button 3 for multiplication\n");
   }
   else if (choose_difficulty) {
-    // TODO: have SL record difficulty things
+    su->saySound(math_s, "select_level");
+
     printf("please select difficulty level 1-3 \n \
           difficulty will increment every %d correct answers\n", CORR_THRES);
   } 
@@ -223,7 +238,7 @@ void Arithmetic::sayArithmeticQuestion(bool say_answer)
 /* need to have global arrays that are passed by reference to 
  * the get digit function */ 
 
-/* TODO: need to be able to handle numbers like 117 */
+
 void Arithmetic::say_multidigit(int *a)
 {
   int i, n;
@@ -257,7 +272,7 @@ void Arithmetic::say_multidigit(int *a)
           printf("hundreds place %d\n", a[i]);
           sprintf(buf,"sl_%d", a[i]);
           su->saySound(math_s, buf);
-          su->saySound(math_s, "hundred");
+          su->saySound(math_s, "hundred"); // TODO: implement thousands?
           break;
         default:
           break;
@@ -293,7 +308,7 @@ void Arithmetic::AP_attempt(unsigned char dot)
     //are we done?
     if( current_sequence == target_sequence )
     {
-      
+      printf("SHOULD BE DONE\n");
       if ((digit_position >= num_digits - 1) && !number_sign){ //hanve reached the end of the #
         printf("digits %d num digits %d\n", digit_position, num_digits);
         digit_position = 0; // reset it
@@ -312,15 +327,19 @@ void Arithmetic::AP_attempt(unsigned char dot)
       else {
         // TODO: add capabilities to say number
       
-        su->saySound(math_s, "good_next"); //asks for next digit
+        
         if (number_sign == 0){
           digit_position++;
+          current_sequence = 0;
           printf("incrememting\n");
+          su->saySound(math_s, "good_next"); //asks for next digit
         }
-        current_sequence = 0;
-        number_sign = !number_sign;
-        printf("number sign is no %d\n", number_sign);
-        
+        else{
+          current_sequence = 0;
+          number_sign = 0; // don't need it anymore
+          printf("number sign is now %d\n", number_sign);
+          su->saySound(math_s, "good");
+        }
       }
       return;
     }

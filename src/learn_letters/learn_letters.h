@@ -35,6 +35,7 @@ private:
   {
     right, wrong
   };
+  //IOEventParser& iep; //So flushGlyph() can be called
   const std::vector<std::string> alphabet;
   const std::vector<std::string> group0;
   const std::vector<std::string> group1;

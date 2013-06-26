@@ -283,7 +283,7 @@ public:
   //! processes the user's input right away. Note that if no glyph is under
   //! construction now, this routine creates no new events.
   void flushGlyph();
-
+  //void clearQueue();
   //! Tells the IOEventParser to start adding type of event to the event list.
   void wantEvent(const IOEvent::Type &type);
   //! Tells the IOEventParser to stop adding a type of event to the event list.

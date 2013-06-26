@@ -7,7 +7,9 @@
 #include <assert.h>
 #include <boost/assign/list_of.hpp>
 #include "household.h"
+#include <string>
 
+#define MAX_LEN 8
 static time_t last_event_time = time(0);
 
 Household::Household(IOEventParser& my_iep, const std::string& path_to_mapping_file, SoundsUtil* my_su, const std::vector<std::string> my_alph, const ForeignLanguage2EnglishMap sw, const ForeignLanguage2EnglishMap mw, const ForeignLanguage2EnglishMap lw, bool f) :
@@ -20,7 +22,7 @@ Household::Household(IOEventParser& my_iep, const std::string& path_to_mapping_f
         .registerEvent(right, .8, .01) .registerEvent(wrong, .2, .833);
   }
 
-  for(int i = 2; i < 8; i++)
+  for(int i = 2; i < MAX_LEN; i++)
   {
     LS_length_skill[i] = KnowledgeTracer(.01) .registerEvent(right, .7, .1) .registerEvent(wrong, .1, .7);
   }
@@ -54,6 +56,17 @@ void Household::processEvent(IOEvent& e)
       last_event_time = time(0);
     }
   }
+}
+
+/* passes in an int and then returns the average of the short medium and long
+ * word skill levels. short, medium, and long are relative to the longest and 
+ * shortest words in the list
+ TODO: PUT SOMETHING IN THAT ASSERTS ALL WORDS ARE LESS THAN MAX_LEN
+ */
+int Household::getEstimate(int n)
+{
+
+
 }
 
 void Household::AL_new()
@@ -90,27 +103,36 @@ void Household::AL_new()
     ForeignLanguage2EnglishMap::const_iterator it = short_sounds.begin();
     for(; it != short_sounds.end(); it++)
     {
+     /* if (std::string::length(it->first) > MAX_LEN) {
+        //printf("Oh no! %s is too long\n", it->first);
+        exit(1);
+      } // use the code here to get rid of anything too long */
       choices.push_back(it->first);
     }
-    word_length = 5; //CHANGED THIS
   }
   else if( need_med )
   {
     ForeignLanguage2EnglishMap::const_iterator it = med_sounds.begin();
     for(; it != med_sounds.end(); it++)
     {
+      /*if (std::string::length(it->first) > MAX_LEN) {
+        //printf("Oh no! %s is too long\n", it->first);
+        exit(1);
+      } */
       choices.push_back(it->first);
     }
-    word_length = 5;
   }
   else if( need_long )
   {
     ForeignLanguage2EnglishMap::const_iterator it = long_sounds.begin();
     for(; it != long_sounds.end(); it++)
+     /* if (std::string::length(it->first) > MAX_LEN) {
+       // printf("Oh no! %s is too long\n", it->first);
+        exit(1);
+      } */
     {
       choices.push_back(it->first);
     }
-    word_length = 5; //CHANGED THIS
   }
 
   random_shuffle(choices.begin(), choices.end());
@@ -211,6 +233,7 @@ void Household::AL_attempt(std::string i)
         return;
       }
     }
+
     else
     { //letter is incorrect
       su->saySound(getTeacherVoice(), "no"); // that is the incorrect animal

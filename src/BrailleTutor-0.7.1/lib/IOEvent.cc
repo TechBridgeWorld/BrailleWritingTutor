@@ -575,6 +575,8 @@ struct FunctorNewIOEvent {
       }
       } // END ENCLOSING BLOCK
 
+      //WANT SOMETHING TO DO IEP.OUT_EVENTS.CLEAR OR POP
+
       // Calling the IOEventHandler, if it exists
       if(iep.handler) {
 	boost::mutex::scoped_lock lock_i(iep.out_events_mutex);
@@ -597,6 +599,8 @@ public:
 
   //! The actual implementation of IOEventParser::flushGlyph
   inline void flushGlyph();
+
+  //inline void clearQueue();
 
   //! The actual implementation of IOEventParser::wantEvent
   inline void wantEvent(const IOEvent::Type &type);
@@ -691,6 +695,21 @@ void IOEventParserCore::flushGlyph()
   // Notify threads that their deadly input is ready.
   cond_in_bevents.notify_one();
 }
+
+/*
+
+void IOEventParserCore::clearQueue(){
+
+	IOEventParser::const_iterator i; 
+
+	for (i = iep.out_events.begin(); i != iep.out_events.end(); ++i){
+		if (i->type != IOEvent::DONE){
+			iep.out_events.erase(*i); // get rid of it
+		}
+	}
+	
+}
+*/
 
 // Indicate that an event should be monitored
 void IOEventParserCore::wantEvent(const IOEvent::Type &type)

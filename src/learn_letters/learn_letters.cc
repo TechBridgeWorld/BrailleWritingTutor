@@ -15,7 +15,7 @@
 LearnLetters::LearnLetters(IOEventParser& my_iep, const std::string& path_to_mapping_file, SoundsUtil* my_su, const std::vector<std::string> my_alph, const std::vector<
     std::string> g0, const std::vector<std::string> g1, const std::vector<std::string> g2, const std::vector<std::string> g3, const std::vector<
     std::string> g4, bool f) :
-  IBTApp(my_iep, path_to_mapping_file), su(my_su), alphabet(my_alph), group0(g0), group1(g1), group2(g2), group3(g3), group4(g4), target_group(0),
+  IBTApp(my_iep, path_to_mapping_file), /*iep(my_iep), */ su(my_su), alphabet(my_alph), group0(g0), group1(g1), group2(g2), group3(g3), group4(g4), target_group(0),
       target_index(0), target_sequence(0), current_sequence(0), letter_skill(alphabet.size()), nomirror(f)
 {
 
@@ -86,7 +86,7 @@ void LearnLetters::LL_new()
 
   target_group = (group_skill(0) < .9 ? 0 : group_skill(1) < .9 ? 1 : group_skill(2) < .9 ? 2 : group_skill(3) < .9 ? 3 : group_skill(4) < .9 ? 4
       : rand() % 5);
-  printf("target group is %d\n", target_group);
+
   //look at each letter in group in turn
   bool teaching_letter = false;
   for(int i = 0; i < getGroupSize(target_group); i++)
@@ -129,10 +129,12 @@ void LearnLetters::LL_new()
   if( teaching_letter )
   {
     su->saySound(getTeacherVoice(), "to write the letter");
+   // iep.clearQueue();
   }
   else
   {
     su->saySound(getTeacherVoice(), "please write");
+   // iep.clearQueue();
   }
 
   GlyphMapping g = charset[target_sequence];
@@ -145,6 +147,7 @@ void LearnLetters::LL_new()
 	  std::cout << "LN_new: teaching letter" << std::endl;
     su->saySound(getTeacherVoice(), "press");
     su->sayDotSequence(getTeacherVoice(), target_sequence);
+   // iep.clearQueue();
   }
 
   //target_sequence is the one we want,

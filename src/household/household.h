@@ -20,6 +20,7 @@ public:
 
 private:
   void AL_new();
+  int getEstimate(int); // removes the need for hard coding possible word lengths to keep track of estimates
   void AL_attempt(std::string);
   void processEvent(IOEvent& e);
   std::string householdNameToSound(const std::string& animalName);//Accepts the name of the animal in any language, and returns the corresponding english sound
