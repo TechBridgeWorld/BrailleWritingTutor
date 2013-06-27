@@ -13,7 +13,7 @@
 #define MULTIPLICATION 3
 #define DIVISION 4
 #define MAX_DIGITS 6
-#define MATH_FLAG 0b00100111 // the symbol proceeding the numbers
+#define MATH_FLAG 0b00111100 // the symbol proceeding the numbers
 
 class Arithmetic : public IBTApp
 {
@@ -43,6 +43,9 @@ private:
   int num2;
   int result; 
   int digit, i, current_target;
+  int difficulty_level;
+  int choose_mode;
+  int choose_difficulty;
   DotSequence dots1;
   DotSequence dots2;
   int response_array[MAX_DIGITS];

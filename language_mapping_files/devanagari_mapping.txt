@@ -1,6 +1,6 @@
 ﻿!UTF-8 BEGIN Hindi mappings
 1 अ
-234 आ
+345 आ
 24 इ
 35 ई
 136 उ

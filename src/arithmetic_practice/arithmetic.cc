@@ -13,11 +13,10 @@
 #define CORR_THRES 5 // for now
 
 int math_mode;/* default for now */
-static int choose_mode = 1;  /* mode needs to be chose first */
-static int choose_difficulty = 0; /* can selct difficutly and move up */
+//static int choose_mode = 1;  /* mode needs to be chose first */
 static int digit_position = 0;
 static int num_digits = 0;
-static int difficulty_level = 2; /* how many digits the answer can be */
+//static int difficulty_level = 2; /* how many digits the answer can be */
 static int number_sign = 1; /* need to to type the # sign */
 static int num_correct = 0;
 /* TODO: figure out if difficulty should be changable from menu or
@@ -31,7 +30,7 @@ static int last_button = 0; //default
  Arithmetic::Arithmetic(IOEventParser& my_iep, 
  		const std::string& path_to_mapping_file, SoundsUtil* my_su, bool f) :
   		IBTApp(my_iep, path_to_mapping_file), su(my_su), math_s("./resources/Voice/math_sounds/"), 
-  		target_sequence('\0'), current_sequence('\0'), nomirror(f), dots1('\0'), dots2('\0')
+  		target_sequence('\0'), current_sequence('\0'), nomirror(f), dots1('\0'), dots2('\0'), choose_mode(1), choose_difficulty(0), difficulty_level(1)
 {
   //su->saySound(math_s, "arithmetic_practice");
   printf("starting practice\n");
@@ -81,6 +80,7 @@ void Arithmetic::processEvent(IOEvent& e)
       math_mode = MULTIPLICATION;
       choose_mode = 0;
       su->saySound(math_s, "sl_3");
+      printf("saying three\n");
       choose_difficulty = 1;
       Fact_new();
     }
@@ -100,11 +100,12 @@ void Arithmetic::processEvent(IOEvent& e)
     }
     else if (e.button == 6){
       difficulty_level = 3;
+      su->saySound(math_s, "sl_3");
     }
     printf("difficulty chosen\n");
     choose_difficulty = 0;
     su->saySound(math_s, "instructions_2");
-    su->saySound(math_s, "sl_3");
+    
     Fact_new();
   }
   else if( e.type == IOEvent::STYLUS_DOWN || 
