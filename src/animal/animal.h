@@ -35,7 +35,7 @@ private:
   {
     right, wrong
   };
-
+  const Voice animal_s;
   IOEventParser& iep; //So flushGlyph() can be called
   SoundsUtil* su;
 

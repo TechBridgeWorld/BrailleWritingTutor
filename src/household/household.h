@@ -34,6 +34,7 @@ private:
   IOEventParser& iep; //So flushGlyph() can be called
   SoundsUtil* su;
 
+  const Voice everyday_s;
 
   const std::vector<std::string> alphabet;
   const ForeignLanguage2EnglishMap short_sounds; //changed from short_animals

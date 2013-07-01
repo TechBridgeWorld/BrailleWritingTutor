@@ -9,12 +9,17 @@
 #include "household.h"
 #include <string>
 
-#define MAX_LEN 8
+#define MAX_CATS 3 // have short, medium, and long sounds... 
+                  // programmer can decide what "short," "medium," and "long" mean
+#define SHORT 0
+#define MEDIUM 1
+#define LONG 2
+
 static time_t last_event_time = time(0);
 
 Household::Household(IOEventParser& my_iep, const std::string& path_to_mapping_file, SoundsUtil* my_su, const std::vector<std::string> my_alph, const ForeignLanguage2EnglishMap sw, const ForeignLanguage2EnglishMap mw, const ForeignLanguage2EnglishMap lw, bool f) :
   IBTApp(my_iep, path_to_mapping_file), iep(my_iep), su(my_su), alphabet(my_alph), short_sounds(sw), med_sounds(mw), long_sounds(lw),
-      letter_skill(alphabet.size()), firsttime(false), turncount(0), word(""), target_letter(""), word_pos(0), word_length(0), nomirror(f)
+      letter_skill(alphabet.size()), firsttime(false), turncount(0), word(""), target_letter(""), word_pos(0), word_length(0), nomirror(f), everyday_s ("./resources/Voice/everyday_sounds/")
 {
   for(int i = 0; i < alphabet.size(); i++)
   {
@@ -22,7 +27,7 @@ Household::Household(IOEventParser& my_iep, const std::string& path_to_mapping_f
         .registerEvent(right, .8, .01) .registerEvent(wrong, .2, .833);
   }
 
-  for(int i = 2; i < MAX_LEN; i++)
+  for(int i = 0; i < MAX_CATS; i++)
   {
     LS_length_skill[i] = KnowledgeTracer(.01) .registerEvent(right, .7, .1) .registerEvent(wrong, .1, .7);
   }
@@ -103,11 +108,8 @@ void Household::AL_new()
     ForeignLanguage2EnglishMap::const_iterator it = short_sounds.begin();
     for(; it != short_sounds.end(); it++)
     {
-     /* if (std::string::length(it->first) > MAX_LEN) {
-        //printf("Oh no! %s is too long\n", it->first);
-        exit(1);
-      } // use the code here to get rid of anything too long */
       choices.push_back(it->first);
+      word_length = SHORT;
     }
   }
   else if( need_med )
@@ -115,23 +117,17 @@ void Household::AL_new()
     ForeignLanguage2EnglishMap::const_iterator it = med_sounds.begin();
     for(; it != med_sounds.end(); it++)
     {
-      /*if (std::string::length(it->first) > MAX_LEN) {
-        //printf("Oh no! %s is too long\n", it->first);
-        exit(1);
-      } */
       choices.push_back(it->first);
+      word_length = MEDIUM;
     }
   }
   else if( need_long )
   {
     ForeignLanguage2EnglishMap::const_iterator it = long_sounds.begin();
     for(; it != long_sounds.end(); it++)
-     /* if (std::string::length(it->first) > MAX_LEN) {
-       // printf("Oh no! %s is too long\n", it->first);
-        exit(1);
-      } */
     {
       choices.push_back(it->first);
+      word_length = LONG;
     }
   }
 
@@ -140,8 +136,8 @@ void Household::AL_new()
   word_pos = 0;
   //Asound += ".wav";
   std::cout << "		(DEBUG)Animal sound:" << word << std::endl;
-  su->saySound(getTeacherVoice(), "please_write_the_object"); 
-  su->saySound(getTeacherVoice(), householdNameToSound(word));
+  su->saySound(everyday_s, "please_write_the_object"); 
+  su->saySound(everyday_s, householdNameToSound(word));
 }
 
 std::string Household::householdNameToSound(const std::string& animal)
@@ -190,6 +186,7 @@ void Household::AL_attempt(std::string i)
       std::cout << target_letter << ": " << letter_skill[index].estimate() << std::endl;
       //std::cout << "    (DEBUG)Targetletter wrong" << std::endl;
       su->saySound(getTeacherVoice(), "no");
+      printf("saying invalid pattern\n");
 
       bool teaching_letter = (letter_skill[index].estimate() < .1);
 
@@ -292,18 +289,18 @@ const std::vector<std::string> EnglishHousehold::createAlphabet() const
 
 const ForeignLanguage2EnglishMap EnglishHousehold::createShortHouseholdWords() const
 {
-  //animals whos name has exactly 3 letters
-  return boost::assign::map_list_of("CLOCK", "CLOCK");
+  //animals whos name has 3-4 letters
+  return boost::assign::map_list_of("RAIN", "RAIN");
 }
 
 const ForeignLanguage2EnglishMap EnglishHousehold::createMedHouseholdWords() const
 {
   //animals whos name has exactly 5 letters
-  return boost::assign::map_list_of("CLOCK", "CLOCK");
+  return boost::assign::map_list_of("CLOCK", "CLOCK")("PHONE", "PHONE")("SIREN", "SIREN")("TRAIN", "TRAIN")("TRUCK","TRUCK");
 }
 
 const ForeignLanguage2EnglishMap EnglishHousehold::createLongHouseholdWords() const
 {
   //animals whos name has exactly 7 letters
-  return boost::assign::map_list_of("CLOCK", "CLOCK");
+  return boost::assign::map_list_of("DOORBELL","DOORBELL")("AEROPLANE","AEROPLANE");
 }

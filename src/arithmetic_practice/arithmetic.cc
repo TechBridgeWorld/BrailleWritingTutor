@@ -10,7 +10,8 @@
 #include <math.h>
 
 
-#define CORR_THRES 5 // for now
+#define CORR_THRES 50 // for now
+
 
 int math_mode;/* default for now */
 //static int choose_mode = 1;  /* mode needs to be chose first */
