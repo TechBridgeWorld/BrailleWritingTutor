@@ -32,6 +32,7 @@ private:
   void say_multidigit(int*);
   void clearArray(int*);
 
+  IOEventParser& iep; //So clearQueue() can be called
   SoundsUtil* su;
   const Voice math_s;
   bool nomirror;

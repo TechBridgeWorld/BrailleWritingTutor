@@ -40,7 +40,9 @@ void Household::processEvent(IOEvent& e)
   //Whenever the user hits Button0 we immediately want the LETTER event to be generated so that he doesnt have to wait for the timeout
   if( e.type == IOEvent::BUTTON && e.button == 0 )
   {
+    //iep.clearQueue();
     iep.flushGlyph();
+    printf("flushing glyph\n");
     return; //required? hmm..
   }
 
@@ -59,6 +61,10 @@ void Household::processEvent(IOEvent& e)
       su->sayLetter(getStudentVoice(), (std::string) e.letter);
       AL_attempt((std::string) e.letter);
       last_event_time = time(0);
+    }
+    else {
+      printf("caught\n");
+      iep.clearQueue();
     }
   }
 }
@@ -289,18 +295,18 @@ const std::vector<std::string> EnglishHousehold::createAlphabet() const
 
 const ForeignLanguage2EnglishMap EnglishHousehold::createShortHouseholdWords() const
 {
-  //animals whos name has 3-4 letters
+  //objects that have <5 letters
   return boost::assign::map_list_of("RAIN", "RAIN");
 }
 
 const ForeignLanguage2EnglishMap EnglishHousehold::createMedHouseholdWords() const
 {
-  //animals whos name has exactly 5 letters
+  //5-6 letters
   return boost::assign::map_list_of("CLOCK", "CLOCK")("PHONE", "PHONE")("SIREN", "SIREN")("TRAIN", "TRAIN")("TRUCK","TRUCK");
 }
 
 const ForeignLanguage2EnglishMap EnglishHousehold::createLongHouseholdWords() const
 {
-  //animals whos name has exactly 7 letters
+  // > 7 letters
   return boost::assign::map_list_of("DOORBELL","DOORBELL")("AEROPLANE","AEROPLANE");
 }

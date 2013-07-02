@@ -600,7 +600,7 @@ public:
   //! The actual implementation of IOEventParser::flushGlyph
   inline void flushGlyph();
 
-  //inline void clearQueue();
+  inline void clearQueue();
 
   //! The actual implementation of IOEventParser::wantEvent
   inline void wantEvent(const IOEvent::Type &type);
@@ -696,20 +696,11 @@ void IOEventParserCore::flushGlyph()
   cond_in_bevents.notify_one();
 }
 
-/*
 
-void IOEventParserCore::clearQueue(){
 
-	IOEventParser::const_iterator i; 
-
-	for (i = iep.out_events.begin(); i != iep.out_events.end(); ++i){
-		if (i->type != IOEvent::DONE){
-			iep.out_events.erase(*i); // get rid of it
-		}
-	}
-	
-}
-*/
+void IOEventParserCore::clearQueue()
+{ std::cout << "queue size was " << iep.out_events.size() <<std::endl;
+	 iep.out_events.clear();}
 
 // Indicate that an event should be monitored
 void IOEventParserCore::wantEvent(const IOEvent::Type &type)
@@ -794,6 +785,9 @@ void IOEventParser::setGlyphDelay(const TimeInterval &delay)
 // Flushes the current glyph
 void IOEventParser::flushGlyph()
 { if(iepc != NULL) iepc->flushGlyph(); }
+
+void IOEventParser::clearQueue()
+{ if (iepc != NULL) iepc->clearQueue();} // make it accessible
 
 // Adds an IOEvent type to the event watchset
 void IOEventParser::wantEvent(const IOEvent::Type &type)

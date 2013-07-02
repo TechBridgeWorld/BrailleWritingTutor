@@ -65,7 +65,6 @@ void EnglishSoundsUtil::sayLetter(const Voice &v, const std::string& letter) con
 
   default:
     v.say(invalid);
-
   }
  
 }
