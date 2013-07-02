@@ -19,7 +19,7 @@ static time_t last_event_time = time(0);
 
 Household::Household(IOEventParser& my_iep, const std::string& path_to_mapping_file, SoundsUtil* my_su, const std::vector<std::string> my_alph, const ForeignLanguage2EnglishMap sw, const ForeignLanguage2EnglishMap mw, const ForeignLanguage2EnglishMap lw, bool f) :
   IBTApp(my_iep, path_to_mapping_file), iep(my_iep), su(my_su), alphabet(my_alph), short_sounds(sw), med_sounds(mw), long_sounds(lw),
-      letter_skill(alphabet.size()), firsttime(false), turncount(0), word(""), target_letter(""), word_pos(0), word_length(0), nomirror(f), everyday_s ("./resources/Voice/everyday_sounds/")
+      letter_skill(alphabet.size()), firsttime(true), turncount(0), word(""), target_letter(""), word_pos(0), word_length(0), nomirror(f), everyday_s ("./resources/Voice/everyday_sounds/")
 {
   for(int i = 0; i < alphabet.size(); i++)
   {
@@ -54,19 +54,16 @@ void Household::processEvent(IOEvent& e)
     {
       std::cout << "    (DEBUG)Skipping first letter event" << std::endl;
       firsttime = false;
+      iep.clearQueue();
       return;//skip
     }
-    else if (!(time(0) == last_event_time))
+    else
     {
       su->sayLetter(getStudentVoice(), (std::string) e.letter);
       AL_attempt((std::string) e.letter);
-      last_event_time = time(0);
-    }
-    else {
-      printf("caught\n");
-      iep.clearQueue();
     }
   }
+  iep.clearQueue(); // clear out the rest of the events that might be backlogged
 }
 
 /* passes in an int and then returns the average of the short medium and long

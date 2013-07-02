@@ -83,6 +83,7 @@ void Arithmetic::processEvent(IOEvent& e)
       su->saySound(math_s, "sl_3");
       printf("saying three\n");
       choose_difficulty = 1;
+
       Fact_new();
     }
     else {
@@ -121,6 +122,7 @@ void Arithmetic::processEvent(IOEvent& e)
     printf("caught something\n");
     return; 
   }
+  iep.clearQueue();
 }
 
 void Arithmetic::Fact_new()
