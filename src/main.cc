@@ -19,7 +19,8 @@ int launch_bt(int argc, char **argv);
 int main(int argc, char **argv)
 { 
   /* establish the necessary parts to play sounds upon connection */
-  Voice teacher_voice("./resources/Voice/teacher/");
+  IOEventParser event_parser;
+  Voice teacher_voice("./resources/Voice/teacher/", event_parser);
   SoundsUtil* eng_su = new EnglishSoundsUtil;
   
   eng_su->saySound(teacher_voice, "starting_bt");
@@ -55,7 +56,8 @@ int main(int argc, char **argv)
 
 int launch_bt(int argc, char **argv)
 {
-  Voice teacher_voice("./resources/Voice/teacher/");
+  IOEventParser event_parser;
+  Voice teacher_voice("./resources/Voice/teacher/", event_parser);
   SoundsUtil* eng_su = new EnglishSoundsUtil;
   std::srand((unsigned) std::time(0));
   BrailleTutor bt;
@@ -66,7 +68,7 @@ int launch_bt(int argc, char **argv)
   // debouncind, the BaseIOEvents are passed directly to the
   // IOEventParser. This is a TSS mod!
   ShortStylusSuppressor debouncer(0.3);
-  IOEventParser event_parser;
+  
   if( (argc > 1) && !strcmp(argv[1], "--nodebounce") )
   {
     std::cout << "[ DEBOUNCING DISABLED ]" << std::endl;

@@ -12,6 +12,17 @@
 #include <SDL.h>
 #include <SDL_mixer.h>
 
+#include <IOEvent.h>
+//#include "common/IBTApp.h"
+
+#include "common/utilities.h"
+
+
+//#include "C:\Users\iSTEP2013\Documents\BWT\src\common\IBTApp.h"
+//#include "common/language_utils.h"
+//#include "C:\Users\iSTEP2013\Documents\BWT\src\common\utilities.h"
+//include "common/utilities.h"
+
 void waitForChannel(int channel);
 
 //used internally for sound_map
@@ -33,7 +44,7 @@ class Voice
    * creates a voice whose .wav files are in
    * ../resources/Voice/[rdir]
    */
-  Voice(std::string rdir);
+  Voice(std::string rdir, IOEventParser& my_iep);
 
   ~Voice();
 
@@ -54,8 +65,10 @@ class Voice
   bool hasSound(std::string uname) const;
 
   static void stopAllPlaying();
+  IOEventParser& iep;
 
  private:
   mutable string_to_sound_map sound_map; //sound_map is used inside say().. and say() is declared const. So sound_map should also be const, ofcourse thats not possible because it doesnt make sense to have a const hashmap, so therefore it's mutable. So basically, this implies "I, the say() function, hereby garantee, by the power bestowed upon me by const, that I will not change anything inside me - ofcourse I am a liar because I am changing the sound_map"
+  
 };
 #endif /* VOICE_H_ */

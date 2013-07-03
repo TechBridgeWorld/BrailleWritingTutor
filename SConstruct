@@ -100,7 +100,7 @@ else:
   env["CPPDEFINES"] = ["BT_WINDOWS", "BOOST_THREAD_USE_LIB"] #the -D flag
 env["LIBPATH"] = ["."] #the -L flag
 env["LIBS"] = [] #the -l flag.
-env["CPPPATH"] = ["src"] #the -I flag 
+env["CPPPATH"] = ["src",BOOST_HEADERS,"src/BrailleTutor-0.7.1/include","src/BrailleTutor-0.7.1/extras"] #the -I flag 
 env["CCFLAGS"] = ["-O3","-Wall","-g","-Wextra"] #other misc compiler flags
 
 
@@ -164,7 +164,7 @@ COMMON_SOURCES = Glob("src/common/*.cc",strings=True)
 
 # Overrides
 commonEnv["LIBS"].extend(["bt"])
-commonEnv["CPPPATH"].extend([BOOST_HEADERS,SDL_HEADERS,"src/BrailleTutor-0.7.1/include","src/BrailleTutor-0.7.1/extras"])
+commonEnv["CPPPATH"].extend([BOOST_HEADERS,SDL_HEADERS,"src/BrailleTutor-0.7.1/include","src/BrailleTutor-0.7.1/extras","src/common"])
 #
 
 COMMON_LIB = commonEnv.StaticLibrary(target="common",source=COMMON_SOURCES)
@@ -178,7 +178,7 @@ adEnv = env.Clone()
 AD_SOURCES = ["src/app_dispatcher/app_dispatcher.cc"]
 
 # Overrides
-adEnv["CPPPATH"].extend(["src/BrailleTutor-0.7.1/include","src/BrailleTutor-0.7.1/extras"])
+adEnv["CPPPATH"].extend(["src/BrailleTutor-0.7.1/include","src/BrailleTutor-0.7.1/extras","src/common"])
 adEnv["CPPPATH"].extend([SDL_HEADERS]) if isLinux() else adEnv["CPPPATH"].extend([BOOST_HEADERS,SDL_HEADERS]) #TODO XXX: check the app_dispatcher.cc to figure out why it needs Voice objects in the first place
 #
 

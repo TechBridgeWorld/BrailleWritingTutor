@@ -30,8 +30,8 @@ static int last_button = 0; //default
 
  Arithmetic::Arithmetic(IOEventParser& my_iep, 
  		const std::string& path_to_mapping_file, SoundsUtil* my_su, bool f) :
-  		IBTApp(my_iep, path_to_mapping_file), su(my_su), math_s("./resources/Voice/math_sounds/"), 
-  		target_sequence('\0'), current_sequence('\0'), nomirror(f), dots1('\0'), dots2('\0'), choose_mode(1), choose_difficulty(0), difficulty_level(1), iep(my_iep)
+  		IBTApp(my_iep, path_to_mapping_file), su(my_su), iep(my_iep), math_s("./resources/Voice/math_sounds/", iep), 
+  		target_sequence('\0'), current_sequence('\0'), nomirror(f), dots1('\0'), dots2('\0'), choose_mode(1), choose_difficulty(0), difficulty_level(1)
 {
   //su->saySound(math_s, "arithmetic_practice");
   printf("starting practice\n");
@@ -122,7 +122,7 @@ void Arithmetic::processEvent(IOEvent& e)
     printf("caught something\n");
     return; 
   }
-  iep.clearQueue();
+  //iep.clearQueue();
 }
 
 void Arithmetic::Fact_new()
@@ -174,14 +174,14 @@ void Arithmetic::Fact_new()
             press button 1 for addition, \n \
             press button 2 for subtraction, \n \
             press button 3 for multiplication\n");
-    iep.clearQueue();
+    
   }
   else if (choose_difficulty) {
     su->saySound(math_s, "select_level");
 
     printf("please select difficulty level 1-3 \n \
           difficulty will increment every %d correct answers\n", CORR_THRES);
-    iep.clearQueue();
+ 
   } 
 
 }
@@ -237,7 +237,7 @@ void Arithmetic::sayArithmeticQuestion(bool say_answer)
       su->saySound(math_s, "equals");
       say_multidigit(response_array);
   }
-  iep.clearQueue();
+
 }
 
 /* Splits the number into digits and says it by digit */

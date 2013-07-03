@@ -89,7 +89,7 @@ struct ApplicationDispatcher : public IOEventHandler
   
   virtual void operator()(std::deque<IOEvent> &events);
   explicit inline ApplicationDispatcher(BrailleTutor &my_bt, IOEventParser &my_iep) : //struct constructor
-      bt(my_bt), iep(my_iep),current_app(NULL),teach("./resources/Voice/teacher/"),numbers("./resources/Voice/math_sounds/"),current_mode_index(0),switching_modes(SCROLL_ON),cfg_file_processed(false)
+      bt(my_bt), iep(my_iep),current_app(NULL),teach("./resources/Voice/teacher/", iep),numbers("./resources/Voice/math_sounds/", iep),current_mode_index(0),switching_modes(SCROLL_ON),cfg_file_processed(false)
   { 
     // Process the config file to make sure we have a modes list to work with
     // The process config file adds default modes to the list if reading the config fails

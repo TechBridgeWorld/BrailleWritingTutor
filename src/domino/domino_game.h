@@ -60,7 +60,7 @@ private:
   SoundsUtil* su;
   Voice dominosounds;
   Voice othersounds;
-  IOEventParser& iep; //So flushGlyph() can be called
+  IOEventParser& iep; 
 
 };
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

@@ -61,7 +61,7 @@ static unsigned int current_note;
 boost::scoped_ptr<boost::thread> timer_thread;
 
 MusicMaker::MusicMaker(IOEventParser& my_iep, const std::string& path_to_mapping_file, SoundsUtil* my_su, std::string path_to_musicmakersounds) : 
-  IBTApp(my_iep, path_to_mapping_file), loop(true), su(my_su), musicmakersounds(path_to_musicmakersounds), iep(my_iep), curr_instrument(piano), tempo(2), but_status(NONEDOWN)
+  IBTApp(my_iep, path_to_mapping_file), loop(true), su(my_su), iep(my_iep), musicmakersounds(path_to_musicmakersounds,iep), curr_instrument(piano), tempo(2), but_status(NONEDOWN)
 {
 	for(int i = 0; i < MAXCELLS; i++){
 		for(int j = 0; j < MAXCELLS; j++){

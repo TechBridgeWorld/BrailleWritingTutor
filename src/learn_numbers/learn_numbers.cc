@@ -8,7 +8,7 @@
 #include "Dots.h"
 
 LearnNumbers::LearnNumbers(IOEventParser& my_iep, const std::string& path_to_mapping_file, SoundsUtil* my_su, bool f) :
-  IBTApp(my_iep, path_to_mapping_file), su(my_su), math_s("./resources/Voice/math_sounds/"), target_sequence('\0'), current_sequence('\0'), nomirror(f)
+  IBTApp(my_iep, path_to_mapping_file), su(my_su), iep(my_iep), math_s("./resources/Voice/math_sounds/", iep), target_sequence('\0'), current_sequence('\0'), nomirror(f)
 {
   su->saySound(math_s, "learn_numbers");
   LN_new();

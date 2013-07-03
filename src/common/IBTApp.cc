@@ -10,7 +10,7 @@
 Charset IBTApp::currentCharset = Charset::defaultCharset();
 
 IBTApp::IBTApp(IOEventParser& my_iep, const std::string& path_to_mapping_file) :
-  iep(my_iep), teacher_voice("./resources/Voice/teacher/"), student_voice("./resources/Voice/student/")
+  iep(my_iep), teacher_voice("./resources/Voice/teacher/",iep), student_voice("./resources/Voice/student/",iep)
 {
   if( path_to_mapping_file == "" || path_to_mapping_file.size() == 0 )
     loadDefaultCharset();
