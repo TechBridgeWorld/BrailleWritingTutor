@@ -13,15 +13,10 @@
 #include <SDL_mixer.h>
 
 #include <IOEvent.h>
-//#include "common/IBTApp.h"
 
 #include "common/utilities.h"
 
 
-//#include "C:\Users\iSTEP2013\Documents\BWT\src\common\IBTApp.h"
-//#include "common/language_utils.h"
-//#include "C:\Users\iSTEP2013\Documents\BWT\src\common\utilities.h"
-//include "common/utilities.h"
 
 void waitForChannel(int channel);
 

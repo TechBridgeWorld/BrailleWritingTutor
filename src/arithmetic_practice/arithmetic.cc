@@ -122,7 +122,7 @@ void Arithmetic::processEvent(IOEvent& e)
     printf("caught something\n");
     return; 
   }
-  //iep.clearQueue();
+  iep.clearQueue();
 }
 
 void Arithmetic::Fact_new()
@@ -183,7 +183,7 @@ void Arithmetic::Fact_new()
           difficulty will increment every %d correct answers\n", CORR_THRES);
  
   } 
-
+ // iep.clearQueue();
 }
 
 void Arithmetic::clearArray(int *a)
@@ -328,12 +328,9 @@ void Arithmetic::AP_attempt(unsigned char dot)
             num_correct = 0; // reset
           }
         }
-        Fact_new(); /* ideally repeat the question and answer here */
+        Fact_new();
       } 
-      else {
-        // TODO: add capabilities to say number
-      
-        
+      else {        
         if (number_sign == 0){
           digit_position++;
           current_sequence = 0;
@@ -353,7 +350,7 @@ void Arithmetic::AP_attempt(unsigned char dot)
   else
   {
     su->saySound(getTeacherVoice(), "no");
-   // sayArithmeticQuestion(num1,num2); TODO inmplement ques repeat
+    current_sequence = 0; // so they can't just hit all 6 buttons and have it register as right
   }
 
 }

@@ -90,6 +90,8 @@ bool ApplicationDispatcher::isScrollEvent(const IOEvent& e)
   if(switching_modes == BZERO_DOWN && e.type == IOEvent::BUTTON_DOWN && e.button != 0)
   {
     switching_modes = SCROLL_ON;
+    teach.say("main_menu.wav");
+    printf("You have returned to the main menu\n");
     return true;
   }
 
@@ -447,6 +449,7 @@ IBTApp* ApplicationDispatcher::switchToSelectedMode() const {
 
 void ApplicationDispatcher::playSelectedMode() const
 {
+
   switch (modes_list[current_mode_index]) {
   case FREE_PLAY_ENGLISH:
     teach.say("free play.wav");

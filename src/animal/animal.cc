@@ -69,20 +69,22 @@ void Animal::processEvent(IOEvent& e)
       AL_attempt((std::string) e.letter);
     }
   }
+  //iep.clearQueue();
 }
 
 void Animal::AL_new()
 {
+  srand(time(0));
   std::vector<int> low_letters;
-
+  float min_knowledge = .7;
   //no letter skill to be trained
   target_letter = "\0";
   //choose a new animal target:
   std::vector<std::string> choices;
   turncount = 0;
-  bool need_short = (LS_length_skill[3].estimate() < .9); //animal words with 3 letters
-  bool need_med = (LS_length_skill[5].estimate() < .9);//animal words with 5 letters
-  bool need_long = (LS_length_skill[7].estimate() < .9);//animal words with 7 letters
+  bool need_short = (LS_length_skill[SHORT].estimate() < min_knowledge); //animal words with 3 letters
+  bool need_med = (LS_length_skill[MEDIUM].estimate() < min_knowledge);//animal words with 5 letters
+  bool need_long = (LS_length_skill[LONG].estimate() < min_knowledge);//animal words with 7 letters
 
   if( !(need_short || need_med || need_long) )
   {
@@ -133,8 +135,10 @@ void Animal::AL_new()
   word_pos = 0;
   //Asound += ".wav";
   std::cout << "		(DEBUG)Animal sound:" << word << std::endl;
+  printf("got here animal game\n");
   su->saySound(animal_s, "please write the animal2"); 
   su->saySound(animal_s, animalNameToSound(word));
+  //iep.clearQueue();
 }
 
 std::string Animal::animalNameToSound(const std::string& animal)
@@ -259,6 +263,7 @@ void Animal::AL_attempt(std::string i)
           su->sayDotSequence(getTeacherVoice(), charset[GlyphMapping(correct_letter)]);
           su->saySound(getTeacherVoice(), "please write");
           su->sayLetter(getTeacherVoice(), correct_letter);
+          //iep.clearQueue();
           target_letter = correct_letter;
           word_pos = 0;
           //std::cout << "    (DEBUG)Bad at this letter" << std::endl;
@@ -293,12 +298,12 @@ const ForeignLanguage2EnglishMap EnglishAnimal::createMedAnimalWords() const
 {
   //animals whos name has 5-6 ish letters
   return boost::assign::map_list_of("SHEEP", "SHEEP")("HORSE", "HORSE")("ZEBRA", "ZEBRA")("CAMEL", "CAMEL")
-                                   ("HYENA", "HYENA")("MONKEY","MONKEY")("SNAKE","SNAKE");
+                                   ("MONKEY","MONKEY")("SNAKE","SNAKE");
 }
 
 const ForeignLanguage2EnglishMap EnglishAnimal::createLongAnimalWords() const
 {
-  //animals whos name has exactly 7 letters
+  //animals whos name has > 5 letters
   return boost::assign::map_list_of("ROOSTER","ROOSTER")("ELEPHANT","ELEPHANT")("PEACOCK", "PEACOCK");
 }
 
@@ -349,19 +354,21 @@ const std::vector<std::string> FrenchAnimal::createAlphabet() const
 const ForeignLanguage2EnglishMap FrenchAnimal::createShortAnimalWords() const
 {
   //animals whos name has exactly 3 letters
-  return boost::assign::map_list_of("OIE","ROOSTER"); //XXX:"oie" is actually means Goose.. but..
+  return boost::assign::map_list_of("COQ","ROOSTER")("LION","LION")("PAON","PEACOCK")("CHAT","CAT"); 
 }
 
 const ForeignLanguage2EnglishMap FrenchAnimal::createMedAnimalWords() const
 {
   //animals whos name has exactly 5 letters
-  return boost::assign::map_list_of("CHIEN","DOG")("VACHE","COW");
+  return boost::assign::map_list_of("CHIEN","DOG")("VACHE","COW")("ZÈBRE","ZEBRA")("SINGE","MONKEY");
 }
 
 const ForeignLanguage2EnglishMap FrenchAnimal::createLongAnimalWords() const
 {
   //animals whos name has exactly 7 letters
-  return boost::assign::map_list_of("CHAMEAU","CAMEL");
+  return boost::assign::map_list_of("CHAMEAU","CAMEL")("ABEILLE","BEE")("COCHON","PIG")("CORBEAU","CROW")
+                                    ("CHOUETTE","OWL")("MOUTON","SHEEP")("CHEVAL","HORSE")("SERPENT","SNAKE")
+                                    ("ÉLÉPHANT","ELEPHANT");
 }
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -380,7 +387,7 @@ const std::vector<std::string> KiswahiliAnimal::createAlphabet() const
 const ForeignLanguage2EnglishMap KiswahiliAnimal::createShortAnimalWords() const
 {
   //animals whos name has exactly 3 letters
-  return boost::assign::map_list_of("OIE","ROOSTER"); //XXX:"oie" is actually means Goose.. but..
+  return boost::assign::map_list_of("OIE","ROOSTER"); //"oie" means rooster
 }
 
 const ForeignLanguage2EnglishMap KiswahiliAnimal::createMedAnimalWords() const

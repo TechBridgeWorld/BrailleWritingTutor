@@ -2,12 +2,14 @@
 //#include "BrailleTutor-0.7.1\include\IOEvent.h"
 //
 
-/*
-Voice::Voice()
-{
-}
-;
-*/
+
+/* 
+ * July 2013 (Madeleine) -- changed voice to take in IOEventParser
+ * this allows iep.clearQueue() to be called, which flushes any pending
+ * events that might have accumulated when a sound file is playing (small children
+ * really like to push the buttons). At worst, one remaining event might linger
+ */
+
 Voice::Voice(std::string resource_path, IOEventParser& my_iep) : iep(my_iep)
 {
 
@@ -76,12 +78,14 @@ void Voice::say(std::string uname, int channel) const
     std::cout<<"Error!: Sound file not found:"<<uname<<std::endl;
 
   }
-
+  printf("point 0 \n");
   if( channel != -1 ) //if it's -1, don't wait (doesn't matter)
     waitForChannel(channel); //wait for channel to finish playing
 
   Mix_PlayChannel(channel, sound_map[uname], 0);
-  iep.clearQueue();
+  printf("point A\n");
+  //iep.clearQueue();
+  printf("point B\n");
 }
 
 void Voice::say(std::string uname) const
@@ -95,7 +99,15 @@ void Voice::say(std::string uname) const
   waitForChannel(-1); //clear all channels
 
   Mix_PlayChannel(-1, sound_map[uname], 0);
-  iep.clearQueue();
+  printf("clear\n");
+/*
+  printf("passed");
+  try{
+    iep.clearQueue();
+  }
+  catch (...) {
+    printf("caught\n");
+  } */
 }
 
 void Voice::play(std::string uname, int ms) const
@@ -109,7 +121,7 @@ void Voice::play(std::string uname, int ms) const
   }
 
   Mix_PlayChannelTimed(-1, sound_map[uname], 0, ms);
-  iep.clearQueue();
+  iep.clearQueue(); 
 }
 
 //Check if this Voice object has a particular sound in its map

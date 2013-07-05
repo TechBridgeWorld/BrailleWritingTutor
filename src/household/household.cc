@@ -54,7 +54,7 @@ void Household::processEvent(IOEvent& e)
     {
       std::cout << "    (DEBUG)Skipping first letter event" << std::endl;
       firsttime = false;
-      iep.clearQueue();
+      //iep.clearQueue();
       return;//skip
     }
     else
@@ -63,32 +63,24 @@ void Household::processEvent(IOEvent& e)
       AL_attempt((std::string) e.letter);
     }
   }
-  iep.clearQueue(); // clear out the rest of the events that might be backlogged
+  //iep.clearQueue(); // clear out the rest of the events that might be backlogged
 }
 
-/* passes in an int and then returns the average of the short medium and long
- * word skill levels. short, medium, and long are relative to the longest and 
- * shortest words in the list
- TODO: PUT SOMETHING IN THAT ASSERTS ALL WORDS ARE LESS THAN MAX_LEN
- */
-int Household::getEstimate(int n)
-{
 
-
-}
 
 void Household::AL_new()
 {
   std::vector<int> low_letters;
-
+  srand(time(0)); // so not the same every time.
   //no letter skill to be trained
   target_letter = "\0";
-  //choose a new animal target:
+  float min_knowledge = .7;
+  //choose a new sound target:
   std::vector<std::string> choices;
   turncount = 0;
-  bool need_short = (LS_length_skill[3].estimate() < .9); //animal words with 3 letters
-  bool need_med = (LS_length_skill[5].estimate() < .9);//animal words with 5 letters
-  bool need_long = (LS_length_skill[7].estimate() < .9);//animal words with 7 letters
+  bool need_short = (LS_length_skill[SHORT].estimate() < min_knowledge); 
+  bool need_med = (LS_length_skill[MEDIUM].estimate() < min_knowledge);
+  bool need_long = (LS_length_skill[LONG].estimate() < min_knowledge);
 
   if( !(need_short || need_med || need_long) )
   {
@@ -140,6 +132,7 @@ void Household::AL_new()
   //Asound += ".wav";
   std::cout << "		(DEBUG)Animal sound:" << word << std::endl;
   su->saySound(everyday_s, "please_write_the_object"); 
+  printf("skill level is %f\n",LS_length_skill[SHORT].estimate() );
   su->saySound(everyday_s, householdNameToSound(word));
 }
 
@@ -293,7 +286,7 @@ const std::vector<std::string> EnglishHousehold::createAlphabet() const
 const ForeignLanguage2EnglishMap EnglishHousehold::createShortHouseholdWords() const
 {
   //objects that have <5 letters
-  return boost::assign::map_list_of("RAIN", "RAIN");
+  return boost::assign::map_list_of("RAIN", "RAIN")("AUTO","AUTO");
 }
 
 const ForeignLanguage2EnglishMap EnglishHousehold::createMedHouseholdWords() const
