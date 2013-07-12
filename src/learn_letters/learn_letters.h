@@ -12,6 +12,7 @@
 #include "common/IBTApp.h"
 #include "common/KnowledgeTracer.h"
 #include "common/language_utils.h"
+#include "common/multicharacter.h"
 
 class LearnLetters : public IBTApp
 {
@@ -31,10 +32,12 @@ private:
 
 private:
   SoundsUtil* su;
+  multi* multicell; 
   enum observation
   {
     right, wrong
   };
+  int cell_position; // for multi-cell characters
   //IOEventParser& iep; //So flushGlyph() can be called
   const std::vector<std::string> alphabet;
   const std::vector<std::string> group0;

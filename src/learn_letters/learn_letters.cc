@@ -7,16 +7,20 @@
 
 #include <boost/assign/list_of.hpp>
 #include "learn_letters.h"
+#include "common/multicharacter.h"
 
- static time_t time_last_pressed = time(0); 
- static int last_button_pressed = 0;
+static bool is_multicell; // is the character a multi-cell braille character?
+
+static time_t time_last_pressed = time(0);
+static int last_button_pressed = 0;
+int total_multicells = 0; // how many cells there are in total (usually 2)
 
 //ugly constructor, sorry (I am trying to change as little of the old code as possible)
 LearnLetters::LearnLetters(IOEventParser& my_iep, const std::string& path_to_mapping_file, SoundsUtil* my_su, const std::vector<std::string> my_alph, const std::vector<
     std::string> g0, const std::vector<std::string> g1, const std::vector<std::string> g2, const std::vector<std::string> g3, const std::vector<
     std::string> g4, bool f) :
-  IBTApp(my_iep, path_to_mapping_file), /*iep(my_iep), */ su(my_su), alphabet(my_alph), group0(g0), group1(g1), group2(g2), group3(g3), group4(g4), target_group(0),
-      target_index(0), target_sequence(0), current_sequence(0), letter_skill(alphabet.size()), nomirror(f)
+  IBTApp(my_iep, path_to_mapping_file), su(my_su), alphabet(my_alph), group0(g0), group1(g1), group2(g2), group3(g3), group4(g4), target_group(0),
+      target_index(0), target_sequence(0), current_sequence(0), letter_skill(alphabet.size()), nomirror(f), multicell(), cell_position(0)
 {
 
   if( group0.size() + group1.size() + group2.size() + group3.size() + group4.size() != alphabet.size() )
@@ -27,6 +31,10 @@ LearnLetters::LearnLetters(IOEventParser& my_iep, const std::string& path_to_map
 
   su->saySound(getTeacherVoice(), "learn letters");
 
+  //initialize multicell support
+  multicell->initializeMultiCell();
+
+  //initilaize the 
   for(unsigned int i = 0; i < alphabet.size(); i++)
   {
     letter_skill[i] = KnowledgeTracer(.01) .registerEvent(right, .8, .001) .registerEvent(wrong, .1, .9);
@@ -95,7 +103,7 @@ void LearnLetters::LL_new()
     if( letter_skill[target_index].estimate() < .1 )
     {
       target_sequence = charset[GlyphMapping((std::string) alphabet[target_index])];
-      printf("target sequnce is %d\n", target_sequence);
+      //printf("target sequnce is %d\n", target_sequence);
       std::cout << alphabet[target_index] << std::endl;
       teaching_letter = true;
       break;
@@ -126,9 +134,20 @@ void LearnLetters::LL_new()
     target_sequence = charset[GlyphMapping(alphabet[target_index])];
   }
 
+  /* check if it's multicell */
+  is_multicell = multicell->isMultiCell(alphabet[target_index]);
+  if (is_multicell) {
+      total_multicells = multicell->numCells(alphabet[target_index]); // so we only have to get it once
+  }
+
   if( teaching_letter )
   {
     su->saySound(getTeacherVoice(), "to write the letter");
+    if (is_multicell){
+      printf("RECOGNIZED MULTICELL\n");
+      target_sequence = multicell->getPatterns(alphabet[target_index])[cell_position];  //will have to check if it's the end
+      
+    }
    // iep.clearQueue();
   }
   else
@@ -138,9 +157,7 @@ void LearnLetters::LL_new()
   }
 
   GlyphMapping g = charset[target_sequence];
-  printf("size of mapping is %d\n", sizeof(g));
- // printf("type of mapping is %s\n", (char*) typeof(g));
-  su->sayLetter(getTeacherVoice(), (std::string) g);
+  su->sayLetter(getTeacherVoice(), alphabet[target_index]); // can put a string of a character here and it will work
 
   if( teaching_letter )
   {
@@ -150,6 +167,7 @@ void LearnLetters::LL_new()
    // iep.clearQueue();
   }
 
+
   //target_sequence is the one we want,
   //target_index is its index,
   //and target_group is the group number
@@ -158,7 +176,6 @@ void LearnLetters::LL_new()
 void LearnLetters::LL_attempt(int i)
 {
 	std::cout << "LN_attempt" << std::endl;
-	
   static const Charset &charset = IBTApp::getCurrentCharset();
   if( my_dot_mask(i) & target_sequence )
   { //dot is in sequence
@@ -170,11 +187,24 @@ void LearnLetters::LL_attempt(int i)
       letter_skill[target_index].observe(right);
       //std::cout << nthInAlphabet(target_index) << ": " << letter_skill[target_index].estimate() << std::endl;
       std::cout << group_skill(target_group) << std::endl;
+      if (is_multicell && (cell_position != (total_multicells - 1))){
+        // do some other stuff to get it to half move on
+        printf("SHOULD BE MOVING ON NOW\n");
+        cell_position++;
+        target_sequence = multicell->getPatterns(alphabet[target_index])[cell_position];
+        current_sequence = 0; // reset
+        return;
+      }
+      else{
       su->saySound(getTeacherVoice(), "good");
+      is_multicell = false; // reset it
+      cell_position = 0;
+    /// if not multicell then new, else bump it for next target
       LL_new();
       return;
     }
   }
+}
   else
   { 
 	 std::cout << "LN_attempt.  Dot not in seq" << std::endl; 
@@ -198,6 +228,7 @@ void LearnLetters::LL_attempt(int i)
     return;
   }
 }
+
 
 int LearnLetters::getGroupSize(int g)
 {
