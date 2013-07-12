@@ -19,7 +19,7 @@
 
 Animal::Animal(IOEventParser& my_iep, const std::string& path_to_mapping_file, SoundsUtil* my_su, const std::vector<std::string> my_alph, const ForeignLanguage2EnglishMap sw, const ForeignLanguage2EnglishMap mw, const ForeignLanguage2EnglishMap lw, bool f) :
   IBTApp(my_iep, path_to_mapping_file), iep(my_iep), su(my_su), alphabet(my_alph), short_animals(sw), med_animals(mw), long_animals(lw),
-      letter_skill(alphabet.size()), firsttime(true), turncount(0), word(""), target_letter(""), word_pos(0), word_length(0), nomirror(f), animal_s("./resources/Voice/animal_sounds/",iep)
+      letter_skill(alphabet.size()), firsttime(true), turncount(0), word(""), last_word(""), target_letter(""), word_pos(0), word_length(0), nomirror(f), animal_s ("./resources/Voice/animal_sounds/", my_iep)
 {
   for(int i = 0; i < alphabet.size(); i++)
   {
@@ -48,7 +48,7 @@ void Animal::processEvent(IOEvent& e)
 
   if( e.type == IOEvent::CELL_LETTER || e.type == IOEvent::BUTTON_LETTER )
   {
-    //printEvent(e);
+    printEvent(e);
     //Upon entering this mode, we dont want any pending LETTER events to interfere. So we skip the first LETTER event.
     if( firsttime )//Check if this is the first letter event, if so, we skip it
     {
@@ -129,9 +129,11 @@ void Animal::AL_new()
     }
     word_length = LONG;
   }
-
-  random_shuffle(choices.begin(), choices.end());
-  word = choices.front();
+  while (word == last_word){
+    random_shuffle(choices.begin(), choices.end());
+    word = choices.front();
+  }
+  last_word = word; // to avoid direct repeats
   word_pos = 0;
   //Asound += ".wav";
   std::cout << "		(DEBUG)Animal sound:" << word << std::endl;
@@ -226,6 +228,7 @@ void Animal::AL_attempt(std::string i)
         LS_length_skill[word_length].observe(right);
         std::cout << word_length << ": " << LS_length_skill[word_length].estimate() << std::endl;
         su->saySound(getTeacherVoice(), "good");
+        su->saySound(getTeacherVoice(), "tada");
         AL_new();
         return;
       }

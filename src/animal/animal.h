@@ -51,6 +51,7 @@ private:
   int turncount;
   std::string word; //also name of the animal
   std::string target_letter;
+  std::string last_word;
   int word_pos;
   int word_length;
   KnowledgeTracer LS_length_skill[8];

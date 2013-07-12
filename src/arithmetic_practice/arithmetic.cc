@@ -122,7 +122,7 @@ void Arithmetic::processEvent(IOEvent& e)
     printf("caught something\n");
     return; 
   }
-  iep.clearQueue();
+ 
 }
 
 void Arithmetic::Fact_new()

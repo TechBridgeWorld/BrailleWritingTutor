@@ -23,6 +23,7 @@ private:
   int getEstimate(int); // removes the need for hard coding possible word lengths to keep track of estimates
   void AL_attempt(std::string);
   void processEvent(IOEvent& e);
+  int getMax(int, int, int);
   std::string householdNameToSound(const std::string& animalName);//Accepts the name of the animal in any language, and returns the corresponding english sound
 
 private:
@@ -45,8 +46,9 @@ private:
   bool nomirror;
   bool firsttime;
   int turncount;
-  std::string word; //also name of the animal
+  std::string word; //also name of the object
   std::string target_letter;
+  std::string last_word;
   int word_pos;
   int word_length;
   KnowledgeTracer LS_length_skill[8];

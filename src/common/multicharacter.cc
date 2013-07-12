@@ -33,7 +33,7 @@ static multiCellChar char2 = {"आ", 2, {0b000001, 0b111111}};
 static node test1, test2; 
 
 void multi::initializeMultiCell(){
-	printf("starting\n");
+	
 	
 	//----------------------------------
 	::test1.prev = NULL;
