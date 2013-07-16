@@ -25,6 +25,7 @@ private:
   void processEvent(IOEvent& e);
   int getMax(int, int, int);
   std::string householdNameToSound(const std::string& animalName);//Accepts the name of the animal in any language, and returns the corresponding english sound
+  void sayName(std::string&);
 
 private:
   enum observation

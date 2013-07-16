@@ -192,6 +192,8 @@ void LearnLetters::LL_attempt(int i)
         printf("SHOULD BE MOVING ON NOW\n");
         cell_position++;
         target_sequence = multicell->getPatterns(alphabet[target_index])[cell_position];
+        su->saySound(getTeacherVoice(), "press");
+        su->sayDotSequence(getTeacherVoice(), target_sequence);
         current_sequence = 0; // reset
         return;
       }

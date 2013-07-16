@@ -20,7 +20,7 @@
 #include "Types.h"
 #include "Charset.h"
 #include "IOEvent.h"
-#include <stdio.h>
+
 
 
 namespace BrailleTutorNS {
@@ -701,10 +701,7 @@ void IOEventParserCore::flushGlyph()
 
 
 void IOEventParserCore::clearQueue()
-{ 	printf("got herrrrrrreeee\n");
-	
-	std::cout << "queue size was " << iep.out_events.size() <<std::endl;
-	 iep.out_events.clear();}
+{ iep.out_events.clear();}
 
 // Indicate that an event should be monitored
 void IOEventParserCore::wantEvent(const IOEvent::Type &type)

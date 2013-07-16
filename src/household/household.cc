@@ -37,6 +37,12 @@ Household::Household(IOEventParser& my_iep, const std::string& path_to_mapping_f
   AL_new();
 }
 
+void Household::sayName(std::string& word){
+    std::string sound_file(word);
+    sound_file.append("_word");
+    su->saySound(everyday_s, sound_file);
+}
+
 void Household::processEvent(IOEvent& e)
 {
   if (e.type == IOEvent::BUTTON_DOWN && e.button == 6){
@@ -49,6 +55,8 @@ void Household::processEvent(IOEvent& e)
   if (three_down && e.type == IOEvent::BUTTON_DOWN && e.button == 0){
     su->saySound(getTeacherVoice(), "please write");
     su->sayLetterSequence(getTeacherVoice(), word);
+    /* say the actual word */
+    sayName(word);
     three_down = false; //reset
     firsttime = true; // so will skip later
     return;
@@ -273,6 +281,8 @@ void Household::AL_attempt(std::string i)
         LS_length_skill[word_length].observe(right);
         std::cout << word_length << ": " << LS_length_skill[word_length].estimate() << std::endl;
         su->saySound(getTeacherVoice(), "good");
+        su->sayLetterSequence(getTeacherVoice(), word);
+        sayName(word);
         su->saySound(getTeacherVoice(), "tada");
         AL_new();
         return;
@@ -282,7 +292,7 @@ void Household::AL_attempt(std::string i)
     else
     { //letter is incorrect
       su->saySound(getTeacherVoice(), "no"); // that is the incorrect animal
-      word_pos = 0;
+     // word_pos = 0;
       turncount++;
       //std::cout << "    (DEBUG)Now at turn:" << turncount << std::endl;
       if( turncount < 3 )
