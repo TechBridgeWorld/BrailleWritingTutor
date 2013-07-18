@@ -70,19 +70,5 @@ private:
   const ForeignLanguage2EnglishMap createLongHouseholdWords() const;
 };
 
-class English2Household : public Household
-{
-public:
-  explicit English2Household(IOEventParser&);
-  ~English2Household()
-  {
-  }
-private:
-
-  const std::vector<std::string> createAlphabet() const;
-  const ForeignLanguage2EnglishMap createShortHouseholdWords() const;
-  const ForeignLanguage2EnglishMap createMedHouseholdWords() const;
-  const ForeignLanguage2EnglishMap createLongHouseholdWords() const;
-};
 
 #endif /* HOUSEHOLD_H_ */

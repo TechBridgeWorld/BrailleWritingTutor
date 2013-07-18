@@ -79,6 +79,24 @@ private:
   const std::vector<std::string> createGroup4Letters() const;
 };
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+class KannadaLearnLetters : public LearnLetters
+{
+public:
+  explicit KannadaLearnLetters(IOEventParser&);
+  ~KannadaLearnLetters()
+  {
+  }
+private:
+  const std::vector<std::string> createAlphabet() const;
+  const std::vector<std::string> createGroup0Letters() const;
+  const std::vector<std::string> createGroup1Letters() const;
+  const std::vector<std::string> createGroup2Letters() const;
+  const std::vector<std::string> createGroup3Letters() const;
+  const std::vector<std::string> createGroup4Letters() const;
+};
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 class ArabicLearnLetters : public LearnLetters
 {
 public:

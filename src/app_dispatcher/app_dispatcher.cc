@@ -215,6 +215,8 @@ void ApplicationDispatcher::processConfigFile()
             modes_list.push_back(DOT_PRACTICE_ENGLISH);
           } else if (mode_str == "LEARN_LETTERS_ENGLISH") {
             modes_list.push_back(LEARN_LETTERS_ENGLISH);
+          } else if (mode_str == "LEARN_LETTERS_KANNADA") {
+            modes_list.push_back(LEARN_LETTERS_KANNADA);
           } else if (mode_str == "LETTER_PRACTICE_ENGLISH") {
             modes_list.push_back(LETTER_PRACTICE_ENGLISH);
           } else if (mode_str == "LEARN_NUMBERS_ENGLISH") {
@@ -375,6 +377,8 @@ IBTApp* ApplicationDispatcher::switchToSelectedMode() const {
     return new EnglishArithmeticPractice(iep);
   case LEARN_LETTERS_HINDI:
     return new Hindi2LearnLetters(iep);
+  case LEARN_LETTERS_KANNADA:
+    return new KannadaLearnLetters(iep);
   case FREE_PLAY_ARABIC:
     return new ArabicDotScaffold(iep);
   case FREE_NUMBERS_ARABIC:
@@ -504,8 +508,12 @@ void ApplicationDispatcher::playSelectedMode() const
     printf("Selecting English Maths pracice\n");
     break;
   case LEARN_LETTERS_HINDI:
-      teach.say("learn_letters_hindi.wav"); //TODO change this
+      teach.say("learn_letters_hindi.wav"); 
       printf("Selecting Hindi Learn Letters\n");
+      break;
+  case LEARN_LETTERS_KANNADA:
+      teach.say("good.wav");
+      printf("Selecting Kannada Learn Letters");
       break;
   case FREE_PLAY_ARABIC:
     teach.say("free play_arabic.wav");

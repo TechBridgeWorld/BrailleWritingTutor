@@ -57,6 +57,7 @@ void Household::processEvent(IOEvent& e)
     su->sayLetterSequence(getTeacherVoice(), word);
     /* say the actual word */
     sayName(word);
+    word_pos = 0; // restsart the word
     three_down = false; //reset
     firsttime = true; // so will skip later
     return;
@@ -348,7 +349,7 @@ const std::vector<std::string> EnglishHousehold::createAlphabet() const
 const ForeignLanguage2EnglishMap EnglishHousehold::createShortHouseholdWords() const
 {
   //objects that have <5 letters
-  return boost::assign::map_list_of("RAIN", "RAIN")("AUTO","AUTO");
+  return boost::assign::map_list_of("RAIN", "RAIN")("AUTO","AUTO")("HORN","HORN")("BELL","BELL");
 }
 
 const ForeignLanguage2EnglishMap EnglishHousehold::createMedHouseholdWords() const

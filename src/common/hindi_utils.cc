@@ -1,8 +1,8 @@
 /*
  * hindi_utils.cc
  *
- *  Created on: Dec 18, 2008
- *      Author: imran
+ *  Created June 2013
+ *      Author: madeleine clute
  */
 
 #include <boost/assign/list_of.hpp>

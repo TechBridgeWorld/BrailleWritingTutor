@@ -28,7 +28,7 @@ using namespace std;
  multiCellChar *retrieveChar(char);
 
 static node *character_list;
-static multiCellChar char1 = {"अ", 2, {0b100000, 0b001100}};
+static multiCellChar char1 = {"ಋ", 2, {0b010111, 0b010000}};
 static multiCellChar char2 = {"आ", 2, {0b000001, 0b111111}};
 static node test1, test2; 
 

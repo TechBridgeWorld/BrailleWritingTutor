@@ -22,7 +22,7 @@ LearnLetters::LearnLetters(IOEventParser& my_iep, const std::string& path_to_map
   IBTApp(my_iep, path_to_mapping_file), su(my_su), alphabet(my_alph), group0(g0), group1(g1), group2(g2), group3(g3), group4(g4), target_group(0),
       target_index(0), target_sequence(0), current_sequence(0), letter_skill(alphabet.size()), nomirror(f), multicell(), cell_position(0)
 {
-
+  printf("in learn letters\n");
   if( group0.size() + group1.size() + group2.size() + group3.size() + group4.size() != alphabet.size() )
   {
     std::cerr << "Error in LearnLetters: Alphabet groups are not correctly divided. Exiting." << std::endl;
@@ -535,4 +535,91 @@ const std::vector<std::string> Hindi2LearnLetters::createGroup4Letters() const
 {
   return boost::assign::list_of  ("ल")("व")("श")("ष")("स")("ह");
 }
-//43
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+KannadaLearnLetters::KannadaLearnLetters (IOEventParser& my_iep) :
+      LearnLetters(my_iep, "./language_mapping_files/kannada_mapping.txt", new KannadaSoundsUtil, createAlphabet(), createGroup0Letters(), createGroup1Letters(), createGroup2Letters(), createGroup3Letters(), createGroup4Letters(), true)
+{
+  printf("constructed\n");
+}
+
+const std::vector<std::string> KannadaLearnLetters::createAlphabet() const
+{
+  return boost::assign::list_of ("ಅ")
+                                  ("ಆ")
+                                  ("ಆ")
+                                  ("ಈ") 
+                                  ("ಉ")
+                                  ("ಊ")
+                                  ("ಋ")
+                                  ("ಎ")
+                                  ("ಏ")
+                                  ("ಐ")
+                                  ("ಒ")
+                                  ("ಓ")
+                                  ("ಔ")
+                                  ("ಕಂ")
+                                  ("ಕಃ")
+                                  ("ಕ")
+                                  ("ಖ")
+                                  ("ಗ")
+                                  ("ಘ")
+                                  ("ಙ")
+                                  ("ಚ")
+                                  ("ಛ")
+                                  ("ಜ")
+                                  ("ಝ")
+                                  ("ಞ")
+                                  ("ಟ")
+                                  ("ಠ")
+                                  ("ಡ")
+                                  ("ಢ")
+                                  ("ಣ")
+                                  ("ತ")
+                                  ("ಥ")
+                                  ("ದ")
+                                  ("ಧ")
+                                  ("ನ")
+                                  ("ಪ")
+                                  ("ಫ")
+                                  ("ಬ")
+                                  ("ಭ")
+                                  ("ಮ")
+                                  ("ಯ")
+                                  ("ರ")
+                                  ("ಲ")
+                                  ("ವ")
+                                  ("ಶ")
+                                  ("ಷ")
+                                  ("ಸ")
+                                  ("ಹ")
+                                  ("ಳ")
+                                  ("ಕ್ಷ")
+                                  ;
+}
+
+const std::vector<std::string> KannadaLearnLetters::createGroup0Letters() const
+{
+  return boost::assign::list_of ("ಅ")("ಆ")("ಆ")("ಈ")("ಉ")("ಊ")("ಋ")("ಎ")("ಏ")("ಐ");
+}
+
+const std::vector<std::string> KannadaLearnLetters::createGroup1Letters() const
+{
+  return boost::assign::list_of ("ಒ")("ಓ")("ಔ")("ಕಂ")("ಕಃ")("ಕ")("ಖ")("ಗ")("ಘ");
+}
+
+const std::vector<std::string> KannadaLearnLetters::createGroup2Letters() const
+{
+  return boost::assign::list_of ("ಙ")("ಚ")("ಛ")("ಜ")("ಝ")("ಞ")("ಟ")("ಠ")("ಡ")("ಢ")("ಣ")("ತ");
+}
+
+const std::vector<std::string> KannadaLearnLetters::createGroup3Letters() const
+{
+   return boost::assign::list_of ("ಥ")("ದ")("ಧ")("ನ")("ಪ")("ಫ")("ಬ")("ಭ")("ಮ")("ಯ");
+}
+
+const std::vector<std::string> KannadaLearnLetters::createGroup4Letters() const
+{
+    return boost::assign::list_of ("ರ")("ಲ")("ವ")("ಶ")("ಷ")("ಸ")("ಹ")("ಳ")("ಕ್ಷ");
+}
