@@ -3,6 +3,8 @@
  *
  *  Created on: Dec 3, 2008
  *      Author: imran
+ *  Modified July 2013 for multicell support
+ *      Author: Madeleine
  */
 
 #include <boost/assign/list_of.hpp>
@@ -141,29 +143,45 @@ void LearnLetters::LL_new()
   }
 
   if( teaching_letter )
-  {
-    su->saySound(getTeacherVoice(), "to write the letter");
-    if (is_multicell){
+  { if (is_multicell){
       printf("RECOGNIZED MULTICELL\n");
-      target_sequence = multicell->getPatterns(alphabet[target_index])[cell_position];  //will have to check if it's the end
-      
+      su->saySound(getTeacherVoice(), "multicell_character");
     }
-   // iep.clearQueue();
+    su->saySound(getTeacherVoice(), "to write the letter");
+
+
   }
   else
   {
     su->saySound(getTeacherVoice(), "please write");
-   // iep.clearQueue();
+    if (is_multicell){
+      printf("multicell\n\n");
+      target_sequence = multicell->getPatterns(alphabet[target_index])[cell_position];
+    }
+   
   }
-
+  printf("group is %d\n", target_group);
   GlyphMapping g = charset[target_sequence];
   su->sayLetter(getTeacherVoice(), alphabet[target_index]); // can put a string of a character here and it will work
 
   if( teaching_letter )
   {
 	  std::cout << "LN_new: teaching letter" << std::endl;
+    if (is_multicell){
+      printf("RECOGNIZED MULTICELL\n");
+      //su->saySound(getTeacherVoice(), "multicell_character");
+      su->saySound(getTeacherVoice(), "cell1");
+      target_sequence = multicell->getPatterns(alphabet[target_index])[cell_position];  //will have to check if it's the end
+    }
     su->saySound(getTeacherVoice(), "press");
     su->sayDotSequence(getTeacherVoice(), target_sequence);
+    if (is_multicell){
+      printf("FOLLOWED BY:\n");
+      su->saySound(getTeacherVoice(), "cell2");
+      su->saySound(getTeacherVoice(), "press");
+      int target2 = multicell->getPatterns(alphabet[target_index])[cell_position + 1];
+      su->sayDotSequence(getTeacherVoice(),target2);
+    }
    // iep.clearQueue();
   }
 
@@ -175,7 +193,7 @@ void LearnLetters::LL_new()
 
 void LearnLetters::LL_attempt(int i)
 {
-  printf("multicell is %d\n", (int) is_multicell);
+  //printf("teaching is %d\n", (int) teaching_letter);
   printf("target is %d\n", target_sequence);
 	std::cout << "LN_attempt" << std::endl;
   static const Charset &charset = IBTApp::getCurrentCharset();
@@ -188,21 +206,23 @@ void LearnLetters::LL_attempt(int i)
     printf("dot seq is %d\n", current_sequence);
     if( current_sequence == target_sequence )
     { //are we done?
-      letter_skill[target_index].observe(right);
+      
       //std::cout << nthInAlphabet(target_index) << ": " << letter_skill[target_index].estimate() << std::endl;
       std::cout << group_skill(target_group) << std::endl;
       if (is_multicell && (cell_position != (total_multicells - 1))){
         // do some other stuff to get it to half move on
         printf("SHOULD BE MOVING ON NOW\n");
+        su->saySound(getTeacherVoice(), "good_next_cell");
         cell_position++;
         target_sequence = multicell->getPatterns(alphabet[target_index])[cell_position];
-        su->saySound(getTeacherVoice(), "press");
-        su->sayDotSequence(getTeacherVoice(), target_sequence);
+        
+        
         current_sequence = 0; // reset
         return;
       }
       else{
       su->saySound(getTeacherVoice(), "good");
+      letter_skill[target_index].observe(right);
       is_multicell = false; // reset it
       cell_position = 0;
     /// if not multicell then new, else bump it for next target
@@ -219,9 +239,9 @@ void LearnLetters::LL_attempt(int i)
     letter_skill[target_index].observe(wrong);
     su->saySound(getTeacherVoice(), "no");
 
-    bool teaching_letter = (letter_skill[target_index].estimate() < .1);
+    bool rehash_letter = (letter_skill[target_index].estimate() < .1);
 
-    if( teaching_letter )
+    if( rehash_letter )
     {
       su->saySound(getTeacherVoice(), "to write the letter");
       GlyphMapping g = charset[target_sequence];
@@ -522,13 +542,14 @@ const std::vector<std::string> Hindi2LearnLetters::createGroup0Letters() const
 {
   return boost::assign::list_of ("V")("ऋ") ("ं") 
                                   ("ः") 
-                                  ("अ")("आ")("इ")("ई")("उ")("ऊ")("ए")("ऐ");
+                                 ;
   
 }
 
 const std::vector<std::string> Hindi2LearnLetters::createGroup1Letters() const
 {
-  return boost::assign::list_of ("ओ")("औ")("क")("ख")("ग")("घ")("च")("छ");
+  return boost::assign::list_of ("ओ")("औ")("क")("ख")("ग")("घ")("च")("छ")
+   ("अ")("आ")("इ")("ई")("उ")("ऊ")("ए")("ऐ");
 }
 
 const std::vector<std::string> Hindi2LearnLetters::createGroup2Letters() const
