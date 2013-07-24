@@ -175,13 +175,17 @@ void LearnLetters::LL_new()
 
 void LearnLetters::LL_attempt(int i)
 {
+  printf("multicell is %d\n", (int) is_multicell);
+  printf("target is %d\n", target_sequence);
 	std::cout << "LN_attempt" << std::endl;
   static const Charset &charset = IBTApp::getCurrentCharset();
+
   if( my_dot_mask(i) & target_sequence )
   { //dot is in sequence
   
     std::cout << "LN_attempt.  Dot in seq" << std::endl;
     current_sequence |= my_dot_mask(i); //add dot to our sequence so far
+    printf("dot seq is %d\n", current_sequence);
     if( current_sequence == target_sequence )
     { //are we done?
       letter_skill[target_index].observe(right);
@@ -467,7 +471,13 @@ Hindi2LearnLetters::Hindi2LearnLetters(IOEventParser& my_iep) :
 
 const std::vector<std::string> Hindi2LearnLetters::createAlphabet() const
 {
-  return boost::assign::list_of ("अ")
+  return boost::assign::list_of   ("V")
+                                  ("ऋ") 
+                                  ("ं") 
+                                  ("ः") 
+                                  
+                                  
+                                  ("अ")
                                   ("आ")
                                   ("इ")
                                   ("ई")
@@ -512,7 +522,9 @@ const std::vector<std::string> Hindi2LearnLetters::createAlphabet() const
 
 const std::vector<std::string> Hindi2LearnLetters::createGroup0Letters() const
 {
-  return boost::assign::list_of ("अ")("आ")("इ")("ई")("उ")("ऊ")("ए")("ऐ");
+  return boost::assign::list_of ("V")("ऋ") ("ं") 
+                                  ("ः") 
+                                  ("अ")("आ")("इ")("ई")("उ")("ऊ")("ए")("ऐ");
   
 }
 

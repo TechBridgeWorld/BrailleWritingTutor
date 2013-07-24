@@ -28,22 +28,24 @@ using namespace std;
  multiCellChar *retrieveChar(char);
 
 static node *character_list;
-static multiCellChar char1 = {"ಋ", 2, {0b010111, 0b010000}};
-static multiCellChar char2 = {"आ", 2, {0b000001, 0b111111}};
-static node test1, test2; 
+static multiCellChar ru = {"ऋ", 2, {0b010111, 0b010000}};
+//static multiCellChar char2 = {"आ", 2, {0b000001, 0b111111}};
+static node test1; //, test2; 
 
 void multi::initializeMultiCell(){
 	
 	
 	//----------------------------------
 	::test1.prev = NULL;
-	::test1.next = &(::test2); // force it to look for the global
-	::test1.content = &char1;
+	::test1.next = NULL; // force it to look for the global
+	::test1.content = &ru;
 	
 	//----------------------------------
+	/*
 	::test2.prev = &(::test1);
 	::test2.next = NULL;
 	::test2.content = &char2;
+	*/
 
 	//----------------------------------
 	character_list = &(::test1);

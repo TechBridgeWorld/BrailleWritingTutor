@@ -12,6 +12,7 @@
 #include "common/IBTApp.h"
 #include "common/KnowledgeTracer.h"
 #include "common/language_utils.h"
+#include "common/multicharacter.h"
 
 class LetterPractice : public IBTApp
 {
