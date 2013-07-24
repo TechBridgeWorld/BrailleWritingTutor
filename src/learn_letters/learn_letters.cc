@@ -475,8 +475,6 @@ const std::vector<std::string> Hindi2LearnLetters::createAlphabet() const
                                   ("ऋ") 
                                   ("ं") 
                                   ("ः") 
-                                  
-                                  
                                   ("अ")
                                   ("आ")
                                   ("इ")
