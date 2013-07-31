@@ -15,13 +15,12 @@
 #define MEDIUM 1
 #define LONG 2
 
-bool three_down = false;
 
 static time_t last_event_time = time(0);
 
 Household::Household(IOEventParser& my_iep, const std::string& path_to_mapping_file, SoundsUtil* my_su, const std::vector<std::string> my_alph, const ForeignLanguage2EnglishMap sw, const ForeignLanguage2EnglishMap mw, const ForeignLanguage2EnglishMap lw, bool f) :
   IBTApp(my_iep, path_to_mapping_file), iep(my_iep), su(my_su), alphabet(my_alph), short_sounds(sw), med_sounds(mw), long_sounds(lw),
-      letter_skill(alphabet.size()), firsttime(true), turncount(0), word(""), target_letter(""), word_pos(0), word_length(0), nomirror(f), everyday_s ("./resources/Voice/everyday_sounds/", my_iep), last_word("")
+      letter_skill(alphabet.size()), firsttime(true), turncount(0), word(""), target_letter(""), word_pos(0), word_length(0), nomirror(f), everyday_s ("./resources/Voice/everyday_sounds/", my_iep), last_word(""), three_down(false)
 {
   for(int i = 0; i < alphabet.size(); i++)
   {
@@ -33,7 +32,7 @@ Household::Household(IOEventParser& my_iep, const std::string& path_to_mapping_f
   {
     LS_length_skill[i] = KnowledgeTracer(.01) .registerEvent(right, .7, .1) .registerEvent(wrong, .1, .7);
   }
-
+  su->saySound(everyday_s, "everyday_answer_instructions");
   AL_new();
 }
 
@@ -67,9 +66,7 @@ void Household::processEvent(IOEvent& e)
   //Whenever the user hits Button0 we immediately want the LETTER event to be generated so that he doesnt have to wait for the timeout
   if( e.type == IOEvent::BUTTON && e.button == 0 )
   {
-    //iep.clearQueue()
     iep.flushGlyph();
-    printf("flushing glyph\n");
 
     return; //required? hmm..
   }
@@ -83,7 +80,6 @@ void Household::processEvent(IOEvent& e)
     {
       std::cout << "    (DEBUG)Skipping first letter event" << std::endl;
       firsttime = false;
-      //iep.clearQueue();
       return;//skip
     }
     else
@@ -94,8 +90,6 @@ void Household::processEvent(IOEvent& e)
   
   }
 
-
-  //iep.clearQueue(); // clear out the rest of the events that might be backlogged
 
 }
 
@@ -189,9 +183,8 @@ void Household::AL_new()
   //Asound += ".wav";
   std::cout << "		(DEBUG)Animal sound:" << word << std::endl;
   su->saySound(everyday_s, "please_write_the_object"); 
-  printf("skill level is %f\n",LS_length_skill[SHORT].estimate() );
+
   su->saySound(everyday_s, householdNameToSound(word));
-  //iep.clearQueue();
 }
 
 std::string Household::householdNameToSound(const std::string& animal)
@@ -231,7 +224,6 @@ void Household::AL_attempt(std::string i)
       word_pos = 0;
       su->saySound(getTeacherVoice(), "please write");
       su->sayLetterSequence(getTeacherVoice(), word);
-      //iep.clearQueue();
       return;
     }
     else
@@ -241,7 +233,6 @@ void Household::AL_attempt(std::string i)
       std::cout << target_letter << ": " << letter_skill[index].estimate() << std::endl;
       //std::cout << "    (DEBUG)Targetletter wrong" << std::endl;
       su->saySound(getTeacherVoice(), "no");
-      //iep.clearQueue();
 
       bool teaching_letter = (letter_skill[index].estimate() < .1);
 
@@ -293,7 +284,7 @@ void Household::AL_attempt(std::string i)
     else
     { //letter is incorrect
       su->saySound(getTeacherVoice(), "no"); // that is the incorrect animal
-     // word_pos = 0;
+     // don't restart the word yet...frustrating for users
       turncount++;
       //std::cout << "    (DEBUG)Now at turn:" << turncount << std::endl;
       if( turncount < 3 )
@@ -312,6 +303,7 @@ void Household::AL_attempt(std::string i)
         }
         su->saySound(getTeacherVoice(), "please write");
         su->sayLetterSequence(getTeacherVoice(), word);
+        word_pos = 0; // now restart b/c they have messed up a lot
         letter_skill[index].observe(wrong);
         //std::cout << "    (DEBUG)The estimate of the letter is:" << letter_skill[index].estimate() << std::endl;
         //LS_length_skill[word_length].observe(wrong);
@@ -361,5 +353,5 @@ const ForeignLanguage2EnglishMap EnglishHousehold::createMedHouseholdWords() con
 const ForeignLanguage2EnglishMap EnglishHousehold::createLongHouseholdWords() const
 {
   // > 7 letters
-  return boost::assign::map_list_of("DOORBELL","DOORBELL")("AEROPLANE","AEROPLANE");
+  return boost::assign::map_list_of("DOORBELL","DOORBELL")("THUNDER","THUNDER")("AEROPLANE","AEROPLANE");
 }

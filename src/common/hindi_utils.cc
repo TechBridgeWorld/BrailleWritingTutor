@@ -19,45 +19,54 @@ const Hindi2SoundsUtil::Hindi2LettersToSoundFilesMap
                                   ("उ", "HIN_U.wav")
                                   ("ऊ", "HIN_UU.wav")
                                   ("ऋ", "HIN_RU.wav")
+
                                   ("ए", "HIN_E.wav")
                                   ("ऐ", "HIN_AI.wav")
                                   ("ओ", "HIN_O.wav")
                                   ("औ", "HIN_AU.wav")
                                   ("ं", "HIN_AM.wav")
                                   ("ः", "HIN_AHA.wav")
+
                                   ("क", "HIN_KA.wav")
                                   ("ख", "HIN_KHA.wav")
                                   ("ग", "HIN_GA.wav")
                                   ("घ", "HIN_GHA.wav")
                                   ("ङ", "HIN_NYA.wav")
+
                                   ("च", "HIN_CHA.wav")
                                   ("छ", "HIN_CHHA.wav")
                                   ("ज", "HIN_JA.wav")
                                   ("झ", "HIN_JHA.wav")
                                   ("ञ", "HIN_NYAA.wav")
+
                                   ("ट", "HIN_TTA.wav")
                                   ("ठ", "HIN_TTHA.wav")
                                   ("ड", "HIN_DDA.wav")
                                   ("ढ", "HIN_DDHA.wav")
                                   ("ण", "HIN_GNA.wav")
+
                                   ("त", "HIN_TA.wav")
                                   ("थ", "HIN_THA.wav")
                                   ("द", "HIN_DA.wav")
                                   ("ध", "HIN_DHA.wav")
                                   ("न", "HIN_NA.wav")
+
                                   ("प", "HIN_PA.wav")
                                   ("फ", "HIN_PHA.wav")
                                   ("ब", "HIN_BA.wav")
                                   ("भ", "HIN_BHA.wav")
                                   ("म", "HIN_MA.wav")
+
                                   ("य", "HIN_YA.wav")
                                   ("र", "HIN_RA.wav")
                                   ("ल", "HIN_LA.wav")
                                   ("व", "HIN_VA.wav")
+
                                   ("श", "HIN_SHA.wav")
                                   ("ष", "HIN_SHHA.wav")
                                   ("स", "HIN_SA.wav")
                                   ("ह", "HIN_HA.wav")
+                                  
                                   ("ळ", "HIN_DLA.wav")
                                   ("V", "HIN_KSHA.wav"); // done as roman b/c of unicode problems...
 

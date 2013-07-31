@@ -19,7 +19,7 @@
 
 Animal::Animal(IOEventParser& my_iep, const std::string& path_to_mapping_file, SoundsUtil* my_su, const std::vector<std::string> my_alph, const ForeignLanguage2EnglishMap sw, const ForeignLanguage2EnglishMap mw, const ForeignLanguage2EnglishMap lw, bool f) :
   IBTApp(my_iep, path_to_mapping_file), iep(my_iep), su(my_su), alphabet(my_alph), short_animals(sw), med_animals(mw), long_animals(lw),
-      letter_skill(alphabet.size()), firsttime(true), turncount(0), word(""), last_word(""), target_letter(""), word_pos(0), word_length(0), nomirror(f), animal_s ("./resources/Voice/animal_sounds/", my_iep)
+      letter_skill(alphabet.size()), firsttime(true), turncount(0), word(""), last_word(""), target_letter(""), word_pos(0), word_length(0), nomirror(f), animal_s ("./resources/Voice/animal_sounds/", my_iep), three_down(false)
 {
   for(int i = 0; i < alphabet.size(); i++)
   {
@@ -32,16 +32,33 @@ Animal::Animal(IOEventParser& my_iep, const std::string& path_to_mapping_file, S
     LS_length_skill[i] = KnowledgeTracer(.01) .registerEvent(right, .7, .1) .registerEvent(wrong, .1, .7);
   }
 
+  su->saySound(animal_s, "everyday_answer_instructions");
   AL_new();
 }
 
 void Animal::processEvent(IOEvent& e)
 {
-  printf("animal process event called\n");
+  if (e.type == IOEvent::BUTTON_DOWN && e.button == 6){
+          three_down = true;
+  }
+  if (e.type == IOEvent::BUTTON_UP && e.button == 6){
+    three_down = false;
+  }
+
+  if (three_down && e.type == IOEvent::BUTTON_DOWN && e.button == 0){
+    su->saySound(getTeacherVoice(), "please write");
+    su->sayLetterSequence(getTeacherVoice(), word);
+    /* say the actual word */
+    sayName(word);
+    word_pos = 0; // restsart the word
+    three_down = false; //reset
+    firsttime = true; // so will skip later
+    return;
+  }
+
   //Whenever the user hits Button0 we immediately want the LETTER event to be generated so that he doesnt have to wait for the timeout
   if( e.type == IOEvent::BUTTON && e.button == 0 )
   {
-    printf("DEBUG flushing glyph\n");
     iep.flushGlyph();
     return; //required? hmm..
   }
@@ -58,19 +75,24 @@ void Animal::processEvent(IOEvent& e)
     }
     else if (last_time == time(0)) {
       last_time = time(0);
-      printf("caught\n");
       return;
     }
     else 
     {
       last_time = time(0);
-      std::cout << " thinks "<< ((std::string) e.letter) << "was entered" << std::endl;
+    
       su->sayLetter(getStudentVoice(), (std::string) e.letter);
       AL_attempt((std::string) e.letter);
     }
   }
-  //iep.clearQueue();
 }
+
+void Animal::sayName(std::string& word){
+    std::string sound_file(word);
+    sound_file.append("_word");
+    su->saySound(animal_s, sound_file);
+}
+
 
 void Animal::AL_new()
 {
@@ -137,7 +159,6 @@ void Animal::AL_new()
   word_pos = 0;
   //Asound += ".wav";
   std::cout << "		(DEBUG)Animal sound:" << word << std::endl;
-  printf("got here animal game\n");
   su->saySound(animal_s, "please write the animal2"); 
   su->saySound(animal_s, animalNameToSound(word));
   //iep.clearQueue();
@@ -228,6 +249,8 @@ void Animal::AL_attempt(std::string i)
         LS_length_skill[word_length].observe(right);
         std::cout << word_length << ": " << LS_length_skill[word_length].estimate() << std::endl;
         su->saySound(getTeacherVoice(), "good");
+        su->sayLetterSequence(getTeacherVoice(), word);
+        sayName(word);
         su->saySound(getTeacherVoice(), "tada");
         AL_new();
         return;
@@ -236,25 +259,19 @@ void Animal::AL_attempt(std::string i)
     else
     { //letter is incorrect
       su->saySound(getTeacherVoice(), "no"); // that is the incorrect animal
-      word_pos = 0;
+     
       turncount++;
       //std::cout << "    (DEBUG)Now at turn:" << turncount << std::endl;
-      if( turncount < 3 )
-      {
-        su->saySound(animal_s, "please write the animal2");
-        su->saySound(animal_s, animalNameToSound(word));
-        //std::cout << "    (DEBUG)Got the letter wrong at turn" << turncount << std::endl;
-      }
-      else
-      {
+   
         if( turncount == 3 )
         {
+          word_pos = 0;
           su->saySound(getTeacherVoice(), "solution");
           su->sayLetterSequence(getTeacherVoice(), word);
+          sayName(word);
           //std::cout << "    (DEBUG)All 3 turns used" << std::endl;
         }
-        su->saySound(getTeacherVoice(), "please write");
-        su->sayLetterSequence(getTeacherVoice(), word);
+       
         letter_skill[index].observe(wrong);
         //std::cout << "    (DEBUG)The estimate of the letter is:" << letter_skill[index].estimate() << std::endl;
         //LS_length_skill[word_length].observe(wrong);
@@ -273,9 +290,9 @@ void Animal::AL_attempt(std::string i)
         }
       }
       return;
-    }
   }
 }
+
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -294,7 +311,7 @@ const ForeignLanguage2EnglishMap EnglishAnimal::createShortAnimalWords() const
 {
   //animals whos name has  3-4 ish letters
   return boost::assign::map_list_of("CAT", "CAT")("DOG", "DOG")("BEE", "BEE")("COW", "COW")
-                                   ("PIG", "PIG")("CROW", "CROW")("OWL","OWL")("LION","LION");
+                                   ("PIG", "PIG")("CROW", "CROW")("OWL","OWL")("LION","LION")("COCK","COCK");
 }
 
 const ForeignLanguage2EnglishMap EnglishAnimal::createMedAnimalWords() const
@@ -307,7 +324,7 @@ const ForeignLanguage2EnglishMap EnglishAnimal::createMedAnimalWords() const
 const ForeignLanguage2EnglishMap EnglishAnimal::createLongAnimalWords() const
 {
   //animals whos name has > 5 letters
-  return boost::assign::map_list_of("ROOSTER","ROOSTER")("ELEPHANT","ELEPHANT")("PEACOCK", "PEACOCK");
+  return boost::assign::map_list_of("ELEPHANT","ELEPHANT");
 }
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

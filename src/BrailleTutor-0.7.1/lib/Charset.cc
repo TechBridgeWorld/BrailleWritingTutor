@@ -141,7 +141,7 @@ static unsigned int local_utf8_decode(const uint8_t *str_utf8,uint32_t* &str_32)
   local_strcpy(str_32, scratch);
 
   delete[] scratch;
-  printf("length is %d!\n", my_strlen);
+ 
   return my_strlen;
 }
 
@@ -160,7 +160,6 @@ static unsigned int local_utf8_encode(const uint32_t *str_32,uint8_t* &str_utf8)
   local_strcpy(str_utf8, scratch);
 
   delete[] scratch;
-  printf("length is %d\n", my_strlen);
   return my_strlen;
 }
 

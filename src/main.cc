@@ -111,7 +111,7 @@ int launch_bt(int argc, char **argv)
   bt.detect(io_port, version);
   std::cout << "  found a version " << version << " tutor on " << io_port << std::endl;
   eng_su->saySound(teacher_voice, "connected"); // TODO put something more intelligent here
-  eng_su->saySound(teacher_voice, "main_menu"); // announce that back in main menu
+  eng_su->saySound(teacher_voice, "welcome_menu"); // announce that back in main menu
   bt.join();
 
   return 0;

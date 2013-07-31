@@ -35,6 +35,7 @@ private:
 
   IOEventParser& iep; //So flushGlyph() can be called
   SoundsUtil* su;
+  bool three_down;
 
   const Voice everyday_s;
 

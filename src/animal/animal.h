@@ -28,6 +28,7 @@ private:
   void AL_new();
   void AL_attempt(std::string);
   void processEvent(IOEvent& e);
+  void sayName(std::string&);
   std::string animalNameToSound(const std::string& animalName);//Accepts the name of the animal in any language, and returns the corresponding english sound
 
 private:
@@ -38,7 +39,7 @@ private:
   const Voice animal_s;
   IOEventParser& iep; //So flushGlyph() can be called
   SoundsUtil* su;
-
+  bool three_down;
 
   const std::vector<std::string> alphabet;
   const ForeignLanguage2EnglishMap short_animals;

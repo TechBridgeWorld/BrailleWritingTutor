@@ -59,7 +59,7 @@ void LearnLetters::processEvent(IOEvent& e)
   if( e.type == IOEvent::STYLUS_DOWN || e.type == IOEvent::BUTTON_DOWN )
   {
     if (time(0) != time_last_pressed || last_button_pressed != e.button){
-	     printf("pushed button %d\n", e.button);
+	     
        last_button_pressed = e.button;
        time_last_pressed = time(0);
        su->sayNumber(getStudentVoice(), getDot(e), nomirror);
@@ -144,7 +144,7 @@ void LearnLetters::LL_new()
 
   if( teaching_letter )
   { if (is_multicell){
-      printf("RECOGNIZED MULTICELL\n");
+      
       su->saySound(getTeacherVoice(), "multicell_character");
     }
     su->saySound(getTeacherVoice(), "to write the letter");
@@ -155,12 +155,12 @@ void LearnLetters::LL_new()
   {
     su->saySound(getTeacherVoice(), "please write");
     if (is_multicell){
-      printf("multicell\n\n");
+     
       target_sequence = multicell->getPatterns(alphabet[target_index])[cell_position];
     }
    
   }
-  printf("group is %d\n", target_group);
+ 
   GlyphMapping g = charset[target_sequence];
   su->sayLetter(getTeacherVoice(), alphabet[target_index]); // can put a string of a character here and it will work
 
@@ -168,7 +168,7 @@ void LearnLetters::LL_new()
   {
 	  std::cout << "LN_new: teaching letter" << std::endl;
     if (is_multicell){
-      printf("RECOGNIZED MULTICELL\n");
+      
       //su->saySound(getTeacherVoice(), "multicell_character");
       su->saySound(getTeacherVoice(), "cell1");
       target_sequence = multicell->getPatterns(alphabet[target_index])[cell_position];  //will have to check if it's the end
@@ -176,13 +176,13 @@ void LearnLetters::LL_new()
     su->saySound(getTeacherVoice(), "press");
     su->sayDotSequence(getTeacherVoice(), target_sequence);
     if (is_multicell){
-      printf("FOLLOWED BY:\n");
+      
       su->saySound(getTeacherVoice(), "cell2");
       su->saySound(getTeacherVoice(), "press");
       int target2 = multicell->getPatterns(alphabet[target_index])[cell_position + 1];
       su->sayDotSequence(getTeacherVoice(),target2);
     }
-   // iep.clearQueue();
+   
   }
 
 
@@ -193,7 +193,7 @@ void LearnLetters::LL_new()
 
 void LearnLetters::LL_attempt(int i)
 {
-  //printf("teaching is %d\n", (int) teaching_letter);
+  
   printf("target is %d\n", target_sequence);
 	std::cout << "LN_attempt" << std::endl;
   static const Charset &charset = IBTApp::getCurrentCharset();
@@ -491,28 +491,34 @@ Hindi2LearnLetters::Hindi2LearnLetters(IOEventParser& my_iep) :
 
 const std::vector<std::string> Hindi2LearnLetters::createAlphabet() const
 {
-  return boost::assign::list_of   ("V")
-                                  ("ऋ") 
-                                  ("ं") 
-                                  ("ः") 
+  return boost::assign::list_of    
                                   ("अ")
                                   ("आ")
                                   ("इ")
                                   ("ई")
                                   ("उ")
                                   ("ऊ")
-                                  ("ए")
-                                  ("ऐ")
-                                  ("ओ")
-                                  ("औ")
+                                  ("ऋ")
+                                  ("ऎ") // E - 0b100010
+                                  ("ए") // EE - 0b010001
+                                  ("ऐ") // AI - 0b001100
+                                  ("ऒ") // O - 0b101101
+                                  ("ओ") // OO - 0b010101
+                                  ("औ") // AU - 0b101010
+                                  ("ं") 
+                                  ("ः")
+
                                   ("क")
                                   ("ख")
                                   ("ग")
-                                  ("घ")
+                                  ("घ") // GHA - 0b100011
+                                  ("ङ") // NYA - 0b101100
                                   ("च")
                                   ("छ")
                                   ("ज")
                                   ("झ")
+                                  ("ञ") // NYAA - 0b010010
+
                                   ("ट")
                                   ("ठ")
                                   ("ड")
@@ -523,6 +529,7 @@ const std::vector<std::string> Hindi2LearnLetters::createAlphabet() const
                                   ("द")
                                   ("ध")
                                   ("न")
+
                                   ("प")
                                   ("फ")
                                   ("ब")
@@ -532,39 +539,41 @@ const std::vector<std::string> Hindi2LearnLetters::createAlphabet() const
                                   ("र")
                                   ("ल")
                                   ("व")
+                                  
                                   ("श")
-                                  ("ष")
+                                  ("ष") // SHHA - 0b101111
                                   ("स")
-                                  ("ह");
+                                  ("ह")
+                                  ("ळ") // DLA - 0b111000
+                                  ("V"); // KSHA - 0b011111
 }
 
 const std::vector<std::string> Hindi2LearnLetters::createGroup0Letters() const
 {
-  return boost::assign::list_of ("V")("ऋ") ("ं") 
-                                  ("ः") 
-                                 ;
+  return boost::assign::list_of  
+  ("अ")("आ")("इ")("ई")("उ")("ऊ")("ऋ")("ऎ")("ए")("ऐ")("ऒ")("ओ")("औ") ("ं") ("ः")  ;
   
 }
 
 const std::vector<std::string> Hindi2LearnLetters::createGroup1Letters() const
 {
-  return boost::assign::list_of ("ओ")("औ")("क")("ख")("ग")("घ")("च")("छ")
-   ("अ")("आ")("इ")("ई")("उ")("ऊ")("ए")("ऐ");
+  return boost::assign::list_of ("क")("ख")("ग")("घ")("ङ")("च")("छ")("ज")("झ")("ञ");
+
 }
 
 const std::vector<std::string> Hindi2LearnLetters::createGroup2Letters() const
 {
-  return boost::assign::list_of ("ज")("झ")("ट")("ठ")("ड")("ढ")("ण")("त")("थ");
-} //31
+  return boost::assign::list_of  ("ट")("ठ")("ड")("ढ")("ण")("त")("थ")("द")("ध")("न");
+} 
 
 const std::vector<std::string> Hindi2LearnLetters::createGroup3Letters() const
 {
-  return boost::assign::list_of ("द")("ध")("न")("प")("फ")("ब")("भ")("म")("य")("र")   ;
+  return boost::assign::list_of      ("प")("फ")("ब")("भ")("म")("य")("र")("ल")("व");
 }
 //
 const std::vector<std::string> Hindi2LearnLetters::createGroup4Letters() const
 {
-  return boost::assign::list_of  ("ल")("व")("श")("ष")("स")("ह");
+  return boost::assign::list_of  ("श")("ष")("स")("ह")("ळ")("V");
 }
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

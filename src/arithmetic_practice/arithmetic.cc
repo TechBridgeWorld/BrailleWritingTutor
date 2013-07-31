@@ -3,7 +3,6 @@
  * June 2013
  */
 
- /* TODO: DIFFICULTY LEVEL ENTRY AS WELL */
 
 #include "arithmetic.h"
 #include "Dots.h"
@@ -13,18 +12,12 @@
 #define CORR_THRES 50 // for now
 
 
-int math_mode;/* default for now */
-//static int choose_mode = 1;  /* mode needs to be chose first */
+int math_mode;
 static int digit_position = 0;
 static int num_digits = 0;
-//static int difficulty_level = 2; /* how many digits the answer can be */
+
 static int number_sign = 1; /* need to to type the # sign */
 static int num_correct = 0;
-/* TODO: figure out if difficulty should be changable from menu or
-as students get more advanced */
-
-/* experiment to block the backlog of key presses */
-
 static time_t last_pressed_time = time(0);
 static int last_button = 0; //default
 
@@ -33,7 +26,6 @@ static int last_button = 0; //default
   		IBTApp(my_iep, path_to_mapping_file), su(my_su), iep(my_iep), math_s("./resources/Voice/math_sounds/", my_iep), 
   		target_sequence('\0'), current_sequence('\0'), nomirror(f), dots1('\0'), dots2('\0'), choose_mode(1), choose_difficulty(0), difficulty_level(1)
 {
-  //su->saySound(math_s, "arithmetic_practice");
   printf("starting practice\n");
   su->saySound(math_s, "instructions_1");
   su->saySound(math_s, "press_select");
@@ -52,10 +44,6 @@ void Arithmetic::processEvent(IOEvent& e)
 {
 	//std::cout << "processEvent" << std::endl;
   if( e.type == IOEvent::BUTTON_DOWN && e.button == 0 && choose_mode == 0){
-    //choose_mode = 1; // for next time
-    // repeat question
-    //choose_mode = 1;
-
     return;
   }
   else if (IOEvent::BUTTON_DOWN && e.button == 0 && choose_mode == 0){
@@ -119,12 +107,16 @@ void Arithmetic::processEvent(IOEvent& e)
     
   }
   else if(time(0) == last_pressed_time && e.button == last_button){ // most likely a jammed button
-    printf("caught something\n");
     return; 
   }
  
 }
 
+/* this fact new is split into 2 purposes. It's primary purpose is to 
+ * generate new arithmetic facts, but it also serves as managing the control
+ * flow for entering in the mode and difficulty 
+
+ */
 void Arithmetic::Fact_new()
 {
   clearArray(num1_array);
@@ -136,7 +128,7 @@ void Arithmetic::Fact_new()
     //generate a random number between 0 to 9
     int result = -1; // ensures too small to start
     int num1, num2;
-    int max = pow(10, difficulty_level);
+    int max = pow(10, difficulty_level); //# of digits allowed prop to diff
     while(result >= max || result < 0){
       
     	num1 = (int) rand() % max; 
@@ -183,7 +175,6 @@ void Arithmetic::Fact_new()
           difficulty will increment every %d correct answers\n", CORR_THRES);
  
   } 
- // iep.clearQueue();
 }
 
 void Arithmetic::clearArray(int *a)
@@ -254,12 +245,10 @@ void Arithmetic::say_multidigit(int *a)
     if (a[i] != -1 && (a[i] != 0 || !multidigit)){ /* checking for how to say #'s */
       switch (MAX_DIGITS - i) {
         case 1: 
-          printf("ones place %d\n", a[i]);
           sprintf(buf,"sl_%d", a[i]);
           su->saySound(math_s, buf);
           break;
         case 2:
-          printf("tens place %d\n", a[i]);
           multidigit = true;
           if (a[i] == 1) {
             /* then special case */
@@ -275,30 +264,28 @@ void Arithmetic::say_multidigit(int *a)
           } 
           break;
         case 3: 
-          printf("hundreds place %d\n", a[i]);
           sprintf(buf,"sl_%d", a[i]);
           su->saySound(math_s, buf);
-          su->saySound(math_s, "hundred"); // TODO: implement thousands?
+          su->saySound(math_s, "hundred"); 
           break;
+        case 4:
+          sprintf(buf,"sl_%d", a[i]);
+          su->saySound(math_s, buf);
+          su->saySound(math_s, "thousand"); 
         default:
           break;
       }
-      
     }
   }
 }
 
 void Arithmetic::AP_attempt(unsigned char dot)
 {
-
 	su->sayNumber(getStudentVoice(), dot, nomirror);
   int strt = MAX_DIGITS - num_digits; // where to start in array
   i = 0;
-  printf("digit pos %d\n", digit_position);
-
   current_target = response_array[strt + digit_position];
-
-  printf("current target %d", current_target);
+  //check to see if they should be entering the braille number indicator
   if (!number_sign){
     target_sequence = convertToDotSequence(IBTApp::getCurrentCharset(),
                                           current_target);
@@ -307,7 +294,6 @@ void Arithmetic::AP_attempt(unsigned char dot)
     target_sequence = MATH_FLAG;
   }
   //Check if user hit the right dot (ie, the dot exists in the target sequence)
-  printf("target sequence is %d\n", target_sequence);
   if( my_dot_mask(dot) & target_sequence )
   {
     current_sequence = current_sequence | my_dot_mask(dot); //add the dot to the current on-going sequence
@@ -334,13 +320,12 @@ void Arithmetic::AP_attempt(unsigned char dot)
         if (number_sign == 0){
           digit_position++;
           current_sequence = 0;
-          printf("incrememting\n");
           su->saySound(math_s, "good_next"); //asks for next digit
         }
         else{
           current_sequence = 0;
           number_sign = 0; // don't need it anymore
-          printf("number sign is now %d\n", number_sign);
+          
           su->saySound(math_s, "good");
         }
       }
