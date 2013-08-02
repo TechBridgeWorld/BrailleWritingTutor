@@ -98,7 +98,7 @@ void Voice::say(std::string uname) const
 
   Mix_PlayChannel(-1, sound_map[uname], 0);
   
-  iep.clearQueue();
+  //iep.clearQueue();
 
 /*
   printf("passed");
@@ -121,7 +121,7 @@ void Voice::play(std::string uname, int ms) const
   }
 
   Mix_PlayChannelTimed(-1, sound_map[uname], 0, ms);
-  iep.clearQueue(); 
+  //iep.clearQueue(); 
 }
 
 //Check if this Voice object has a particular sound in its map

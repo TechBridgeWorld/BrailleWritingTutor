@@ -375,10 +375,8 @@ IBTApp* ApplicationDispatcher::switchToSelectedMode() const {
 	 return new EnglishHousehold(iep); 
   case ARITHMETIC_PRACTICE_ENGLISH:
     return new EnglishArithmeticPractice(iep);
-  case LEARN_LETTERS_HINDI:
-    return new Hindi2LearnLetters(iep);
   case LEARN_LETTERS_KANNADA:
-    return new KannadaLearnLetters(iep);
+    return new Hindi2LearnLetters(iep);
   case FREE_PLAY_ARABIC:
     return new ArabicDotScaffold(iep);
   case FREE_NUMBERS_ARABIC:
@@ -512,7 +510,7 @@ void ApplicationDispatcher::playSelectedMode() const
       printf("Selecting Hindi Learn Letters\n");
       break;
   case LEARN_LETTERS_KANNADA:
-      teach.say("good.wav");
+      teach.say("learn_letters_kannada.wav");
       printf("Selecting Kannada Learn Letters");
       break;
   case FREE_PLAY_ARABIC:
