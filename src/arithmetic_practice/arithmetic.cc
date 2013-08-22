@@ -13,18 +13,14 @@
 
 
 int math_mode;
-static int digit_position = 0;
-static int num_digits = 0;
 
-static int number_sign = 1; /* need to to type the # sign */
-static int num_correct = 0;
 static time_t last_pressed_time = time(0);
-static int last_button = 0; //default
 
  Arithmetic::Arithmetic(IOEventParser& my_iep, 
  		const std::string& path_to_mapping_file, SoundsUtil* my_su, bool f) :
   		IBTApp(my_iep, path_to_mapping_file), su(my_su), iep(my_iep), math_s("./resources/Voice/math_sounds/", my_iep), 
-  		target_sequence('\0'), current_sequence('\0'), nomirror(f), dots1('\0'), dots2('\0'), choose_mode(1), choose_difficulty(0), difficulty_level(1)
+  		target_sequence('\0'), current_sequence('\0'), nomirror(f), dots1('\0'), dots2('\0'), choose_mode(1), choose_difficulty(0), difficulty_level(1),
+      digit_position(0), num_digits(0), number_sign(1), num_correct(0), last_button(0)
 {
   printf("starting practice\n");
   su->saySound(math_s, "instructions_1");

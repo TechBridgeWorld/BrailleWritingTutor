@@ -44,6 +44,7 @@ void Household::sayName(std::string& word){
 
 void Household::processEvent(IOEvent& e)
 {
+  // if the user presses 3 and select at the same time, it will say the answer
   if (e.type == IOEvent::BUTTON_DOWN && e.button == 6){
           three_down = true;
   }
@@ -187,18 +188,18 @@ void Household::AL_new()
   su->saySound(everyday_s, householdNameToSound(word));
 }
 
-std::string Household::householdNameToSound(const std::string& animal)
+std::string Household::householdNameToSound(const std::string& object)
 {
   ForeignLanguage2EnglishMap::const_iterator it;
-  it = short_sounds.find(animal);
+  it = short_sounds.find(object);
   if( it != short_sounds.end() )
     return it->second;
 
-  it = med_sounds.find(animal);
+  it = med_sounds.find(object);
   if( it != med_sounds.end() )
     return it->second;
 
-  it = long_sounds.find(animal);
+  it = long_sounds.find(object);
   if( it != long_sounds.end() )
     return it->second;
 
@@ -257,7 +258,7 @@ void Household::AL_attempt(std::string i)
   }
 
   else
-  { // need to spell entire name of animal allowed three chances to guess before it tells you asnwer
+  { // need to spell entire name of object allowed three chances to guess before it tells you asnwer
     int num_bytes_in_letter = numBytesInUTF8Letter(word.at(word_pos));
     std::string correct_letter(word, word_pos, num_bytes_in_letter);
     //std::cout << "    (DEBUG)utf8 encoded size is:" << num_bytes_in_letter << "  word.size is:" << word.size() << "  word length is:" << word_length << " Correct letter is:"<<correct_letter<<" Target letter is:"<<target_letter<<" word.at(word_pos) is:"<<word.at(word_pos)<<std::endl;
@@ -283,7 +284,7 @@ void Household::AL_attempt(std::string i)
 
     else
     { //letter is incorrect
-      su->saySound(getTeacherVoice(), "no"); // that is the incorrect animal
+      su->saySound(getTeacherVoice(), "no"); // that is the incorrect object
      // don't restart the word yet...frustrating for users
       turncount++;
       //std::cout << "    (DEBUG)Now at turn:" << turncount << std::endl;

@@ -4,6 +4,7 @@
  *  Created on: Dec 8, 2008
  *      Author: Students
  *      Multi-lingual enhancements: Imran
+ *      Modifications to word length and option to repeat: Madeleine
  */
 
 #include <assert.h>
@@ -36,6 +37,8 @@ Animal::Animal(IOEventParser& my_iep, const std::string& path_to_mapping_file, S
   AL_new();
 }
 
+/*this has new capabilities that if they hold down button 3 and press
+ * select, it will tell them the desired answer */
 void Animal::processEvent(IOEvent& e)
 {
   if (e.type == IOEvent::BUTTON_DOWN && e.button == 6){
@@ -73,7 +76,7 @@ void Animal::processEvent(IOEvent& e)
       firsttime = false;
       return;//skip
     }
-    else if (last_time == time(0)) {
+    else if (last_time == time(0)) { // a bit of a catch for accidental multiple presses
       last_time = time(0);
       return;
     }
@@ -283,7 +286,6 @@ void Animal::AL_attempt(std::string i)
           su->sayDotSequence(getTeacherVoice(), charset[GlyphMapping(correct_letter)]);
           su->saySound(getTeacherVoice(), "please write");
           su->sayLetter(getTeacherVoice(), correct_letter);
-          //iep.clearQueue();
           target_letter = correct_letter;
           word_pos = 0;
           //std::cout << "    (DEBUG)Bad at this letter" << std::endl;

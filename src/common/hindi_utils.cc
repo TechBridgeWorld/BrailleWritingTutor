@@ -10,6 +10,10 @@
 #include <map>
 #include "language_utils.h"
 #include "Dots.h" //for dot_mask()
+
+ //note that some of these characters (i.e. the V) are not hindi--
+ //they are to accomodate the fact that some characters in unicode
+ //take up more than one space.
 const Hindi2SoundsUtil::Hindi2LettersToSoundFilesMap
     Hindi2SoundsUtil::Hindi2_letter_map =
         boost::assign::map_list_of("अ", "HIN_A.wav")
@@ -153,21 +157,6 @@ void Hindi2SoundsUtil::sayDotSequence(const Voice &v, DotSequence d) const
     for(int i = 5; i >= 0; i--) {
       if( d & BrailleTutorNS::dot_mask(i) )
       {
-        /*
-        if(i==0)
-          sortedSequence[3]=true;
-        else if(i==1)
-          sortedSequence[4]=true;
-        else if(i==2)
-          sortedSequence[5]=true;
-        else if(i==3)
-          sortedSequence[0]=true;
-        else if(i==4)
-          sortedSequence[1]=true;
-        else if(i==5)
-          sortedSequence[2]=true;
-        }
-        */
         sortedSequence[i] = true;
        } 
       }

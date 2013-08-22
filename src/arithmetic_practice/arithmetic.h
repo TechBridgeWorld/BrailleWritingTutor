@@ -47,6 +47,13 @@ private:
   int difficulty_level;
   int choose_mode;
   int choose_difficulty;
+  int digit_position;
+  int num_digits;
+
+  int number_sign; 
+  int num_correct;
+
+  int last_button; 
   DotSequence dots1;
   DotSequence dots2;
   int response_array[MAX_DIGITS];
