@@ -1,0 +1,10 @@
+*.swp
+.DS_Store
+*.class
+source/.metadata/
+source/BWTEmulator/.settings/
+source/BWTEmulator/.classpath
+source/BWTEmulator/.project
+source/BWTEmulator/BWT_LOGS/*
+bin/BWT_LOGS/*
+bin/BWT_SCRIPTS/*

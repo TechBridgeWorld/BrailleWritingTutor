@@ -1,0 +1,11 @@
+/** @file ie_specifics.scss
+ *  @brief Contains specific css rules to IE.
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+
+// source: buttons.scss
+.slategroup.mouseover {
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../assets/ie_hover_background.png', sizingMethod='scale');
+  background:none !important;
+}

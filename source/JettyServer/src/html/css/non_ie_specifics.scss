@@ -1,0 +1,18 @@
+/** @file non_ie_specifics.scss
+ *  @brief Contains specific rules to non-IE browsers.
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+
+// source: buttons.scss
+.slategroup.mouseover:not(.glyphd):after {
+  $OVERLAY_COLOR : rgba(6, 217, 255, 0.4);
+
+  content: '';
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: $OVERLAY_COLOR;
+  pointer-events: none;
+}

@@ -1,0 +1,48 @@
+/** @file main.scss
+ *  @brief Main scss file for our app.
+ *
+ *  All css/scss files should be written in separate files and aggregated here.
+ *  e.g. After writing "splashscreen.scss", include it here via:
+ *  @import "splashscreen.css";
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+@import "buttons.css";
+@import "board.css";
+@import "general.css";
+@import "loading.css";
+@import "bot_bar.css";
+@import "plugin.css";
+@import "alert.css";
+@import "navbar.css";
+
+// plugins
+@import "recording.css";
+@import "scripting.css";
+
+// mixins
+@import "_mixins.scss";
+
+// other pages
+@import "getting_started.css";
+
+* {
+  font-family: 'Varela Round', sans-serif;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: moz-none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+
+  @include noisey(rgba(222, 222, 222, 1));
+}
+
+a {
+  text-decoration: none;
+}

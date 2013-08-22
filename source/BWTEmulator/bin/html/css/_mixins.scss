@@ -1,0 +1,129 @@
+/** @file _mixins.scss
+ *  @brief Mixins used in other scss files go here
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+
+// creates a noisey background (background color with a 50% gray, low opacity
+// noise image on top)
+@mixin noisey($color) {
+  $NOISE : "../assets/noise.png";
+  background-image: url($NOISE);
+  background-image: -webkit-gradient(linear, left top, left bottom, from($color), to($color)), url($NOISE);
+  background-image: -webkit-linear-gradient(top, $color, $color), url($NOISE); /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, $color, $color), url($NOISE); /* FF3.6+ */;
+  background-image: -ms-linear-gradient(top, $color, $color), url($NOISE); /* IE10 */;
+  background-image: -o-linear-gradient(top, $color, $color), url($NOISE); /* Opera 11.10+ */;
+  background-image: linear-gradient(top, $color, $color), url($NOISE); /* W3C */;
+}
+
+// wraps transitions to allow cross platform compatibility
+@mixin transition($transition-property, $transition-time, $method) {
+  -webkit-transition: $transition-property $transition-time $method;
+     -moz-transition: $transition-property $transition-time $method;
+      -ms-transition: $transition-property $transition-time $method;
+       -o-transition: $transition-property $transition-time $method;
+          transition: $transition-property $transition-time $method;
+}
+
+// creates an inner (black) shadow
+@mixin inner_shadow() {
+  -moz-box-shadow:    inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow:         inset 0 0 10px #000000;
+}
+
+// creates an inner (green) shadow
+@mixin green_inner_shadow() {
+  $THIS_GREEN : rgba(131, 232, 47, 1);
+  -moz-box-shadow:    inset 0 0 3px $THIS_GREEN;
+  -webkit-box-shadow: inset 0 0 3px $THIS_GREEN;
+  box-shadow:         inset 0 0 3px $THIS_GREEN;
+}
+
+// creates an inner (red) shadow
+@mixin red_inner_shadow() {
+  $THIS_RED : rgba(200, 0, 0, 1);
+  -moz-box-shadow:    inset 0 0 3px $THIS_RED;
+  -webkit-box-shadow: inset 0 0 3px $THIS_RED;
+  box-shadow:         inset 0 0 3px $THIS_RED;
+}
+
+// creates no shadow
+@mixin no_inner_shadow() {
+  -moz-box-shadow:    inset 0 0 0px #000000;
+  -webkit-box-shadow: inset 0 0 0px #000000;
+  box-shadow:         inset 0 0 0px #000000;
+}
+
+
+// helpers for animations. wraps animation calls for cross-platform
+// compatibility
+@mixin animation-name($name) {
+  -webkit-animation-name: $name;
+  -moz-animation-name: $name;
+  -ms-animation-name: $name;
+  animation-name: $name;
+}
+
+@mixin animation-duration($name) {
+  -webkit-animation-duration: $name;
+  -moz-animation-duration: $name;
+  -ms-animation-duration: $name;
+  animation-duration: $name;
+}
+
+@mixin animation-timing-function($name) {
+  -webkit-animation-timing-function: $name;
+  -moz-animation-timing-function: $name;
+  -ms-animation-timing-function: $name;
+  animation-timing-function: $name;
+}
+
+@mixin animation-iteration-count($name) {
+  -webkit-animation-iteration-count: $name;
+  -moz-animation-iteration-count: $name;
+  -ms-animation-iteration-count: $name;
+  animation-iteration-count: $name;
+}
+
+@mixin animation-direction($name) {
+  -webkit-animation-direction: $name;
+  -moz-animation-direction: $name;
+  -ms-animation-direction: $name;
+  animation-direction: $name;
+}
+
+@mixin animation-delay($name) {
+  -webkit-animation-delay: $name;
+  -moz-animation-delay: $name;
+  -ms-animation-delay: $name;
+  animation-delay: $name;
+}
+
+@mixin animation-play-state($name) {
+  -webkit-animation-play-state: $name;
+  -moz-animation-play-state: $name;
+  -ms-animation-play-state: $name;
+  animation-play-state: $name;
+}
+
+@mixin animation-fill-mode($name) {
+  -webkit-animation-fill-mode: $name;
+  -moz-animation-fill-mode: $name;
+  -ms-animation-fill-mode: $name;
+  animation-fill-mode: $name;
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes $name { @content; }
+  @-moz-keyframes $name { @content; }
+  @-ms-keyframes $name { @content; }
+  @keyframes $name { @content; }
+}
+
+@mixin transform($property) {
+  -webkit-transform: $property;
+      -ms-transform: $property;
+          transform: $property;
+}

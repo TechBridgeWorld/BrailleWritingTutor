@@ -1,0 +1,1 @@
+This folder holds useful assets needed by the Java server. Currently it contains only <tt>sample_script.bwt</tt>, which is a reference used by the server to create the sample script each time the user runs the emulator.

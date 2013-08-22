@@ -1,0 +1,59 @@
+/** @file board.scss
+ *  @brief scss file defining styles for our overall board
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+/** @file _mixins.scss
+ *  @brief Mixins used in other scss files go here
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+#board {
+  position: absolute;
+  overflow: auto;
+  top: 20px;
+  left: 15px;
+  right: 15px;
+  bottom: 20px;
+  margin-bottom: 20px;
+  background: #549d6e;
+  background-image: url("../assets/noise.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(64, 127, 80, 0.2)), to(rgba(64, 127, 80, 0.2))), url("../assets/noise.png");
+  background-image: -webkit-linear-gradient(top, rgba(64, 127, 80, 0.2), rgba(64, 127, 80, 0.2)), url("../assets/noise.png");
+  /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, rgba(64, 127, 80, 0.2), rgba(64, 127, 80, 0.2)), url("../assets/noise.png");
+  /* FF3.6+ */
+  background-image: -ms-linear-gradient(top, rgba(64, 127, 80, 0.2), rgba(64, 127, 80, 0.2)), url("../assets/noise.png");
+  /* IE10 */
+  background-image: -o-linear-gradient(top, rgba(64, 127, 80, 0.2), rgba(64, 127, 80, 0.2)), url("../assets/noise.png");
+  /* Opera 11.10+ */
+  background-image: linear-gradient(top, rgba(64, 127, 80, 0.2), rgba(64, 127, 80, 0.2)), url("../assets/noise.png");
+  /* W3C */
+  border: solid thin rgba(0, 0, 0, 0.5);
+  -moz-border-radius: 5px;
+  border-radius: 5px; }
+
+#board.help {
+  -webkit-transition: background 0.2s ease-in-out;
+  -moz-transition: background 0.2s ease-in-out;
+  -ms-transition: background 0.2s ease-in-out;
+  -o-transition: background 0.2s ease-in-out;
+  transition: background 0.2s ease-in-out;
+  background: #dedede;
+  background-image: url("../assets/noise.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(222, 222, 222, 0.2)), to(rgba(222, 222, 222, 0.2))), url("../assets/noise.png");
+  background-image: -webkit-linear-gradient(top, rgba(222, 222, 222, 0.2), rgba(222, 222, 222, 0.2)), url("../assets/noise.png");
+  /* Chrome 10+, Saf5.1+ */
+  background-image: -moz-linear-gradient(top, rgba(222, 222, 222, 0.2), rgba(222, 222, 222, 0.2)), url("../assets/noise.png");
+  /* FF3.6+ */
+  background-image: -ms-linear-gradient(top, rgba(222, 222, 222, 0.2), rgba(222, 222, 222, 0.2)), url("../assets/noise.png");
+  /* IE10 */
+  background-image: -o-linear-gradient(top, rgba(222, 222, 222, 0.2), rgba(222, 222, 222, 0.2)), url("../assets/noise.png");
+  /* Opera 11.10+ */
+  background-image: linear-gradient(top, rgba(222, 222, 222, 0.2), rgba(222, 222, 222, 0.2)), url("../assets/noise.png");
+  /* W3C */ }
+
+#top_bar {
+  position: relative;
+  height: 80px;
+  width: 100%; }

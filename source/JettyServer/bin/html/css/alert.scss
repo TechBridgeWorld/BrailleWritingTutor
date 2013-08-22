@@ -1,0 +1,42 @@
+/** @file alert.scss
+ *  @brief scss styling for our alert dialogues.
+ *
+ *  @author Lucas Ray (ltray@cmu.edu)
+ */
+
+// mixins
+@import "_mixins.scss";
+
+#alert {
+  $RED : rgba(250, 72, 72, 1);
+  $RED_TRANSPARENT : rgba(250, 72, 72, 0.2);
+
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  z-index: 1000;
+
+  background: $RED;
+  @include noisey($RED_TRANSPARENT);
+  color: white;
+  text-align: center;
+  @include transition(opacity, 0.5s, ease-in-out);
+  opacity: 1;
+  pointer-events: none;
+}
+
+
+#alert_header {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#alert_body {
+  font-size: 16px;
+}
+
+#alert:hover {
+  @include transition(opacity, 0.5s, ease-in-out);
+  opacity: 0.2;
+}
