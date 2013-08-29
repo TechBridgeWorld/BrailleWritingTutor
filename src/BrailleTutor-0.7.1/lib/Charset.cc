@@ -67,6 +67,7 @@ static unsigned int local_utf8_decode_char(const uint8_t *str_utf8,
     ch_32 = (((uint32_t) str_utf8[0] & 0x0000000fu) << 12) |
 	    (((uint32_t) str_utf8[1] & 0x0000003fu) <<  6) |
 	     ((uint32_t) str_utf8[2] & 0x0000003fu);
+	
     return 3;
   }
 
@@ -121,6 +122,7 @@ static unsigned int local_utf8_encode_ch32(const uint32_t &ch_32,
   }
 
   // Otherwise, an invalid char. Encode nothing.
+  printf("returning 0\n");
   return 0;
 }
 
@@ -139,6 +141,7 @@ static unsigned int local_utf8_decode(const uint8_t *str_utf8,uint32_t* &str_32)
   local_strcpy(str_32, scratch);
 
   delete[] scratch;
+ 
   return my_strlen;
 }
 

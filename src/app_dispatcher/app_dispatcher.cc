@@ -24,6 +24,8 @@
 #include "domino/domino_game.h"
 #include "hangman/hangman.h"
 #include "animal/animal.h"
+#include "household/household.h"
+#include "arithmetic_practice/arithmetic.h"
 
 
 using namespace BrailleTutorNS;
@@ -88,6 +90,8 @@ bool ApplicationDispatcher::isScrollEvent(const IOEvent& e)
   if(switching_modes == BZERO_DOWN && e.type == IOEvent::BUTTON_DOWN && e.button != 0)
   {
     switching_modes = SCROLL_ON;
+    teach.say("main_menu.wav");
+    printf("You have returned to the main menu\n");
     return true;
   }
 
@@ -211,6 +215,8 @@ void ApplicationDispatcher::processConfigFile()
             modes_list.push_back(DOT_PRACTICE_ENGLISH);
           } else if (mode_str == "LEARN_LETTERS_ENGLISH") {
             modes_list.push_back(LEARN_LETTERS_ENGLISH);
+          } else if (mode_str == "LEARN_LETTERS_KANNADA") {
+            modes_list.push_back(LEARN_LETTERS_KANNADA);
           } else if (mode_str == "LETTER_PRACTICE_ENGLISH") {
             modes_list.push_back(LETTER_PRACTICE_ENGLISH);
           } else if (mode_str == "LEARN_NUMBERS_ENGLISH") {
@@ -221,6 +227,12 @@ void ApplicationDispatcher::processConfigFile()
             modes_list.push_back(HANGMAN_ENGLISH);
           } else if (mode_str == "ANIMAL_GAME_ENGLISH") {
             modes_list.push_back(ANIMAL_GAME_ENGLISH);
+		      } else if (mode_str == "HOUSEHOLD_GAME_ENGLISH") {
+			       modes_list.push_back(HOUSEHOLD_GAME_ENGLISH);
+          } else if (mode_str == "ARITHMETIC_PRACTICE_ENGLISH") {
+            modes_list.push_back(ARITHMETIC_PRACTICE_ENGLISH);
+          } else if (mode_str == "LEARN_LETTERS_HINDI") {
+            modes_list.push_back  (LEARN_LETTERS_HINDI);
           } else if (mode_str == "FREE_PLAY_ARABIC") {
             modes_list.push_back(FREE_PLAY_ARABIC);
           } else if (mode_str == "FREE_SPELLING_ARABIC") {
@@ -327,6 +339,8 @@ void ApplicationDispatcher::processConfigFile()
     modes_list.push_back(LETTER_PRACTICE_ENGLISH);
     modes_list.push_back(HANGMAN_ENGLISH);
     modes_list.push_back(ANIMAL_GAME_ENGLISH);
+    modes_list.push_back(ARITHMETIC_PRACTICE_ENGLISH);
+	  modes_list.push_back(HOUSEHOLD_GAME_ENGLISH);
   }
 }	
 
@@ -357,6 +371,12 @@ IBTApp* ApplicationDispatcher::switchToSelectedMode() const {
     return new EnglishHangman(iep);
   case ANIMAL_GAME_ENGLISH:
     return new EnglishAnimal(iep);
+  case HOUSEHOLD_GAME_ENGLISH:
+	 return new EnglishHousehold(iep); 
+  case ARITHMETIC_PRACTICE_ENGLISH:
+    return new EnglishArithmeticPractice(iep);
+  case LEARN_LETTERS_KANNADA:
+    return new Hindi2LearnLetters(iep);
   case FREE_PLAY_ARABIC:
     return new ArabicDotScaffold(iep);
   case FREE_NUMBERS_ARABIC:
@@ -431,6 +451,7 @@ IBTApp* ApplicationDispatcher::switchToSelectedMode() const {
 
 void ApplicationDispatcher::playSelectedMode() const
 {
+
   switch (modes_list[current_mode_index]) {
   case FREE_PLAY_ENGLISH:
     teach.say("free play.wav");
@@ -476,6 +497,22 @@ void ApplicationDispatcher::playSelectedMode() const
     teach.say("animal game.wav");
     printf("Selecting English Animal Game\n");
     break;
+  case HOUSEHOLD_GAME_ENGLISH:
+	  teach.say("everyday_noises.wav"); 
+	  printf("Selecting English Household Game\n");
+	  break;
+  case ARITHMETIC_PRACTICE_ENGLISH:
+    teach.say("maths_practice.wav"); 
+    printf("Selecting English Maths pracice\n");
+    break;
+  case LEARN_LETTERS_HINDI:
+      teach.say("learn_letters_hindi.wav"); 
+      printf("Selecting Hindi Learn Letters\n");
+      break;
+  case LEARN_LETTERS_KANNADA:
+      teach.say("learn_letters_kannada.wav");
+      printf("Selecting Kannada Learn Letters");
+      break;
   case FREE_PLAY_ARABIC:
     teach.say("free play_arabic.wav");
     printf("Selecting Arabic Dot Scaffold\n");

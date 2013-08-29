@@ -21,6 +21,8 @@
 #include "Charset.h"
 #include "IOEvent.h"
 
+
+
 namespace BrailleTutorNS {
 
 ////////////////////////////////////
@@ -137,7 +139,7 @@ struct FunctorIOEventDecoder {
 	  // Add in timeout. First we need to know the xtime for when the
 	  // timeout happents
 	  boost::xtime time_end;
-	  boost::xtime_get(&time_end, boost::TIME_UTC_);
+	  boost::xtime_get(&time_end, boost::TIME_UTC_);	// Changed by Gary Giger since TIME_UTC does not exist in boost 1.53.0 and was replaced with TIME_UTC_
 	  time_end.sec += glyph_delay.secs;
 	  const unsigned int nsecs = glyph_delay.msecs * 1000000;
 	  time_end.nsec += nsecs % 1000000000;
@@ -575,6 +577,8 @@ struct FunctorNewIOEvent {
       }
       } // END ENCLOSING BLOCK
 
+      //WANT SOMETHING TO DO IEP.OUT_EVENTS.CLEAR OR POP
+
       // Calling the IOEventHandler, if it exists
       if(iep.handler) {
 	boost::mutex::scoped_lock lock_i(iep.out_events_mutex);
@@ -597,6 +601,8 @@ public:
 
   //! The actual implementation of IOEventParser::flushGlyph
   inline void flushGlyph();
+
+  inline void clearQueue();
 
   //! The actual implementation of IOEventParser::wantEvent
   inline void wantEvent(const IOEvent::Type &type);
@@ -692,6 +698,11 @@ void IOEventParserCore::flushGlyph()
   cond_in_bevents.notify_one();
 }
 
+
+
+void IOEventParserCore::clearQueue()
+{ iep.out_events.clear();}
+
 // Indicate that an event should be monitored
 void IOEventParserCore::wantEvent(const IOEvent::Type &type)
 { boost::mutex::scoped_lock lock_w(mutex_watchset); watchset.insert(type); }
@@ -776,6 +787,8 @@ void IOEventParser::setGlyphDelay(const TimeInterval &delay)
 void IOEventParser::flushGlyph()
 { if(iepc != NULL) iepc->flushGlyph(); }
 
+void IOEventParser::clearQueue()
+{if (iepc != NULL) iepc->clearQueue();}
 // Adds an IOEvent type to the event watchset
 void IOEventParser::wantEvent(const IOEvent::Type &type)
 { if(iepc != NULL) iepc->wantEvent(type); }

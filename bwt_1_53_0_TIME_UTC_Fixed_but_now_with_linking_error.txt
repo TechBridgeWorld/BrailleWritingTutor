@@ -1,0 +1,389 @@
+
+C:\Users\ggiger\Documents\Projects\BT_Software_new>scons
+scons: Reading SConscript files ...
+INFO: Running with -j 2
+scons: done reading SConscript files.
+scons: Building targets ...
+
+Linking Program ==> btbt.exe
+
+Linking Program ==> musicmakergame.exe
+src\musicmaker\main.o: In function `_static_initialization_and_destruction_0':
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:214: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:215: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:216: undefined reference to `boost::system::system_category()'
+src\musicmaker\musicmaker.o: In function `~thread':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:255: undefined reference to `_imp___ZN5boost6thread6detachEv'
+src\musicmaker\musicmaker.o: In function `ZN5boost6thread4joinEv':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+src\musicmaker\musicmaker.o: In function `thread_data_base':
+C:/boost/boost_1_53_0/boost/thread/win32/thread_data.hpp:123: undefined reference to `_imp___ZTVN5boost6detail16thread_data_baseE'
+src\musicmaker\musicmaker.o: In function `ZN5boost6thread12start_threadEv':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:180: undefined reference to `_imp___ZN5boost6thread21start_thread_noexceptEv'
+src\musicmaker\musicmaker.o: In function `~thread':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:255: undefined reference to `_imp___ZN5boost6thread6detachEv'
+src\musicmaker\musicmaker.o: In function `ZN5boost6thread12start_threadEv':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:180: undefined reference to `_imp___ZN5boost6thread21start_thread_noexceptEv'
+src\musicmaker\musicmaker.o: In function `~thread':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:255: undefined reference to `_imp___ZN5boost6thread6detachEv'
+src\musicmaker\musicmaker.o: In function `~thread_data':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+src\musicmaker\musicmaker.o: In function `thread_exception':
+C:/boost/boost_1_53_0/boost/thread/exceptions.hpp:51: undefined reference to `boost::system::system_category()'
+src\musicmaker\musicmaker.o: In function `_static_initialization_and_destruction_0':
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:214: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:215: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:216: undefined reference to `boost::system::system_category()'
+libcommon.a(utilities.o): In function `_static_initialization_and_destruction_0':
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:214: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:215: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:216: undefined reference to `boost::system::system_category()'
+libcommon.a(IBTApp.o): In function `_static_initialization_and_destruction_0':
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:214: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:215: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:216: undefined reference to `boost::system::system_category()'
+./libbt.a(BrailleTutor.o): In function `ZN5boost6thread4joinEv':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+./libbt.a(BrailleTutor.o): In function `ZN5boost6thread12start_threadEv':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:180: undefined reference to `_imp___ZN5boost6thread21start_thread_noexceptEv'
+./libbt.a(BrailleTutor.o): In function `thread_data':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:110: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+./libbt.a(BrailleTutor.o): In function `ZN5boost6thread12start_threadEv':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:180: undefined reference to `_imp___ZN5boost6thread21start_thread_noexceptEv'
+./libbt.a(BrailleTutor.o): In function `ZN5boost6thread4joinEv':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+./libbt.a(BrailleTutor.o): In function `ZN5boost6thread12start_threadEv':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:180: undefined reference to `_imp___ZN5boost6thread21start_thread_noexceptEv'
+./libbt.a(BrailleTutor.o): In function `~thread_data':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+./libbt.a(BrailleTutor.o):C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: more undefined references to `_imp___ZN5boost6detail16thread_data_baseD2Ev' follow
+./libbt.a(BrailleTutor.o): In function `thread_exception':
+C:/boost/boost_1_53_0/boost/thread/exceptions.hpp:51: undefined reference to `boost::system::system_category()'
+./libbt.a(BrailleTutor.o): In function `~thread':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:255: undefined reference to `_imp___ZN5boost6thread6detachEv'
+./libbt.a(BrailleTutor.o): In function `thread_data_base':
+C:/boost/boost_1_53_0/boost/thread/win32/thread_data.hpp:123: undefined reference to `_imp___ZTVN5boost6detail16thread_data_baseE'
+./libbt.a(BrailleTutor.o): In function `ZN5boost6detail19basic_cv_list_entry4waitENS0_7timeoutE':
+C:/boost/boost_1_53_0/boost/thread/win32/condition_variable.hpp:94: undefined reference to `_imp___ZN5boost11this_thread18interruptible_waitEPvNS_6detail7timeoutE'
+C:/boost/boost_1_53_0/boost/thread/win32/condition_variable.hpp:94: undefined reference to `_imp___ZN5boost11this_thread18interruptible_waitEPvNS_6detail7timeoutE'
+./libbt.a(BrailleTutor.o): In function `_static_initialization_and_destruction_0':
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:214: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:215: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:216: undefined reference to `boost::system::system_category()'
+./libbt.a(ShortStylusSuppressor.o): In function `thread_data_base':
+C:/boost/boost_1_53_0/boost/thread/win32/thread_data.hpp:123: undefined reference to `_imp___ZTVN5boost6detail16thread_data_baseE'
+./libbt.a(ShortStylusSuppressor.o): In function `ZN5boost6thread12start_threadEv':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:180: undefined reference to `_imp___ZN5boost6thread21start_thread_noexceptEv'
+./libbt.a(ShortStylusSuppressor.o): In function `thread_data_base':
+C:/boost/boost_1_53_0/boost/thread/win32/thread_data.hpp:123: undefined reference to `_imp___ZTVN5boost6detail16thread_data_baseE'
+./libbt.a(ShortStylusSuppressor.o): In function `~thread_data':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+./libbt.a(ShortStylusSuppressor.o): In function `ZN5boost6thread4joinEv':
+C:src/\bmoaoisnt.o/:bo ostI_n1_5 3_0fun/ctiboonost /`t_hsrteaatdic_/inidteitaaliilzat/iont_harneda_dd.ehsptpruc:tio7n4_60:' :u
+defCine:d/ broeofsetren/cebo ostto_1 _53`_0_im/p__b_oZoNsKt5bo/ossty6stthermea/d6geertr_oird_Ecvod'e.h
+pC::214/:boo stun/defbionoesdt_1 _53r_e0fer/enbcoeost /toth rea`db/oosdteta:il:/sytshtreemad.:hpp::gen7e4r6ic_:cat egournydef(ine)d'
+efeCren:ce/ botoost /`boo_sitm_p1___5_3Z_N05bo/ostb1o1otshtis_/thrseyasdt6egmet_/idEevrro'r_c
+de.Chpp::/2b1o5ost:/ buonodsetf_i1n_e5d3_0 /refbeoroesntce/ tthorea d`/bdoeotsatil:/:thsryesatde.mhpp:::7g5e1ner:ic_ catuengdoerfyine(d) 'ref
+renCce: /tbooos t`/_biomops_t___1Z_N553b_o0ost/6thbroeoasdt13j/oins_ynsoteexmcep/tEverr'or_
+ode..hp/pl:ibb2t1.6a:( ShourntdSetfyilnuesdSup prersesfoerr.eonce) :t oI n` bfouonscttio:n: s`yst~emth:rea:ds'yst:em_
+atCeg:or/yb(oos)t'/
+oossrtc_1_\53_d0ot_/scabfofoosltd/\dott_hsrceaafdfo/ldd.eotai:l /Itnhre ad.fhupnpcti:on25 5`:_ stautnidce_fiinnietdial izarteifoenr_eanncde_de strtuocti on_`0_'imp:___
+N5bCoos:t6t/hrebaodo6sdteta/chEbvoos't_1
+53_.0//bloiobsbtt.a/(sysStheomrtS/tyleursrSourp_pcroedses.ohrp.po:)2:14 :I nu ndeffuinncetdion  ref`ereZnNc5eboo st6ttohre ad4`joibnoEovst':::
+sysCtem::/:boogsetner/ic_bcoaotsetg_o1r_y53_(0)/'boo
+tC/:thr/eadboo/stde/taibloos/t_1t_h5r3e_a0d.h/ppbo:ost746/:sy steumnde/fineerdror _cordeef.ehrpepnce: 215to:  `un_diemfpi_n_e_dZN K5broeofsetr6etnhcreead 6getto_id Ev`'b
+ostC:::/sbyosotsetm/:b:oosgte_n1er_i5c_3c_a0t/ebogoosrty(/)t'h
+eaCd://detbaoiolst//tbhoroesatd_.1h_p5p3_0:/746boo:st /usnydsetfeimned/ errreofre_rceondcee.h ppto: 2`16_i:mp_ __ZuNn5dbeofoisnte1d1th is_rtehfreeraedn6cgeet_ idEtvo'
+Cb:o/obsootst:/:bsoyosstte_m1_5:3_0:/sysbtoeoms_tcat/egotrhyrea(d)/'det
+ilsr/ct\hredaodt._hpprpact:ice751\:dot _pruancdteifcien.eod:  refIenren cefu ncttioon  ``_s_tiamtpic___i_nZiNt5ibaoloizsatt6itohnr_eaandd1_3djeositnr_uncoteixocne_p0tEv'':
+
+.C/:l/ibbbto.oast(/SbhooorsttS_t1y_l5u3s_S0upp/resbsooors.to/)s:yst emIn/ errfourn_cctoidoen.hp p`:~214thr:ead 'und:efi
+edC :r/efebroeonscte/ btooost _1_`53_b0oos/tboo:st:/systthermead:/:dgeetnaeirlic_/cattehgroerayd.h(pp):'2
+5C:: /undbeofoisnted/ boroesfte_r1e_n5c3e_0 /toboo st`/_siymspt_e_m_ZN/5boeorsrto6rt_hcroedaed.6hdpeptac:hEv215':
+ .u/ndelfiibnbetd.a (refSehroerntcSetyl usStuoppr ess`or.booos)t:: :Isnyst emfu:nct:iognen er`icZ_Nc5abtoeogsotr6ydet(ail)19b'asi
+_cvC_:l/ibsoots_tent/ry4bwoaoisttE_N1S_05_37_t0ime/outbEoos't:/
+ystCem://ebroroosrt_co/de.bhopopst_:1_5231_60:/ boousntde/fintehdrea dr/efewrienn3c2e/ ctoondi tio`n_vbaoroisatble:.h:ppsy:ste9m4::: suynsdteefmi_nceadteg oryref(ere)nce'
+tosrc \`do_miimnpo___\ZN5dboomoisnto1_1gtahmies._othre:ad18 intIenrru ptifbulnec_twiaointEP vNS`_6dtehtraeiald7_tdiamteao_ubtaEse''
+:C
+:C/:boo/stbo/obstoo/st_bo1o_s5t3__10_53/_0b/obooosstt/th/readth/reawdin3/2w/in3t2hre/ad_cdoantdai.thipopn_v:ari1a2b3le.:hpp :und9ef4i:n edund efirneefdere nceref eretnoce  `to_i mp_`__Z_TiVmNp5_b_o_oZsNt56bdoeotsati1l11t6htihsr_etahrde_adda
+1t8ain_btaesrerEupt'ibl
+_wasirtcEPv\NS_d6odmeitnaoil7\timdeoomuitnEo_g'ame
+o.:/ lIinbbt .afu(nctSihoonrtS tyl`usSZuNp5pbroeosssto6rt.horea)d1:2st artI_nth reafduEnvcti'on:
+`C_st:ati/c_ibnoiotsitali/zatbiooons_ta_n1d__5d3e_s0tru/ctiboono_s0t'/:thr
+aCd/:d/etbaoiolst//tbhoroesatd_.1h_p5p3_0:/180boo:st /undsyesftienmed/ errerfoerr_ecnocdee.h ppto: 214`:_im p__u_nZdNe5fbionoesdt6t hrreeafde2r1esntcaert_ thrteoad_ noe`xcebpotoEsvt'::
+syssrtcem\:d:omigneoner\ic_dcoamtiengoo_rgyame(.o):'
+InC :f/uncbtoioosnt /`boo~st_t1h_r5e3a_d0'/:boo
+tC/:sys/temboo/ster/rorb_ocoosdte_.1h_p5p3_0:/215boo:st /utnhdreefaidned/ detraeifleren/ceth reatdo.hp p`:b2o5o5st:: :unsdyesftienmed: :regfeenreernicce_ca tegtoory (`)_'imp
+__ZCN5b:oos/t6tbhoroesatd6d/etabcohoEsvt_1'_53
+0s/rcboo\stdo/minsyoste\m/doemrirnoor__gcaomdee..ohpp:: 2I1n6 :f uncutnidoenfin ed` ~rtehfreeraedn_cdeata 'to:
+`Cbo:os/t:bo:ostsy/stbeomost:_1_:53_s0yst/emb_ocoasttego/rythr(ead)/'d
+tai.l//ltihbrbeta.da.h(ppI:OEv9e1nt.:o )u:nde fineIdn  rfeufnecrteinocne  `tZoN5b oos`t6d_eitmapi_l_1_9ZbNa5sbioco_sctv6_dleitsati_le1n6ttrhyr4ewaadi_tdEaNtSa0__b7atsiemDe2oEuvtE''
+:C
+:C/:boo/stbo/ostboo/st_b1o_o5s3t__01_5/3_b0oos/tb/ootshtrea/dt/hredaedtai/lw/in3t2hre/ad.chopnpdit:ion9_1var:iab le.uhnpdpefi:ned94 :re feruenndceefin edto  ref`ere_nicmep__ _ZNt5oboo st6`det_aiimlp1_6_t_hZrNe5abdo_odsatt1a1_tbhaisse_Dt2hEr
+vead'18i
+tersrrucpti\bled_owmaiintoEPv\NS_d6odmeitnaoi_lg7atmiem.eoout:E 'I
+ .fun/ctiloinbbt .a`(tIhOrEevaedn_te.xoce)pti:on 'In:
+fuCnct:ion/ boo`stth/reabdo_odsatt_a1__b5a3s_e0'/:boo
+tC/:thr/eadboo/stex/cepbtoioosnts_.1h_p5p3_0:/51bo:ost /untdherfeianded/ wirne3f2ere/ncethr eadt_odat a.h`ppbo:ost123::: sysutnedmefi:ned: sysrteefme_rceantceegor yt(o) '`
+imps_rc__\ZTdVoNm5ibnooo\st6ddoemtianiol_1g6atmher.eoad_:dat a_bIanseE 'fun
+tio.n/ l`ibb_ts.taati(c_iInOiEtvieanlti.zoati)on_:and _deIsntru ctifounn_c0tio'n:
+ZCN5b:oos/t6tbhoroesatd12/stabroto_stth_r1e_a5d3E_v0'/:boo
+tC/s:yst/embo/osterr/or_bcooodset._h1p_p53_:02/14bo:os tu/ndetfhirneeadd /rdeeftearielnce/ thtroea d.h`ppbo:os1t80::: syusntdeemfin:ed: gerneefreirce_nccaete gortyo( )`'_im
+_C__Z:N5b/oosbto6otshtrea/d21bsotoasrtt__1t_h5r3e_a0d_n/oexbcoeopsttEv/'sy
+tem.//elrirbobrt_.caode(.hpIpOEv:en21t5.o:) :un defIinned  funrcetfieornenc e` tthorea d_d`atbao_obsatse:'::s
+steCm::/:bgoeonsetric/_cabtoeogsotr_y1_5(3_0)/'b
+ostC/:t/hrebaodost//winb3o2ost/_1_t5h3r_e0ad_/datbao.ohsptp/:s1y2s3tem:/ eurnrdoerf_icnoedde.h ppre:fer2e1n6ce:  tound efi`ned_im p__r_eZfTeVrNe5nbcoeost 6dettoail 16t`hrebaodo_sdtata:_ba:seEsys'tem
+:.:/sysltiebmb_tc.aateg(oryIOE(ven)t.o')
+:sr cI\nd omfiunnoct\iondo min`o_tphlraeyaedr.o<:Bra illIenTut orNfSunc:tio:nF unc`tor_IsOtEavteinct_Dienciotdiearliz>ati'on_:and
+desCtr:uct/iobno_o0st'/:b
+osCt_1:_53/_0boo/stbo/ostboo/st_t1h_r5e3a_d0//dbeotoasitl//styhsrteeamd.h/pper:ror1_1c0ode:.h ppu:nde21f4ine:d  ruenfdeerfeinnceed  troefe ren`ce_ impt_o__Z N5b`oosbto6odsettai:l16:thrseyasdt_edmata:_ba:segDe2nEevric'_ca
+ego.ry/(l)ibb't.a
+(CI:OEv/entb.ooost)/:b oosItn_1_ 53_f0unc/tiobnoos t`/ZsNy5sbtoeomst6/threerardo4rj_ociondEev.hp'p::
+15C:: /undbeofoisnted/ broeofsetr_e1n_c5e3_0 /tobo ost`/bootshtrea:d:/sdyesttaeiml:/:thrgeeande.rhicp_pca:te7g4o6r:y u(nde)fin'ed
+ Cref:ere/nceboo stt/ob `oo_sitm_p1___5_3ZN_K05bo/osbto6otshtre/ad6sgyestt_ideEmv/'e
+roCr_:code/.hbpopost:/21b6oos:t_1 _53u_n0def/inebdoos tr/efetrhernecaed /tdoeta il`/botohsrtead:.hp:ps:yst7e4m6::: suynsdteefmi_nceadteg oryref(ere)nce'
+to src`\domi_noi\mtpi_m_e_rZ.No5bo:ost 11tIhnis_ thrfeuandc6tgieotn_id Ev`'_s
+atiCc_i:nit/ialbiozoasttion/_anbdo_odsets_t1r_u5c3t_i0on_/0bo'os:t
+Cthr:ead//boodsettai/lb/oostth_r1e_a5d3._h0pp/:b7o5o1st:/ suynsdteefmine/de rrorre_fceordeen.chepp :to214 :` _iumnpd_e_f_iZnNe5dboo st6rtehfreeraedn1c3ejoi n_ntooexc ept`Evbo'ost
+:C::sy/stebmoos:t:/gbeonoesrti_c1__c5a3t_e0go/ryboo(st)/'t
+reaCd://detbaoiolst//tbhoroesatd_.1h_p5p3_:07/46bo:ost /undseyfsitneemd/ errerfoerr_ecnocdee.h ppto :`215_im:p__ _ZNuKn5dbeofoisnte6dthr eadr6egfeetr_eindcEev 't
+ C`:boo/sbtoo:st:/sybsotoesmt_:1_:53_g0en/erbioco_sctat/egtohrryea(d)/'de
+ailC://thrbeoaods.thpp/:boo7s4t6_1_:53_ 0u/ndbeofoisnted/ sryesfteermenc/ee rrotro_co de.`hpp_i:mp_2_1_6ZN5:boo st1u1ntdheifsi_ntehdrea d6greetf_eirdeEnvce'
+toC :`/boboosotst:/:bosoysstt_e1m_53:_0:/sysbtoeoms_tcat/egotrhyrea(d)/'det
+ilsrc/\thrleeaadr.nh_pdpots:\751lea:rn_ dotusn.doefi:ned  Inre ferfeunnccetio nt o` _`st_aitmipc___i_nZiNt5ibaoloiszta6ttihorne_aadn1d3_jdoeisnt_runcoteixocn_e0ptE'v:'
+
+C.://libbboto.sat(/IbOoEovsetn_t1._o53_)0:/ booIsnt/ sfyunsctteimon/ er`ror~_cotdher.ehapdp'::214
+:C :un/debfoionsetd/ rebfoeorsetnc_e1_53 _0to/b oos`tb/ootshtre:ad:/dseytsatielm/:t:hrgeeande.rhipcp_ca:teg2o5r5y:( )u'nde
+ineCd: /refbeoroesntce/ btooost _1_`53__0imp/___bZoNo5sbto/osts6ystthermead/6deetrarcohrE_vcod'e.h
+pC::215/:boo stun/defbionoesdt_1 _53r_e0fer/encbeoos tt/ot hre`adbo/ostdet:ail:/systthermead:.hp:pg:ene2r5i5c_c:ate goruynde(fin)ed'
+refCere:nce/ bootsot /`boo_sitm_p1___5_3Z_N05bo/ostb6otohsrtead/6destyasctheEmv/'e
+ror._co/de.lhipbpbt.:a2(16IO:Eve nt.uonde)fin:ed  Irnef erefnucnect iotno  ``~botohsrtea:d_d:atsays'te:m
+:sCyst:em_/catbeogoosrty/(b)oos't_1
+53_s0rc/\bloeotstter_/pratchtriecaed\/ldeetttaeirl_pr/acttihcree.aod.h:pp :In91 :f uncutnidoenfin ed` ref_esrteantciec_i nittioali zat`ion__iamnpd___d_eZsNt5rbuocotsito6nd_e0tai'l16:thr
+ad_Cdat:a_b/asebDo2oEsvt'/
+oosCt_1:_53/_0bo/ostboo/stbo/osts_y1s_t5e3m_0//erbrooors_tcod/e.htphprea:d2/14de:tai lu/ndetfhirneeadd.h ppre:fer9e1nce:  tound efi`nedboo stre:fer:encseyst emto: :`gen_eirmipc___c_aZtNe5gbooroyst6(det)ail'16t
+reaCd_:da/ta_bboaossetD2E/vb'oo
+t_1C_53:_0//bboooosstt//bsoyosstte_m1_5/3_0err/or_bcooodset.hp/pt:hre2a1d5/:d etuanidlefi/nedth rearde.ferhpepn:c91e:  undetfoine d` broeofsetren:ce: sytsotem :`:_giemnpe_r_i_cZ_Nc5abtoeogsotr6ydet(ail)16t'hre
+d_dCata:_ba/seDb2oEovst'/
+booCst_:1_5/3_0boo/stbo/ostboo/st_s1y_s5t3e_m0//ebroroosrt_co/de.thhprpead:/216det:ail /undtehfrienaedd.hp pref:ere9n1ce:  tuonde fin`edbo ostref:ere:ncesys temto: :`s_yismtpe_m___cZaNt5ebgooorsyt6d(eta)il1'6th
+eads_rdcata\_balseeaDr2nE_vlet'ter
+\./lelairbnb_tl.eatt(ersI.OoEv:e nInt. of)unc:tio nI n` _fsutnacttiico_nini tia`liz_asttiaotni_ca_nidn_idteisatlriuzcattiioonn__0and'_de:str
+ctiCon_:0/'b:oos
+/Cb:oos/t_1b_o5o3s_t0//bboooosstt_1_/53_s0yst/embo/osterr/or_scyosdtee.mhpp/:err2o1r4_co:de. hppund:efi2n1e4d:  refuenrdeenfciened  tore fer`encbeoos tt:o: s`ystbeomost::::genseyrsitce_mcat:ego:ryge(ner)ic_'cat
+gorCy:(/)b'oos
+/Cb:oos/t_1b_o5o3s_t0//bboooosstt_1_/53_s0yst/embo/osterr/or_scyosdtee.mhpp/:err2o1r5_co:de. hppund:efi2n1e5d:  refuenrdeenfciened  toref ere`ncbeoo stt:o: s`ystbeomost::::genseyrsitce_mcat:ego:ryge(ner)ic_'cat
+gorCy:()/'
+booCst://boobsotost/_1_b5o3o_s0t_1/_53b_o0ost//boossytste/ms/ysteermror/_coedrer.ohrp_pco:de.2h1p6p:: 216und:efi nedund erfefiernenecde  rteofer enc`eb oostto: :`sbyosotsetm::::ssyysstteemm_c:ate:gorsyyste(m_c)ate'gor
+(src)\'l
+tte.r_s/caflfioblbdt.a\(letTtiemre_Isnctaefrfvoalld..oo)::  InIn  ffuunnccttiioonn  ``_ZsNt5abtoiocs_ti6ndiettiaailli1z9abtaisoinc__acnvd__ldiesstt_reuncttriyo4nw_a0itE'NS0:_7t
+meCout:E/'b:oos
+/Cb:oos/t_1b_o5o3s_t0//bboooosstt_1_/53_s0yst/embo/osterr/or_tchordeea.dhpp/:win23124/:c onduintdieofni_nveadria bler.ehfpepren:ce94 :to  un`defbionoesdt :r:efesryesntceem :t:og ene`ric__icmapt_e_g_oZrNy5bo(ost)11t'his
+thrCead:18i/ntebrorouspttib/le_bwoaoisttE_P1v_N5S3__60det/ailb7otoismteou/tEsy'ste
+/.e/rrolri_bcbotd.ea.hp(pT:ime2I1n5ter:val .oun)def:in edIn  rfeufnecrteinocne  `to_s tat`ic_bionoisttial:iza:tiosny_satnedm_de:str:uctgieonne_r0ic_'cat:ego
+yC(:)/'b
+ostC/:b/oosbto_o1s_t53_/0b/oosbto_o1s_t53_/0s/ystbeomost//errsoyrs_tceomde./hpperr:or_2c1o4de.:hpp :und2e1f6ine:d  urnedfeefriennecde  rteofer enc`eb oostto: :`sbyosotsetm::::sgyesnteermic_:cat:egosryyste(m_c)ate'gor
+(C):'/
+oosstrc/\boaonsitm_a1l_53\_0an/imablo.oost:/ syIsntem /funecrtrioorn_co de.`hpp_st:ati2c1_5i:nit iuanldiezfaitnieodn_a nd_rdeefsetrreunccteion _0to' :`
+booCst::/:bsoyossttem/:b:oosgte_n1e_r5i3c__0cat/egbooroyst(/)sys'tem
+/eCrro:r_c/odeb.ohopspt:/2b1o4ost:_1_ 53_u0nde/finbeodost /refseyrsetnecme/ etroror _co`de.bhopopst::2:16sy:ste mu:nde:fingeedner ic_rceafteergeonrcye( )to'
+`Cboo:st/:b:oosstyst/embo:ost:_1_s5y3s_t0em_/catbeogoosrty/(s)yst'em
+/ecrroor_clodel.hpepc:t2152::  undlefidned  rreefetrenucer nteod  `1boo ste:x:isytste ms:t:agenteriuc_scat
+gory()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:216: undefined resfecons: *** [musicmakergame.exe] Error 1
+rence to `boost::system::system_category()'
+src\hangman\hangman.o: In function `_static_initialization_and_destruction_0':
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:214: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:215: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:216: undefined reference to `boost::system::system_category()'
+src\learn_numbers\learn_numbers.o: In function `_static_initialization_and_destruction_0':
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:214: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:215: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:216: undefined reference to `boost::system::system_category()'
+src\number_scaffold\number_scaffold.o: In function `_static_initialization_and_destruction_0':
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:214: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:215: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:216: undefined reference to `boost::system::system_category()'
+libcommon.a(french_utils.o): In function `_static_initialization_and_destruction_0':
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:214: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:215: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:216: undefined reference to `boost::system::system_category()'
+libcommon.a(IBTApp.o): In function `_static_initialization_and_destruction_0':
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:214: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:215: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:216: undefined reference to `boost::system::system_category()'
+libcommon.a(utilities.o): In function `_static_initialization_and_destruction_0':
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:214: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:215: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:216: undefined reference to `boost::system::system_category()'
+libapp_dispatcher.a(app_dispatcher.o): In function `_static_initialization_and_destruction_0':
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:214: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:215: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:216: undefined reference to `boost::system::system_category()'
+./libbt.a(BrailleTutor.o): In function `ZN5boost6thread4joinEv':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+./libbt.a(BrailleTutor.o): In function `ZN5boost6thread12start_threadEv':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:180: undefined reference to `_imp___ZN5boost6thread21start_thread_noexceptEv'
+./libbt.a(BrailleTutor.o): In function `thread_data':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:110: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+./libbt.a(BrailleTutor.o): In function `ZN5boost6thread12start_threadEv':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:180: undefined reference to `_imp___ZN5boost6thread21start_thread_noexceptEv'
+./libbt.a(BrailleTutor.o): In function `ZN5boost6thread4joinEv':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+./libbt.a(BrailleTutor.o): In function `ZN5boost6thread12start_threadEv':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:180: undefined reference to `_imp___ZN5boost6thread21start_thread_noexceptEv'
+./libbt.a(BrailleTutor.o): In function `~thread_data':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+./libbt.a(BrailleTutor.o):C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: more undefined references to `_imp___ZN5boost6detail16thread_data_baseD2Ev' follow
+./libbt.a(BrailleTutor.o): In function `thread_exception':
+C:/boost/boost_1_53_0/boost/thread/exceptions.hpp:51: undefined reference to `boost::system::system_category()'
+./libbt.a(BrailleTutor.o): In function `~thread':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:255: undefined reference to `_imp___ZN5boost6thread6detachEv'
+./libbt.a(BrailleTutor.o): In function `thread_data_base':
+C:/boost/boost_1_53_0/boost/thread/win32/thread_data.hpp:123: undefined reference to `_imp___ZTVN5boost6detail16thread_data_baseE'
+./libbt.a(BrailleTutor.o): In function `ZN5boost6detail19basic_cv_list_entry4waitENS0_7timeoutE':
+C:/boost/boost_1_53_0/boost/thread/win32/condition_variable.hpp:94: undefined reference to `_imp___ZN5boost11this_thread18interruptible_waitEPvNS_6detail7timeoutE'
+C:/boost/boost_1_53_0/boost/thread/win32/condition_variable.hpp:94: undefined reference to `_imp___ZN5boost11this_thread18interruptible_waitEPvNS_6detail7timeoutE'
+./libbt.a(BrailleTutor.o): In function `_static_initialization_and_destruction_0':
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:214: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:215: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:216: undefined reference to `boost::system::system_category()'
+./libbt.a(ShortStylusSuppressor.o): In function `thread_data_base':
+C:/boost/boost_1_53_0/boost/thread/win32/thread_data.hpp:123: undefined reference to `_imp___ZTVN5boost6detail16thread_data_baseE'
+./libbt.a(ShortStylusSuppressor.o): In function `ZN5boost6thread12start_threadEv':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:180: undefined reference to `_imp___ZN5boost6thread21start_thread_noexceptEv'
+./libbt.a(ShortStylusSuppressor.o): In function `thread_data_base':
+C:/boost/boost_1_53_0/boost/thread/win32/thread_data.hpp:123: undefined reference to `_imp___ZTVN5boost6detail16thread_data_baseE'
+./libbt.a(ShortStylusSuppressor.o): In function `~thread_data':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+./libbt.a(ShortStylusSuppressor.o): In function `ZN5boost6thread4joinEv':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+./libbt.a(ShortStylusSuppressor.o): In function `~thread':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:255: undefined reference to `_imp___ZN5boost6thread6detachEv'
+./libbt.a(ShortStylusSuppressor.o): In function `ZN5boost6thread4joinEv':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+./libbt.a(ShortStylusSuppressor.o): In function `~thread':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:255: undefined reference to `_imp___ZN5boost6thread6detachEv'
+./libbt.a(ShortStylusSuppressor.o): In function `ZN5boost6detail19basic_cv_list_entry4waitENS0_7timeoutE':
+C:/boost/boost_1_53_0/boost/thread/win32/condition_variable.hpp:94: undefined reference to `_imp___ZN5boost11this_thread18interruptible_waitEPvNS_6detail7timeoutE'
+C:/boost/boost_1_53_0/boost/thread/win32/condition_variable.hpp:94: undefined reference to `_imp___ZN5boost11this_thread18interruptible_waitEPvNS_6detail7timeoutE'
+./libbt.a(ShortStylusSuppressor.o): In function `_static_initialization_and_destruction_0':
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:214: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:215: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:216: undefined reference to `boost::system::system_category()'
+./libbt.a(IOEvent.o): In function `ZN5boost6detail19basic_cv_list_entry4waitENS0_7timeoutE':
+C:/boost/boost_1_53_0/boost/thread/win32/condition_variable.hpp:94: undefined reference to `_imp___ZN5boost11this_thread18interruptible_waitEPvNS_6detail7timeoutE'
+./libbt.a(IOEvent.o): In function `thread_data_base':
+C:/boost/boost_1_53_0/boost/thread/win32/thread_data.hpp:123: undefined reference to `_imp___ZTVN5boost6detail16thread_data_baseE'
+./libbt.a(IOEvent.o): In function `ZN5boost6thread12start_threadEv':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:180: undefined reference to `_imp___ZN5boost6thread21start_thread_noexceptEv'
+./libbt.a(IOEvent.o): In function `thread_data_base':
+C:/boost/boost_1_53_0/boost/thread/win32/thread_data.hpp:123: undefined reference to `_imp___ZTVN5boost6detail16thread_data_baseE'
+./libbt.a(IOEvent.o): In function `thread<BrailleTutorNS::FunctorIOEventDecoder>':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:110: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+./libbt.a(IOEvent.o): In function `ZN5boost6thread4joinEv':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZNK5boost6thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:746: undefined reference to `_imp___ZN5boost11this_thread6get_idEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:751: undefined reference to `_imp___ZN5boost6thread13join_noexceptEv'
+./libbt.a(IOEvent.o): In function `~thread':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:255: undefined reference to `_imp___ZN5boost6thread6detachEv'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:255: undefined reference to `_imp___ZN5boost6thread6detachEv'
+./libbt.a(IOEvent.o): In function `~thread_data':
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+C:/boost/boost_1_53_0/boost/thread/detail/thread.hpp:91: undefined reference to `_imp___ZN5boost6detail16thread_data_baseD2Ev'
+./libbt.a(IOEvent.o): In function `_static_initialization_and_destruction_0':
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:214: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:215: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:216: undefined reference to `boost::system::system_category()'
+./libbt.a(TimeInterval.o): In function `ZN5boost6detail19basic_cv_list_entry4waitENS0_7timeoutE':
+C:/boost/boost_1_53_0/boost/thread/win32/condition_variable.hpp:94: undefined reference to `_imp___ZN5boost11this_thread18interruptible_waitEPvNS_6detail7timeoutE'
+./libbt.a(TimeInterval.o): In function `_static_initialization_and_destruction_0':
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:214: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:215: undefined reference to `boost::system::generic_category()'
+C:/boost/boost_1_53_0/boost/system/error_code.hpp:216: undefined reference to `boost::system::system_category()'
+collect2: ld returned 1 exit status
+scons: *** [btbt.exe] Error 1
+scons: building terminated because of errors.
+
+C:\Users\ggiger\Documents\Projects\BT_Software_new>

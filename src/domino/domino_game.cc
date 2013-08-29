@@ -24,7 +24,8 @@ boost::try_mutex DominoGame::mx;
  * list. But this is a BAD idea (Item 9, Effective C++)
  */
 DominoGame::DominoGame(IOEventParser& my_iep, const std::string& path_to_mapping_file, const std::vector<std::string> my_alphabet, SoundsUtil* my_su, std::string path_to_dominosounds, std::string path_to_othersounds, bool f) :
-  IBTApp(my_iep, path_to_mapping_file), game_alphabet(my_alphabet), su(my_su), dominosounds(path_to_dominosounds), othersounds(path_to_othersounds), nomirror(f), iep(my_iep)
+  IBTApp(my_iep, path_to_mapping_file), game_alphabet(my_alphabet), su(my_su), iep(my_iep), dominosounds(path_to_dominosounds, iep), othersounds(path_to_othersounds, my_iep),
+   nomirror(f)
 {
   start(2);
 }

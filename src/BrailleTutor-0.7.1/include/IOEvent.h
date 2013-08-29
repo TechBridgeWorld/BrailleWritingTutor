@@ -283,7 +283,8 @@ public:
   //! processes the user's input right away. Note that if no glyph is under
   //! construction now, this routine creates no new events.
   void flushGlyph();
-
+  
+  void clearQueue();
   //! Tells the IOEventParser to start adding type of event to the event list.
   void wantEvent(const IOEvent::Type &type);
   //! Tells the IOEventParser to stop adding a type of event to the event list.
@@ -318,6 +319,7 @@ public:
   //! Destructor
   virtual ~IOEventParser();
 
+  std::deque<IOEvent> out_events;
 private:
   // Allow one of the thread classes access to our innards
   friend class FunctorNewIOEvent;
@@ -326,7 +328,7 @@ private:
   IOEventHandler *handler;
 
   //! IOEvents accumulated by this IOEventParser object
-  std::deque<IOEvent> out_events;
+ 
 
   //! A mutex controlling access to out_events
   boost::mutex out_events_mutex;

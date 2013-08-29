@@ -1,0 +1,81 @@
+
+C:\Users\ggiger\Documents\Projects\BT_Software_new>scons
+scons: Reading SConscript files ...
+INFO: Running with -j 2
+scons: done reading SConscript files.
+scons: Building targets ...
+
+Compiling ==> src\BrailleTutor-0.7.1\lib\BrailleTutor.cc
+
+Compiling ==> src\BrailleTutor-0.7.1\lib\IOEvent.cc
+In file included from src\BrailleTutor-0.7.1\lib\BrailleTutor.cc:21:0:
+src\BrailleTutor-0.7.1\include/Types.h:253:23: warning: unused parameter 'events' [-Wunused-parameter]
+In file included from C:\boost\boost_1_53_0/boost/thread/shared_mutex.hpp:18:0,
+                 from C:\boost\boost_1_53_0/boost/thread/detail/thread_group.hpp:9,
+                 from C:\boost\boost_1_53_0/boost/thread/thread.hpp:26,
+                 from C:\boost\boost_1_53_0/boost/thread.hpp:13,
+                 from src\BrailleTutor-0.7.1\lib\IOEvent.cc:16:
+C:\boost\boost_1_53_0/boost/thread/win32/shared_mutex.hpp: In constructor 'boost::shared_mutex::shared_mutex()':
+C:\boost\boost_1_53_0/boost/thread/win32/shared_mutex.hpp:98:33: warning: missing initializer for member 'boost::shared_mutex::state_data::shared_waiting' [-Wmissing-field-initializers]
+C:\boost\boost_1_53_0/boost/thread/win32/shared_mutex.hpp:98:33: warning: missing initializer for member 'boost::shared_mutex::state_data::exclusive' [-Wmissing-field-initializers]
+C:\boost\boost_1_53_0/boost/thread/win32/shared_mutex.hpp:98:33: warning: missing initializer for member 'boost::shared_mutex::state_data::upgrade' [-Wmissing-field-initializers]
+C:\boost\boost_1_53_0/boost/thread/win32/shared_mutex.hpp:98:33: warning: missing initializer for member 'boost::shared_mutex::state_data::exclusive_waiting' [-Wmissing-field-initializers]
+C:\boost\boost_1_53_0/boost/thread/win32/shared_mutex.hpp:98:33: warning: missing initializer for member 'boost::shared_mutex::state_data::exclusive_waiting_blocked' [-Wmissing-field-initializers]
+In file included from C:\boost\boost_1_53_0/boost/thread/shared_mutex.hpp:18:0,
+                 from C:\boost\boost_1_53_0/boost/thread/detail/thread_group.hpp:9,
+                 from C:\boost\boost_1_53_0/boost/thread/thread.hpp:26,
+                 from C:\boost\boost_1_53_0/boost/thread.hpp:13,
+                 from src\BrailleTutor-0.7.1\lib\BrailleTutor.cc:28:
+C:\boost\boost_1_53_0/boost/thread/win32/shared_mutex.hpp: In constructor 'boost::shared_mutex::shared_mutex()':
+C:\boost\boost_1_53_0/boost/thread/win32/shared_mutex.hpp:98:33: warning: missing initializer for member 'boost::shared_mutex::state_data::shared_waiting' [-Wmissing-field-initializers]
+C:\boost\boost_1_53_0/boost/thread/win32/shared_mutex.hpp:98:33: warning: missing initializer for member 'boost::shared_mutex::state_data::exclusive' [-Wmissing-field-initializers]
+C:\boost\boost_1_53_0/boost/thread/win32/shared_mutex.hpp:98:33: warning: missing initializer for member 'boost::shared_mutex::state_data::upgrade' [-Wmissing-field-initializers]
+C:\boost\boost_1_53_0/boost/thread/win32/shared_mutex.hpp:98:33: warning: missing initializer for member 'boost::shared_mutex::state_data::exclusive_waiting' [-Wmissing-field-initializers]
+C:\boost\boost_1_53_0/boost/thread/win32/shared_mutex.hpp:98:33: warning: missing initializer for member 'boost::shared_mutex::state_data::exclusive_waiting_blocked' [-Wmissing-field-initializers]
+In file included from src\BrailleTutor-0.7.1\lib\IOEvent.cc:20:0:
+src\BrailleTutor-0.7.1\include/Types.h: At global scope:
+src\BrailleTutor-0.7.1\include/Types.h:253:23: warning: unused parameter 'events' [-Wunused-parameter]
+In file included from src\BrailleTutor-0.7.1\lib\IOEvent.cc:21:0:
+src\BrailleTutor-0.7.1\include/Charset.h:220:59: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]
+src\BrailleTutor-0.7.1\include/Charset.h:229:69: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]
+In file included from src\BrailleTutor-0.7.1\lib\IOEvent.cc:22:0:
+src\BrailleTutor-0.7.1\include/IOEvent.h:236:23: warning: unused parameter 'events' [-Wunused-parameter]
+src\BrailleTutor-0.7.1\lib\IOEvent.cc: In member function 'void BrailleTutorNS::FunctorIOEventDecoder::operator()()':
+src\BrailleTutor-0.7.1\lib\IOEvent.cc:140:32: error: 'TIME_UTC' is not a member of 'boost'
+In file included from C:\boost\boost_1_53_0/boost/thread/shared_mutex.hpp:18:0,
+                 from C:\boost\boost_1_53_0/boost/thread/detail/thread_group.hpp:9,
+                 from C:\boost\boost_1_53_0/boost/thread/thread.hpp:26,
+                 from C:\boost\boost_1_53_0/boost/thread.hpp:13,
+                 from src\BrailleTutor-0.7.1\lib\IOEvent.cc:16:
+C:\boost\boost_1_53_0/boost/thread/win32/shared_mutex.hpp: In member function 'T boost::shared_mutex::interlocked_compare_exchange(T*, T, T) [with T = boost::shared_mutex::state_data]':
+C:\boost\boost_1_53_0/boost/thread/win32/shared_mutex.hpp:124:103:   instantiated from here
+C:\boost\boost_1_53_0/boost/thread/win32/shared_mutex.hpp:52:99: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+C:\boost\boost_1_53_0/boost/thread/win32/shared_mutex.hpp:52:99: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+C:\boost\boost_1_53_0/boost/thread/win32/shared_mutex.hpp:53:52: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+C:\boost\boost_1_53_0/boost/thread/win32/shared_mutex.hpp:53:52: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+src\BrailleTutor-0.7.1\lib\BrailleTutor.cc: In member function 'void BrailleTutorNS::FunctorDecoder::operator()()':
+src\BrailleTutor-0.7.1\lib\BrailleTutor.cc:484:30: error: 'TIME_UTC' is not a member of 'boost'
+In file included from C:\boost\boost_1_53_0/boost/thread/shared_mutex.hpp:18:0,
+                 from C:\boost\boost_1_53_0/boost/thread/detail/thread_group.hpp:9,
+                 from C:\boost\boost_1_53_0/boost/thread/thread.hpp:26,
+                 from C:\boost\boost_1_53_0/boost/thread.hpp:13,
+                 from src\BrailleTutor-0.7.1\lib\BrailleTutor.cc:28:
+C:\boost\boost_1_53_0/boost/thread/win32/shared_mutex.hpp: In member function 'T boost::shared_mutex::interlocked_compare_exchange(T*, T, T) [with T = boost::shared_mutex::state_data]':
+C:\boost\boost_1_53_0/boost/thread/win32/shared_mutex.hpp:124:103:   instantiated from here
+C:\boost\boost_1_53_0/boost/thread/win32/shared_mutex.hpp:52:99: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+C:\boost\boost_1_53_0/boost/thread/win32/shared_mutex.hpp:52:99: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+C:\boost\boost_1_53_0/boost/thread/win32/shared_mutex.hpp:53:52: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+C:\boost\boost_1_53_0/boost/thread/win32/shared_mutex.hpp:53:52: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+C:\boost\boost_1_53_0/boost/system/error_code.hpp: At global scope:
+C:\boost\boost_1_53_0/boost/system/error_code.hpp:214:36: warning: 'boost::system::posix_category' defined but not used [-Wunused-variable]
+C:\boost\boost_1_53_0/boost/system/error_code.hpp:215:36: warning: 'boost::system::errno_ecat' defined but not used [-Wunused-variable]
+C:\boost\boost_1_53_0/boost/system/error_code.hpp:216:36: warning: 'boost::system::native_ecat' defined but not used [-Wunused-variable]
+scons: *** [src\BrailleTutor-0.7.1\lib\IOEvent.o] Error 1
+C:\boost\boost_1_53_0/boost/system/error_code.hpp: At global scope:
+C:\boost\boost_1_53_0/boost/system/error_code.hpp:214:36: warning: 'boost::system::posix_category' defined but not used [-Wunused-variable]
+C:\boost\boost_1_53_0/boost/system/error_code.hpp:215:36: warning: 'boost::system::errno_ecat' defined but not used [-Wunused-variable]
+C:\boost\boost_1_53_0/boost/system/error_code.hpp:216:36: warning: 'boost::system::native_ecat' defined but not used [-Wunused-variable]
+scons: *** [src\BrailleTutor-0.7.1\lib\BrailleTutor.o] Error 1
+scons: building terminated because of errors.
+
+C:\Users\ggiger\Documents\Projects\BT_Software_new>

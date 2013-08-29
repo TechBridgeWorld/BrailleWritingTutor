@@ -27,6 +27,24 @@ public:
   virtual void sayDotSequence(const Voice&, DotSequence d) const = 0;
   virtual void saySound(const Voice&, const std::string&) const = 0;
 };
+class KannadaSoundsUtil : public SoundsUtil
+{
+public:
+  explicit KannadaSoundsUtil()
+  {
+  }
+  virtual ~KannadaSoundsUtil()
+  {
+  }
+  void sayNumber(const Voice&, int, bool) const ;
+  void sayLetter(const Voice&, const std::string&) const ;
+  void sayLetterSequence(const Voice&, const std::string&) const ;
+  void sayDotSequence(const Voice&, DotSequence d) const;
+  void saySound(const Voice&, const std::string&) const ;
+private:
+  typedef std::map<std::string, std::string> KannadaLettersToSoundFilesMap;
+  static const KannadaSoundsUtil::KannadaLettersToSoundFilesMap Kannada_letter_map;
+};
 
 class EnglishSoundsUtil : public SoundsUtil
 {
@@ -43,6 +61,27 @@ public:
   void sayDotSequence(const Voice&, DotSequence d) const;
   void saySound(const Voice&, const std::string&) const ;
 };
+
+
+class Hindi2SoundsUtil : public SoundsUtil
+{
+public:
+  explicit Hindi2SoundsUtil()
+  {
+  }
+  virtual ~Hindi2SoundsUtil()
+  {
+  }
+  void sayNumber(const Voice&, int, bool) const ;
+  void sayLetter(const Voice&, const std::string&) const ;
+  void sayLetterSequence(const Voice&, const std::string&) const ;
+  void sayDotSequence(const Voice&, DotSequence d) const;
+  void saySound(const Voice&, const std::string&) const ;
+  private:
+  typedef std::map<std::string, std::string> Hindi2LettersToSoundFilesMap;
+  static const Hindi2SoundsUtil::Hindi2LettersToSoundFilesMap Hindi2_letter_map;
+};
+
 
 class ArabicSoundsUtil : public SoundsUtil
 {

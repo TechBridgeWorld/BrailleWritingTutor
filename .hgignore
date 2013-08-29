@@ -1,0 +1,9 @@
+syntax: glob
+Debug/*
+
+syntax: regexp
+^\.
+\/\..*$
+\.o$
+\.a$
+~$

@@ -481,7 +481,7 @@ struct FunctorDecoder {
 	// Add in timeout. First we need to know the xtime for when the
 	// timeout happens
 	boost::xtime time_end;
-	boost::xtime_get(&time_end, boost::TIME_UTC_);
+	boost::xtime_get(&time_end, boost::TIME_UTC_); // Was TIME_UTC but changed to TIME_UTC_ in Boost 1.50  and greater
 	time_end.sec += poll_interval.secs;
 	const unsigned int nsecs = poll_interval.msecs * 1000000;
 	time_end.nsec += nsecs % 1000000000;

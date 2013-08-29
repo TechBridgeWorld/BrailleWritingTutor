@@ -1,0 +1,167 @@
+
+
+C:\Users\ggiger\Documents\Projects\BT_Software_new>scons
+scons: Reading SConscript files ...
+INFO: Running with -j 2
+scons: done reading SConscript files.
+scons: Building targets ...
+
+Linking Program ==> btbt.exe
+
+Linking Program ==> musicmakergame.exe
+src\musicmaker\musicmaker.o: In function `checked_delete<boost::thread>':
+C:/boost/boost_1_49_0/boost/checked_delete.hpp:34: undefined reference to `_imp___ZN5boost6threadD1Ev'
+src\musicmaker\musicmaker.o: In function `ZN10MusicMaker4stopEv':
+C:\Users\ggiger\Documents\Projects\BT_Software_new/src/musicmaker/musicmaker.cc:255: undefined reference to `_imp___ZN5boost6thread4joinEv'
+C:\Users\ggiger\Documents\Projects\BT_Software_new/src/musicmaker/musicmaker.cc:255: undefined reference to `_imp___ZN5boost6thread4joinEv'
+src\musicmaker\musicmaker.o: In function `thread<FunctorTimerTaskMM>':
+C:/boost/boost_1_49_0/boost/thread/detail/thread.hpp:205: undefined reference to `_imp___ZN5boost6thread12start_threadEv'
+src\musicmaker\musicmaker.o: In function `checked_delete<boost::thread>':
+C:/boost/boost_1_49_0/boost/checked_delete.hpp:34: undefined reference to `_imp___ZN5boost6threadD1Ev'
+src\musicmaker\musicmaker.o: In function `thread<FunctorTimerTaskMM>':
+C:/boost/boost_1_49_0/boost/thread/detail/thread.hpp:205: undefined reference to `_imp___ZN5boost6thread12start_threadEv'
+src\musicmaker\musicmaker.o: In function `checked_delete<boost::thread>':
+C:/boost/boost_1_49_0/boost/checked_delete.hpp:34: undefined reference to `_imp___ZN5boost6threadD1Ev'
+./libbt.a(BrailleTutor.o): In function `ZN14BrailleTutorNS14BrailleTutorIO4joinEv':
+C:\Users\ggiger\Documents\Projects\BT_Software_new/src/BrailleTutor-0.7.1/lib/BrailleTutor.cc:972: undefined reference to `_imp___ZN5boost6thread4joinEv'
+C:\Users\ggiger\Documents\Projects\BT_Software_new/src/BrailleTutor-0.7.1/lib/BrailleTutor.cc:973: undefined reference to `_imp___ZN5boost6thread4joinEv'
+C:\Users\ggiger\Documents\Projects\BT_Software_new/src/BrailleTutor-0.7.1/lib/BrailleTutor.cc:974: undefined reference to `_imp___ZN5boost6thread4joinEv'
+C:\Users\ggiger\Documents\Projects\BT_Software_new/src/BrailleTutor-0.7.1/lib/BrailleTutor.cc:975: undefined reference to `_imp___ZN5boost6thread4joinEv'
+C:\Users\ggiger\Documents\Projects\BT_Software_new/src/BrailleTutor-0.7.1/lib/BrailleTutor.cc:976: undefined reference to `_imp___ZN5boost6thread4joinEv'
+./libbt.a(BrailleTutor.o): In function `thread<BrailleTutorNS::FunctorDecoder>':
+C:/boost/boost_1_49_0/boost/thread/detail/thread.hpp:205: undefined reference to `_imp___ZN5boost6thread12start_threadEv'
+./libbt.a(BrailleTutor.o): In function `checked_delete<boost::thread>':
+C:/boost/boost_1_49_0/boost/checked_delete.hpp:34: undefined reference to `_imp___ZN5boost6threadD1Ev'
+C:/boost/boost_1_49_0/boost/checked_delete.hpp:34: undefined reference to `_imp___ZN5boost6threadD1Ev'
+./libbt.a(BrailleTutor.o): In function `thread<BrailleTutorNS::FunctorModel>':
+C:/boost/boost_1_49_0/boost/thread/detail/thread.hpp:205: undefined reference to `_imp___ZNs5rbcoos\t6tdhormeiando12s\tardto_mtihnroe_agdaEmve.'o
+:. /Inli bbtf.uanct(ionBra ill`eTutthorre.aod)<:T imIenrTa skfu>nc'tio:n
+`Cc:hec/ked_bdoeolsett/eb<oobsoto_s1t_49:_0:/tbhoroesatd/>t'hre:ad
+/Cdet:ail//bootshtrea/d.hbpopost:_12_0459_0:/ buonodsetfin/edche ckerde_fdeerleentcee.hp pt:o3 4`:_ imupn_d_e_fZinNe5d boorsetf6etrhernecaed12 sttaort_ thr`ead_Eivmp_'__Z
+5bosorsct6t\hredaodmDi1nEov\'d
+minCo_g:ame/.obo:ost /Inbo ostf_u1n_c4t9i_o0n/ `boZoNsKt10/DomcihneocGkaemde_1d0ebleegtien.ThipmperE:v3'4::
+uCnde:fin\edUs ersref\eregngcieger \toDo cum`ent_simp\___PZrNo5jbeocotsst6t\hrBeTa_dSDo1fEtvwar'e_n
+wC/:src//boodsotmin/ob/oosdto_m1i_n4o9__g0ame/.ccboo:st20/9c:hec kedu_nddeelfeitnee.dhpp :re3f4ere:nce  undteofin ed` _riemfpe_r_e_nZcNe5bo ostt6othr ead`D1E_vimp'___
+N5b.oos/t6tlhirbebatd.Da1Ev('Bra
+lle.Tut/or.loibb)t.a:( BIrnail leTfuutnocrt.ioon) :` ZINn14B raiflulnecTtuitoonrNS 14B`rai~lleBTruatiolrlIeOT4ujtooirnIEOv''::
+
+CC::\\UUsseerrss\\gggiggiegrer\\DDooccuummeennttss\\PPrroojjeeccttss\\BBTT__SSooffttwwaarree__nneeww//ssrrcc//BBrraaiilllleeTTuuttoorr--00..77..11//lliibb//BBrraaiilllleeTTuuttoorr..cccc::1907028::  uunnddeeffiinneedd  rreeffeerreennccee  t
+too  ``__iimmpp______ZZNN55bboooosstt66tthhrreeaadd44jjooiinnEEvv''
+
+CC::\\UUsseerrss\\ggggiiggeerr\\DDooccuummeennttss\\PPrroojjeeccttss\\BBTT__SSooffttwwaarree__nneeww//ssrrcc//BBrraaiilllleeTTuuttoorr--00..77..11//lliibb//BBrraaiilllleeTTuuttoorr..cccc::1907432::  uunnddeeffiinneedd  rreeffeerreennccee  t
+too  ``__iimmpp______ZZNN55bboooosstt66tthhrreeaadd44jjooiinnEEvv''
+
+CC::\\UUsseerrss\\ggggiiggeerr\\DDooccuummeennttss\\PPrroojjeeccttss\\BBTT__SSooffttwwaarree__nneeww//ssrrcc//BBrraaiilllleeTTuuttoorr--00..77..11//lliibb//BBrraaiilllleeTTuuttoorr..cccc::9170443::  unduenfdienfeidned  refreerfeenrceence  t
+oto  ``_im_pi_m_p__Z_N_5ZbNo5obsoto6stth6rteharde4ajdo4ijnoEivnEv''
+
+CC::\\UseUrssers\\ggigggeirger\\DocDuomceunmtesnts\\ProPjreocjtescts\\BT_BSTo_fStowfatrwea_rnee_wnew//ssrrcc//BBrraaiilllleeTTuuttoorr--00..77..11//lliibb//BBrraaiilllleeTTuuttoorr..cccc::9170544::  uunnddeeffiinneedd  rreeffeerreennccee  t
+too  ``__iimmpp______ZZNN55bboooosstt66tthhrreeaadd44jjooiinnEEvv''
+
+CC::\\UUsseerrss\\ggggiiggeerr\\DDooccuummeennttss\\PPrroojjeeccttss\\BBTT__SSooffttwwaarree__nneeww//ssrrcc//BBrraaiilllleeTTuuttoorr--00..77..11//lliibb//BBrraaiilllleeTTuuttoorr..cccc::9170645::  uunnddeeffiinneedd  rreeffeerreennccee  t
+too  ``__iimmpp______ZZNN55bboooosstt66tthhrreeaadd44jjooiinnEEvv''
+
+..//lliibbbbtt..aa((BBrraaiilllleeTTuuttoorr..oo))::  IInn  ffuunnccttiioonn  ``thrcehaedcke<d_dBerlaeitleleT<utbooroNsSt::::FtuhnrcetaodrDe>cod'er:>
+'C::
+/Cbo:ost//boobsotost/_1_b4o9o_s0t_1/_49b_o0ost//boocshteck/ed_tdherleeatde.h/ppde:tai3l4/:t hreuandd.ehfpipned: 205ref:ere nceund efitnoed  `ref_eirmepn_c_e_ZN 5botoost6 thr`ead_Di1mEpv___'ZN5
+oosCt6t:hre/ad1b2osotsatrt_/thrbeoaodsEtv_1_'49_
+/.b/oosltibb/t.ache(ckeBdr_adiellleetTeu.thoprp.o:)3:4 :I nu ndeffuinncetdion  ref`erecnhceecke d_dteolet e`<_biomops_t__Z:N5b:oostth6rtehardead>D1E'v:'
+
+CC:://bboooosstt//bboooosstt__11__4499__00//bboooosstt//cchheecckkeedd__ddeelleettee..hhpppp::3344::  uunnddeeffiinneedd  rreeffeerreennccee  ttoo  ``__iimmpp______ZZNN55bboooosstt66tthhrreeaaddDD11EEvv''
+
+CC:://bboooosstt//bboooosstt__11__4499__00//bboooosstt//cchheecckkeedd__ddeelleettee..hhpppp::3344::  unudnedfeifniended  rreeffeerreennccee  ttoo  ``__iimmpp______ZZNN55bboooosstt66tthhrreeaaddDD11EEvv''
+
+.C/:l/ibboobstt/.baoos(t_B1r_a4i9l_l0eTu/torb.ooost)/:c hecIkned_ delfeutnec.thipopn :`34th:rea du<ndeBfrianieldleT utorreNfSe:ren:ceFu ncttoorMo del`_>imp'___:ZN5
+oosCt6t:hre/adDb1oEovst'/
+b.oos/t_1l_i4b9b_t0.a/(boBorsatill/eTutthorre.aod)/:det ailIn/ funtchtrieoand.h pp`:thr2e0a5d:<B raiulnldeeTfuitnoerdNS :re:ferFeunncceto rMtoodel >`'_im:p__
+ZN5Cboo:st6/thrbeoaods1t2st/artb_otohsrte_a1d_E4v9_0'/
+bo.ost//libtbhtr.eaad(/BrdaeitlalielTut/ort.horea)d.h:pp :I2n05 :fu nctuinodnefi ned` chercekfeedr_ednecleete <tobo ost`:_im:p__t_hZrNe5abdoos>t6t'hre:ad1
+staCrt_:thr/eadbEovos't
+b.o/oslti_b1b_t4.9a_0(/BrbaoiolslteTu/torc.hoec)ked:_d elIente .hpfpunc:ti3o4n:  `ucnhdeecfkiende_ddel eteref<erebnocoest :to: thr`e_aidmp_>__Z'N5b:oos
+6thCrea:dD1/Evbo'ost
+/Cboo:st_/1_4b9o_o0st//bboooosstt_1/_49c_h0eck/ed_bdoeolsette./hppche:cke3d4_de:let e.hupnpdef:ine3d4 :r efeurnednecfeine dt or efe`ren_ciemp_ __ZtNo5bo ost`6th_riemapd_D_1_EZvN5b'oos
+6thCrea:dD1/Evb'oos
+/Cb:oos/t_1b_o4o9s_t0//bboooosstt_1_/49_c0hec/kedb_odoesltete/.hpcphec:ked3_4del:ete .hpupnd:efi3n4ed:  ruenfdeerfeinnceed  troefe ren`ce_i mp_t_o_ZN 5bo`ost_6itmhpr_e_a_dZDN15Ebvoos't6t
+reaCdD1:Ev/'bo
+st.//boolsitb_b1t_.4a9_0(/BrabiololsetTu/torc.hoeck)ed_:del eteI.nhpp :fun3c4tio:n  u`nde~finBerdail leTruetfoerrIeOnce' :t
+ C`:_\impU_s_e_rZsN5b\oosgtg6itgherread\D1EDvocu'me
+tsC\:P/rojbeocotsst\/BbTo_oSsotf_t1w_a4r9e__0new//boossrtc//cBhreaciklelde_Tduetloerte.-hpp0.7:.134/:lib /undBerfaiinleldeTu torr.ecfcere:nc1e008 :to  u`nde_fiimnpe_d__Z N5broeofsetr6etnhcreead D1Etvo'
+._im/p__l_iZbNb5tb.oaost(6thBrreaaidl4ljeoTiuntEovr.o')
+:C In: fu\nctUisoenrs \`gZgNi5gbeorost\6deDtoaciulm1e9nbtassic\_cvP_rloijsetc_tesntr\yB4Tw_aSiotfEtNwSa0r_e7_tniemweou/tEsr'c:/
+raiClle:Tut/orbo-ost0.7/.1bo/ostl_i1b_49/_0Br/ailbloeoTsuttor/.ccthr:ead104/2w:in3 2u/ndecfoinndeidtio n_vraerfiearbelnec.ehpp :to82 :` _iumnpd_e_f_iZnNe5dboo st6rtehfreeraedn4cjeoin Evto'
+`C_:imp\___UZsNe5rbsoos\t11gtghiigse_rthr\eadD1o8ciunmteenrtrsupt\iblPer_owjaeicttEsPvN\S_B6Td_eStoafitlw7atriem_enoeuwtE/'s
+c.//BraliilblbetT.uator(-Sho0r.t7S.t1ylu/sSulpipbres/sorB.roail)leT:uto r.cIcn :f1u0n4c3tio:n  u`ndetfhirneeadd <rBerfaeirlelnecTeuto rNSto: :`F_uinmcpt_o_r_TZiNm5eboouotst6>thr'ead:4jo
+nEvC':
+Cboo:st\/Usbeorosst_\1_4g9g_i0ger/\booDsotcum/enttshre\adPr/ojedcettsail\/BT_tShorfetawda.rhep_pnew:/205sr:c /uBnrdaeiflilneeTduto rr-efe0r.e7n.c1e/ ltiob /`Bra_iilmlpe_T_u_tZoNr5.bcocost:6th1r0e4a4d12:sta rt_utnhdreefaidnEevd'
+ef.ere/ncelib bt.tao( S`hor_tiSmtpy_l_u_sZSNu5pbporoessts6otrh.roead)4jo:inE vI'n
+fCunc:tio\nU ser`s~\Tgigmiegoeurt\'D:ocu
+entCs:\\ProUjseecrtss\\gBgTi_gSeorftw\areD_onceuwmen/tssr\cP/rojBercatislle\TutBoTr_So-ftw0a.r7e._1ne/wl/isbrc//BrBarialillelTeuTtuotro.rcc-:0.71.0145/:e xtruansdef/ineSdhor tStryelfuesrSeunpcperes sort.occ :`213_im:p__ _ZuNn5dbeofoisnte6dt
+hr eadr4ejfoeirneEnvce'
+to. /`lib_bitm.pa___(ZN5Bbroaoisltl6etThurteoard.4ojoi)nEv:'
+n. /funlcitbibotn.a (`ShocrhteSctkyeldu_sdSeulpeptreess<or.booos)t:: I:nt hrefaudnct>ion' :`
+chCeck:ed_/delbeotoest</boobsotos:t_1:_49t_h0rea/db>oos't:/
+hecCked:_de/letbeo.ohsptp/:b3o4ost:_1_ 49_u0nde/finbeodost /refcehreecnkceed_d elettoe.h pp`:_3i4mp_:__Z N5buonodsetf6itnherdea dD1rEevfer'enc
+ Ct:o/ b`oos_timp/___bZoNo5sbto_o1s_t469t_h0rea/dDb1oEovst'/
+ch.eck/ed_ldieblbett.ea.hp(pS:hor3t4Sty:lus Supupnrdeesfsionre.do )r:efe renIcne  ftuonct ion` _i`mp_Z_N_5ZbNo5obsoto6sdte6ttahirle1a9dbDa1sEivc_c'v_
+istC_en:try/4wabiotoEsNtS0_/7tibmoeoosutt_E1_4'9_0:/
+booCst://cbhoeocskted_/delbeotoes.th_p1p_49:_034/:boo stun/deftihnreedad /rweifne3r2enc/ec ondtiotio n_v`ari_aibmlpe_._h_pZpN5b:oos8t26th:rea dD1uEnvdef'ine
+ Cr:efe/rebnocoest /tbooos t_1`_49__i0mp_/__bZoNo5sbtoos/t11cthheicsk_etdh_rdeealde1t8ei.nhtpeprru:pti3b4le_:wai tEPuvnNdSe_f6idneetdail 7tirmeefoeurteEnce'
+toC :`/_biomops_t__Z/N5bboooosstt6_t1h_r4e9a_d0D1E/vb'oos
+/Ct:hre/adb/ooswtin3/2b/ooscto_n1d_i4t9i_o0n_v/arbioaobslte.h/ppch:eck8e2d_d:ele te.uhnpdpefi:ned34 :re feruenndceefin edt or efe`ren_ciemp_ __ZtNo5bo ost`11t_hiimsp__t_h_rZeNa5db1o8oisntt6etrhrruepatdiDb1lEev_wa'itE
+vNS._6d/etaliilb7btti.maeou(tEBr'ail
+eTu.tor/.oli)bbt:.a (ISnhor tStfyulnucstSiuopnpre sso`r.othr)ead:< BIrnail leTfuutnocrtNiSon: :`F~uncSthoorrMtoSdteyllus>Sup'pre:sso
+CorCe:'/:b
+ostC/:b\oosUts_e1r_s49_\0g/gigbeorost\/Doctuhmreenatds/\dPertoajielcts/\thrBeTa_dS.ohfptpwar:e_n2e0w5/:s rcun/defBirnaeidlle Tutroerfer-enc0e.7. 1t/oe xtr`as_i/mp_S_h_oZrNt5Sbtoyolsuts6Stuhprperaeds1s2osrt.acrct_:thr3e7a3dEv:'
+un.def/ineldibb t.aref(ereBnrcaeill eTuttoor. o`)_i:mp_ __ZINn5bo ostf6utnhcrteiaodn4jo inE`vc'hec
+ed_.del/etelib<bt.baoos(tS:hor:tSttyhlruesaSdupp>res'sor:.o
+)C:: /Inbo ostfun/ctiboonost _1_`49_c0hec/kedb_odoesltete/<cbhoeocskted_:de:letteh.rhepapd:>3'4::
+uCnde:fin/edb oostref/erebnocoest_ 1_4t9o_0 /`boo_sitmp_/__ZcNh5ebcokoesdt_6dtehlreetaed.Dh1pEpv:'3
+:C :un/definbedoos tr/efebroeonscte_1_ 49_t0o/ `boo_sitmp_/__ZcNh5ebcokoesdt_6dtehlreetaed.Dh1pEpv:'34
+:. /ulnidbebfti.naed( IOErveefnetr.eonce) :t oI n` _fiumnpc_t_i_oZnN5b oos`t6tthhrreeaaddD1E<vB'rai
+leCT:ut/orNbSoos:t:/Fbuonocstto_r1I_O4E9v_e0ntD/ecobdoeorst>/'ch:eck
+d_dCele:te./hppboo:st34/:boo st_u1n_d4e9f_i0ned/ boroesftere/ncethr eadto/ de`ta_iilmp_/__ZtNh5rbeoaods.th6ptphre:adD210E5v:'
+uCnde:fin/edbo ostref/erebnocoest_ 1_4t9o_0 /`boo_sitmp_/__ZcNh5ebcokoesdt_6dtehlreetaed.1h2psptar:t_t3h4re:adE vu'nde
+ine.d/ lriebfbetr.eance( IOEtvoent .o`)_:imp ___IZnN5b oosftu6ntchtrieoandD1 Ev`'~
+IO.Eve/ntPlairbsbetr.Caore('Br:ail
+eTuCtor:.o\)Us:ers \Ingg igefrunc\tioDnocu men`tsZN\5boPorsotj6edcettsail\19BbTa_sSiocf_tcwva_rlei_snte_went/ry4swracitE/NS0B_r7atiilmleeoTuuttEor'-:0
+7.C1://libboos/tI/OEvbeonots.tc_c1_4:9_0755/:boo stun/deftihnreedad /rewfienr3e2nce/ contdoiti on_`var_iiambpl_e_._hZpNp5bo:ost862thr:ead 4jouinndEevfi'ned
+ Cref:ere\nceUse rsto\ ggi`ger_im\p__D_oZcNu5mbeonotsst11\thiPsr_otjhercetasd18\intBeTr_rSuopfttiwbalree__wnaeiwtEP/vNSs_r6cdet/ailB7rtaiimleloeuTtuEtor'-
+0..7.1//liblbitb.a/(IOESvheonrtt.Sctcylu:sSu7p5p6res:sor .ou)nd:ef iInned  fruenfcetrieonnce  `toth rea`d_<impB_r_a_iZlNl5ebTouotsotr6NtShre:ad4:joiFnuEnvcto'rTi
+eou.t/>l'ibb:t.a
+(CIOE:ven/t.oboo)st:/ boIonst_ 1_f4u9n_c0tio/nb oos`tc/hectkherde_addele/tede<taibloos/tt:hre:ad.thhprpead:>205'::
+undCefi:ned/ boorsetfer/encbeoos t_1t_4o9_0 `/bo_oismtp__/_ZNc5hbeocoksetd6_tdherleeatde1.2hsptpart:_th3r4ead:Ev 'und
+fin.ed/ lriebfbetr.eanc(eS horttoSty lus`Su_pipmrpe_s_s_oZrN.5oboo)st6:thr eadIDn1Ev 'fun
+tioCn: /`b~oosTtime/outboo'st_:1_4
+_0C/:b\oosUtser/sc\hecgkgeidg_edrele\te.Dhopcpume:nts34\:Pr ojeucntdsefi\nedBT_ Sofrtewfaerree_nnceew /tsorc /`Bra_iilmlpe_T_u_tZoNr5bo-ost06.t7h.r1ead/D1Eevxtr'a
+/.S/horltiSbtbytl.uasSu(pprTeismseoIrn.tcecrva:l.o213)::  uInndef inefdunc tiornefe ren`ceZ N5btooost 6de`tai_li1m7pb_a_s_iZcN_5tbiomoesdt_6mtuhtreexa6du4njlooicnkEEvv''
+:
+/Cl:ibb/t.aboo(stSh/ortbSotoysltu_s1S_u4p9p_r0es/sorb.ooost)/:t hreIand /fwuinnc3t2ion/ ba`sicch_etcikmeedd__dmeulteetxe.hp<pb:oos1t63::: thurnedaedfin>ed' :re
+ereCnce: /tbooos t`/_biomops_t___1Z_N459b_o0ost/11tbhoioss_tthr/eadc1h8eicnkteedr_rdueplteitbel.eh_pwpait:EP3v4NS_:6de taiuln7dteifmienoeudtE 'r
+fer.enc/el ibbtto.a (`Tim_eiImnpt_e_r_vZaNl5.booos)t6t:hre adDI1nEv 'fu
+cti.on/ lib`bt.oaper(atoSrhor-tSt<ylulsoSnugppr essloorn.go )i:nt >I'n:
+uncCti:on/ bo`ostZN5/boobsoto6sdte_t1a_i4l91_90bas/ic_bcovo_sltist/_endtartye4_wtaiimteENS/0_i7ntti_maedoaupttEer.'hpp::
+27C3::/ buonodsetfin/edbo ostr_e1f_e4r9e_n0ce/ btooost /`t_hirmepa_d__Z/N5bwoions3t211t/hisc_otnhdrietaido1n8_ivnatreirarbulpet.ihbplpe_w:ait8E2PvN:S_6 detuanidle7ftiinmeedout Er'efe
+ence to `_icmp_o__ZlN5blooset11cthits_t2hre:ad1 8inlterdrup tibrle_ewaittEPuvNSr_6dnetaeil7dtim eou1tE 'e
+xCi:t/ bsoostta/tbooust_s1_4
+_0/boost/thread/win32/condition_variable.hpp:82: undefined reference to `_imp___ZN5boost11this_thread18instecons: *** [musicmakergame.exe] Error 1
+rruptible_waitEPvNS_6detail7timeoutE'
+./libbt.a(ShortStylusSuppressor.o): In function `~ShortStylusSuppressorCore':
+C:\Users\ggiger\Documents\Projects\BT_Software_new/src/BrailleTutor-0.7.1/extras/ShortStylusSuppressor.cc:373: undefined reference to `_imp___ZN5boost6thread4joinEv'
+./libbt.a(ShortStylusSuppressor.o): In function `checked_delete<boost::thread>':
+C:/boost/boost_1_49_0/boost/checked_delete.hpp:34: undefined reference to `_imp___ZN5boost6threadD1Ev'
+./libbt.a(IOEvent.o): In function `thread<BrailleTutorNS::FunctorIOEventDecoder>':
+C:/boost/boost_1_49_0/boost/thread/detail/thread.hpp:205: undefined reference to `_imp___ZN5boost6thread12start_threadEv'
+./libbt.a(IOEvent.o): In function `~IOEventParserCore':
+C:\Users\ggiger\Documents\Projects\BT_Software_new/src/BrailleTutor-0.7.1/lib/IOEvent.cc:755: undefined reference to `_imp___ZN5boost6thread4joinEv'
+C:\Users\ggiger\Documents\Projects\BT_Software_new/src/BrailleTutor-0.7.1/lib/IOEvent.cc:756: undefined reference to `_imp___ZN5boost6thread4joinEv'
+./libbt.a(IOEvent.o): In function `checked_delete<boost::thread>':
+C:/boost/boost_1_49_0/boost/checked_delete.hpp:34: undefined reference to `_imp___ZN5boost6threadD1Ev'
+C:/boost/boost_1_49_0/boost/checked_delete.hpp:34: undefined reference to `_imp___ZN5boost6threadD1Ev'
+./libbt.a(TimeInterval.o): In function `ZN5boost6detail17basic_timed_mutex6unlockEv':
+C:/boost/boost_1_49_0/boost/thread/win32/basic_timed_mutex.hpp:163: undefined reference to `_imp___ZN5boost11this_thread18interruptible_waitEPvNS_6detail7timeoutE'
+./libbt.a(TimeInterval.o): In function `operator-<long long int>':
+C:/boost/boost_1_49_0/boost/date_time/int_adapter.hpp:273: undefined reference to `_imp___ZN5boost11this_thread18interruptible_waitEPvNS_6detail7timeoutE'
+collect2: ld returned 1 exit status
+scons: *** [btbt.exe] Error 1
+scons: building terminated because of errors.
+
+C:\Users\ggiger\Documents\Projects\BT_Software_new>

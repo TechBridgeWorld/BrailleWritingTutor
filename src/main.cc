@@ -1,10 +1,14 @@
 #include <iostream>
 #include <unistd.h>
 #include <ctime> //g++ 4.3.2
+#include "common/IBTApp.h"
+#include "common/language_utils.h"
+#include "common/utilities.h"
+
 
 #include "app_dispatcher/app_dispatcher.h"
 
-int fakemain(int argc, char **argv);
+int launch_bt(int argc, char **argv);
 
 //This hack has something to do with SDL on Windows. Freddie might know the details
 #ifdef BT_WINDOWS
@@ -14,13 +18,20 @@ int fakemain(int argc, char **argv);
 #endif
 
 int main(int argc, char **argv)
-{
+{ 
+  /* establish the necessary parts to play sounds upon connection */
+  IOEventParser event_parser;
+  Voice teacher_voice("./resources/Voice/teacher/", event_parser);
+  SoundsUtil* eng_su = new EnglishSoundsUtil;
+  
+  eng_su->saySound(teacher_voice, "starting_bt");
   try
   {
-    return fakemain(argc, argv);
+    return launch_bt(argc, argv);
   }
   catch (const BTException &e)
   {
+    eng_su->saySound(teacher_voice, "not_connected"); // TODO: put something more intelligent here
     std::cerr << "A problem occurred: " << e.why << std::endl;
     std::cerr << "\n"
       "If the Braille Tutor is plugged in right now, please try unplugging it and\n"
@@ -44,8 +55,11 @@ int main(int argc, char **argv)
   return 0;
 }
 
-int fakemain(int argc, char **argv)
+int launch_bt(int argc, char **argv)
 {
+  IOEventParser event_parser;
+  Voice teacher_voice("./resources/Voice/teacher/", event_parser);
+  SoundsUtil* eng_su = new EnglishSoundsUtil;
   std::srand((unsigned) std::time(0));
   BrailleTutor bt;
 
@@ -55,7 +69,7 @@ int fakemain(int argc, char **argv)
   // debouncind, the BaseIOEvents are passed directly to the
   // IOEventParser. This is a TSS mod!
   ShortStylusSuppressor debouncer(0.3);
-  IOEventParser event_parser;
+  
   if( (argc > 1) && !strcmp(argv[1], "--nodebounce") )
   {
     std::cout << "[ DEBOUNCING DISABLED ]" << std::endl;
@@ -96,7 +110,8 @@ int fakemain(int argc, char **argv)
   unsigned int version;
   bt.detect(io_port, version);
   std::cout << "  found a version " << version << " tutor on " << io_port << std::endl;
-
+  eng_su->saySound(teacher_voice, "connected"); // TODO put something more intelligent here
+  eng_su->saySound(teacher_voice, "welcome_menu"); // announce that back in main menu
   bt.join();
 
   return 0;

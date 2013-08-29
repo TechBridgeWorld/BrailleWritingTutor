@@ -8,7 +8,7 @@
 #include "number_scaffold.h"
 
 NumberScaffold::NumberScaffold(IOEventParser& my_iep, const std::string& path_to_mapping_file, SoundsUtil* my_su, bool f) :
-  IBTApp(my_iep, path_to_mapping_file), su(my_su), iep(my_iep), firsttime(true),math_s("./resources/Voice/math_sounds/"), nomirror(f)
+  IBTApp(my_iep, path_to_mapping_file), su(my_su), iep(my_iep), firsttime(true),math_s("./resources/Voice/math_sounds/", my_iep), nomirror(f)
 {
   su->saySound(math_s, "free_number_practice");
 }

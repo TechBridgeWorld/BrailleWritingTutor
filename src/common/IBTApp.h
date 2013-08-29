@@ -20,6 +20,7 @@ public:
   const Voice& getTeacherVoice() const;
   const Voice& getStudentVoice() const;
   static const Charset& getCurrentCharset();
+  IOEventParser& iep;
 public:
   virtual void processEvent(IOEvent& event) = 0;
 private:
@@ -27,7 +28,7 @@ private:
   void loadDefaultCharset();
 
 private:
-  IOEventParser& iep;
+ 
   Voice teacher_voice;
   Voice student_voice;
 

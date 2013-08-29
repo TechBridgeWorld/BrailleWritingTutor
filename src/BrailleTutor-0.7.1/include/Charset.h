@@ -26,7 +26,7 @@
 #include <iostream>
 #include <stdint.h>
 
-#include "boost/shared_array.hpp"
+#include <boost/shared_array.hpp>
 
 namespace BrailleTutorNS {
 

@@ -12,6 +12,7 @@
 #include "common/IBTApp.h"
 #include "common/KnowledgeTracer.h"
 #include "common/language_utils.h"
+#include "common/multicharacter.h"
 
 class LearnLetters : public IBTApp
 {
@@ -31,10 +32,13 @@ private:
 
 private:
   SoundsUtil* su;
+  multi* multicell; 
   enum observation
   {
     right, wrong
   };
+  int cell_position; // for multi-cell characters
+  //IOEventParser& iep; //So flushGlyph() can be called
   const std::vector<std::string> alphabet;
   const std::vector<std::string> group0;
   const std::vector<std::string> group1;
@@ -64,6 +68,24 @@ class EnglishLearnLetters : public LearnLetters
 public:
   explicit EnglishLearnLetters(IOEventParser&);
   ~EnglishLearnLetters()
+  {
+  }
+private:
+  const std::vector<std::string> createAlphabet() const;
+  const std::vector<std::string> createGroup0Letters() const;
+  const std::vector<std::string> createGroup1Letters() const;
+  const std::vector<std::string> createGroup2Letters() const;
+  const std::vector<std::string> createGroup3Letters() const;
+  const std::vector<std::string> createGroup4Letters() const;
+};
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+class KannadaLearnLetters : public LearnLetters
+{
+public:
+  explicit KannadaLearnLetters(IOEventParser&);
+  ~KannadaLearnLetters()
   {
   }
 private:
@@ -157,4 +179,20 @@ private:
   const std::vector<std::string> createGroup4Letters() const;
 };
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+class Hindi2LearnLetters : public LearnLetters
+{
+public:
+  explicit Hindi2LearnLetters(IOEventParser&);
+  ~Hindi2LearnLetters()
+  {
+  }
+private:
+  const std::vector<std::string> createAlphabet() const;
+  const std::vector<std::string> createGroup0Letters() const;
+  const std::vector<std::string> createGroup1Letters() const;
+  const std::vector<std::string> createGroup2Letters() const;
+  const std::vector<std::string> createGroup3Letters() const;
+  const std::vector<std::string> createGroup4Letters() const;
+};
+//
 #endif /* LEARN_LETTERS_H_ */

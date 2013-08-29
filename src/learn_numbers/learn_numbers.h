@@ -27,6 +27,7 @@ private:
   void playWriteTheNumberSounds(const DotSequence& d) const;
 
 private:
+  IOEventParser& iep; 
   SoundsUtil* su;
   const Voice math_s;
   bool nomirror;

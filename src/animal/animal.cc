@@ -4,15 +4,23 @@
  *  Created on: Dec 8, 2008
  *      Author: Students
  *      Multi-lingual enhancements: Imran
+ *      Modifications to word length and option to repeat: Madeleine
  */
 
 #include <assert.h>
 #include <boost/assign/list_of.hpp>
 #include "animal.h"
+#define MAX_CATS 3 
+#define SHORT 0
+#define MEDIUM 1
+#define LONG 2
+
+
+ time_t last_time = time(0);
 
 Animal::Animal(IOEventParser& my_iep, const std::string& path_to_mapping_file, SoundsUtil* my_su, const std::vector<std::string> my_alph, const ForeignLanguage2EnglishMap sw, const ForeignLanguage2EnglishMap mw, const ForeignLanguage2EnglishMap lw, bool f) :
   IBTApp(my_iep, path_to_mapping_file), iep(my_iep), su(my_su), alphabet(my_alph), short_animals(sw), med_animals(mw), long_animals(lw),
-      letter_skill(alphabet.size()), firsttime(true), turncount(0), word(""), target_letter(""), word_pos(0), word_length(0), nomirror(f)
+      letter_skill(alphabet.size()), firsttime(true), turncount(0), word(""), last_word(""), target_letter(""), word_pos(0), word_length(0), nomirror(f), animal_s ("./resources/Voice/animal_sounds/", my_iep), three_down(false)
 {
   for(int i = 0; i < alphabet.size(); i++)
   {
@@ -20,16 +28,37 @@ Animal::Animal(IOEventParser& my_iep, const std::string& path_to_mapping_file, S
         .registerEvent(right, .8, .01) .registerEvent(wrong, .2, .833);
   }
 
-  for(int i = 2; i < 8; i++)
+  for(int i = 0; i < MAX_CATS; i++)
   {
     LS_length_skill[i] = KnowledgeTracer(.01) .registerEvent(right, .7, .1) .registerEvent(wrong, .1, .7);
   }
 
+  su->saySound(animal_s, "everyday_answer_instructions");
   AL_new();
 }
 
+/*this has new capabilities that if they hold down button 3 and press
+ * select, it will tell them the desired answer */
 void Animal::processEvent(IOEvent& e)
 {
+  if (e.type == IOEvent::BUTTON_DOWN && e.button == 6){
+          three_down = true;
+  }
+  if (e.type == IOEvent::BUTTON_UP && e.button == 6){
+    three_down = false;
+  }
+
+  if (three_down && e.type == IOEvent::BUTTON_DOWN && e.button == 0){
+    su->saySound(getTeacherVoice(), "please write");
+    su->sayLetterSequence(getTeacherVoice(), word);
+    /* say the actual word */
+    sayName(word);
+    word_pos = 0; // restsart the word
+    three_down = false; //reset
+    firsttime = true; // so will skip later
+    return;
+  }
+
   //Whenever the user hits Button0 we immediately want the LETTER event to be generated so that he doesnt have to wait for the timeout
   if( e.type == IOEvent::BUTTON && e.button == 0 )
   {
@@ -47,26 +76,40 @@ void Animal::processEvent(IOEvent& e)
       firsttime = false;
       return;//skip
     }
-    else
+    else if (last_time == time(0)) { // a bit of a catch for accidental multiple presses
+      last_time = time(0);
+      return;
+    }
+    else 
     {
+      last_time = time(0);
+    
       su->sayLetter(getStudentVoice(), (std::string) e.letter);
       AL_attempt((std::string) e.letter);
     }
   }
 }
 
+void Animal::sayName(std::string& word){
+    std::string sound_file(word);
+    sound_file.append("_word");
+    su->saySound(animal_s, sound_file);
+}
+
+
 void Animal::AL_new()
 {
+  srand(time(0));
   std::vector<int> low_letters;
-
+  float min_knowledge = .7;
   //no letter skill to be trained
   target_letter = "\0";
   //choose a new animal target:
   std::vector<std::string> choices;
   turncount = 0;
-  bool need_short = (LS_length_skill[3].estimate() < .9); //animal words with 3 letters
-  bool need_med = (LS_length_skill[5].estimate() < .9);//animal words with 5 letters
-  bool need_long = (LS_length_skill[7].estimate() < .9);//animal words with 7 letters
+  bool need_short = (LS_length_skill[SHORT].estimate() < min_knowledge); //animal words with 3 letters
+  bool need_med = (LS_length_skill[MEDIUM].estimate() < min_knowledge);//animal words with 5 letters
+  bool need_long = (LS_length_skill[LONG].estimate() < min_knowledge);//animal words with 7 letters
 
   if( !(need_short || need_med || need_long) )
   {
@@ -91,7 +134,7 @@ void Animal::AL_new()
     {
       choices.push_back(it->first);
     }
-    word_length = 3;
+    word_length = SHORT;
   }
   else if( need_med )
   {
@@ -100,7 +143,7 @@ void Animal::AL_new()
     {
       choices.push_back(it->first);
     }
-    word_length = 5;
+    word_length = MEDIUM;
   }
   else if( need_long )
   {
@@ -109,16 +152,19 @@ void Animal::AL_new()
     {
       choices.push_back(it->first);
     }
-    word_length = 7;
+    word_length = LONG;
   }
-
-  random_shuffle(choices.begin(), choices.end());
-  word = choices.front();
+  while (word == last_word){
+    random_shuffle(choices.begin(), choices.end());
+    word = choices.front();
+  }
+  last_word = word; // to avoid direct repeats
   word_pos = 0;
   //Asound += ".wav";
   std::cout << "		(DEBUG)Animal sound:" << word << std::endl;
-  su->saySound(getTeacherVoice(), "please write the animal2"); // change to something related to animals
-  su->saySound(getTeacherVoice(), animalNameToSound(word));
+  su->saySound(animal_s, "please write the animal2"); 
+  su->saySound(animal_s, animalNameToSound(word));
+  //iep.clearQueue();
 }
 
 std::string Animal::animalNameToSound(const std::string& animal)
@@ -157,7 +203,7 @@ void Animal::AL_attempt(std::string i)
       target_letter = "\0";
       word_pos = 0;
       su->saySound(getTeacherVoice(), "please write");
-      su->sayLetterSequence(getTeacherVoice(), word);
+      su->sayLetterSequence(animal_s, word);
       return;
     }
     else
@@ -206,6 +252,9 @@ void Animal::AL_attempt(std::string i)
         LS_length_skill[word_length].observe(right);
         std::cout << word_length << ": " << LS_length_skill[word_length].estimate() << std::endl;
         su->saySound(getTeacherVoice(), "good");
+        su->sayLetterSequence(getTeacherVoice(), word);
+        sayName(word);
+        su->saySound(getTeacherVoice(), "tada");
         AL_new();
         return;
       }
@@ -213,25 +262,19 @@ void Animal::AL_attempt(std::string i)
     else
     { //letter is incorrect
       su->saySound(getTeacherVoice(), "no"); // that is the incorrect animal
-      word_pos = 0;
+     
       turncount++;
       //std::cout << "    (DEBUG)Now at turn:" << turncount << std::endl;
-      if( turncount < 3 )
-      {
-        su->saySound(getTeacherVoice(), "please write the animal2");
-        su->saySound(getTeacherVoice(), animalNameToSound(word));
-        //std::cout << "    (DEBUG)Got the letter wrong at turn" << turncount << std::endl;
-      }
-      else
-      {
+   
         if( turncount == 3 )
         {
+          word_pos = 0;
           su->saySound(getTeacherVoice(), "solution");
           su->sayLetterSequence(getTeacherVoice(), word);
+          sayName(word);
           //std::cout << "    (DEBUG)All 3 turns used" << std::endl;
         }
-        su->saySound(getTeacherVoice(), "please write");
-        su->sayLetterSequence(getTeacherVoice(), word);
+       
         letter_skill[index].observe(wrong);
         //std::cout << "    (DEBUG)The estimate of the letter is:" << letter_skill[index].estimate() << std::endl;
         //LS_length_skill[word_length].observe(wrong);
@@ -249,9 +292,9 @@ void Animal::AL_attempt(std::string i)
         }
       }
       return;
-    }
   }
 }
+
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -268,20 +311,22 @@ const std::vector<std::string> EnglishAnimal::createAlphabet() const
 
 const ForeignLanguage2EnglishMap EnglishAnimal::createShortAnimalWords() const
 {
-  //animals whos name has exactly 3 letters
-  return boost::assign::map_list_of("CAT", "CAT")("DOG", "DOG")("BEE", "BEE")("COW", "COW")("PIG", "PIG");
+  //animals whos name has  3-4 ish letters
+  return boost::assign::map_list_of("CAT", "CAT")("DOG", "DOG")("BEE", "BEE")("COW", "COW")
+                                   ("PIG", "PIG")("CROW", "CROW")("OWL","OWL")("LION","LION")("COCK","COCK");
 }
 
 const ForeignLanguage2EnglishMap EnglishAnimal::createMedAnimalWords() const
 {
-  //animals whos name has exactly 5 letters
-  return boost::assign::map_list_of("SHEEP", "SHEEP")("HORSE", "HORSE")("ZEBRA", "ZEBRA")("CAMEL", "CAMEL")("HYENA", "HYENA");
+  //animals whos name has 5-6 ish letters
+  return boost::assign::map_list_of("SHEEP", "SHEEP")("HORSE", "HORSE")("ZEBRA", "ZEBRA")("CAMEL", "CAMEL")
+                                   ("MONKEY","MONKEY")("SNAKE","SNAKE");
 }
 
 const ForeignLanguage2EnglishMap EnglishAnimal::createLongAnimalWords() const
 {
-  //animals whos name has exactly 7 letters
-  return boost::assign::map_list_of("ROOSTER","ROOSTER");
+  //animals whos name has > 5 letters
+  return boost::assign::map_list_of("ELEPHANT","ELEPHANT");
 }
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -331,19 +376,21 @@ const std::vector<std::string> FrenchAnimal::createAlphabet() const
 const ForeignLanguage2EnglishMap FrenchAnimal::createShortAnimalWords() const
 {
   //animals whos name has exactly 3 letters
-  return boost::assign::map_list_of("OIE","ROOSTER"); //XXX:"oie" is actually means Goose.. but..
+  return boost::assign::map_list_of("COQ","ROOSTER")("LION","LION")("PAON","PEACOCK")("CHAT","CAT"); 
 }
 
 const ForeignLanguage2EnglishMap FrenchAnimal::createMedAnimalWords() const
 {
   //animals whos name has exactly 5 letters
-  return boost::assign::map_list_of("CHIEN","DOG")("VACHE","COW");
+  return boost::assign::map_list_of("CHIEN","DOG")("VACHE","COW")("ZÈBRE","ZEBRA")("SINGE","MONKEY");
 }
 
 const ForeignLanguage2EnglishMap FrenchAnimal::createLongAnimalWords() const
 {
   //animals whos name has exactly 7 letters
-  return boost::assign::map_list_of("CHAMEAU","CAMEL");
+  return boost::assign::map_list_of("CHAMEAU","CAMEL")("ABEILLE","BEE")("COCHON","PIG")("CORBEAU","CROW")
+                                    ("CHOUETTE","OWL")("MOUTON","SHEEP")("CHEVAL","HORSE")("SERPENT","SNAKE")
+                                    ("ÉLÉPHANT","ELEPHANT");
 }
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -362,7 +409,7 @@ const std::vector<std::string> KiswahiliAnimal::createAlphabet() const
 const ForeignLanguage2EnglishMap KiswahiliAnimal::createShortAnimalWords() const
 {
   //animals whos name has exactly 3 letters
-  return boost::assign::map_list_of("OIE","ROOSTER"); //XXX:"oie" is actually means Goose.. but..
+  return boost::assign::map_list_of("OIE","ROOSTER"); //"oie" means rooster
 }
 
 const ForeignLanguage2EnglishMap KiswahiliAnimal::createMedAnimalWords() const
