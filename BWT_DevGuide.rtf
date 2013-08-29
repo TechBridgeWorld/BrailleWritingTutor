@@ -1,0 +1,197 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+{\fonttbl\f0\fnil\fcharset0 TrebuchetMS;\f1\fswiss\fcharset0 ArialMT;\f2\froman\fcharset0 TimesNewRomanPSMT;
+\f3\fmodern\fcharset0 CourierNewPSMT;}
+{\colortbl;\red255\green255\blue255;\red17\green85\blue204;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid2\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid102\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid202\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid3}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\ri0\sl276\slmult1\sb200
+
+\f0\fs32 \cf0 Developing for the Braille Writing Tutor\
+\pard\pardeftab720\ri0\sl276\slmult1
+
+\f1\fs22 \cf0 Madeleine Clute ({\field{\*\fldinst{HYPERLINK "mailto:mclute@andrew.cmu.edu"}}{\fldrslt \cf2 \ul \ulc2 mclute@andrew.cmu.edu}}) June-August 2013\
+\pard\pardeftab720\ri0\sl276\slmult1\sb200
+
+\f0\fs32 \cf0 Modes\
+\pard\pardeftab720\ri0\sl276\slmult1
+
+\f1\fs22 \cf0 The BWT offers many modes in various languages (as of 13 June 2013, English, French, Arabic, and Swahili). A mode is reached by pressing buttons 1 and 4 while the program announces the name of a module and when someone presses the top left button, the current mode is entered (this is primarily done in app_dispatcher.cc). When a mode is entered, a new object is created and the control flow switches to that module and its event handlers. \
+\
+\pard\pardeftab720\ri0\sl276\slmult1
+
+\b \cf0 Basic Structure of Code
+\f2\b0 \
+\pard\pardeftab720\ri0\sl276\slmult1
+
+\f1 \cf0 The BWT code is in C++ and makes use of threading and OOP. Events are based on keyboard interrupts. The most important components to allow the code to interact with the tutor and play sounds are:\
+	Event parser (handles events from the tutor)\
+	soundUtilites (an object that has methods such as \'93saySound\'94, etc)\
+A lot of the code for the various modules is largely the same in how you initialize the class. It is probably best to look at simple examples of t	his such as the code for \'93learn_letters\'94 and \'93learn_dots.\'94 Most of the event handling structure does not change from mode to mode. \
+\pard\pardeftab720\ri0\sl276\slmult1\sb200
+
+\f0\b\fs26 \cf0 Developing Modes\
+\pard\pardeftab720\ri0\sl276\slmult1
+
+\f1\b0\fs22 \cf0 To develop a new mode, a \'93.cc\'94 file and a corresponding \'93.h\'94 file. If you are unfamiliar with C++ and/or OOP, it is highly recommended that you start with a different module and slowly modify it to suit your purposes. \
+\pard\pardeftab720\ri0\sl276\slmult1\sb200
+
+\f0\b\fs26 \cf0 Registering Modes\
+\pard\pardeftab720\ri0\sl276\slmult1
+
+\f1\b0\fs22 \cf0 Once you have a new module that you would like to be able to access from the main menu, there are several things you need to do:\
+	
+\b 1) 
+\b0 Register it properly in the SConstruct file. There is an array 
+\b SRC_DIRS 
+\b0 in the file \
+	which contains all the directories in \'93src\'94 that should be included at compile time. Add the \
+\pard\pardeftab720\fi720\ri0\sl276\slmult1
+\cf0 name of your module to this list. \
+\pard\pardeftab720\li720\ri0\sl276\slmult1
+
+\b \cf0 2)
+\b0  Add something along the lines of MODULE_NAME_LANGUAGE to the config/modes.cfg file\
+\pard\pardeftab720\fi720\ri0\sl276\slmult1
+
+\b \cf0 3) 
+\b0 Add the necessary components to the app_dispacther.cc/h files.\
+\pard\pardeftab720\li1440\fi-359\ri0\sl276\slmult1
+\ls1\ilvl1\cf0 \uc0\u9675 	Make sure to add MODULE_NAME_LANGUAGE to the enum in the .h file. \
+\uc0\u9675 	Add the mapping from the name to the string version like so and put it in the modes list: 	\
+\pard\pardeftab720\li1440\ri0\sl276\slmult1
+
+\f3 \cf0  if (mode_str == "FREE_PLAY_ENGLISH") \{
+\f2 \
+
+\f3     modes_list.push_back(FREE_PLAY_ENGLISH);
+\f2 \
+
+\f3  \} else if (mode_str == "FREE_SPELLING_ENGLISH") \{
+\f2 \
+
+\f3      modes_list.push_back(FREE_SPELLING_ENGLISH);
+\f2 \
+
+\f3 \'85
+\f2 \
+\pard\pardeftab720\li1440\fi-359\ri0\sl276\slmult1
+\ls2\ilvl1
+\f3 \cf0 \uc0\u9675 	
+\f1 Make sure that the BWT will actually say something when your mode is under consideration. This is done by editing the switch statement which looks like: \
+\pard\pardeftab720\li1440\ri0\sl276\slmult1
+
+\f3 \cf0 case FREE_PLAY_ENGLISH:
+\f2 \
+	
+\f3 teach.say("free play.wav");
+\f2 \
+	
+\f3 printf("Selecting English Dot Scaffold\\n");
+\f2 \
+	
+\f3 break;
+\f2 \
+\pard\pardeftab720\li1440\ri0\sl276\slmult1
+
+\f1 \cf0 The .wav file given needs to be located in resources/Voice/Teacher\
+\pard\pardeftab720\li1440\fi-359\ri0\sl276\slmult1
+\ls3\ilvl1\cf0 \uc0\u9675 	Finally, add it to the switch statement such that when a mode is selected the code will return the appropriate thing. All of them are structured as:\
+\pard\pardeftab720\li1440\ri0\sl276\slmult1
+
+\f3 \cf0 case DOMINOS_ENGLISH:
+\f2 \
+	
+\f3 return new EnglishDominoGame(iep);
+\f2 \
+
+\f3   case HANGMAN_ENGLISH:
+\f2 \
+	
+\f3 return new EnglishHangman(iep);
+\f2 \
+
+\f3   case ANIMAL_GAME_ENGLISH:
+\f2 \
+	
+\f3 return new EnglishAnimal(iep);
+\f2 \
+
+\f3 \'85
+\f2 \
+\
+\pard\pardeftab720\ri0\sl276\slmult1
+
+\f1 \cf0 Once this part is done, when you recompile the the code, and run it, your new module should be available. \
+\
+\pard\pardeftab720\ri0\sl276\slmult1
+
+\f0\b\fs26 \cf0 Adding Sound Files
+\f2\b0\fs22 \
+\pard\pardeftab720\ri0\sl276\slmult1
+
+\f1 \cf0 The sound files are located in
+\f3  resources/voice. 
+\f1 They need to be in .wav format, and need to have a rate of 16000 Hz. This can be done several ways, one of which is setting the project rate to 16000 in Audacity, or if you\'92re on a unix based machine, \'93
+\f3 sox <old>.mp3 -r 16000 <new>.wav
+\f1 \'94 will work once you\'92ve installed sox. \
+\
+with each \'93saySound\'94 call, you need to provide it with a voice object, and the words to say. If the desired sound file is in the \'93teacher\'94 folder (where most cross-activity sound files should live) then you can pass \'93
+\f3 getTeacherVoice()
+\f1 \'94 to get the path. Else, you need to declare the path as a voice object (ex: 
+\f3 math_s(\'93./resources/Voice/math_sounds/\'94)
+\f1 ) and then use that like: 
+\f3 su->saySound(math_s, \'93ten\'94); 
+\f2 \
+\
+\pard\pardeftab720\ri0\sl276\slmult1
+
+\f0\b\fs26 \cf0 Adding Languages
+\f2\b0\fs22 \
+\
+\pard\pardeftab720\ri0\sl276\slmult1
+
+\f1 \cf0 The way the language utils currently work in this software, each bitmask (dot pattern) needs to be associated with a unicode character. There are various pros and cons to this approach, but it was designed with the end goal of being eventually able to add languages without recompiling the code. \
+\
+As of right now however, there are two primary things that need to be done. The first is to provide a character mapping file of the dots and unicode characters. (NOTE: there cannot be any spaces after the characters--they must be directly followed by a new line). The second thing to be done is to create a
+\f3  <your_language>_utils.cc
+\f1  file and register it with the 
+\f3 language_utils.h
+\f1  file. These can be found in 
+\f3 src/common.
+\f2 \
+\
+\pard\pardeftab720\ri0\sl276\slmult1
+
+\f1\b \cf0 Why Kannada and Hindi braille are so intertwined...
+\f2\b0 \
+\
+\pard\pardeftab720\ri0\sl276\slmult1
+
+\f1 \cf0 Hindi and Kannada Braille only differ by about 3 characters (they are both part of the Bharati Braille system), and for reasons not quite known, the code will segfault when it tries to deal with Kannada unicode characters. Thus, all the unicode characters are Hindi, with a few additons. One character is in there as \'93V\'94 because the character required a base character as well as an accent mark (multiple characters) to represent. It is a V because Vivek really liked that character.\
+\
+\
+\pard\pardeftab720\ri0\sl276\slmult1
+
+\b \cf0 Adding a multicell character\
+\
+\pard\pardeftab720\ri0\sl276\slmult1
+
+\b0 \cf0 Adding a multicelled character is a little non-intuitive given the original code\'92s lack of support for them. To add a multicell character, include it in the mappings file with any key code you\'92d like (still has to be valid) and then add it to the \'93multicell/multicell.cc\'94 file according to the instructions in the comments. This adding will overwrite whatever mapping you put in the mapping.txt file. 
+\f2 \
+\
+\pard\pardeftab720\ri0\sl276\slmult1
+
+\f0\b\fs26 \cf0 Event Backlog Clearing
+\f2\b0\fs22 \
+\
+\
+\pard\pardeftab720\ri0\sl276\slmult1
+
+\f1 \cf0 There was a noted problem with the BWT when users pressed many buttons quickly in succession or when a sound file was playing. We were able to correct this by clearing the out_events queue with a function call from 
+\f3 Voice.cc, 
+\f1 but it didn\'92t work when installed on the Mathru computers (Windows XP) and caused a lot of segfaults (it worked fine on windows 7). It was decided it was better to have the backlogging problem than to have the software unexpectedly stopping.\
+}

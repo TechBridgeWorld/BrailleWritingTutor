@@ -1,0 +1,16 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 Errors encountered: \
+\
+The code left at Mathru was unfortunately not entirely stable. The behaviour observed was that the BWT process would exit unexpectedly. When the new version of the code was first installed on the computers in early July, it seemed to be stable with the exception of it exiting out unexpectedly if the BWT hardware could not be located. Between this and August, it seemed as though the teachers largely continued using the old version of the BWT, which was left on the computers as it already existed. When the final version of the code (what is now in the Master's version) was installed on the computers, it began quitting out erratically, which no observable pattern to when it would quit out. Sometimes this would mean it would quit immediately or early on in use, or that it would function normally for the entirety of use. The version left on the computer was a tradeoff between stability and features added, and the differences are found in "git_readme_bwt.rtf" \
+\
+Possible causes of these problems: \
+\
+Considering the non-deterministic nature of these crashes, it seems likely that it might be coming from a memory error or some sort of race condition caused by the threading. It is also possible that some of the compilation settings should be changed for Windows XP, which is what Mathru runs. \
+\
+\
+Several computers were too virus infected to install new software. The computers in the computer lab did not have the necessary drivers for the BWT hardware and were too infected to make the necessary changes. }
