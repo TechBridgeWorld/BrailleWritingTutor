@@ -1,0 +1,54 @@
+BrailleTutor library change log
+
+Release	Date			Maintainer
+-------	-----------------	---------------------------------------
+0.1	29 June 2007		Tom Stepleton (tss@ri.cmu.edu)
+
+  o  Inital release
+
+0.2	5 July 2007		Tom Stepleton (tss@ri.cmu.edu)
+
+  o  Project namespace ("BrailleTutor") changed to "BrailleTutorNS" to avoid
+     overlapping with the name of the BrailleTutor object.
+  o  "Interim" UNIX makefile added.
+
+0.3	11 July 2007		Tom Stepleton (tss@ri.cmu.edu)
+				Daniel Dewey (dewey.daniel@gmail.com)
+
+  o  Linux serial port bugfixes
+  o  Serial port lockfile bugfixes
+  o  More robust timing in event decoding to handle port latency on Linux
+
+0.4	17 July 2007		Tom Stepleton (tss@ri.cmu.edu)
+
+  o  IOEvent implementation
+  o  Various minor bugfixes needed to support IOEvent
+
+0.5	6 September 2007	Tom Stepleton (tss@ri.cmu.edu)
+
+  o  Doxygen comments in code files fixed
+  o  Doxyfile (must be edited for individual use)
+
+0.6	12 September 2007	Tom Stepleton (tss@ri.cmu.edu)
+
+  o  Windows serial port I/O code first version completed
+  o  Various Makefile.WIN refinement
+  o  New GlyphMapping replaces std::wstring mapped to braille dot glyphs
+  o  Changes throughout the code in favor of GlyphMappings
+  o  Race condition bugfixes (incl. events during long callbacks not reported)
+  o  Other minor bugfixes
+  o  Charset loading/saving; test_charset test program; Makefiles updated
+  o  IOEvent::flushGlyph() method immediately analyzes the glyph the user made
+
+0.7	16 November 2007	Tom Stepleton (tss@ri.cmu.edu)
+
+  o  Fixed bug causing translation from letters to braille dots to fail
+  o  Added robust stylus noise debouncing library (see ShortStylusSuppressor.h
+     in extras/, as well as certain tests/ test programs for usage)
+  o  Added speech synthesis demo test_talker.cc for MacOS X machines
+  o  Fixed (or greatly mitigated) race condition/deadlock involving *NewEvent
+     threads when polling is used instead of callbacks
+
+0.7.1	25 November 2007	Tom Stepleton (tss@ri.cmu.edu)
+
+  o  Windows COM port autodetect now tries up to 16 COM ports.

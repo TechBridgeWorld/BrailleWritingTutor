@@ -1,0 +1,99 @@
+/*
+ * app_dispatcher.h
+ *
+ *  Created on: Dec 1, 2008
+ *      Author: imran
+ *  Updated in 2010 & 2011 by Ameer
+ */
+
+#ifndef APP_DISPATCHER_H_
+#define APP_DISPATCHER_H_
+#include <cstdlib>
+#include <vector>
+#include "common/utilities.h"
+#include "common/IBTApp.h"
+
+// The Braille Tutor's default scrolling interface scrolls between the applications of
+// 2 languages.. either English and one other language. Yes, you could have a braille tutor
+// that scrolls over all the applications across all the languages - but thats cumbersome and
+// unnecessary.
+
+// Here we set EN+FR as default language.  At this point we should read config file and based on that decide which one of 3 language combinations we will use
+#if !defined(ENGLISH_FRENCH) && !defined(ENGLISH_ARABIC) && !defined(ENGLISH_KISWAHILI)
+#define ENGLISH_FRENCH
+#endif
+
+struct ApplicationDispatcher : public IOEventHandler
+{
+  enum modes {
+    FREE_PLAY,
+    FREE_SPELLING,
+    FREE_NUMBERS,
+    LEARN_DOTS,
+    DOT_PRACTICE,
+    LEARN_LETTERS,
+    LETTER_PRACTICE,
+    LEARN_NUMBERS,
+    DOMINOS,
+    HANGMAN,
+    ANIMAL,
+    FREE_PLAY_OTHER,
+    FREE_SPELLING_OTHER,
+    FREE_NUMBERS_OTHER,
+    LEARN_DOTS_OTHER,
+    DOT_PRACTICE_OTHER,
+    LEARN_LETTERS_OTHER,
+    LETTER_PRACTICE_OTHER,
+    LEARN_NUMBERS_OTHER,
+    DOMINOS_OTHER,
+    HANGMAN_OTHER,
+    ANIMAL_OTHER,
+  };
+  static const int SCROLL_OFF = 0;//Events are interpreted as normal events that are passed to the current application
+  static const int BZERO_DOWN = 1;//Is Button0 held down?
+  static const int SCROLL_ON = 2; //Events are interpreted as scrolling events - this enables us to scroll
+
+  static const int EN_AR = 0; //English and Arabic
+  static const int EN_FR = 1; //English and French
+  static const int EN_SWH = 2; //English and Swahili l
+  static const int EN2_AR2 = 3; //English unmirrored and Arabic unmirrored
+  static const int EN2_ONLY = 4; //English Modes Only
+  static const int FETZER_DEMO = 5; //Subset of modes for Fetzer demo
+
+  BrailleTutor& bt;
+  IOEventParser& iep;
+  IBTApp* current_app;
+  Voice teach;
+  Voice numbers;
+  modes current_mode;
+  int switching_modes;
+  int language_mode; //value determined by config file - decides language combination
+  bool cfg_file_processed; // so we don't read config file multiple times
+  std::vector<int> modes_list;
+  
+  
+  virtual void operator()(std::deque<IOEvent> &events);
+  explicit inline ApplicationDispatcher(BrailleTutor &my_bt, IOEventParser &my_iep) : //struct constructor
+      bt(my_bt), iep(my_iep),current_app(NULL),teach("./resources/Voice/teacher/"),numbers("./resources/Voice/math_sounds/"),current_mode(FREE_PLAY),switching_modes(SCROLL_ON),cfg_file_processed(false)
+  {}
+  bool isSwitchAppEvent(const IOEvent& e);
+  bool isScrollEvent(const IOEvent& e);
+  void scroll(const IOEvent& e);
+  IBTApp* switchApp(const IOEvent& e);
+
+  IBTApp* switchAppEnglishArabic() const;
+  void playSelectedModeInEnglishArabic() const;
+
+  IBTApp* switchAppEnglishFrench() const;
+  void playSelectedModeInEnglishFrench() const;
+
+  IBTApp* switchAppEnglishKiswahili() const;
+  void playSelectedModeInEnglishKiswahili() const;
+  
+  IBTApp* switchAppEnglish2Arabic2() const;
+  void playSelectedModeInEnglish2Arabic2() const;
+  
+  void processConfigFile();
+};
+
+#endif /* APP_DISPATCHER_H_ */

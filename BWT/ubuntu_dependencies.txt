@@ -1,0 +1,6 @@
+Required packages (for Ubuntu 11.04):
+
+libboost-dev
+libboost-thread-dev
+libsdl1.2-dev
+libsdl-mixer1.2-dev
