@@ -1,0 +1,33 @@
+Compiling the Braille Writing Tutor Software
+Amal Nanavati (amaln@cmu.edu) June 9, 2015
+
+External Dependencies:
+To compile the BWT software, you need the follorwng programs:
+1) Python 2.7 32 bit (https://www.python.org, not sure if Python 3 will work)
+2) SCons 2.3.0 (www.scons.org)
+3) MinGW (www.mingw.org)
+	a) Download the mingw-get-setup.exe file, as it installs everything for you (as oppose to downloading source code and building it yourself.)  Note that the link they had on their website did not, in fact, download the executable installer, so I had to manually download it from http://sourceforge.net/projects/mingw/files/?source=typ_redirect.
+	b) Download MinGW from only the official site.  There are certain distributions of MinGW (http://nuwen.net/mingw.html) that have both MinGW and Boost packaged together, but for some reason that version of MinGW does not work.
+4) Boost 1.55.0 (http://www.boost.org)
+
+Installation:
+1) To install python, merely run the python installer downloaded from their website (pywin32-218.win32-py2.7.exe).  Note that SCons requires 32 bit python.  I installed python to C:\Python27
+2) To install SCons, merely run the SCons installer downloaded from their website (scons-2.3.0-setup.exe).  Scons gets installed in the Scripts subdirectory of the python folder (on my computer, in C:\Python27\Scripts)
+3) To install MinGW, run the installer downloaded from their website.  This will install a package manager (MinGW Installer.)  There are three packages we have to install.  In "Basic Setup," install "mingw32-gcc g++".  And in "All Packages" > "MinGW Libraries" > "MinGW Standard Libraries" install "mingw32-libz" (both dll & dev.)  Mark those for installation, and in the "Installation" menu at the top select "Apply Changes."  Further instructions can be found here (http://www.mingw.org/wiki/Getting_Started.)  I installed MinGW to C:\MinGW
+4) When you download Boost, it will not have an installer.  Instead, drag the whole boost_X_XX_X folder (which contains multiple folders and files) to any directory you want (I put it in C:\Program Files\boost\boost_1_55_0).
+
+Changing Default Paths:
+Now that we have all the dependencies installed, we need to add them to Windows default search paths (so they can be called directly from Command Prompt.)  To access Windows default Paths, go to "Control Panel" > "System" > "Advanced System Settings" > "Advanced" > "Environment Variables".  Under "System Variables," double click on the variable called "Path."  APPEND to that string the following four paths separated by semicolons: the path to the directory python is contained in, the path to the directory scons is contained in (usually in the Scripts subdirectory of the Python main directory,) the path to the bin subdirectory in the MinGW directory, and the path to the directory containing SDL.dll in the BWT software folder.  For example, the paths I appended were as follows:
+
+C:\Python27;C:\Python27\Scripts;C:\MinGW\bin;C:\Users\Lama\Documents\BWT\externals.win\SDL\dll
+
+Don't forget the semicolon after every path!
+
+Modifying SConstruct:
+1) In the SConstruct file, change BOOST_HEADER (line 24) to the path to where you installed Boost.
+2) If there are any GitHub overrides in the SConstructs file (<<<<<<<<< HEAD) fix them (by determining which line to keep and commenting out the rest.)
+
+Compiling:
+To compile the BWT software, open Command Prompt, cd to the directory containing your SConstructs file (the BWT directory), and type "scons braille."  This will compile the BWT software at "btbt.exe."
+
+NOTE: There are other aspects of the BWT that you can compile, such as "scons voice," "scons," etc.  However, I am not completely sure what these do, and the BWT software works without any of this extra compilation.  If you want to find all possible scons commands, look at the comments in the SConstruct file.
