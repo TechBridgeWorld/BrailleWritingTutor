@@ -125,15 +125,17 @@ if not GetOption("verbose_flag"):
 btEnv = env.Clone()
 BT_SOURCES = Glob("src/BrailleTutor-0.7.1/lib/*.cc",strings=True)+Glob("src/BrailleTutor-0.7.1/extras/*.cc",strings=True)
 
-# Overrides
-<<<<<<< HEAD
+#Commented out Git Overrides below (lines with two ##)
+
+## Overrides
+##<<<<<<< HEAD
 btEnv["LIBS"].extend(["boost_thread"]) if isLinux() else btEnv["LIBS"].extend(["boost_system-mgw47-mt-1_53", "boost_system-mgw47-mt-1_53"])
-=======
+##=======
 #btEnv["LIBS"].extend(["boost_thread"])
 #btEnv["LIBS"].extend(["boost_thread"]) if isLinux() else btEnv["LIBS"].extend(["boost_thread-mgw34-mt-1_34_1"])
 #btEnv["LIBS"].extend(["boost_thread"]) if isLinux() else btEnv["LIBS"].extend(["boost_thread-mgw46-mt-1_49"])
-btEnv["LIBS"].extend(["boost_thread"]) if isLinux() else btEnv["LIBS"].extend(["boost_thread-mgw47-mt-1_53", "libboost_system-mgw47-mt-1_53"])
->>>>>>> remotes/origin/testbedWorking
+##btEnv["LIBS"].extend(["boost_thread"]) if isLinux() else btEnv["LIBS"].extend(["boost_thread-mgw47-mt-1_53", "libboost_system-mgw47-mt-1_53"])
+##>>>>>>> remotes/origin/testbedWorking
 
 btEnv["CPPPATH"].extend([BOOST_HEADERS,"src/BrailleTutor-0.7.1/include","src/BrailleTutor-0.7.1/extras"])
 #
@@ -205,15 +207,17 @@ finalEnv["CPPPATH"].extend([BOOST_HEADERS])
 finalEnv["LIBPATH"].extend([BOOST_LIB,SDL_LIB])
 finalEnv["LIBS"].extend(["SDL","SDL_mixer"])
 
-<<<<<<< HEAD
+#Commented out Git Overrides below (lines with ##)
+
+##<<<<<<< HEAD
 finalEnv["LIBS"].extend(["boost_thread"]) if isLinux() else finalEnv["LIBS"].extend(["boost_thread-mgw47-mt-1_53", "boost_system-mgw47-mt-1_53"])
 
 #
-=======
+##=======
 #finalEnv["LIBS"].extend(["boost_thread"]) if isLinux() else finalEnv["LIBS"].extend(["boost_thread-mgw34-mt-1_34_1"])
 #finalEnv["LIBS"].extend(["boost_thread"]) if isLinux() else finalEnv["LIBS"].extend(["boost_thread-mgw46-mt-1_49"])	# Changed by Gary since I am trying to use boost 1.49.0
-finalEnv["LIBS"].extend(["boost_thread"]) if isLinux() else finalEnv["LIBS"].extend(["boost_thread-mgw47-mt-1_53", "boost_system-mgw47-mt-1_53"])	# Changed by Gary since I am trying to use boost 1.53.0
->>>>>>> remotes/origin/testbedWorking
+##finalEnv["LIBS"].extend(["boost_thread"]) if isLinux() else finalEnv["LIBS"].extend(["boost_thread-mgw47-mt-1_53", "boost_system-mgw47-mt-1_53"])	# Changed by Gary since I am trying to use boost 1.53.0
+##>>>>>>> remotes/origin/testbedWorking
 
 # This is the main executable
 FINAL_EXECUTABLE = finalEnv.Program(target="btbt",source=SRCS+VOICE_OBJ+COMMON_LIB+AD_LIB)
